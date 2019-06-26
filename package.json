@@ -1,0 +1,42 @@
+{
+  "name": "mobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "lint": "tslint --project tsconfig.json",
+    "fix": "ts-jest config:migrate jest.config.js"
+  },
+  "dependencies": {
+    "react": "16.8.3",
+    "react-native": "0.59.9"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/runtime": "7.4.5",
+    "@types/enzyme": "^3.9.4",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "24.0.15",
+    "@types/react": "16.8.22",
+    "@types/react-native": "0.57.63",
+    "@types/react-test-renderer": "16.8.2",
+    "babel-jest": "24.8.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "24.8.0",
+    "metro-react-native-babel-preset": "0.54.1",
+    "react-dom": "^16.8.6",
+    "react-test-renderer": "16.8.3",
+    "ts-jest": "^24.0.2",
+    "tslib": "^1.10.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-etc": "^1.5.5",
+    "tslint-react": "^4.0.0",
+    "tslint-react-hooks": "^2.1.1",
+    "tsutils": "^3.14.0",
+    "typescript": "3.5.2"
+  }
+}
