@@ -19,3 +19,18 @@ steps:
   displayName: 'Run lint'
 - script: npm run test
   displayName: 'Run unit tests'
+
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testRunner: JUnit
+    testResultsFiles: 'junit.xml'
+    failTaskOnFailedTests: true
+
+- task: PublishCodeCoverageResults@1
+  inputs: 
+    codeCoverageTool: Cobertura
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/*coverage.xml'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+    failIfCoverageEmpty: true
+
