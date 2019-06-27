@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
-    "lint": "tslint --project tsconfig.json",
-    "fix": "ts-jest config:migrate jest.config.js"
+    "test": "jest --ci --reporters=jest-junit --reporters=default --coverage --coverageReporters=cobertura --coverageReporters=html",
+    "lint": "tslint --project tsconfig.json"
   },
   "dependencies": {
     "react": "16.8.3",
@@ -25,6 +24,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "24.8.0",
+    "jest-junit": "^6.4.0",
     "metro-react-native-babel-preset": "0.54.1",
     "react-dom": "^16.8.6",
     "react-test-renderer": "16.8.3",
