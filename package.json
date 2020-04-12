@@ -8,7 +8,7 @@
     "clean:ios": "cd ios && xcodebuild clean",
     "clean:android": "cd android && ./gradlew clean",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --color",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
     "postinstall": "run-script-os",
     "postinstall:darwin": "pod-install ios"
