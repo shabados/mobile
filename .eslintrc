@@ -1,0 +1,113 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx",
+          ".json"
+        ]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.spec.[jt]s?(x)",
+        "**/*.test.[jt]s?(x)",
+        "**/test/**"
+      ],
+      "env": {
+        "jest": true
+      }
+    }
+  ],
+  "env": {
+    "es6": true
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "rules": {
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
+    "computed-property-spacing": [
+      "error",
+      "always"
+    ],
+    "import/no-unresolved": 0,
+    "import/extensions": [
+      "error",
+      "always",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/prefer-default-export": 1,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "linebreak-style": 0,
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "ignoreRestSiblings": true,
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-shadow": 0,
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ],
+    "object-property-newline": [
+      "error",
+      {
+        "allowAllPropertiesOnSameLine": true
+      }
+    ],
+    "react/jsx-filename-extension": 0,
+    "react/sort-comp": 0,
+    "react/jsx-props-no-spreading": 0,
+    "semi": [
+      "error",
+      "never"
+    ],
+    "semi-style": [
+      "error",
+      "first"
+    ],
+    "space-in-parens": [
+      "error",
+      "always",
+      {
+        "exceptions": [
+          "empty"
+        ]
+      }
+    ]
+  }
+}
