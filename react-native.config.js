@@ -3,5 +3,13 @@ module.exports = {
     ios: {},
     android: {},
   },
-  assets: ['./assets/fonts/'],
-};
+  assets: [ './assets/fonts/' ],
+  dependencies: {
+    '@nozbe/watermelondb': {
+      platforms: {
+        android: null,
+        ios: null,
+      },
+    },
+  },
+}
