@@ -20,15 +20,16 @@
   "overrides": [
     {
       "files": [
-        "**/*.spec.[jt]s?(x)",
-        "**/*.test.[jt]s?(x)",
-        "**/test/**"
+        "**/test/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
+        "*.config.js"
       ],
       "env": {
         "jest": true
       },
       "rules": {
-        "import/no-extraneous-dependencies": 0
+        "import/no-extraneous-dependencies": 0,
+        "@typescript-eslint/no-var-requires": 0
       }
     }
   ],
