@@ -7,7 +7,7 @@
     "ios": "react-native run-ios --simulator='iPhone 11 Pro Max'",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color"
   },
   "dependencies": {
     "@nozbe/watermelondb": "^0.15.0",
