@@ -1,7 +1,4 @@
-import React, {Component} from 'react';
-import withObservables from '@nozbe/with-observables';
-import {Q, Database} from '@nozbe/watermelondb';
-import {Container, Header, Content, List, ListItem, Text} from 'native-base';
+import React, { Component } from 'react'
 
 type SearchResultProps = {
   database: any;
@@ -10,7 +7,7 @@ type SearchResultProps = {
 
 class SearchResults extends Component<SearchResultProps> {
   render() {
-    return <div></div>;
+    return <div />
     // const {searchResults} = this.props;
     // return (
     //   <Container>
@@ -40,4 +37,4 @@ class SearchResults extends Component<SearchResultProps> {
 //     .query(Q.where('name', Q.like(`%${Q.sanitizeLikeString(search)}%`))),
 // }));
 
-export default SearchResults;
+export default SearchResults

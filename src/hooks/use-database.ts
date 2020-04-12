@@ -1,6 +1,6 @@
-import {DatabaseContext} from '../../App';
-import {useContext} from 'react';
+import { useContext } from 'react'
+import { DatabaseContext } from '../App'
 
 export default function useDatabase() {
-  return useContext(DatabaseContext);
+  return useContext( DatabaseContext )
 }

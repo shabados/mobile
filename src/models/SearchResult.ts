@@ -1,22 +1,22 @@
-import {Model} from '@nozbe/watermelondb';
-import {field, relation} from '@nozbe/watermelondb/decorators';
+import { Model } from '@nozbe/watermelondb'
+import { field } from '@nozbe/watermelondb/decorators'
 
 export default class SearchResult extends Model {
   static table = 'searchResults';
 
-  @((field as any)('searchTerm'))
+  @( ( field as any )( 'searchTerm' ) )
   searchTerm!: string;
 
-  @((field as any)('section'))
+  @( ( field as any )( 'section' ) )
   section!: string;
 
-  @((field as any)('ang'))
+  @( ( field as any )( 'ang' ) )
   ang!: number;
 
-  @((field as any)('gurbani'))
+  @( ( field as any )( 'gurbani' ) )
   gurbani!: string;
 
-  @((field as any)('translation'))
+  @( ( field as any )( 'translation' ) )
   translation!: string;
 
   getSearchResult() {
@@ -26,6 +26,6 @@ export default class SearchResult extends Model {
       ang: this.ang,
       gurbani: this.gurbani,
       translation: this.translation,
-    };
+    }
   }
 }

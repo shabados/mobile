@@ -1,17 +1,19 @@
-import {appSchema, tableSchema} from '@nozbe/watermelondb';
+import { appSchema, tableSchema } from '@nozbe/watermelondb'
 
-export const schema = appSchema({
+const schema = appSchema( {
   version: 1,
   tables: [
-    tableSchema({
+    tableSchema( {
       name: 'searchResults',
       columns: [
-        {name: 'searchTerm', type: 'string', isIndexed: true},
-        {name: 'section', type: 'string'},
-        {name: 'ang', type: 'number'},
-        {name: 'gurbani', type: 'string'},
-        {name: 'translation', type: 'string'},
+        { name: 'searchTerm', type: 'string', isIndexed: true },
+        { name: 'section', type: 'string' },
+        { name: 'ang', type: 'number' },
+        { name: 'gurbani', type: 'string' },
+        { name: 'translation', type: 'string' },
       ],
-    }),
+    } ),
   ],
-});
+} )
+
+export default schema

@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useState} from 'react';
+import React, { FunctionComponent, useState } from 'react'
 import {
   Text,
   Container,
@@ -10,16 +10,16 @@ import {
   ListItem,
   Body,
   Right,
-} from 'native-base';
-import {DrawerActions} from '@react-navigation/native';
-import useDatabase from '../hooks/use-database';
+} from 'native-base'
+import { DrawerActions } from '@react-navigation/native'
 import {
   synchronize,
   SyncPullArgs,
   Timestamp,
   SyncDatabaseChangeSet,
-} from '@nozbe/watermelondb/sync';
-import SearchResult from 'src/models/SearchResult';
+} from '@nozbe/watermelondb/sync'
+import SearchResult from 'src/models/SearchResult'
+import useDatabase from '../hooks/use-database'
 
 type DataManagerProps = {
   navigation: any;
@@ -29,42 +29,35 @@ type DataSyncProps = {
   continuationToken: any | undefined;
 };
 
-const DataManager: FunctionComponent<DataManagerProps> = ({navigation}) => {
-  const [continuationToken, setContinuationToken] = useState({});
-
+const DataManager: FunctionComponent<DataManagerProps> = ( { navigation } ) => {
+  const [ continuationToken, setContinuationToken ] = useState( {} )
   const onMenuPress = () => {
-    navigation.dispatch(DrawerActions.toggleDrawer());
-  };
-
+    navigation.dispatch( DrawerActions.toggleDrawer() )
+  }
   const onDownloadPress = async () => {
-    const res = await dataSync({continuationToken});
-    setContinuationToken(res);
-  };
-
-  const database = useDatabase();
-  const dataSync = async ({continuationToken}: DataSyncProps) => {
-    await synchronize({
+    const res = await dataSync( { continuationToken } )
+    setContinuationToken( res )
+  }
+  const database = useDatabase()
+  const dataSync = async ( { continuationToken }: DataSyncProps ) => {
+    await synchronize( {
       database,
-      pullChanges: async (args: SyncPullArgs) => {
+      pullChanges: async ( args: SyncPullArgs ) => {
         // Alert.alert('Started');
-        const timestamp: Timestamp =
-          args.lastPulledAt ?? new Date().getUTCDate();
+        const timestamp: Timestamp = args.lastPulledAt ?? new Date().getUTCDate()
         const response = await fetch(
-          `http://localhost:5000/api/shabad/sync/searchTerms`,
-        );
+          'http://localhost:5000/api/shabad/sync/searchTerms',
+        )
 
         // Alert.alert(JSON.stringify(response));
-        if (!response.ok) {
-          throw new Error(await response.text());
+        if ( !response.ok ) {
+          throw new Error( await response.text() )
         }
 
-        const mappedResults: SearchResult[] = [];
-
-        const results = await response.json();
-
-        continuationToken = results.continuationToken;
-
-        results.lineSearchResults.forEach((result: any) => {
+        const mappedResults: SearchResult[] = []
+        const results = await response.json()
+        continuationToken = results.continuationToken
+        results.lineSearchResults.forEach( ( result: any ) => {
           const ret: any = {
             id: `${result.searchTerm}_${result.id}`,
             searchTerm: result.searchTerm,
@@ -72,29 +65,26 @@ const DataManager: FunctionComponent<DataManagerProps> = ({navigation}) => {
             ang: 123,
             gurbani: result.gurmukhi.toString(),
             translation: 'Empty',
-          };
-
-          mappedResults.push(ret);
-        });
-        
+          }
+          mappedResults.push( ret )
+        } )
         const changes: SyncDatabaseChangeSet = {
           searchResults: {
             created: mappedResults,
             updated: [],
             deleted: [],
           },
-        };
-        return {changes, timestamp};
+        }
+        return { changes, timestamp }
       },
       pushChanges: async () => {},
-    });
-
-    return continuationToken;
-  };
+    } )
+    return continuationToken
+  }
   return (
     <Container>
       <Header>
-        <Left style={{marginLeft: 8}}>
+        <Left style={{ marginLeft: 8 }}>
           <Icon active name="menu" onPress={onMenuPress} />
         </Left>
       </Header>
@@ -136,7 +126,6 @@ const DataManager: FunctionComponent<DataManagerProps> = ({navigation}) => {
         </List>
       </Content>
     </Container>
-  );
-};
-
-export default DataManager;
+  )
+}
+export default DataManager
