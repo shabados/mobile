@@ -9,7 +9,9 @@
     "clean:android": "cd android && ./gradlew clean",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
+    "postinstall": "run-script-os",
+    "postinstall:darwin": "pod-install ios"
   },
   "dependencies": {
     "@nozbe/watermelondb": "^0.15.0",
@@ -53,7 +55,9 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.56.0",
+    "pod-install": "0.0.0-alpha.8",
     "react-test-renderer": "16.9.0",
+    "run-script-os": "^1.1.1",
     "typescript": "^3.7.3"
   },
   "jest": {
