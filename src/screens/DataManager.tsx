@@ -18,7 +18,7 @@ import {
   Timestamp,
   SyncDatabaseChangeSet,
 } from '@nozbe/watermelondb/sync'
-import SearchResult from 'src/models/SearchResult'
+import SearchResult from '../models/SearchResult'
 import useDatabase from '../hooks/use-database'
 
 type DataManagerProps = {
