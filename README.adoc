@@ -18,8 +18,9 @@
 :chat-url: https://chat.shabados.com
 :wa-img: https://img.shields.io/badge/WhatsApp-%2B1%20516%20619%206059-128C7E.svg
 :wa-url: https://wa.me/15166196059
-:cci-img: https://img.shields.io/circleci/project/github/ShabadOS/{repo}.svg
-:cci-url: https://circleci.com/gh/ShabadOS/{repo}
+:gh-release-img: https://img.shields.io/github/workflow/status/ShabadOS/{repo}/CI/master?label=release
+:gh-prerelease-img: https://img.shields.io/github/workflow/status/ShabadOS/{repo}/CI/master?label=prerelease
+:gh-actions-url: https://github.com/ShabadOS/{repo}/actions
 :license-img: https://img.shields.io/github/license/ShabadOS/{repo}.svg
 :license-url: https://github.com/ShabadOS/{repo}/LICENSE.adoc
 :runkit-url: https://npm.runkit.com/gurmukhi-utils
@@ -39,7 +40,7 @@ image::{logo}[128,128,link="{website}"]
 
 Android and iOS app for searching, navigating, and presenting the Shabad OS database.
 
-image:{license-img}[title=license, link="{license-url}"] image:{cci-img}[title=CircleCI, link="{cci-url}"]
+image:{license-img}[title=license, link="{license-url}"] image:{gh-release-img}[title=GitHub Workflow Status, link="{gh-actions-url}"] image:{gh-prerelease-img}[title=GitHub Workflow Status, link="{gh-actions-url}"]
 
 toc::[id="toc"]
 

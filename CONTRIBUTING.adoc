@@ -153,7 +153,7 @@ The desktop repo contains an https://eslint.org/[ESLint] configuration file. You
 
 It is recommended to https://eslint.org/docs/user-guide/integrations[integrate ESLint] with your editor so you can receive linter suggestions as you type. We recommend https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint[VSCode's ESLint extension].
 
-In addition to linting, code will automatically be checked by Circle CI for style. 
+In addition to linting, code will automatically be checked by GitHub Actions for style. 
 
 ### Commit Messages
 
