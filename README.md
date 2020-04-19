@@ -21,6 +21,8 @@
 | lint          | Run ESLint and check code style              |
 | test          | Run unit + integration tests in watcher mode |
 
+Running `npm i` will automatically run `react-native link` and install any Cocoapods (on Mac).
+
 ## Releases
 
 This project follows [Semantic Versioning](https://semver.org/) for version labelling.

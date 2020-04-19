@@ -3,15 +3,18 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
     "start:android": "react-native run-android",
     "start:ios": "react-native run-ios --simulator='iPhone 8'",
     "clean:ios": "cd ios && xcodebuild clean",
-    "clean:android": "cd android && ./gradlew clean",
+    "clean:android": "run-script-os",
+    "clean:android:default": "cd android && ./gradlew clean",
+    "clean:android:windows": "cd android && gradlew clean",
     "start": "react-native start",
     "test": "jest --color",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
-    "postinstall": "run-script-os",
-    "postinstall:darwin": "pod-install ios"
+    "link": "react-native link",
+    "install-pods": "pod-install ios",
+    "postinstall": "run-s link install-pods"
   },
   "dependencies": {
     "@nozbe/watermelondb": "^0.15.0",
@@ -51,7 +54,8 @@
     "husky": "^4.2.5",
     "jest": "^25.3.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "pod-install": "0.0.0-alpha.8",
+    "npm-run-all": "^4.1.5",
+    "pod-install": "0.0.0-alpha.9",
     "react-test-renderer": "^16.13.1",
     "run-script-os": "^1.1.1",
     "ts-jest": "^25.3.1",
