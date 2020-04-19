@@ -6,7 +6,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
     "start:android": "react-native run-android",
     "start:ios": "react-native run-ios --simulator='iPhone 8'",
-    "clean:ios": "cd ios && xcodebuild clean",
+    "clean:ios": "cd ios && rimraf Pods && xcodebuild clean",
     "clean:android": "run-script-os",
     "clean:android:default": "cd android && ./gradlew clean",
     "clean:android:windows": "cd android && gradlew clean",
@@ -55,6 +55,7 @@
     "metro-react-native-babel-preset": "^0.59.0",
     "pod-install": "0.0.0-alpha.9",
     "react-test-renderer": "^16.13.1",
+    "rimraf": "^3.0.2",
     "ts-jest": "^25.3.1",
     "typescript": "^3.7.3"
   }
