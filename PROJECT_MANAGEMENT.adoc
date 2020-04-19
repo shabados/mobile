@@ -127,13 +127,11 @@ Maintainers and Admins are responsible to show what changes were made, and when 
 
 Future release notes should be added as asciidoc files in the corresponding folder (e.g. `{repo}/release-notes/latest.adoc`). Linked images should be placed in a similarly named folder under the images folder (e.g. `{repo}/release-notes/images/latest/`).
 
-NOTE: When merging into `master`, CI will automatically rename `latest.adoc` to SemVer format (e.g. `3.0.0.adoc`). The `master` branch will not have a `latest.adoc` file.
+NOTE: When merging into `master`, CI will automatically rename `latest.adoc` to https://semver.org/[Semantic Versioning] format (e.g. `3.0.0.adoc`). The `master` branch will not have a `latest.adoc` file.
 
 Begin your release notes with a section for key highlights and their short descriptions. Since we use asciidoc, a table of contents will automatically be generated from the headers. It is unnecessary to include every header in the key highlights section.
 
 NOTE: While working on prerelease notes in `dev` branch, keep editing the `latest.adoc` file. Do not create new files for each prerelease.
-
-NOTE: It is necessary to explain in each release note that we are following https://semver.org/[Semantic Versioning] for version labelling.
 
 2^nd^ level headers should be friendly link:CONTRIBUTING.adoc#Scope[scope names]. 3^rd^ level headers can be the notes for what was added, changed, deprecated, fixed, removed, or secured.
 
