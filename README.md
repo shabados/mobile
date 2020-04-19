@@ -12,16 +12,17 @@
 
 #### Command Reference
 
-| Command       | Description                                  |
-| ------------- | -------------------------------------------- |
-| start:android | Run on Android emulator                      |
-| start:ios     | Run on iOS emulator                          |
-| clean:ios     | Clean iOS build files                        |
-| clean:android | Clean android build files                    |
-| lint          | Run ESLint and check code style              |
-| test          | Run unit + integration tests in watcher mode |
+| Command       | Description                                                               |
+| ------------- | ------------------------------------------------------------------------- |
+| start:android | Run on Android emulator                                                   |
+| start:ios     | Run on iOS emulator                                                       |
+| clean:ios     | Clean iOS build files                                                     |
+| clean:android | Clean android build files                                                 |
+| lint          | Run ESLint and check code style                                           |
+| install-assets          | Install any changed files in the `assets/` folder to iOS & Android. |
+| test          | Run unit + integration tests in watcher mode                              |
 
-Running `npm i` will automatically run `react-native link` and install any Cocoapods (on Mac).
+Running `npm i` will automatically install any Cocoapods (on Mac).
 
 ## Releases
 
