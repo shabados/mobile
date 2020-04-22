@@ -1,0 +1,48 @@
+:repo: mobile
+:release: Next Release
+:semver: latest
+:idprefix:
+:hide-uri-scheme:
+:numbered:
+:max-width: 900px
+:icons: font
+:toc: macro
+:toclevels: 4
+:logo: https://raw.githubusercontent.com/ShabadOS/desktop/dev/resources/icon.png
+:website: https://shabados.com
+:contributors-url: https://github.com/shabados/{repo}/graphs/contributors
+ifdef::env-github,env-browser[:outfilesuffix: .asciidoc]
+ifdef::env-github[]
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:important-caption: :fire:
+:caution-caption: :warning:
+:warning-caption: :no_entry:
+endif::[]
+
+image::{logo}[128,128,link="{website}"]
+
+[discrete]
+# {release} ({semver})
+
+Welcome to the {release} release of Shabad OS for Mobile. There are a number of updates we hope you will like, some of the key highlights include:
+
+* <<An actual mobile app!>> - A big thank you to @swissarmykirpan and @Harjot1Singh for laying down the framework of this project
+* <<Draggable Drawer>> - Instead of using the traditional iOS tabs bottom bar, we are planning on using a quick shortcuts drawer to manipulate the tab you're on and access app level settings.
+* <<Modal Search Action>> - One of these quick shortcuts will be "search" to find the shabad, ang, bani / bookmarks, and maybe someday settings. We hope to evolve this into a truly omni search action.
+
+toc::[id="toc"]
+
+## App
+
+### An actual mobile app!
+
+image::./images/{semver}/an-actual-mobile-app.png[width=160]
+
+## App/Drawer
+
+### Draggable Drawer
+
+## App/Search
+
+### Modal Search Action
