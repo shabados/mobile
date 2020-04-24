@@ -11,7 +11,7 @@
     "clean:android:default": "cd android && ./gradlew clean",
     "clean:android:windows": "cd android && gradlew clean",
     "start": "react-native start",
-    "test": "jest --color",
+    "test": "jest --color --watch",
     "install-assets": "react-native link",
     "postinstall": "pod-install ios"
   },
