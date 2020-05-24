@@ -46,3 +46,23 @@ image::./images/{semver}/an-actual-mobile-app.png[width=160]
 ## App/Search
 
 ### Modal Search Action
+
+## Preview
+
+As we're in such early stages there's not much to preview for our next release than simply following the prerelease.
+
+## Notable Changes
+
+As we're in such early stages everything can be considered a notable change in the Semantic Versioning sense.
+
+## Thank You
+
+hashtag-blessed :pray: to the following volunteers for participating in making Shabad OS for Mobile even better:
+
+.Contributions to Issue Tracking:
+* https://github.com/bhajansweet[Bhajanpreet Singh (@bhajansweet)]
+* https://github.com/bhajneet[Bhajneet S.K. (@bhajneet)]
+
+.Contributions to `{repo}`
+* https://github.com/saihaj[Saihajpreet Singh (@saihaj)]
+  ** Added Drawer https://github.com/ShabadOS/mobile/pull/57[PR #57]
