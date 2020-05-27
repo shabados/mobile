@@ -13,7 +13,7 @@
     "start": "react-native start",
     "test": "jest --color --watch",
     "install-assets": "react-native link",
-    "postinstall": "pod-install ios"
+    "postinstall": "cd ios && pod install"
   },
   "dependencies": {
     "@nozbe/watermelondb": "^0.15.0",
