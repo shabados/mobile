@@ -31,6 +31,7 @@
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.9.0",
     "react-native-vector-icons": "^6.7.0",
+    "reanimated-bottom-sheet": "^1.0.0-alpha.22",
     "rxjs": "^6.6.0"
   },
   "devDependencies": {
