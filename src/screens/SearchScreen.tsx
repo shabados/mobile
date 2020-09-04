@@ -4,6 +4,7 @@ import { Container, Header, Input, Left, Form, Item, Icon } from 'native-base'
 import { DrawerActions } from '@react-navigation/native'
 
 import SearchResultList from './SearchResultList'
+import ShortcutDrawer from '../components/ShortcutDrawer'
 
 type SearchScreenProps = {
   navigation: any;
@@ -46,6 +47,7 @@ const SearchScreen: FunctionComponent<SearchScreenProps> = ( { navigation } ) =>
           setInitPageCount={setPageCount}
         />
       </View>
+      <ShortcutDrawer />
     </Container>
   )
 }

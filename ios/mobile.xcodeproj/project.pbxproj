@@ -33,6 +33,7 @@
 		E4282C5DDCCF4DEC9886DF3F /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62E1DCFF6FED4906AA1F36D8 /* Roboto_medium.ttf */; };
 		ECD0B6C5406247ED9755B5E6 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F017AD1061F4618B2576086 /* EvilIcons.ttf */; };
 		FA62625F77524D1F81C0D197 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ADA85172B82F4BB89AE8D691 /* MaterialCommunityIcons.ttf */; };
+		CFF15FB633D34FD182C9A2D6 /* ShabadOsIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F95369D8CBBE4699838F99E4 /* ShabadOsIcons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		F92A94ECE829ED14B49B8D87 /* Pods-mobile-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-mobile-tvOSTests/Pods-mobile-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC916F6D1E96D661DA64355C /* Pods-mobile-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-mobile-tvOSTests/Pods-mobile-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		FD9155A83E7832F85ADA5AE4 /* libPods-mobile-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobile-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F95369D8CBBE4699838F99E4 /* ShabadOsIcons.ttf */ = {isa = PBXFileReference; name = "ShabadOsIcons.ttf"; path = "../assets/fonts/ShabadOsIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				A6B36647D40646A793D75B63 /* rubicon-icon-font.ttf */,
 				BDB0BD32A40D434A9002A757 /* SimpleLineIcons.ttf */,
 				ED92A15F90B846D189BCC661 /* Zocial.ttf */,
+				F95369D8CBBE4699838F99E4 /* ShabadOsIcons.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				DC13A91D85BD4AD8A5454991 /* rubicon-icon-font.ttf in Resources */,
 				5D6D1F19927443C4984C2CD5 /* SimpleLineIcons.ttf in Resources */,
 				762D4B012242416C930F3B10 /* Zocial.ttf in Resources */,
+				CFF15FB633D34FD182C9A2D6 /* ShabadOsIcons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,5 @@
+export const HOME_SCREEN = 'Home'
+export const SEARCH_SCREEN = 'Search'
+export const TABS_SCREEN = 'Tabs'
+export const BOOKMARKS_SCREEN = 'Bookmarks'
+export const HISTORY_SCREEN = 'History'
