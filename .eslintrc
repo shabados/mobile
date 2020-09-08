@@ -1,19 +1,11 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [
-          ".js",
-          ".jsx",
-          ".ts",
-          ".tsx",
-          ".json"
-        ]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
       }
     }
   },
@@ -43,14 +35,8 @@
     "prettier"
   ],
   "rules": {
-    "array-bracket-spacing": [
-      "error",
-      "always"
-    ],
-    "computed-property-spacing": [
-      "error",
-      "always"
-    ],
+    "array-bracket-spacing": ["error", "always"],
+    "computed-property-spacing": ["error", "always"],
     "import/no-unresolved": 0,
     "import/extensions": [
       "error",
@@ -97,21 +83,13 @@
     "react/jsx-filename-extension": 0,
     "react/sort-comp": 0,
     "react/jsx-props-no-spreading": 0,
-    "semi": [
-      "error",
-      "never"
-    ],
-    "semi-style": [
-      "error",
-      "first"
-    ],
+    "semi": ["error", "never"],
+    "semi-style": ["error", "first"],
     "space-in-parens": [
       "error",
       "always",
       {
-        "exceptions": [
-          "empty"
-        ]
+        "exceptions": ["empty"]
       }
     ]
   }
