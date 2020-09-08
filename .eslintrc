@@ -39,7 +39,8 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "airbnb",
-    "airbnb/hooks"
+    "airbnb/hooks",
+    "prettier"
   ],
   "rules": {
     "array-bracket-spacing": [
