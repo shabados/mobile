@@ -4,8 +4,11 @@
   "private": true,
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
-    "start:android": "react-native run-android",
-    "start:ios": "react-native run-ios --simulator='iPhone 8'",
+    "tsc:watch":"tsc -w",
+    "emulator:android": "react-native run-android",
+    "emulator:ios": "react-native run-ios --simulator='iPhone 8'",
+    "start:android": "run-p tsc:watch start:android",
+    "start:ios": "run-p tsc:watch start:ios",
     "clean:ios": "cd ios && rimraf Pods && xcodebuild clean",
     "clean:android": "run-script-os",
     "clean:android:default": "cd android && ./gradlew clean",
