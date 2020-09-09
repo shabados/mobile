@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { Image, StyleSheet } from 'react-native'
 
 import logo from '../../assets/images/logo.png'
-import NavigationDrawer from '../components/NavigationDrawer'
+import ShortcutDrawer from '../components/ShortcutDrawer'
 
 type HomeScreenProps = {}
 
@@ -30,7 +30,7 @@ const HomeScreen: FC<HomeScreenProps> = () => (
         <Text style={{ fontSize: 35, fontWeight: 'bold' }}>Shabad OS</Text>
       </View>
     </Content>
-    <NavigationDrawer />
+    <ShortcutDrawer />
   </Container>
 )
 
