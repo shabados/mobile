@@ -1,10 +1,7 @@
 const { defaults: tsjPreset } = require( 'ts-jest/presets' )
 
 // List of modules that do not transpile their code
-const whitelistedModules = [
-  'react-native',
-  'native-base',
-]
+const whitelistedModules = [ 'react-native', 'native-base' ]
 
 module.exports = {
   ...tsjPreset,
@@ -19,12 +16,7 @@ module.exports = {
       babelConfig: true,
     },
   },
-  transformIgnorePatterns: [
-    `node_modules/(?!${whitelistedModules.join( '|' )})`,
-  ],
-  setupFiles: [
-    'react-native-gesture-handler/jestSetup.js',
-    '<rootDir>/test/setupJest.js',
-  ],
+  transformIgnorePatterns: [ `node_modules/(?!${whitelistedModules.join( '|' )})` ],
+  setupFiles: [ 'react-native-gesture-handler/jestSetup.js', '<rootDir>/test/setupJest.js' ],
   moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
 }

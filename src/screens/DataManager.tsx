@@ -23,11 +23,11 @@ import useDatabase from '../hooks/use-database'
 
 type DataManagerProps = {
   navigation: any;
-};
+}
 
 type DataSyncProps = {
   continuationToken: any | undefined;
-};
+}
 
 const DataManager: FunctionComponent<DataManagerProps> = ( { navigation } ) => {
   const [ continuationToken, setContinuationToken ] = useState( {} )

@@ -2,22 +2,22 @@ import { Model } from '@nozbe/watermelondb'
 import { field } from '@nozbe/watermelondb/decorators'
 
 export default class SearchResult extends Model {
-  static table = 'searchResults';
+  static table = 'searchResults'
 
   @( ( field as any )( 'searchTerm' ) )
-  searchTerm!: string;
+  searchTerm!: string
 
   @( ( field as any )( 'section' ) )
-  section!: string;
+  section!: string
 
   @( ( field as any )( 'ang' ) )
-  ang!: number;
+  ang!: number
 
   @( ( field as any )( 'gurbani' ) )
-  gurbani!: string;
+  gurbani!: string
 
   @( ( field as any )( 'translation' ) )
-  translation!: string;
+  translation!: string
 
   getSearchResult() {
     return {
