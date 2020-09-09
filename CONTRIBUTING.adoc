@@ -61,8 +61,11 @@ npm run <command>
 
 The commands are:
 ----
-start:android   Start the Android emulator
-start:ios       Start the iOS emulator
+start:android   Start the Android emulator with TypeScript Compiler
+start:ios       Start the iOS emulator with TypeScript Compiler
+
+emulator:android   Start the Android emulator
+emulator:ios       Start the iOS emulator
 
 clean:android   Clean Android build files
 clean:ios       Clean iOS build files
