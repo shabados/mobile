@@ -1,14 +1,11 @@
-import React from 'react'
-import { StyleSheet, Image } from 'react-native'
-import { Button, Text, View } from 'native-base'
+import React, { FC, ReactNode } from 'react'
+import { StyleSheet, Image, View, Pressable, Button, Alert } from 'react-native'
 import BottomSheet from 'reanimated-bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
 
 import logo from '../../../assets/images/logo.png'
 import { SEARCH_SCREEN, TABS_SCREEN, BOOKMARKS_SCREEN, HISTORY_SCREEN } from '../../lib/screens'
 import Icons from './Icons'
-
-type NavigationBarProps = { }
 
 const styles = StyleSheet.create( {
   navigationPanel: {
@@ -50,9 +47,10 @@ const NAVIGATION_ICONS = [
   [ Icons.DotsIcon, 'More' ],
 ]
 
-const NavigationBar: React.FC<NavigationBarProps> = () => {
+const Drawer: FC = () => {
   const navigation = useNavigation()
-  const renderNavigationHeader = () => (
+
+  const renderHeader = (): ReactNode => (
     <View style={styles.navigationPanelHeader}>
       <View style={styles.navigationPanelHandle} />
 
@@ -60,7 +58,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
         {NAVIGATION_ICONS.map( ( [ IconComponent, destination ] ) => (
           <IconComponent
             key={destination}
-            onPress={() => navigation.navigate( destination )}
+            onPress={(): void => navigation.navigate( destination )}
           />
         ) )}
       </View>
@@ -68,18 +66,14 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
     </View>
   )
 
-  const renderNavigationContent = () => (
+  const renderContent = (): ReactNode => (
     <View style={styles.navigationPanel}>
       <View style={styles.navigationPanelButtonContainer}>
-        <Button>
-          <Text>Prev</Text>
-        </Button>
-        <Button transparent>
+        <Button title="Prev" onPress={(): void => Alert.alert( '🚧' )} />
+        <Pressable>
           <Image style={{ width: 60, height: 60 }} source={logo} />
-        </Button>
-        <Button>
-          <Text>Next</Text>
-        </Button>
+        </Pressable>
+        <Button title="Next" onPress={(): void => Alert.alert( '🚧' )} />
       </View>
     </View>
   )
@@ -87,11 +81,11 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
   return (
     <BottomSheet
       snapPoints={[ 180, 90, 90 ]}
-      renderContent={renderNavigationContent}
-      renderHeader={renderNavigationHeader}
+      renderContent={renderContent}
+      renderHeader={renderHeader}
       initialSnap={1}
     />
   )
 }
 
-export default NavigationBar
+export default Drawer
