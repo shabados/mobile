@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FC } from 'react'
 import {
   Card,
   CardItem,
@@ -13,25 +13,28 @@ import { FlatList } from 'react-native-gesture-handler'
 import { Q } from '@nozbe/watermelondb'
 import { map } from 'rxjs/operators'
 
-import useDatabase from '../hooks/use-database'
-import useObservable from '../hooks/use-observable'
-import SearchResult from '../models/SearchResult'
+import useDatabase from '../../hooks/use-database'
+import useObservable from '../../hooks/use-observable'
+import SearchResult from '../../models/SearchResult'
 
-type SearchResultListProps = {
+interface SearchResultListProps {
   search: string;
   initPageCount: number;
   setInitPageCount: any;
-};
-const SearchResultList: FunctionComponent<SearchResultListProps> = ( {
+}
+
+const SearchResultList: FC<SearchResultListProps> = ( {
   search,
   initPageCount,
   setInitPageCount,
-} ) => {
+}: SearchResultListProps ) => {
   const takeCount = 20
   const database = useDatabase()
+
   const query = database.collections
     .get( 'searchResults' )
     .query( Q.where( 'searchTerm', Q.eq( search ) ) )
+
   const searchResults: SearchResult[] = useObservable(
     query
       .observe()
@@ -44,13 +47,14 @@ const SearchResultList: FunctionComponent<SearchResultListProps> = ( {
     [],
     [ search, initPageCount ],
   )
-  const totalResultCount: number = useObservable( query.observeCount(), 0, [
-    search,
-  ] )
-  const loadMore = () => {
+
+  const totalResultCount: number = useObservable( query.observeCount(), 0, [ search ] )
+
+  const loadMore = (): void => {
     console.log( 'loadMore' )
     setInitPageCount( initPageCount + 1 )
   }
+
   return (
     <Card
       style={{

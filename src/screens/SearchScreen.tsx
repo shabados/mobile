@@ -1,9 +1,8 @@
 import React, { useState, FC } from 'react'
 import { View } from 'react-native'
 
-import SearchResultList from './SearchResultList'
+import { SearchResultList, SearchBar } from '../components/Search'
 import ShortcutDrawer from '../components/ShortcutDrawer'
-import SearchBar from '../components/SearchBar'
 import Container from '../components/Container'
 
 const SearchScreen: FC = () => {
