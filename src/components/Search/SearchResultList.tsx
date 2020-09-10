@@ -1,15 +1,5 @@
-import React, { FC } from 'react'
-import {
-  Card,
-  CardItem,
-  Text,
-  Body,
-  View,
-  Right,
-  Button,
-  Left,
-} from 'native-base'
-import { FlatList } from 'react-native-gesture-handler'
+import React, { FC, Dispatch, SetStateAction } from 'react'
+import { StyleSheet, View, Text } from 'react-native'
 import { Q } from '@nozbe/watermelondb'
 import { map } from 'rxjs/operators'
 
@@ -20,8 +10,19 @@ import SearchResult from '../../models/SearchResult'
 interface SearchResultListProps {
   search: string;
   initPageCount: number;
-  setInitPageCount: any;
+  setInitPageCount: Dispatch<SetStateAction<number>>;
 }
+
+const styles = StyleSheet.create( {
+  resultsCountCard: {
+    backgroundColor: 'lightgrey',
+  },
+  resultsCount: {
+    color: 'grey',
+    padding: 15,
+    fontSize: 18,
+  },
+} )
 
 const SearchResultList: FC<SearchResultListProps> = ( {
   search,
@@ -56,86 +57,11 @@ const SearchResultList: FC<SearchResultListProps> = ( {
   }
 
   return (
-    <Card
-      style={{
-        paddingLeft: 0,
-        paddingRight: 0,
-        paddingTop: 0,
-        paddingBottom: 0,
-        marginLeft: 0,
-        marginRight: 0,
-        marginTop: 0,
-        marginBottom: 0,
-        flex: 0,
-      }}
-    >
-      <CardItem header style={{ backgroundColor: 'lightgrey' }}>
-        <Body>
-          <Text style={{ color: 'grey' }}>
-            Search Results:
-            {' '}
-            {searchResults.length}
-            {' '}
-            of
-            {' '}
-            {totalResultCount}
-          </Text>
-        </Body>
-      </CardItem>
-
-      <FlatList
-        data={searchResults}
-        keyExtractor={( item ) => item.id}
-        onEndReached={loadMore}
-        scrollEventThrottle={100}
-        onEndReachedThreshold={0}
-        renderItem={( { item, index, separators } ) => (
-          <View>
-            <CardItem>
-              <Left>
-                <Text>{index}</Text>
-              </Left>
-              <Body>
-                <Text
-                  style={{ fontFamily: 'OpenGurbaniAkhar-Black', color: 'grey' }}
-                >
-                  {item.section}
-                </Text>
-              </Body>
-              <Right>
-                <Text
-                  style={{ fontFamily: 'OpenGurbaniAkhar-Black', color: 'grey' }}
-                >
-                  AMg
-                  {' '}
-                  {item.ang}
-                </Text>
-              </Right>
-            </CardItem>
-            <CardItem bordered>
-              <Body>
-                <Text
-                  style={{ fontFamily: 'OpenGurbaniAkhar-Black', fontSize: 20 }}
-                >
-                  {item.gurbani}
-                </Text>
-                <Text style={{ color: 'grey', fontSize: 14 }}>
-                  {item.translation}
-                </Text>
-              </Body>
-            </CardItem>
-          </View>
-        )}
-      >
-        <CardItem footer>
-          <Body>
-            <Button onPress={loadMore}>
-              <Text>Load More</Text>
-            </Button>
-          </Body>
-        </CardItem>
-      </FlatList>
-    </Card>
+    <View style={styles.resultsCountCard}>
+      <Text style={styles.resultsCount} allowFontScaling>
+        {`Search Results: ${searchResults.length} of ${totalResultCount}`}
+      </Text>
+    </View>
   )
 }
 export default SearchResultList
