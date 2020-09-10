@@ -26,7 +26,6 @@
 		A19D60966A434EB182EC312D /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26B9E4F658884D8DA5C60143 /* Roboto.ttf */; };
 		AE3C88B2734846CAB2716812 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3721AEDC66541CC91AF7BFA /* FontAwesome5_Regular.ttf */; };
 		B85E838323F7166200C19433 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85E838223F7166200C19433 /* File.swift */; };
-		C9A748230A8C4B68BDD9EED6 /* libWatermelonDB.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B58ACECB9D453C82B4F97B /* libWatermelonDB.a */; };
 		D1114035775342328340C485 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D601CB592AD641F5B2DB2482 /* AntDesign.ttf */; };
 		DC13A91D85BD4AD8A5454991 /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6B36647D40646A793D75B63 /* rubicon-icon-font.ttf */; };
 		DE2C8AA4690549759C43CDBD /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DAA467C8F97499DB5429C37 /* Feather.ttf */; };
@@ -53,13 +52,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B85E838823F716C800C19433 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C910C9728C9941ECA246E2F9 /* WatermelonDB.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6E660D5E213BCCD300189354;
-			remoteInfo = WatermelonDB;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +65,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = mobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = mobile/main.m; sourceTree = "<group>"; };
 		2009F4BC7EA52AE445341C26 /* Pods-mobileTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobileTests.release.xcconfig"; path = "Target Support Files/Pods-mobileTests/Pods-mobileTests.release.xcconfig"; sourceTree = "<group>"; };
-		26B58ACECB9D453C82B4F97B /* libWatermelonDB.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libWatermelonDB.a; sourceTree = "<group>"; };
 		299A9F8F8F5C41C4861A57C1 /* OpenGurbaniAkhar-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenGurbaniAkhar-Black.otf"; path = "../assets/fonts/OpenGurbaniAkhar-Black.otf"; sourceTree = "<group>"; };
 		41427097093CF5F445B1BB72 /* libPods-mobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-mobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43AB99B87FF5E70619882BF0 /* Pods-mobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile.release.xcconfig"; path = "Target Support Files/Pods-mobile/Pods-mobile.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +75,6 @@
 		B85E838123F7166100C19433 /* mobile-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobile-Bridging-Header.h"; sourceTree = "<group>"; };
 		B85E838223F7166200C19433 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		BBD03160A37A748C67E92598 /* Pods-mobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile.debug.xcconfig"; path = "Target Support Files/Pods-mobile/Pods-mobile.debug.xcconfig"; sourceTree = "<group>"; };
-		C910C9728C9941ECA246E2F9 /* WatermelonDB.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = WatermelonDB.xcodeproj; path = "../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB.xcodeproj"; sourceTree = "<group>"; };
 		E5B05F65A88CD70F99BBBDDF /* Pods-mobile-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mobile-tvOS.release.xcconfig"; path = "Target Support Files/Pods-mobile-tvOS/Pods-mobile-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -115,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9A748230A8C4B68BDD9EED6 /* libWatermelonDB.a in Frameworks */,
 				6165F6C38619DF14AD6E1864 /* libPods-mobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,7 +219,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				C910C9728C9941ECA246E2F9 /* WatermelonDB.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -256,22 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				13B07F961A680F5B00A75B9A /* Shabad OS.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		B85E838423F716C700C19433 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				26B58ACECB9D453C82B4F97B /* libWatermelonDB.a */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		B85E838523F716C800C19433 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B85E838923F716C800C19433 /* libWatermelonDB.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,10 +299,6 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = B85E838523F716C800C19433 /* Products */;
-					ProjectRef = C910C9728C9941ECA246E2F9 /* WatermelonDB.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -340,13 +308,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B85E838923F716C800C19433 /* libWatermelonDB.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libWatermelonDB.a;
-			remoteRef = B85E838823F716C800C19433 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -529,7 +490,6 @@
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB/SupportingFiles/**",
 				);
 				INFOPLIST_FILE = mobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -556,7 +516,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/@nozbe/watermelondb/native/ios/WatermelonDB/SupportingFiles/**",
 				);
 				INFOPLIST_FILE = mobile/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
