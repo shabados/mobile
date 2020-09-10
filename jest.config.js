@@ -3,7 +3,6 @@ const { defaults: tsjPreset } = require( 'ts-jest/presets' )
 // List of modules that do not transpile their code
 const whitelistedModules = [
   'react-native',
-  'native-base',
 ]
 
 module.exports = {
