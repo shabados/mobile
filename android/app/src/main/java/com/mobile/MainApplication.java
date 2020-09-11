@@ -13,17 +13,22 @@ import java.util.List;
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
-      new ReactNativeHost(this) {
-        @Override
-        public boolean getUseDeveloperSupport() {
-          return BuildConfig.DEBUG;
-        }
+    new ReactNativeHost(this) {
+      @Override
+      public boolean getUseDeveloperSupport() {
+        return BuildConfig.DEBUG;
+      }
 
-        @Override
-        protected String getJSMainModuleName() {
-          return "index";
-        }
-      };
+      @Override
+      protected List<ReactPackage> getPackages() {
+        return new PackageList(this).getPackages();
+      }
+
+      @Override
+      protected String getJSMainModuleName() {
+        return "index";
+      }
+    };
 
   @Override
   public ReactNativeHost getReactNativeHost() {
