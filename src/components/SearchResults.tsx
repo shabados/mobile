@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 type SearchResultProps = {
   database: any;
   search: string;
-}
+};
 
 class SearchResults extends Component<SearchResultProps> {
   render() {

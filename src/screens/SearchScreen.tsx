@@ -8,7 +8,7 @@ import ShortcutDrawer from '../components/ShortcutDrawer'
 
 type SearchScreenProps = {
   navigation: any;
-}
+};
 
 const SearchScreen: FunctionComponent<SearchScreenProps> = ( { navigation } ) => {
   const [ search, setSearch ] = useState( '' )

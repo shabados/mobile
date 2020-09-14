@@ -21,7 +21,7 @@ type SearchResultListProps = {
   search: string;
   initPageCount: number;
   setInitPageCount: any;
-}
+};
 const SearchResultList: FunctionComponent<SearchResultListProps> = ( {
   search,
   initPageCount,
@@ -93,20 +93,14 @@ const SearchResultList: FunctionComponent<SearchResultListProps> = ( {
               </Left>
               <Body>
                 <Text
-                  style={{
-                    fontFamily: 'OpenGurbaniAkhar-Black',
-                    color: 'grey',
-                  }}
+                  style={{ fontFamily: 'OpenGurbaniAkhar-Black', color: 'grey' }}
                 >
                   {item.section}
                 </Text>
               </Body>
               <Right>
                 <Text
-                  style={{
-                    fontFamily: 'OpenGurbaniAkhar-Black',
-                    color: 'grey',
-                  }}
+                  style={{ fontFamily: 'OpenGurbaniAkhar-Black', color: 'grey' }}
                 >
                   AMg
                   {' '}

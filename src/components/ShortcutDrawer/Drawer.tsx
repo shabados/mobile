@@ -8,7 +8,7 @@ import logo from '../../../assets/images/logo.png'
 import { SEARCH_SCREEN, TABS_SCREEN, BOOKMARKS_SCREEN, HISTORY_SCREEN } from '../../lib/screens'
 import Icons from './Icons'
 
-type NavigationBarProps = {}
+type NavigationBarProps = { }
 
 const styles = StyleSheet.create( {
   navigationPanel: {
@@ -58,9 +58,13 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
 
       <View style={styles.navigationPanelIconContainer}>
         {NAVIGATION_ICONS.map( ( [ IconComponent, destination ] ) => (
-          <IconComponent key={destination} onPress={() => navigation.navigate( destination )} />
+          <IconComponent
+            key={destination}
+            onPress={() => navigation.navigate( destination )}
+          />
         ) )}
       </View>
+
     </View>
   )
 

@@ -23,7 +23,10 @@ const HomeScreen: FC<HomeScreenProps> = () => (
   <Container>
     <Content>
       <View style={styles.welcomeContent}>
-        <Image style={styles.welcomeLogo} source={logo} />
+        <Image
+          style={styles.welcomeLogo}
+          source={logo}
+        />
         <Text style={{ fontSize: 35, fontWeight: 'bold' }}>Shabad OS</Text>
       </View>
     </Content>

@@ -10,51 +10,11 @@ const ICON_COLOR = 'rgb(47,124,246)'
 const navigationIconSpacing = { paddingRight: '8%', paddingLeft: '8%' }
 
 const icons: IconsType = {
-  SearchIcon: ( props: any ) => (
-    <Icon
-      name="search"
-      size={ICON_SIZE}
-      color={ICON_COLOR}
-      style={navigationIconSpacing}
-      {...props}
-    />
-  ),
-  HistoryIcon: ( props: any ) => (
-    <Icon
-      name="history"
-      size={ICON_SIZE}
-      color={ICON_COLOR}
-      style={navigationIconSpacing}
-      {...props}
-    />
-  ),
-  BookmarkIcon: ( props: any ) => (
-    <Icon
-      name="bookmark"
-      size={ICON_SIZE}
-      color={ICON_COLOR}
-      style={navigationIconSpacing}
-      {...props}
-    />
-  ),
-  TabsIcon: ( props: any ) => (
-    <Icon
-      name="tabs"
-      size={ICON_SIZE}
-      color={ICON_COLOR}
-      style={navigationIconSpacing}
-      {...props}
-    />
-  ),
-  DotsIcon: ( props: any ) => (
-    <Icon
-      name="ellipsis"
-      size={ICON_SIZE}
-      color={ICON_COLOR}
-      style={navigationIconSpacing}
-      {...props}
-    />
-  ),
+  SearchIcon: ( props: any ) => <Icon name="search" size={ICON_SIZE} color={ICON_COLOR} style={navigationIconSpacing} {...props} />,
+  HistoryIcon: ( props: any ) => <Icon name="history" size={ICON_SIZE} color={ICON_COLOR} style={navigationIconSpacing} {...props} />,
+  BookmarkIcon: ( props: any ) => <Icon name="bookmark" size={ICON_SIZE} color={ICON_COLOR} style={navigationIconSpacing} {...props} />,
+  TabsIcon: ( props: any ) => <Icon name="tabs" size={ICON_SIZE} color={ICON_COLOR} style={navigationIconSpacing} {...props} />,
+  DotsIcon: ( props: any ) => <Icon name="ellipsis" size={ICON_SIZE} color={ICON_COLOR} style={navigationIconSpacing} {...props} />,
 }
 
 export default icons
