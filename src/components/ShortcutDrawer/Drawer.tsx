@@ -1,11 +1,13 @@
-import React, { FC, ReactNode } from 'react'
+import React, { ReactElement } from 'react'
 import { StyleSheet, Image, View, Pressable, Button, Alert } from 'react-native'
 import BottomSheet from 'reanimated-bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
 
 import logo from '../../../assets/images/logo.png'
 import { SEARCH_SCREEN, TABS_SCREEN, BOOKMARKS_SCREEN, HISTORY_SCREEN } from '../../lib/screens'
+
 import Icons from './Icons'
+import { IconProps } from './Icons.types'
 
 const styles = StyleSheet.create( {
   navigationPanel: {
@@ -39,7 +41,7 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const NAVIGATION_ICONS = [
+const NAVIGATION_ICONS: [( props: IconProps ) => ReactElement, string][] = [
   [ Icons.HistoryIcon, HISTORY_SCREEN ],
   [ Icons.BookmarkIcon, BOOKMARKS_SCREEN ],
   [ Icons.SearchIcon, SEARCH_SCREEN ],
@@ -47,10 +49,10 @@ const NAVIGATION_ICONS = [
   [ Icons.DotsIcon, 'More' ],
 ]
 
-const Drawer: FC = () => {
+const Drawer = () => {
   const navigation = useNavigation()
 
-  const renderHeader = (): ReactNode => (
+  const renderHeader = () => (
     <View style={styles.navigationPanelHeader}>
       <View style={styles.navigationPanelHandle} />
 
@@ -58,7 +60,7 @@ const Drawer: FC = () => {
         {NAVIGATION_ICONS.map( ( [ IconComponent, destination ] ) => (
           <IconComponent
             key={destination}
-            onPress={(): void => navigation.navigate( destination )}
+            onPress={() => navigation.navigate( destination )}
           />
         ) )}
       </View>
@@ -66,7 +68,7 @@ const Drawer: FC = () => {
     </View>
   )
 
-  const renderContent = (): ReactNode => (
+  const renderContent = () => (
     <View style={styles.navigationPanel}>
       <View style={styles.navigationPanelButtonContainer}>
         <Button title="Prev" onPress={(): void => Alert.alert( '🚧' )} />
