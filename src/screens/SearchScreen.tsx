@@ -1,7 +1,7 @@
 import React, { useState, FC } from 'react'
 import { View } from 'react-native'
 
-import { SearchBar } from '../components/Search'
+import SearchBar from '../components/Search'
 import ShortcutDrawer from '../components/ShortcutDrawer'
 import Container from '../components/Container'
 
