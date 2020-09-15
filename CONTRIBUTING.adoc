@@ -39,8 +39,8 @@ For Android or iOS, you'll need the following:
 
 * https://git-scm.com/[Git]
 * Source code of `mobile` repo. We recommend forking the repo on GitHub and cloning that to your local machine.
-* [Flipper](https://fbflipper.com/) for debugging.
-* [Watchman](https://facebook.github.io/watchman/docs/install.html) for live-reloading support.
+* https://fbflipper.com/[Flipper] for debugging.
+* https://facebook.github.io/watchman/docs/install.html[Watchman] for live-reloading support.
 
 Then according to your platform and target OS, follow the https://reactnative.dev/docs/environment-setup[React Native CLI Quickstart] to setup your dev environment.
 
@@ -61,8 +61,11 @@ npm run <command>
 
 The commands are:
 ----
-start:android   Start the Android emulator
-start:ios       Start the iOS emulator
+start:android   Start the Android emulator with TypeScript Compiler
+start:ios       Start the iOS emulator with TypeScript Compiler
+
+emulator:android   Start the Android emulator
+emulator:ios       Start the iOS emulator
 
 clean:android   Clean Android build files
 clean:ios       Clean iOS build files
