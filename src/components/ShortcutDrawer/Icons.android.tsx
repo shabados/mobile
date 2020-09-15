@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { IconsType } from './Icons.types'
+import { IconProps, IconsType } from './Icons.types'
 
 const styles = StyleSheet.create( {
   icon: {
@@ -16,12 +16,18 @@ const iconProps = {
   color: 'rgb(47, 124, 246)',
 }
 
+type StyledIconProps = IconProps & { name: string }
+
+const StyledIcon = (
+  props: StyledIconProps,
+) => <Icon style={styles.icon} {...iconProps} {...props} />
+
 const icons: IconsType = {
-  SearchIcon: ( props ) => <Icon name="magnify" style={styles.icon} {...iconProps} {...props} />,
-  HistoryIcon: ( props ) => <Icon name="history" style={styles.icon} {...iconProps} {...props} />,
-  BookmarkIcon: ( props ) => <Icon name="bookmark-outline" style={styles.icon} {...iconProps} {...props} />,
-  TabsIcon: ( props ) => <Icon name="layers-outline" style={styles.icon} {...iconProps} {...props} />,
-  DotsIcon: ( props ) => <Icon name="dots-vertical" style={styles.icon} {...iconProps} {...props} />,
+  SearchIcon: ( props ) => <StyledIcon name="magnify" {...props} />,
+  HistoryIcon: ( props ) => <StyledIcon name="history" {...props} />,
+  BookmarkIcon: ( props ) => <StyledIcon name="bookmark-outline" {...props} />,
+  TabsIcon: ( props ) => <StyledIcon name="layers-outline" {...props} />,
+  DotsIcon: ( props ) => <StyledIcon name="dots-vertical" {...props} />,
 }
 
 export default icons
