@@ -4,7 +4,12 @@ import BottomSheet from 'reanimated-bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
 
 import logo from '../../../assets/images/logo.png'
-import { SEARCH_SCREEN, TABS_SCREEN, BOOKMARKS_SCREEN, HISTORY_SCREEN } from '../../lib/screens'
+import {
+  SEARCH_SCREEN,
+  TABS_SCREEN,
+  BOOKMARKS_SCREEN,
+  HISTORY_SCREEN,
+} from '../../lib/screens'
 import Icons from './Icons'
 
 const styles = StyleSheet.create( {
@@ -62,7 +67,6 @@ const Drawer: FC = () => {
           />
         ) )}
       </View>
-
     </View>
   )
 

@@ -16,7 +16,6 @@ const SearchScreen: FC = () => {
 
   return (
     <Container>
-
       <View style={{ flex: 1, marginTop: '8%' }}>
         <SearchBar handleTextChanges={handleTextChanges} />
         <SearchResultList
@@ -27,7 +26,6 @@ const SearchScreen: FC = () => {
       </View>
 
       <ShortcutDrawer />
-
     </Container>
   )
 }

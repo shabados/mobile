@@ -49,7 +49,9 @@ const SearchResultList: FC<SearchResultListProps> = ( {
     [ search, initPageCount ],
   )
 
-  const totalResultCount: number = useObservable( query.observeCount(), 0, [ search ] )
+  const totalResultCount: number = useObservable( query.observeCount(), 0, [
+    search,
+  ] )
 
   const loadMore = (): void => {
     console.log( 'loadMore' )

@@ -15,7 +15,10 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const Container: FC<ContainerProps> = ( { children, ...props }: ContainerProps ) => (
+const Container: FC<ContainerProps> = ( {
+  children,
+  ...props
+}: ContainerProps ) => (
   <View style={styles.main} {...props}>
     {children}
   </View>

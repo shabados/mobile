@@ -19,7 +19,9 @@ interface SearchBarProps {
   handleTextChanges: ( t: string ) => void;
 }
 
-const SearchBar: FC<SearchBarProps> = ( { handleTextChanges }: SearchBarProps ) => (
+const SearchBar: FC<SearchBarProps> = ( {
+  handleTextChanges,
+}: SearchBarProps ) => (
   <View style={styles.searchBar}>
     <Icon name="magnify" size={25} />
     <TextInput
