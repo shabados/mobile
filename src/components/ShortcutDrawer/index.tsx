@@ -15,6 +15,17 @@ const styles = StyleSheet.create( {
     backgroundColor: '#f9f9fa',
     opacity: 0.92,
   },
+  navigationPanelButtonContainer: {
+    paddingTop: '1%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  navigationPanelHandle: {
+    width: 80,
+    height: 2,
+    borderRadius: 5,
+    backgroundColor: '#00000040',
+  },
   navigationPanelHeader: {
     backgroundColor: '#f9f9fa',
     paddingTop: 7,
@@ -23,21 +34,10 @@ const styles = StyleSheet.create( {
     alignItems: 'center',
     opacity: 0.92,
   },
-  navigationPanelHandle: {
-    width: 80,
-    height: 2,
-    borderRadius: 5,
-    backgroundColor: '#00000040',
-  },
   navigationPanelIconContainer: {
     flexDirection: 'row',
     paddingTop: '5%',
     paddingBottom: '10%',
-  },
-  navigationPanelButtonContainer: {
-    paddingTop: '1%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
   },
 } )
 

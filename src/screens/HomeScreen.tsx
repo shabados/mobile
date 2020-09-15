@@ -6,6 +6,10 @@ import ShortcutDrawer from '../components/ShortcutDrawer'
 import Container from '../components/Container'
 
 const styles = StyleSheet.create( {
+  brand: {
+    fontSize: 35,
+    fontWeight: 'bold',
+  },
   welcomeContent: {
     marginTop: '5%',
     alignItems: 'center',
@@ -15,10 +19,6 @@ const styles = StyleSheet.create( {
     height: 100,
     marginTop: '5%',
     marginBottom: '5%',
-  },
-  brand: {
-    fontSize: 35,
-    fontWeight: 'bold',
   },
 } )
 
