@@ -1,15 +1,22 @@
-import React, { useState, FC } from 'react'
-import { View } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, View } from 'react-native'
 
 import SearchBar from '../components/Search'
 import ShortcutDrawer from '../components/ShortcutDrawer'
 import Container from '../components/Container'
 
-const SearchScreen: FC = () => {
+const styles = StyleSheet.create( {
+  searchBarContainer: {
+    flex: 1,
+    marginTop: '8%',
+  },
+} )
+
+const SearchScreen = () => {
   const [ , setSearch ] = useState( '' )
   const [ , setPageCount ] = useState( 0 )
 
-  const handleTextChanges = ( v: string ): void => {
+  const handleTextChanges = ( v: string ) => {
     setSearch( v )
     setPageCount( 0 )
   }
@@ -17,7 +24,7 @@ const SearchScreen: FC = () => {
   return (
     <Container>
 
-      <View style={{ flex: 1, marginTop: '8%' }}>
+      <View style={styles.searchBarContainer}>
         <SearchBar handleTextChanges={handleTextChanges} />
       </View>
 
