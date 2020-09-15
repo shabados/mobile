@@ -1,11 +1,7 @@
-import React, { FC, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { Platform, Dimensions, StyleSheet, View, ViewProps } from 'react-native'
 
-type ContainerProps = {
-  children: ReactNode,
-} & ViewProps
-
-const deviceHeight = Dimensions.get( 'window' ).height
+const { height: deviceHeight } = Dimensions.get( 'window' )
 
 const styles = StyleSheet.create( {
   main: {
@@ -15,7 +11,11 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const Container: FC<ContainerProps> = ( { children, ...props }: ContainerProps ) => (
+type ContainerProps = {
+  children: ReactNode,
+} & ViewProps
+
+const Container = ( { children, ...props }: ContainerProps ) => (
   <View style={styles.main} {...props}>
     {children}
   </View>
