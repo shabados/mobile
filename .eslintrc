@@ -15,7 +15,13 @@
         // In testing, devDependencies are often imported, and this rule would complain
         "import/no-extraneous-dependencies": "off",
         // In testing, dynamic requires are often required
-        "@typescript-eslint/no-var-requires": "off"
+        "@typescript-eslint/no-var-requires": "off",
+        // Strict type safety can be more of a hindrance in tests sometimes
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        // Requiring in local scopes is useful in tests
+        "global-require" :"off"
       }
     }
   ],
