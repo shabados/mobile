@@ -11,12 +11,10 @@ const Drawer = createDrawerNavigator()
 
 const App = () => (
   <NavigationContainer>
-
     <Drawer.Navigator>
       <Drawer.Screen name={Screens.Home} component={HomeScreen} />
       <Drawer.Screen name={Screens.Search} component={SearchScreen} />
     </Drawer.Navigator>
-
   </NavigationContainer>
 )
 
