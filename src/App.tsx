@@ -9,16 +9,14 @@ import { SEARCH_SCREEN, HOME_SCREEN } from './lib/screens'
 
 const Drawer = createDrawerNavigator()
 
-const RootNavigator = () => (
-  <Drawer.Navigator>
-    <Drawer.Screen name={HOME_SCREEN} component={HomeScreen} />
-    <Drawer.Screen name={SEARCH_SCREEN} component={SearchScreen} />
-  </Drawer.Navigator>
-)
-
 const App = () => (
   <NavigationContainer>
-    <RootNavigator />
+
+    <Drawer.Navigator>
+      <Drawer.Screen name={HOME_SCREEN} component={HomeScreen} />
+      <Drawer.Screen name={SEARCH_SCREEN} component={SearchScreen} />
+    </Drawer.Navigator>
+
   </NavigationContainer>
 )
 
