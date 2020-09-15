@@ -5,7 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
 
-import { SEARCH_SCREEN, HOME_SCREEN } from './lib/screens'
+import Screens from './lib/screens'
 
 const Drawer = createDrawerNavigator()
 
@@ -13,8 +13,8 @@ const App = () => (
   <NavigationContainer>
 
     <Drawer.Navigator>
-      <Drawer.Screen name={HOME_SCREEN} component={HomeScreen} />
-      <Drawer.Screen name={SEARCH_SCREEN} component={SearchScreen} />
+      <Drawer.Screen name={Screens.Home} component={HomeScreen} />
+      <Drawer.Screen name={Screens.Search} component={SearchScreen} />
     </Drawer.Navigator>
 
   </NavigationContainer>
