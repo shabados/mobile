@@ -1,9 +1,9 @@
 import React, { FC, ReactNode } from 'react'
 import { Platform, Dimensions, StyleSheet, View, ViewProps } from 'react-native'
 
-interface ContainerProps extends ViewProps {
-  children: ReactNode;
-}
+type ContainerProps = {
+  children: ReactNode,
+} & ViewProps
 
 const deviceHeight = Dimensions.get( 'window' ).height
 

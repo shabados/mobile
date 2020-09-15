@@ -15,8 +15,8 @@ const styles = StyleSheet.create( {
   },
 } )
 
-interface SearchBarProps {
-  handleTextChanges: ( t: string ) => void;
+type SearchBarProps = {
+  handleTextChanges: ( t: string ) => void,
 }
 
 const SearchBar: FC<SearchBarProps> = ( { handleTextChanges }: SearchBarProps ) => (

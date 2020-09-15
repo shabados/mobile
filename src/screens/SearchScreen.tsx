@@ -1,13 +1,13 @@
 import React, { useState, FC } from 'react'
 import { View } from 'react-native'
 
-import {  SearchBar } from '../components/Search'
+import { SearchBar } from '../components/Search'
 import ShortcutDrawer from '../components/ShortcutDrawer'
 import Container from '../components/Container'
 
 const SearchScreen: FC = () => {
-  const [ search, setSearch ] = useState( '' )
-  const [ pageCount, setPageCount ] = useState( 0 )
+  const [ , setSearch ] = useState( '' )
+  const [ , setPageCount ] = useState( 0 )
 
   const handleTextChanges = ( v: string ): void => {
     setSearch( v )
