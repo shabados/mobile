@@ -22,9 +22,9 @@ const iconProps = {
 
 type StyledIconProps = IconProps & { name: string }
 
-const StyledIcon = (
-  props: StyledIconProps,
-) => <Icon style={styles.icon} {...iconProps} {...props} />
+const StyledIcon = ( props: StyledIconProps ) => (
+  <Icon style={styles.icon} {...iconProps} {...props} />
+)
 
 const icons: IconsType = {
   SearchIcon: ( props ) => <StyledIcon name="search" {...props} />,

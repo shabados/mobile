@@ -64,7 +64,6 @@ const Drawer = () => {
           />
         ) )}
       </View>
-
     </View>
   )
 

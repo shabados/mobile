@@ -23,13 +23,11 @@ const SearchScreen = () => {
 
   return (
     <Container>
-
       <View style={styles.searchBarContainer}>
         <SearchBar handleTextChanges={handleTextChanges} />
       </View>
 
       <ShortcutDrawer />
-
     </Container>
   )
 }
