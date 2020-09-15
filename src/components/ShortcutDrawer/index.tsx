@@ -4,10 +4,10 @@ import BottomSheet from 'reanimated-bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
 
 import logo from '../../../assets/images/logo.png'
+import Screens from '../../lib/screens'
 
 import Icons from './Icons'
 import { IconProps } from './Icons.types'
-import Screens from '../../lib/screens'
 
 const styles = StyleSheet.create( {
   navigationPanel: {

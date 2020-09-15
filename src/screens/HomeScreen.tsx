@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
 import logo from '../../assets/images/logo.png'
@@ -22,7 +22,7 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const HomeScreen: FC = () => (
+const HomeScreen = () => (
   <Container>
     <View style={styles.welcomeContent}>
       <Image style={styles.welcomeLogo} source={logo} />
