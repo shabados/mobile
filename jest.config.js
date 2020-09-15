@@ -18,6 +18,9 @@ module.exports = {
       babelConfig: true,
     },
   },
+  watchPathIgnorePatterns: [
+    '<rootDir>/(?!src|test)',
+  ],
   transformIgnorePatterns: [
     `node_modules/(?!${whitelistedModules.join( '|' )})`,
   ],
