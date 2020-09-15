@@ -21,7 +21,7 @@
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-return": "off",
         // Requiring in local scopes is useful in tests
-        "global-require" :"off"
+        "global-require": "off"
       }
     }
   ],
@@ -37,6 +37,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "plugins": ["react-native"],
   "rules": {
     // Spacing in brackets is consistent and readable
     "array-bracket-spacing": ["error", "always"],
@@ -126,6 +127,15 @@
         "singleline": {
           "delimiter": "comma"
         }
+      }
+    ],
+    // StyleSheet classnames to be sorted in ascending order
+    "react-native/sort-styles": [
+      "error",
+      "asc",
+      {
+        "ignoreClassNames": false,
+        "ignoreStyleProperties": true
       }
     ]
   }
