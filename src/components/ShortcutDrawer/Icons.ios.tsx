@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native'
 import { createIconSetFromFontello } from 'react-native-vector-icons'
 
-import { IconsType } from './Icons.types'
+import { IconProps, IconsType } from './Icons.types'
 
 import fontelloConfig from '../../../assets/fonts/fontello-icons.json'
 
@@ -20,12 +20,18 @@ const iconProps = {
   color: 'rgb(47, 124, 246)',
 }
 
+type StyledIconProps = IconProps & { name: string }
+
+const StyledIcon = (
+  props: StyledIconProps,
+) => <Icon style={styles.icon} {...iconProps} {...props} />
+
 const icons: IconsType = {
-  SearchIcon: ( props ) => <Icon name="search" style={styles.icon} {...iconProps} {...props} />,
-  HistoryIcon: ( props ) => <Icon name="history" style={styles.icon} {...iconProps} {...props} />,
-  BookmarkIcon: ( props ) => <Icon name="bookmark" style={styles.icon} {...iconProps} {...props} />,
-  TabsIcon: ( props ) => <Icon name="tabs" style={styles.icon} {...iconProps} {...props} />,
-  DotsIcon: ( props ) => <Icon name="ellipsis" style={styles.icon} {...iconProps} {...props} />,
+  SearchIcon: ( props ) => <StyledIcon name="search" {...props} />,
+  HistoryIcon: ( props ) => <StyledIcon name="history" {...props} />,
+  BookmarkIcon: ( props ) => <StyledIcon name="bookmark" {...props} />,
+  TabsIcon: ( props ) => <StyledIcon name="tabs" {...props} />,
+  DotsIcon: ( props ) => <StyledIcon name="ellipsis" {...props} />,
 }
 
 export default icons
