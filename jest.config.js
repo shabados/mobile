@@ -24,4 +24,10 @@ module.exports = {
     '<rootDir>/test/setupJest.js',
   ],
   moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
+  // https://github.com/react-navigation/react-navigation/issues/7950#issuecomment-615220412
+  moduleNameMapper: {
+    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$':
+      'jest-transform-stub',
+    '\\.(css|less)$': 'identity-obj-proxy',
+  },
 }
