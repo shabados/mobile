@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@react-native-community/toolbar-android": "0.1.0-rc.2",
-    "@react-navigation/drawer": "^5.9.0",
     "@react-navigation/material-bottom-tabs": "^5.2.16",
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
