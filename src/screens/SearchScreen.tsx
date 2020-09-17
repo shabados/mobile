@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, SafeAreaView } from 'react-native'
 
 import SearchBar from '../components/Search'
-import ShortcutDrawer from '../components/ShortcutDrawer'
-import Container from '../components/Container'
+import BackButton from '../components/BackButton'
 
 const styles = StyleSheet.create( {
+  backButton: {
+    marginBottom: 'auto',
+    marginTop: 'auto',
+  },
   searchBarContainer: {
-    flex: 1,
-    marginTop: '8%',
+    backgroundColor: 'rgb(237,236,241)',
+  },
+  searchStrip: {
+    marginTop: 15,
+    marginBottom: 25,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
   },
 } )
 
@@ -22,13 +30,15 @@ const SearchScreen = () => {
   }
 
   return (
-    <Container>
-      <View style={styles.searchBarContainer}>
-        <SearchBar handleTextChanges={handleTextChanges} />
+    <SafeAreaView style={styles.searchBarContainer}>
+      <View style={styles.searchStrip}>
+        <View style={{ flex: 0.95 }}>
+          <SearchBar handleTextChanges={handleTextChanges} />
+        </View>
+        <BackButton style={styles.backButton} />
       </View>
-
-      <ShortcutDrawer />
-    </Container>
+    </SafeAreaView>
   )
 }
+
 export default SearchScreen

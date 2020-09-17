@@ -2,10 +2,19 @@ import React from 'react'
 import { View, StyleSheet, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import { OS } from '../lib/consts'
+
 const styles = StyleSheet.create( {
+  centered: {
+    marginBottom: 'auto',
+    marginTop: 'auto',
+  },
   searchBar: {
-    padding: 10,
+    paddingLeft: OS.android ? 10 : undefined,
+    padding: OS.ios ? 10 : undefined,
     flexDirection: 'row',
+    borderRadius: 10,
+    backgroundColor: 'rgb(220,219,224)',
   },
   searchInputBox: {
     flex: 1,
@@ -21,10 +30,10 @@ type SearchBarProps = {
 
 const SearchBar = ( { handleTextChanges }: SearchBarProps ) => (
   <View style={styles.searchBar}>
-    <Icon name="magnify" size={25} />
+    <Icon name="magnify" size={25} style={styles.centered} />
     <TextInput
       placeholder="Koj"
-      style={styles.searchInputBox}
+      style={[ styles.searchInputBox, styles.centered ]}
       clearButtonMode="always"
       autoCorrect={false}
       autoCapitalize="none"
