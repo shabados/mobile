@@ -136,6 +136,8 @@
       {
         "ignoreStyleProperties": true
       }
-    ]
+    ],
+    // Prefer passing in ES6 default values to function components (ideal solution resolve #113)
+    "react/require-default-props": "off"
   }
 }
