@@ -1,24 +1,35 @@
 import React, { ReactNode } from 'react'
-import { Platform, Dimensions, StyleSheet, View, ViewProps } from 'react-native'
-
-const { height: deviceHeight } = Dimensions.get( 'window' )
+import { StyleSheet } from 'react-native'
+import {
+  SafeAreaView,
+  NativeSafeAreaViewProps,
+} from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create( {
   main: {
     flex: 1,
-    height: Platform.OS === 'ios' ? deviceHeight : deviceHeight - 20,
     backgroundColor: 'white',
   },
 } )
 
 type ContainerProps = {
   children: ReactNode,
-} & ViewProps
+} & NativeSafeAreaViewProps
 
 const Container = ( { children, ...props }: ContainerProps ) => (
-  <View style={styles.main} {...props}>
+  <SafeAreaView
+    style={styles.main}
+    mode="margin"
+    /**
+     * Wasn't able to find a good solution to fix `ShortcutDrawer` on differnt screen devices
+     * Notably the iPhone 11 (ones with no home button)
+     * Override this where needed to include safe area view for bottom.
+     */
+    edges={[ 'left', 'top', 'right' ]}
+    {...props}
+  >
     {children}
-  </View>
+  </SafeAreaView>
 )
 
 export default Container
