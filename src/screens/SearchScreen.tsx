@@ -3,6 +3,7 @@ import { StyleSheet, View, SafeAreaView } from 'react-native'
 
 import SearchBar from '../components/Search'
 import BackButton from '../components/BackButton'
+import COLORS from '../themes/colors'
 
 const styles = StyleSheet.create( {
   backButton: {
@@ -10,7 +11,7 @@ const styles = StyleSheet.create( {
     marginTop: 'auto',
   },
   searchBarContainer: {
-    backgroundColor: 'rgb(237,236,241)',
+    backgroundColor: COLORS.MediumGray,
   },
   searchStrip: {
     marginTop: 15,
