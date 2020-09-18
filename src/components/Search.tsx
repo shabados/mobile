@@ -8,8 +8,8 @@ import StyleUtil from '../themes/utils'
 
 const styles = StyleSheet.create( {
   searchBar: {
-    paddingLeft: OS.android ? 10 : undefined,
-    padding: OS.ios ? 10 : undefined,
+    ...( OS.android && { paddingLeft: 10 } ),
+    ...( OS.ios && { padding: 10 } ),
     flexDirection: 'row',
     borderRadius: 10,
     backgroundColor: Colours.DarkGray,
