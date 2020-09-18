@@ -3,6 +3,7 @@ import { View, StyleSheet, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { OS } from '../lib/consts'
+import COLORS from '../themes/colors'
 
 const styles = StyleSheet.create( {
   centered: {
@@ -14,7 +15,7 @@ const styles = StyleSheet.create( {
     padding: OS.ios ? 10 : undefined,
     flexDirection: 'row',
     borderRadius: 10,
-    backgroundColor: 'rgb(220,219,224)',
+    backgroundColor: COLORS.DarkGray,
   },
   searchInputBox: {
     flex: 1,

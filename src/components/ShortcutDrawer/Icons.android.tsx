@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { IconProps, IconsType } from './Icons.types'
+import COLORS from '../../themes/colors'
 
 const styles = StyleSheet.create( {
   icon: {
@@ -13,7 +14,7 @@ const styles = StyleSheet.create( {
 
 const iconProps = {
   size: 30,
-  color: 'rgb(47, 124, 246)',
+  color: COLORS.Blue,
 }
 
 type StyledIconProps = IconProps & { name: string }
