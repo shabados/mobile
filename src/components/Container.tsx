@@ -14,6 +14,9 @@ const styles = StyleSheet.create( {
     flex: 1,
     backgroundColor: Colours.White,
   },
+  safeArea: {
+    flex: 0,
+  },
 } )
 
 type ContainerProps = {
@@ -31,7 +34,9 @@ const Container = ( {
   ...props
 }: ContainerProps ) => (
   <>
-    <SafeAreaView style={{ flex: 0, backgroundColor: statusBarColor }} />
+    <SafeAreaView
+      style={[ styles.safeArea, { backgroundColor: statusBarColor } ]}
+    />
     <View style={[ styles.main, style ]} {...props}>
       {children}
     </View>

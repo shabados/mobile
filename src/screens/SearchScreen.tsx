@@ -11,6 +11,9 @@ const styles = StyleSheet.create( {
     marginBottom: 'auto',
     marginTop: 'auto',
   },
+  searchBar: {
+    flex: 0.95,
+  },
   searchStrip: {
     paddingTop: 15,
     paddingBottom: 25,
@@ -32,7 +35,7 @@ const SearchScreen = () => {
   return (
     <Container statusBarColor={Colours.MediumGray}>
       <View style={styles.searchStrip}>
-        <View style={{ flex: 0.95 }}>
+        <View style={styles.searchBar}>
           <SearchBar handleTextChanges={handleTextChanges} />
         </View>
         <BackButton style={styles.backButton} />
