@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 
 import logo from '../../../assets/images/logo.png'
 import Screens from '../../lib/screens'
-import COLORS from '../../themes/colors'
+import Colours from '../../themes/colours'
 
 import Icons from './Icons'
 import { IconProps } from './Icons.types'
@@ -13,7 +13,7 @@ import { IconProps } from './Icons.types'
 const styles = StyleSheet.create( {
   navigationPanel: {
     height: '100%',
-    backgroundColor: COLORS.LightGray,
+    backgroundColor: Colours.LightGray,
   },
   navigationPanelButtonContainer: {
     paddingTop: '1%',
@@ -24,11 +24,11 @@ const styles = StyleSheet.create( {
     width: 80,
     height: 2,
     borderRadius: 5,
-    backgroundColor: COLORS.Black,
+    backgroundColor: Colours.Black,
     opacity: 0.2,
   },
   navigationPanelHeader: {
-    backgroundColor: COLORS.LightGray,
+    backgroundColor: Colours.LightGray,
     paddingTop: 7,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,

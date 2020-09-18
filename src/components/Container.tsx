@@ -7,12 +7,12 @@ import {
   ColorValue,
 } from 'react-native'
 
-import COLORS from '../themes/colors'
+import Colours from '../themes/colours'
 
 const styles = StyleSheet.create( {
   main: {
     flex: 1,
-    backgroundColor: COLORS.White,
+    backgroundColor: Colours.White,
   },
 } )
 
@@ -26,7 +26,7 @@ type ContainerProps = {
 
 const Container = ( {
   children,
-  statusBarColor = COLORS.White,
+  statusBarColor = Colours.White,
   style,
   ...props
 }: ContainerProps ) => (

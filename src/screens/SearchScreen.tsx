@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native'
 
 import SearchBar from '../components/Search'
 import BackButton from '../components/BackButton'
-import COLORS from '../themes/colors'
+import Colours from '../themes/colours'
 import Container from '../components/Container'
 
 const styles = StyleSheet.create( {
@@ -16,7 +16,7 @@ const styles = StyleSheet.create( {
     paddingBottom: 25,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    backgroundColor: COLORS.MediumGray,
+    backgroundColor: Colours.MediumGray,
   },
 } )
 
@@ -30,7 +30,7 @@ const SearchScreen = () => {
   }
 
   return (
-    <Container statusBarColor={COLORS.MediumGray}>
+    <Container statusBarColor={Colours.MediumGray}>
       <View style={styles.searchStrip}>
         <View style={{ flex: 0.95 }}>
           <SearchBar handleTextChanges={handleTextChanges} />
