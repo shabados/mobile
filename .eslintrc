@@ -37,7 +37,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["react-native"],
+  "plugins": ["react-native", "simple-import-sort"],
   "rules": {
     // Spacing in brackets is consistent and readable
     "array-bracket-spacing": ["error", "always"],
@@ -138,6 +138,15 @@
       }
     ],
     // Prefer passing in ES6 default values to function components (ideal solution resolve #113)
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    // This plugin sorts alphabetically by default
+    "simple-import-sort/sort": "off",
+    // Add new line between imports
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always"
+      }
+    ]
   }
 }
