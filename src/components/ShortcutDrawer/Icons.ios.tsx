@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { createIconSetFromFontello } from 'react-native-vector-icons'
 
 import fontelloConfig from '../../../assets/fonts/fontello-icons.json'
-import COLORS from '../../themes/colors'
+import Colours from '../../themes/colours'
 
 import { IconProps, IconsType } from './Icons.types'
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create( {
 
 const iconProps = {
   size: 20,
-  color: COLORS.Blue,
+  color: Colours.Blue,
 }
 
 type StyledIconProps = IconProps & { name: string }

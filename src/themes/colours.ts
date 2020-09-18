@@ -1,4 +1,4 @@
-enum COLORS {
+enum Colours {
   Black = '#000000',
   White = '#FFFFFF',
   Blue = '#2F7CF6',
@@ -7,4 +7,4 @@ enum COLORS {
   DarkGray = '#DCDBE0',
 }
 
-export default COLORS
+export default Colours

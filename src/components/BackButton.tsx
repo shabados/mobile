@@ -3,7 +3,7 @@ import { Text, StyleSheet, TouchableOpacityProps } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-import COLORS from '../themes/colors'
+import Colours from '../themes/colours'
 
 type BackButtonProps = {
   /**
@@ -14,7 +14,7 @@ type BackButtonProps = {
 
 const styles = StyleSheet.create( {
   label: {
-    color: COLORS.Blue,
+    color: Colours.Blue,
     fontSize: 16,
   },
 } )
