@@ -1,9 +1,11 @@
 import React, { ReactNode } from 'react'
-import { StyleSheet } from 'react-native'
 import {
+  StyleSheet,
+  View,
   SafeAreaView,
-  NativeSafeAreaViewProps,
-} from 'react-native-safe-area-context'
+  ViewProps,
+  ColorValue,
+} from 'react-native'
 
 import COLORS from '../themes/colors'
 
@@ -16,22 +18,24 @@ const styles = StyleSheet.create( {
 
 type ContainerProps = {
   children: ReactNode,
-} & NativeSafeAreaViewProps
+  /**
+   * Color value for Status Bar
+   */
+  statusBarColor?: ColorValue,
+} & ViewProps
 
-const Container = ( { children, ...props }: ContainerProps ) => (
-  <SafeAreaView
-    style={styles.main}
-    mode="margin"
-    /**
-     * Wasn't able to find a good solution to fix `ShortcutDrawer` on different screen sizes
-     * Notably the iPhone 11 (ones with no home button)
-     * Override this where needed to include safe area view for bottom.
-     */
-    edges={[ 'left', 'top', 'right' ]}
-    {...props}
-  >
-    {children}
-  </SafeAreaView>
+const Container = ( {
+  children,
+  statusBarColor = COLORS.White,
+  style,
+  ...props
+}: ContainerProps ) => (
+  <>
+    <SafeAreaView style={{ flex: 0, backgroundColor: statusBarColor }} />
+    <View style={[ styles.main, style ]} {...props}>
+      {children}
+    </View>
+  </>
 )
 
 export default Container
