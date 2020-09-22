@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { OS } from '../lib/consts'
 import Colours from '../themes/colours'
-import StyleUtil from '../themes/utils'
+import styleUtil from '../themes/utils'
 
 const styles = StyleSheet.create( {
   searchBar: {
@@ -28,10 +28,10 @@ type SearchBarProps = {
 
 const SearchBar = ( { handleTextChanges }: SearchBarProps ) => (
   <View style={styles.searchBar}>
-    <Icon name="magnify" size={25} style={StyleUtil.mx} />
+    <Icon name="magnify" size={25} style={styleUtil.mx} />
     <TextInput
       placeholder="Koj"
-      style={[ styles.searchInputBox, StyleUtil.mx ]}
+      style={[ styles.searchInputBox, styleUtil.mx ]}
       clearButtonMode="always"
       autoCorrect={false}
       autoCapitalize="none"
