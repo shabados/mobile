@@ -3,8 +3,8 @@ import { StyleSheet, View } from 'react-native'
 
 import SearchBar from '../components/Search'
 import BackButton from '../components/BackButton'
-import Colours from '../themes/colours'
 import Container from '../components/Container'
+import Colours from '../themes/colours'
 
 const styles = StyleSheet.create( {
   backButton: {
