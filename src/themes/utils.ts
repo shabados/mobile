@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-const StyleUtils = StyleSheet.create( {
+const styleUtils = StyleSheet.create( {
   /**
    * Set Top and Bottom margin to auto
    */
@@ -10,4 +10,4 @@ const StyleUtils = StyleSheet.create( {
   },
 } )
 
-export default StyleUtils
+export default styleUtils
