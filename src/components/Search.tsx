@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { OS } from '../lib/consts'
 import Colours from '../themes/colours'
-import styleUtil from '../themes/utils'
+import { mx } from '../themes/utils'
 
 const styles = StyleSheet.create( {
   searchBar: {
@@ -14,11 +14,15 @@ const styles = StyleSheet.create( {
     borderRadius: 10,
     backgroundColor: Colours.DarkGray,
   },
+  searchIcon: {
+    ...mx,
+  },
   searchInputBox: {
     flex: 1,
     fontSize: 22,
     marginLeft: 5,
     fontFamily: 'OpenGurbaniAkhar-Black',
+    ...mx,
   },
 } )
 
@@ -28,10 +32,10 @@ type SearchBarProps = {
 
 const SearchBar = ( { handleTextChanges }: SearchBarProps ) => (
   <View style={styles.searchBar}>
-    <Icon name="magnify" size={25} style={styleUtil.mx} />
+    <Icon name="magnify" size={25} style={styles.searchIcon} />
     <TextInput
       placeholder="Koj"
-      style={[ styles.searchInputBox, styleUtil.mx ]}
+      style={styles.searchInputBox}
       clearButtonMode="always"
       autoCorrect={false}
       autoCapitalize="none"
