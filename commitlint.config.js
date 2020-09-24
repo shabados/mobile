@@ -17,5 +17,6 @@ module.exports = {
         'test',
       ],
     ],
+    'body-max-line-length': [ 0 ],
   },
 }
