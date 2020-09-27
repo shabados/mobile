@@ -31,14 +31,17 @@ const resources = {
   },
 }
 
-i18n.use( initReactI18next ).init( {
-  resources,
-  lng: Locales.EnglishUS,
-  fallbackLng: Locales.EnglishUS,
-  debug: true,
-  interpolation: {
-    escapeValue: false,
-  },
-} )
+i18n
+  .use( initReactI18next )
+  .init( {
+    resources,
+    lng: Locales.EnglishUS,
+    fallbackLng: Locales.EnglishUS,
+    debug: true,
+    interpolation: {
+      escapeValue: false,
+    },
+  } )
+  .catch( () => Error )
 
 export default i18n
