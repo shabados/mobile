@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, StyleSheet, TextInput, Button } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { I18nextProvider, useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
 import { OS } from '../lib/consts'
 import Colours from '../themes/colours'
@@ -38,29 +38,27 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
     i18n.changeLanguage( lng )
   }
   return (
-    <I18nextProvider i18n={i18n}>
-      <View style={styles.searchBar}>
-        <Icon name="magnify" size={25} style={styles.searchIcon} />
-        <TextInput
-          placeholder={t( 'searchBar.placeholder' )}
-          style={styles.searchInputBox}
-          clearButtonMode="always"
-          autoCorrect={false}
-          autoCapitalize="none"
-          onChangeText={handleTextChanges}
-        />
-        <Button
-          title="PA"
-          color="orange"
-          onPress={() => changeLanguage( Locales.Punjabi )}
-        />
-        <Button
-          title="EN"
-          color="cadetblue"
-          onPress={() => changeLanguage( Locales.EnglishUS )}
-        />
-      </View>
-    </I18nextProvider>
+    <View style={styles.searchBar}>
+      <Icon name="magnify" size={25} style={styles.searchIcon} />
+      <TextInput
+        placeholder={t( 'searchBar.placeholder' )}
+        style={styles.searchInputBox}
+        clearButtonMode="always"
+        autoCorrect={false}
+        autoCapitalize="none"
+        onChangeText={handleTextChanges}
+      />
+      <Button
+        title="PA"
+        color="orange"
+        onPress={() => changeLanguage( Locales.Punjabi )}
+      />
+      <Button
+        title="EN"
+        color="cadetblue"
+        onPress={() => changeLanguage( Locales.EnglishUS )}
+      />
+    </View>
   )
 }
 
