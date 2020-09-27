@@ -1,22 +1,28 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
+export enum Locales {
+  EnglishUS = 'en-US',
+  EnglishGB = 'en-GB',
+  Punjabi = 'pa',
+}
+
 const resources = {
-  'en-US': {
+  [ Locales.EnglishUS ]: {
     translation: {
       searchBar: {
         placeholder: 'Search',
       },
     },
   },
-  'en-GB': {
+  [ Locales.EnglishGB ]: {
     translation: {
       searchBar: {
         placeholder: 'Search',
       },
     },
   },
-  pa: {
+  [ Locales.Punjabi ]: {
     translation: {
       searchBar: {
         placeholder: 'ਖੌਜ',
@@ -27,8 +33,8 @@ const resources = {
 
 i18n.use( initReactI18next ).init( {
   resources,
-  lng: 'en-US',
-  fallbackLng: 'en-US',
+  lng: Locales.EnglishUS,
+  fallbackLng: Locales.EnglishUS,
   debug: true,
   interpolation: {
     escapeValue: false,

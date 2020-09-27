@@ -6,7 +6,7 @@ import { I18nextProvider, useTranslation } from 'react-i18next'
 import { OS } from '../lib/consts'
 import Colours from '../themes/colours'
 import { mx } from '../themes/utils'
-import i18n from '../lib/i18n'
+import i18n, { Locales } from '../lib/i18n'
 
 const styles = StyleSheet.create( {
   searchBar: {
@@ -52,12 +52,12 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
         <Button
           title="PA"
           color="orange"
-          onPress={() => changeLanguage( 'pa' )}
+          onPress={() => changeLanguage( Locales.Punjabi )}
         />
         <Button
           title="EN"
           color="cadetblue"
-          onPress={() => changeLanguage( 'en-US' )}
+          onPress={() => changeLanguage( Locales.EnglishUS )}
         />
       </View>
     </I18nextProvider>
