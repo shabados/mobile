@@ -42,6 +42,7 @@ i18n
       escapeValue: false,
     },
   } )
-  .catch( () => Error )
+  // TODO @harjot1singh handle error with sentry
+  .catch( console.error )
 
 export default i18n
