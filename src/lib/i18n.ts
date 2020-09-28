@@ -1,48 +1,39 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
-export enum Locales {
-  EnglishUS = 'en-US',
-  EnglishGB = 'en-GB',
-  Punjabi = 'pa',
+export enum Language {
+  EnUS = 'en-US',
+  EnGB = 'en-GB',
+  Pa = 'pa',
 }
 
-const resources = {
-  [ Locales.EnglishUS ]: {
-    translation: {
-      searchBar: {
-        placeholder: 'Search',
-      },
-    },
-  },
-  [ Locales.EnglishGB ]: {
-    translation: {
-      searchBar: {
-        placeholder: 'Search',
-      },
-    },
-  },
-  [ Locales.Punjabi ]: {
-    translation: {
-      searchBar: {
-        placeholder: 'ਖੌਜ',
-      },
-    },
-  },
+export const createTranslations = (
+  translations: Record<string, unknown>, // : {
+  //   language: string,
+  //   translationSet: { phrase: string, translation: string },
+  // },
+  namespace: string,
+) => {
+  i18n.setDefaultNamespace( namespace )
+
+  Object.values( Language ).forEach( ( languageCode: string ) => {
+    // TODO @harjot1singh handle ts error: Element implicitly has an 'any' type
+    i18n.addResourceBundle( languageCode, namespace, translations[ languageCode ] )
+  } )
 }
 
 i18n
   .use( initReactI18next )
   .init( {
-    resources,
-    lng: Locales.EnglishUS,
-    fallbackLng: Locales.EnglishUS,
+    resources: {},
+    lng: Language.EnUS,
+    fallbackLng: Language.EnUS,
     debug: true,
     interpolation: {
       escapeValue: false,
     },
   } )
-  // TODO @harjot1singh handle error with sentry
+  // TODO @harjot1singh handle catch properly with sentry
   .catch( console.error )
 
 export default i18n

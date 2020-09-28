@@ -6,7 +6,23 @@ import { useTranslation } from 'react-i18next'
 import { OS } from '../lib/consts'
 import Colours from '../themes/colours'
 import { mx } from '../themes/utils'
-import i18n, { Locales } from '../lib/i18n'
+import i18n, { Language, createTranslations } from '../lib/i18n'
+
+createTranslations(
+  {
+    // TODO @harjot1singh handle mis-assignable parameters
+    [ Language.EnUS ]: {
+      Search: 'Search',
+    },
+    [ Language.EnGB ]: {
+      Search: 'Search',
+    },
+    [ Language.Pa ]: {
+      Search: 'ਖੌਜ',
+    },
+  },
+  'Search',
+)
 
 const styles = StyleSheet.create( {
   searchBar: {
@@ -41,7 +57,7 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
     <View style={styles.searchBar}>
       <Icon name="magnify" size={25} style={styles.searchIcon} />
       <TextInput
-        placeholder={t( 'searchBar.placeholder' )}
+        placeholder={t( 'Search' )}
         style={styles.searchInputBox}
         clearButtonMode="always"
         autoCorrect={false}
@@ -51,12 +67,12 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
       <Button
         title="PA"
         color="orange"
-        onPress={() => changeLanguage( Locales.Punjabi )}
+        onPress={() => changeLanguage( Language.Pa )}
       />
       <Button
         title="EN"
         color="cadetblue"
-        onPress={() => changeLanguage( Locales.EnglishUS )}
+        onPress={() => changeLanguage( Language.EnUS )}
       />
     </View>
   )
