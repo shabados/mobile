@@ -8,16 +8,12 @@ export enum Language {
 }
 
 export const createTranslations = (
-  translations: Record<string, unknown>, // : {
-  //   language: string,
-  //   translationSet: { phrase: string, translation: string },
-  // },
+  translations: Record<Language, Record<string, string>>,
   namespace: string,
 ) => {
   i18n.setDefaultNamespace( namespace )
 
-  Object.values( Language ).forEach( ( languageCode: string ) => {
-    // TODO @harjot1singh handle ts error: Element implicitly has an 'any' type
+  Object.values( Language ).forEach( ( languageCode ) => {
     i18n.addResourceBundle( languageCode, namespace, translations[ languageCode ] )
   } )
 }
