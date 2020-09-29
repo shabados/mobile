@@ -51,7 +51,8 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
   const { t } = useTranslation()
 
   const changeLanguage = ( lng: string ) => {
-    i18n.changeLanguage( lng )
+    // TODO @harjot1singh handle catch properly with sentry
+    i18n.changeLanguage( lng ).catch( console.error )
   }
   return (
     <View style={styles.searchBar}>
