@@ -43,6 +43,8 @@
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^3.4.3",
+    "@testing-library/react-native": "^7.0.2",
     "@types/lodash": "^4.14.161",
     "@types/jest": "^26.0.13",
     "@types/react": "^16.9.49",

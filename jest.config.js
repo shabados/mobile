@@ -30,4 +30,5 @@ module.exports = {
       'jest-transform-stub',
     '\\.(css|less)$': 'identity-obj-proxy',
   },
+  setupFilesAfterEnv: [ '@testing-library/jest-native/extend-expect' ],
 }
