@@ -1,7 +1,8 @@
 {
   "recommendations": [
-    "rohit-gohri.format-code-action",
     "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "github.vscode-pull-request-github",
+    "visualstudioexptteam.vscodeintellicode"
   ]
 }
