@@ -57,6 +57,7 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
         autoCapitalize="none"
         onChangeText={handleTextChanges}
       />
+      {/* // TODO move changeLanguage buttons to 'more' menu */}
       <Button
         title="PA"
         color="orange"
