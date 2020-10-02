@@ -11,8 +11,6 @@ export const createTranslations = (
   translations: Record<Language, Record<string, string>>,
   namespace: string,
 ) => {
-  i18n.setDefaultNamespace( namespace )
-
   Object.values( Language ).forEach( ( languageCode ) => {
     i18n.addResourceBundle( languageCode, namespace, translations[ languageCode ] )
   } )

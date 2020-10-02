@@ -58,7 +58,7 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
     <View style={styles.searchBar}>
       <Icon name="magnify" size={25} style={styles.searchIcon} />
       <TextInput
-        placeholder={t( 'Search' )}
+        placeholder={t( 'Search:Search' )}
         style={styles.searchInputBox}
         clearButtonMode="always"
         autoCorrect={false}
