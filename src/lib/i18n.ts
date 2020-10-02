@@ -32,9 +32,13 @@ export function registerTranslations<Translations extends Record<string, Record<
     .value()
 
   // Add translations for supported langauges
-  Object.values( Language ).forEach( ( languageCode ) => {
-    i18n.addResourceBundle( languageCode, namespace, translationsByLanguage[ languageCode ] )
-  } )
+  Object
+    .entries( translationsByLanguage )
+    .forEach( ( [ languageCode, languageTranslations ] ) => i18n.addResourceBundle(
+      languageCode,
+      namespace,
+      languageTranslations,
+    ) )
 
   // Return namespaced phrases
   return mapValues( translations, ( _, phraseName ) => ( `${namespace}:${phraseName}` ) )
@@ -46,7 +50,6 @@ i18n
     resources: {},
     lng: Language.EnUS,
     fallbackLng: Language.EnUS,
-    debug: true,
     interpolation: {
       escapeValue: false,
     },
