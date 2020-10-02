@@ -11,17 +11,16 @@ export enum Language {
 // @bhajneet has concerns that there is a shorter/easier to read solution
 // and that perhaps if a translation key is missing, there would be an error or such
 export const createTranslations = (
-  translation: Record<string, Record<Language, string>>,
+  translations: Record<string, Record<Language, string>>,
   namespace: string,
 ) => {
   Object.values( Language ).forEach( ( languageCode ) => {
     const phrases = Object.create( null )
 
-    Object.entries( translation ).forEach( ( [ key, value ] ) => {
+    Object.entries( translations ).forEach( ( [ key, value ] ) => {
       phrases[ key ] = value[ languageCode ]
     } )
 
-    console.log( languageCode, phrases )
     i18n.addResourceBundle( languageCode, namespace, phrases )
   } )
 }
