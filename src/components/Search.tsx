@@ -6,18 +6,15 @@ import { useTranslation } from 'react-i18next'
 import { OS } from '../lib/consts'
 import Colours from '../themes/colours'
 import { mx } from '../themes/utils'
-import i18n, { Language, createTranslations } from '../lib/i18n'
+import { Language, registerTranslations } from '../lib/i18n'
 
-createTranslations(
-  {
-    Search: {
-      [ Language.EnUS ]: 'Search',
-      [ Language.EnGB ]: 'Search',
-      [ Language.Pa ]: 'ਖੌਜ',
-    },
+const phrases = registerTranslations( 'Search', {
+  search: {
+    [ Language.EnUS ]: 'Search',
+    [ Language.EnGB ]: 'Search',
+    [ Language.Pa ]: 'ਖੌਜ',
   },
-  'Search',
-)
+} )
 
 const styles = StyleSheet.create( {
   searchBar: {
@@ -43,7 +40,7 @@ type SearchBarProps = {
 }
 
 const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
 
   const changeLanguage = ( lng: string ) => {
     // TODO @harjot1singh handle catch properly with sentry
@@ -53,7 +50,7 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
     <View style={styles.searchBar}>
       <Icon name="magnify" size={25} style={styles.searchIcon} />
       <TextInput
-        placeholder={t( 'Search:Search' )}
+        placeholder={t( phrases.search )}
         style={styles.searchInputBox}
         clearButtonMode="always"
         autoCorrect={false}

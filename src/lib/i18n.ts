@@ -1,4 +1,5 @@
 import i18n from 'i18next'
+import { chain, mapValues } from 'lodash'
 import { initReactI18next } from 'react-i18next'
 
 export enum Language {
@@ -7,22 +8,36 @@ export enum Language {
   Pa = 'pa',
 }
 
-// TODO @Harjot1Singh confirm code below for potential pitfalls or optimizations
-// @bhajneet has concerns that there is a shorter/easier to read solution
-// and that perhaps if a translation key is missing, there would be an error or such
-export const createTranslations = (
-  translations: Record<string, Record<Language, string>>,
+export function registerTranslations<Translations extends Record<string, Record<Language, string>>>(
   namespace: string,
-) => {
+  translations: Translations,
+) {
+  // Group translations by language, with phrases as sub-keys for each language
+  const translationsByLanguage = chain( translations )
+    // Turn the object into flat-pairs, where each sub-object has the key of the parent with it
+    .flatMap( ( languages, phraseName ) => Object
+      .entries( languages )
+      .map( ( [ language, phrase ] ) => [
+        language,
+        phraseName,
+        phrase,
+      ] ) )
+    // Group the pairs into an object keyed by language
+    .groupBy( ( [ language ] ) => language )
+    // Transform the grouped pairs into an object keyed by the phrase
+    .mapValues( ( phrases ) => phrases.reduce( ( acc, [ , phraseName, phrase ] ) => ( {
+      ...acc,
+      [ phraseName ]: phrase,
+    } ), {} ) )
+    .value()
+
+  // Add translations for supported langauges
   Object.values( Language ).forEach( ( languageCode ) => {
-    const phrases = Object.create( null )
-
-    Object.entries( translations ).forEach( ( [ key, value ] ) => {
-      phrases[ key ] = value[ languageCode ]
-    } )
-
-    i18n.addResourceBundle( languageCode, namespace, phrases )
+    i18n.addResourceBundle( languageCode, namespace, translationsByLanguage[ languageCode ] )
   } )
+
+  // Return namespaced phrases
+  return mapValues( translations, ( _, phraseName ) => ( `${namespace}:${phraseName}` ) )
 }
 
 i18n
