@@ -8,7 +8,9 @@ export enum Language {
   Pa = 'pa',
 }
 
-export function registerTranslations<Translations extends Record<string, Record<Language, string>>>(
+export function registerTranslations<
+  Translations extends Record<string, Partial<Record<Language, string>>>
+>(
   namespace: string,
   translations: Translations,
 ) {

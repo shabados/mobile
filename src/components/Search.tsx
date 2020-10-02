@@ -9,9 +9,8 @@ import { mx } from '../themes/utils'
 import { Language, registerTranslations } from '../lib/i18n'
 
 const phrases = registerTranslations( 'Search', {
-  search: {
+  searchPlaceholder: {
     [ Language.EnUS ]: 'Search',
-    [ Language.EnGB ]: 'Search',
     [ Language.Pa ]: 'ਖੌਜ',
   },
 } )
@@ -50,7 +49,7 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
     <View style={styles.searchBar}>
       <Icon name="magnify" size={25} style={styles.searchIcon} />
       <TextInput
-        placeholder={t( phrases.search )}
+        placeholder={t( phrases.searchPlaceholder )}
         style={styles.searchInputBox}
         clearButtonMode="always"
         autoCorrect={false}
