@@ -10,15 +10,10 @@ import i18n, { Language, createTranslations } from '../lib/i18n'
 
 createTranslations(
   {
-    // TODO @harjot1singh handle mis-assignable parameters
-    [ Language.EnUS ]: {
-      Search: 'Search',
-    },
-    [ Language.EnGB ]: {
-      Search: 'Search',
-    },
-    [ Language.Pa ]: {
-      Search: 'ਖੌਜ',
+    Search: {
+      [ Language.EnUS ]: 'Search',
+      [ Language.EnGB ]: 'Search',
+      [ Language.Pa ]: 'ਖੌਜ',
     },
   },
   'Search',
