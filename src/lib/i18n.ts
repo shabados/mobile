@@ -2,8 +2,8 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 export enum Language {
-  EnUS = 'en-US',
   EnGB = 'en-GB',
+  EnUS = 'en-US',
   Pa = 'pa',
 }
 
