@@ -29,7 +29,7 @@ export function registerTranslations<
     // Transform the grouped pairs into an object keyed by the phrase
     .mapValues( ( phrases ) => phrases.reduce( ( acc, [ , phraseName, phrase ] ) => ( {
       ...acc,
-      [ phraseName ]: phrase,
+      [ phraseName as string ]: phrase,
     } ), {} ) )
     .value()
 
