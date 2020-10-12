@@ -63,6 +63,7 @@ The commands are:
 ----
 start:android   Start the app on the Android emulator with tests in watch mode
 start:ios       Start the app on iOS emulator with tests in watch mode
+start:docs      Start Docusaurus website
 
 emulator:android   Start the Android emulator
 emulator:ios       Start the iOS emulator
@@ -71,6 +72,8 @@ clean:android   Clean Android build files
 clean:ios       Clean iOS build files
 
 install-assets 	Install any changed files in the "assets/" directory
+install:pods    Install iOS pods
+install:docs    Install Docusaurus dependencies
 lint            ESLint and checks code style
 test            Typechecks + Unit + integration tests
 ----

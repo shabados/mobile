@@ -11,13 +11,16 @@
     "emulator:ios": "react-native run-ios --simulator='iPhone 8'",
     "start:android": "run-p -l emulator:android \"test:* -- --watch\"",
     "start:ios": "run-p -l emulator:ios \"test:* -- --watch\"",
+    "start:docs": "cd website && npm run start",
     "clean:ios": "cd ios && rimraf Pods && xcodebuild clean",
     "clean:android": "run-script-os",
     "clean:android:default": "cd android && ./gradlew clean",
     "clean:android:windows": "cd android && gradlew clean",
     "start": "react-native start",
     "install-assets": "react-native link",
-    "postinstall": "pod-install ios"
+    "install:docs": "cd website && npm install",
+    "install:pods": "pod-install ios",
+    "postinstall": "run-p -l install:*"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
