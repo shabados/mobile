@@ -1,18 +1,25 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { enableScreens } from 'react-native-screens'
+import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 
 import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
 import Screens from './lib/screens'
+import { Bookmarks } from './screens/Bookmarks'
 
-const Stack = createStackNavigator()
-
+const Stack = createNativeStackNavigator()
+enableScreens()
 const App = () => (
   <NavigationContainer>
-    <Stack.Navigator headerMode="none">
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name={Screens.Home} component={HomeScreen} />
       <Stack.Screen name={Screens.Search} component={SearchScreen} />
+      <Stack.Screen name="Bookmarks" component={Bookmarks} options={{ stackPresentation: 'modal' }} />
     </Stack.Navigator>
   </NavigationContainer>
 )
