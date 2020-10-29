@@ -105,7 +105,7 @@ This project is under v3 of the [GPL](LICENSE.md). It is similar to the Golden R
 [twitter-url]: https://www.twitter.com/shabad_os/
 [chat-image]: https://img.shields.io/badge/Chat-Public%20Slack%20Channels-1264a3.svg?logo=slack
 [chat-url]: https://chat.shabados.com
-[new-issue-url]: https://github.com/shabados/mobile/issues/new
+[new-issue-url]: https://github.com/shabados/mobile/issues/new/choose
 [contributor-url]: https://github.com/shabados/mobile/graphs/contributors
 [upvote-tracker-url]: https://github.com/shabados/mobile/issues?q=is%3Aopen+is%3Aissue+label%3A%22Type%3A+Feature%2FEnhancement%22+sort%3Areactions-%2B1-desc
 [contributor-covenant-url]: https://www.contributor-covenant.org/version/2/0/code_of_conduct/
