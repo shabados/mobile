@@ -4,37 +4,8 @@ import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import { BookmarksNavigatorParams } from '../screens/Bookmarks'
 import Colours from '../themes/colours'
-
-const testListData = [
-  {
-    name: 'bookmarks section 1',
-    items: [
-      {
-        name: 'yo',
-        icon: 'account',
-      },
-      {
-        name: 'testing',
-        icon: 'chevron-up',
-      },
-    ],
-  },
-  {
-    name: 'section 2',
-    items: [
-      {
-        name: 'hm',
-        icon: 'wrench',
-      },
-      {
-        name: 'i ask too many questins',
-        icon: 'wrench',
-      },
-    ],
-  },
-]
+import { BookmarksNavigatorParams, BookmarksNavigatorRoutes } from '../types/bookmarks'
 
 type BookmarksListItemProps = {
   iconName: string,
@@ -85,19 +56,21 @@ const BookmarksListItem = (
 )
 
 type BookmarksListProps = {
-  route: RouteProp<BookmarksNavigatorParams, 'BookmarksList'>,
-  navigation: NativeStackNavigationProp<BookmarksNavigatorParams, 'BookmarksList'>,
+  route: RouteProp<BookmarksNavigatorParams, BookmarksNavigatorRoutes.bookmarks>,
+  navigation: NativeStackNavigationProp<
+  BookmarksNavigatorParams, BookmarksNavigatorRoutes.bookmarks
+  >,
 }
 const BookmarksList = ( { route, navigation }: BookmarksListProps ) => {
-  const folder = route.params?.folder
+  const { folderData, folder } = route.params
   return (
     <View>
       {folder
-        ? testListData
-          .find( ( item ) => item.name === folder )
+        ? folderData
+          .find( ( data ) => data.folderName === folder )
           ?.items
-          ?.map( ( item ) => <BookmarksListItem iconName={item.icon} title={item.name} key={`${folder}-${item.name}`} onPress={() => { }} /> )
-        : testListData.map( ( folderData ) => <BookmarksListItem iconName="folder" title={folderData.name} isFolder key={folderData.name} onPress={() => { navigation.push( 'BookmarksList', { folder: folderData.name } ) }} /> )}
+          ?.map( ( item ) => <BookmarksListItem iconName={item.type} title={item.name} key={`${folder}-${item.name}`} onPress={() => { }} /> )
+        : folderData.map( ( data ) => <BookmarksListItem iconName="folder" title={data.folderName} isFolder key={data.folderName} onPress={() => { navigation.push( BookmarksNavigatorRoutes.bookmarks, { folder: data.folderName, folderData } ) }} /> )}
     </View>
   )
 }
