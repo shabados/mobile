@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
-    "tsc": "tsc --pretty",
+    "test:types": "tsc --pretty",
     "test:unit": "jest --color",
     "test": "run-p -l test:*",
     "emulator:android": "react-native run-android",
