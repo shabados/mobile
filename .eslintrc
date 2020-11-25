@@ -16,6 +16,10 @@
         "import/no-extraneous-dependencies": "off",
         // In testing, dynamic requires are often required
         "@typescript-eslint/no-var-requires": "off",
+        // Although shadow variables can be confusing, disallowing them can lead to terrible naming
+        "@typescript-eslint/no-shadow": "off",
+        // Allows destructuring class methods - up to us to determine if it is an issue
+        "@typescript-eslint/unbound-method": "off",
         // Strict type safety can be more of a hindrance in tests sometimes
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
