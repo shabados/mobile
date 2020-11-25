@@ -29,6 +29,9 @@
       }
     }
   ],
+  "globals": {
+    "JSX": "readonly"
+  },
   "env": {
     "es6": true
   },
