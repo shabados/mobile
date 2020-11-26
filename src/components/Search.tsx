@@ -35,10 +35,10 @@ const styles = StyleSheet.create( {
 } )
 
 type SearchBarProps = {
-  handleTextChanges: ( t: string ) => void,
+  onChangeText: ( t: string ) => void,
 }
 
-const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
+const SearchBar = ( { onChangeText }: SearchBarProps ) => {
   const { t, i18n } = useTranslation()
 
   const changeLanguage = ( lng: string ) => {
@@ -54,7 +54,7 @@ const SearchBar = ( { handleTextChanges }: SearchBarProps ) => {
         clearButtonMode="always"
         autoCorrect={false}
         autoCapitalize="none"
-        onChangeText={handleTextChanges}
+        onChangeText={onChangeText}
       />
       {/* // TODO move changeLanguage buttons to 'more' menu */}
       <Button
