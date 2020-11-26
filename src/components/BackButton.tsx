@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import Colours from '../themes/colours'
 
-type BackButtonProps = {
+export type BackButtonProps = {
   /**
    * Value back button should display
    */
