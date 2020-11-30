@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import SearchBar from '../components/Search'
+import { SearchBar } from '../components/Search'
 import BackButton from '../components/BackButton'
 import Container from '../components/Container'
 import Colours from '../themes/colours'

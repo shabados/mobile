@@ -2,7 +2,7 @@ import 'react-native'
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
-import SearchBar from './Search'
+import SearchBar from './Bar'
 
 describe( '<Search />', () => {
   it( 'should handle user text input', () => {

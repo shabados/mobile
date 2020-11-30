@@ -3,10 +3,10 @@ import { View, StyleSheet, TextInput, Button } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useTranslation } from 'react-i18next'
 
-import { OS } from '../lib/consts'
-import Colours from '../themes/colours'
-import { mx } from '../themes/utils'
-import { Language, registerTranslations } from '../lib/i18n'
+import { OS } from '../../lib/consts'
+import Colours from '../../themes/colours'
+import { mx } from '../../themes/utils'
+import { Language, registerTranslations } from '../../lib/i18n'
 
 const phrases = registerTranslations( 'Search', {
   searchPlaceholder: {
