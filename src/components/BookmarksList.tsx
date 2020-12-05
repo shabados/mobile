@@ -40,9 +40,12 @@ const BookmarksListItemStyles = StyleSheet.create( {
     marginHorizontal: 5,
   },
 } )
-const BookmarksListItem = (
-  { iconName, title, onPress, isFolder = false }: BookmarksListItemProps,
-) => (
+const BookmarksListItem = ( {
+  iconName,
+  title,
+  onPress,
+  isFolder = false
+}: BookmarksListItemProps ) => (
   <Pressable
     style={BookmarksListItemStyles.container}
     onPress={onPress}
