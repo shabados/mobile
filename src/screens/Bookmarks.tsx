@@ -4,33 +4,33 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 
 import { BookmarksList } from '../components/BookmarksList'
 import Screens from '../lib/screens'
-import { BookmarksNavigatorParams, BookmarksNavigatorRoutes, BookmarkTypes, FolderData } from '../types/bookmarks'
+import { BookmarksNavigatorParams, BookmarksNavigatorRoutes, BookmarkIcon, Folder } from '../types/bookmarks'
 
-export const MockData: FolderData[] = [
+export const MockData: Folder[] = [
   {
     folderName: 'bookmarks section 1',
-    type: BookmarkTypes.folder,
+    type: BookmarkIcon.folder,
     items: [
       {
-        type: BookmarkTypes.shabad,
+        icon: BookmarkIcon.shabad,
         name: 'section 1 child 1',
       },
       {
-        type: BookmarkTypes.shabad,
+        icon: BookmarkIcon.shabad,
         name: 'section 1 child 2',
       },
     ],
   },
   {
     folderName: 'bookmarks section 2',
-    type: BookmarkTypes.folder,
+    type: BookmarkIcon.folder,
     items: [
       {
-        type: BookmarkTypes.bani,
+        icon: BookmarkIcon.bani,
         name: 'section 1 child 1',
       },
       {
-        type: BookmarkTypes.bani,
+        icon: BookmarkIcon.bani,
         name: 'section 1 child 2',
       },
     ],
