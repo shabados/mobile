@@ -9,7 +9,6 @@ import Screens from './lib/screens'
 import { Bookmarks } from './screens/Bookmarks'
 
 const Stack = createNativeStackNavigator()
-enableScreens()
 const App = () => (
   <NavigationContainer>
     <Stack.Navigator
