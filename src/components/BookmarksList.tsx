@@ -5,12 +5,15 @@ import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import Colours from '../themes/colours'
-import { BookmarksNavigatorParams, BookmarksNavigatorRoutes } from '../types/bookmarks'
+import {
+  BookmarksNavigatorParams,
+  BookmarksNavigatorRoutes,
+  BookmarkIcon,
+} from '../types/bookmarks'
 
 type BookmarksListItemProps = {
   iconName: string,
   title: string,
-  isFolder?: boolean,
   onPress: () => void,
 }
 
@@ -40,40 +43,71 @@ const BookmarksListItemStyles = StyleSheet.create( {
     marginHorizontal: 5,
   },
 } )
+
 const BookmarksListItem = ( {
   iconName,
   title,
   onPress,
-  isFolder = false
 }: BookmarksListItemProps ) => (
-  <Pressable
-    style={BookmarksListItemStyles.container}
-    onPress={onPress}
-  >
+  <Pressable style={BookmarksListItemStyles.container} onPress={onPress}>
+
     <View style={BookmarksListItemStyles.leftContainer}>
-      <Icon name={iconName} style={BookmarksListItemStyles.leftIcon} size={25} />
+      <Icon
+        name={iconName}
+        style={BookmarksListItemStyles.leftIcon}
+        size={25}
+      />
       <Text style={BookmarksListItemStyles.text}>{title}</Text>
     </View>
-    {isFolder && <Icon name="chevron-right" size={25} style={BookmarksListItemStyles.rightIcon} />}
+
+    {iconName === BookmarkIcon.folder && (
+      <Icon
+        name="chevron-right"
+        size={25}
+        style={BookmarksListItemStyles.rightIcon}
+      />
+    )}
+
   </Pressable>
 )
 
 type BookmarksListProps = {
   route: RouteProp<BookmarksNavigatorParams, BookmarksNavigatorRoutes.bookmarks>,
   navigation: NativeStackNavigationProp<
-  BookmarksNavigatorParams, BookmarksNavigatorRoutes.bookmarks
+  BookmarksNavigatorParams,
+  BookmarksNavigatorRoutes.bookmarks
   >,
 }
+
 const BookmarksList = ( { route, navigation }: BookmarksListProps ) => {
-  const { folderData, folder } = route.params
+  const { folder, data: folderData } = route.params
+
   return (
     <View>
       {folder
         ? folderData
-          .find( ( data ) => data.folderName === folder )
-          ?.items
-          ?.map( ( item ) => <BookmarksListItem iconName={item.type} title={item.name} key={`${folder}-${item.name}`} onPress={() => { }} /> )
-        : folderData.map( ( data ) => <BookmarksListItem iconName="folder" title={data.folderName} isFolder key={data.folderName} onPress={() => { navigation.push( BookmarksNavigatorRoutes.bookmarks, { folder: data.folderName, folderData } ) }} /> )}
+          .find( ( data ) => data.name === folder )
+          ?.items?.map( ( item ) => (
+            <BookmarksListItem
+              iconName={item.icon}
+              title={item.name}
+              key={`${folder}-${item.name}`}
+              onPress={() => {}}
+            />
+          ) )
+        : folderData.map( ( data ) => (
+          <BookmarksListItem
+            iconName={data.icon}
+            title={data.name}
+            key={data.name}
+            onPress={() => {
+              navigation.push( BookmarksNavigatorRoutes.bookmarks, {
+                folder: data.name,
+                data: folderData,
+              } )
+            }}
+          />
+        ) )}
     </View>
   )
 }
