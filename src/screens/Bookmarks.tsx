@@ -1,9 +1,9 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Button } from 'react-native'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 
 import { BookmarksList } from '../components/BookmarksList'
-import Screens from '../lib/screens'
 import { BookmarksNavigatorParams, BookmarksNavigatorRoutes, BookmarkIcon, Folder } from '../types/bookmarks'
 
 export const MockData: Folder[] = [
@@ -43,27 +43,28 @@ export const MockData: Folder[] = [
 
 const Navigator = createNativeStackNavigator<BookmarksNavigatorParams>()
 
-const Bookmarks = () => (
-  <Navigator.Navigator
-    screenOptions={( { navigation } ) => ( {
-      headerLargeTitle: true,
-      headerRight: () => (
-        <Button
-          title="Done"
-          onPress={() => {
-            navigation?.navigate( Screens.Home )
-          }}
-        />
-      ),
-    } )}
-  >
-    <Navigator.Screen
-      component={BookmarksList}
-      name={BookmarksNavigatorRoutes.bookmarks}
-      initialParams={{ folderData: MockData }}
-      options={( { route } ) => ( { title: route.params?.folder ?? 'Bookmarks' } )}
-    />
-  </Navigator.Navigator>
-)
+const Bookmarks = () => {
+  const navigation = useNavigation()
 
+  return (
+    <Navigator.Navigator
+      screenOptions={() => ( {
+        headerLargeTitle: true,
+        headerRight: () => (
+          <Button
+            title="Done"
+            onPress={() => navigation.goBack()}
+          />
+        ),
+      } )}
+    >
+      <Navigator.Screen
+        component={BookmarksList}
+        name={BookmarksNavigatorRoutes.bookmarks}
+        initialParams={{ data: MockData }}
+        options={( { route } ) => ( { title: route.params?.folder ?? 'Bookmarks' } )}
+      />
+    </Navigator.Navigator>
+  )
+}
 export { Bookmarks }
