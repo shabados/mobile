@@ -7,44 +7,8 @@ import BookmarksList from '../components/BookmarksList'
 import {
   BookmarksNavigatorParams,
   BookmarksNavigatorRoutes,
-  BookmarkIcon,
-  Folder,
 } from '../types/bookmarks'
-
-export const MockData: Folder[] = [
-  {
-    name: 'bookmarks section 1',
-    icon: BookmarkIcon.folder,
-    items: [
-      {
-        icon: BookmarkIcon.shabad,
-        name: 'section 1 child 1',
-      },
-      {
-        icon: BookmarkIcon.shabad,
-        name: 'section 1 child 2',
-      },
-    ],
-  },
-  {
-    name: 'bookmarks section 2',
-    icon: BookmarkIcon.folder,
-    items: [
-      {
-        icon: BookmarkIcon.bani,
-        name: 'section 1 child 1',
-      },
-      {
-        icon: BookmarkIcon.bani,
-        name: 'section 1 child 2',
-      },
-    ],
-  },
-  {
-    name: 'top level item',
-    icon: BookmarkIcon.bani,
-  },
-]
+import BookMarksMockData from '../mock-data/bookmarks'
 
 const Navigator = createNativeStackNavigator<BookmarksNavigatorParams>()
 
@@ -63,7 +27,7 @@ const Bookmarks = () => {
       <Navigator.Screen
         component={BookmarksList}
         name={BookmarksNavigatorRoutes.bookmarks}
-        initialParams={{ data: MockData }}
+        initialParams={{ data: BookMarksMockData }}
         options={( { route } ) => ( {
           title: route.params?.folder ?? 'Bookmarks',
         } )}
