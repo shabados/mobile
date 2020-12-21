@@ -17,7 +17,7 @@ type BookmarksListItemProps = {
   onPress: () => void,
 }
 
-const BookmarksListItemStyles = StyleSheet.create( {
+const styles = StyleSheet.create( {
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -49,21 +49,21 @@ export const BookmarksListItem = ( {
   title,
   onPress,
 }: BookmarksListItemProps ) => (
-  <Pressable style={BookmarksListItemStyles.container} onPress={onPress}>
-    <View style={BookmarksListItemStyles.leftContainer}>
+  <Pressable style={styles.container} onPress={onPress}>
+    <View style={styles.leftContainer}>
       <Icon
         name={iconName}
-        style={BookmarksListItemStyles.leftIcon}
+        style={styles.leftIcon}
         size={25}
       />
-      <Text style={BookmarksListItemStyles.text}>{title}</Text>
+      <Text style={styles.text}>{title}</Text>
     </View>
 
     {iconName === BookmarkIcon.folder && (
       <Icon
         name="chevron-right"
         size={25}
-        style={BookmarksListItemStyles.rightIcon}
+        style={styles.rightIcon}
       />
     )}
   </Pressable>
