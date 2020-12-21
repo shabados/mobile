@@ -1,14 +1,14 @@
 export enum BookmarksNavigatorRoutes {
-  bookmarks = 'BookmarksList'
+  bookmarks = 'BookmarksList',
 }
 
 export enum BookmarkIcon {
   folder = 'folder',
   shabad = 'file',
-  bani = 'book-open'
+  bani = 'book-open',
 }
 export type BookmarksNavigatorParams = {
-  [BookmarksNavigatorRoutes.bookmarks]: {folder?: string, data: Folder[]},
+  [BookmarksNavigatorRoutes.bookmarks]: { folder?: string, data: Folder[] },
 }
 
 export type Folder = {

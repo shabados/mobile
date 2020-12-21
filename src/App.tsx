@@ -17,7 +17,11 @@ const App = () => (
     >
       <Stack.Screen name={Screens.Home} component={HomeScreen} />
       <Stack.Screen name={Screens.Search} component={SearchScreen} />
-      <Stack.Screen name={Screens.Bookmarks} component={Bookmarks} options={{ stackPresentation: 'modal' }} />
+      <Stack.Screen
+        name={Screens.Bookmarks}
+        component={Bookmarks}
+        options={{ stackPresentation: 'modal' }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 )

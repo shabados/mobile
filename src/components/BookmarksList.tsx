@@ -50,7 +50,6 @@ export const BookmarksListItem = ( {
   onPress,
 }: BookmarksListItemProps ) => (
   <Pressable style={BookmarksListItemStyles.container} onPress={onPress}>
-
     <View style={BookmarksListItemStyles.leftContainer}>
       <Icon
         name={iconName}
@@ -67,7 +66,6 @@ export const BookmarksListItem = ( {
         style={BookmarksListItemStyles.rightIcon}
       />
     )}
-
   </Pressable>
 )
 

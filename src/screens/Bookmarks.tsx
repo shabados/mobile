@@ -4,7 +4,12 @@ import { Button } from 'react-native'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 
 import BookmarksList from '../components/BookmarksList'
-import { BookmarksNavigatorParams, BookmarksNavigatorRoutes, BookmarkIcon, Folder } from '../types/bookmarks'
+import {
+  BookmarksNavigatorParams,
+  BookmarksNavigatorRoutes,
+  BookmarkIcon,
+  Folder,
+} from '../types/bookmarks'
 
 export const MockData: Folder[] = [
   {
@@ -51,10 +56,7 @@ const Bookmarks = () => {
       screenOptions={() => ( {
         headerLargeTitle: true,
         headerRight: () => (
-          <Button
-            title="Done"
-            onPress={() => navigation.goBack()}
-          />
+          <Button title="Done" onPress={() => navigation.goBack()} />
         ),
       } )}
     >
@@ -62,7 +64,9 @@ const Bookmarks = () => {
         component={BookmarksList}
         name={BookmarksNavigatorRoutes.bookmarks}
         initialParams={{ data: MockData }}
-        options={( { route } ) => ( { title: route.params?.folder ?? 'Bookmarks' } )}
+        options={( { route } ) => ( {
+          title: route.params?.folder ?? 'Bookmarks',
+        } )}
       />
     </Navigator.Navigator>
   )
