@@ -27,7 +27,7 @@ const SearchScreen = () => {
   const [ , setSearch ] = useState( '' )
   const [ , setPageCount ] = useState( 0 )
 
-  const handleTextChanges = ( v: string ) => {
+  const handleTextChange = ( v: string ) => {
     setSearch( v )
     setPageCount( 0 )
   }
@@ -36,7 +36,7 @@ const SearchScreen = () => {
     <Container statusBarColor={Colours.MediumGray}>
       <View style={styles.searchStrip}>
         <View style={styles.searchBar}>
-          <SearchBar handleTextChanges={handleTextChanges} />
+          <SearchBar onChangeText={handleTextChange} />
         </View>
         <BackButton style={styles.backButton} />
       </View>

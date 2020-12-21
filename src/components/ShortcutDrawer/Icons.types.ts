@@ -10,6 +10,7 @@ export type IconNamesType =
 
 export type IconProps = {
   onPress: ( event: GestureResponderEvent ) => void,
+  testID?: string,
 }
 
 export type IconsType = {

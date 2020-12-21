@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { StyleSheet, Image, View, Pressable, Button, Alert } from 'react-native'
 import BottomSheet from 'reanimated-bottom-sheet'
 import { useNavigation } from '@react-navigation/native'
@@ -41,7 +41,7 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const NAVIGATION_ICONS: [( props: IconProps ) => ReactElement, string][] = [
+const NAVIGATION_ICONS: [( props: IconProps ) => JSX.Element, string][] = [
   [ Icons.HistoryIcon, Screens.History ],
   [ Icons.BookmarkIcon, Screens.Bookmarks ],
   [ Icons.SearchIcon, Screens.Search ],
@@ -61,6 +61,7 @@ const Drawer = () => {
           <IconComponent
             key={destination}
             onPress={() => navigation.navigate( destination )}
+            testID={`${destination}-icon`}
           />
         ) )}
       </View>
