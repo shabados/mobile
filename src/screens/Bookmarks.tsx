@@ -8,8 +8,8 @@ import { BookmarksNavigatorParams, BookmarksNavigatorRoutes, BookmarkIcon, Folde
 
 export const MockData: Folder[] = [
   {
-    folderName: 'bookmarks section 1',
-    type: BookmarkIcon.folder,
+    name: 'bookmarks section 1',
+    icon: BookmarkIcon.folder,
     items: [
       {
         icon: BookmarkIcon.shabad,
@@ -22,8 +22,8 @@ export const MockData: Folder[] = [
     ],
   },
   {
-    folderName: 'bookmarks section 2',
-    type: BookmarkIcon.folder,
+    name: 'bookmarks section 2',
+    icon: BookmarkIcon.folder,
     items: [
       {
         icon: BookmarkIcon.bani,
@@ -34,6 +34,10 @@ export const MockData: Folder[] = [
         name: 'section 1 child 2',
       },
     ],
+  },
+  {
+    name: 'top level item',
+    icon: BookmarkIcon.bani,
   },
 ]
 

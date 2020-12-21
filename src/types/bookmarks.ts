@@ -14,11 +14,5 @@ export type BookmarksNavigatorParams = {
 export type Folder = {
   name: string,
   icon: BookmarkIcon,
-  items: Array<Folder | FolderItem>,
+  items?: Array<Folder>,
 }
-
-type FolderItem = {
-  icon: BookmarkIcon,
-  title: string,
-}
-
