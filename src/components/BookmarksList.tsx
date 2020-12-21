@@ -44,7 +44,7 @@ const BookmarksListItemStyles = StyleSheet.create( {
   },
 } )
 
-const BookmarksListItem = ( {
+export const BookmarksListItem = ( {
   iconName,
   title,
   onPress,
@@ -112,4 +112,4 @@ const BookmarksList = ( { route, navigation }: BookmarksListProps ) => {
   )
 }
 
-export { BookmarksList, BookmarksListItem }
+export default BookmarksList

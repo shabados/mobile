@@ -3,7 +3,7 @@ import React from 'react'
 import { Button } from 'react-native'
 import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 
-import { BookmarksList } from '../components/BookmarksList'
+import BookmarksList from '../components/BookmarksList'
 import { BookmarksNavigatorParams, BookmarksNavigatorRoutes, BookmarkIcon, Folder } from '../types/bookmarks'
 
 export const MockData: Folder[] = [
@@ -67,4 +67,5 @@ const Bookmarks = () => {
     </Navigator.Navigator>
   )
 }
-export { Bookmarks }
+
+export default Bookmarks

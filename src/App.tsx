@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from 'react-native-screens/native-stack'
 import HomeScreen from './screens/HomeScreen'
 import SearchScreen from './screens/SearchScreen'
 import Screens from './lib/screens'
-import { Bookmarks } from './screens/Bookmarks'
+import Bookmarks from './screens/Bookmarks'
 
 const Stack = createNativeStackNavigator()
 const App = () => (
