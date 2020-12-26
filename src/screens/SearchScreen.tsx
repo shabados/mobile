@@ -5,11 +5,11 @@ import { SearchBar } from '../components/Search'
 import BackButton from '../components/BackButton'
 import Container from '../components/Container'
 import Colours from '../themes/colours'
-import { mx } from '../themes/utils'
+import { my } from '../themes/utils'
 
 const styles = StyleSheet.create( {
   backButton: {
-    ...mx,
+    ...my,
   },
   searchBar: {
     flex: 0.95,

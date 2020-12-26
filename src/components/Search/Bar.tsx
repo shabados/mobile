@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { OS } from '../../lib/consts'
 import Colours from '../../themes/colours'
-import { mx } from '../../themes/utils'
+import { my } from '../../themes/utils'
 import { Language, registerTranslations } from '../../lib/i18n'
 
 const phrases = registerTranslations( 'Search', {
@@ -24,13 +24,13 @@ const styles = StyleSheet.create( {
     backgroundColor: Colours.DarkGray,
   },
   searchIcon: {
-    ...mx,
+    ...my,
   },
   searchInputBox: {
     flex: 1,
     fontSize: 22,
     marginLeft: 5,
-    ...mx,
+    ...my,
   },
 } )
 
