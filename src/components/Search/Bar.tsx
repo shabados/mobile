@@ -1,19 +1,10 @@
 import React from 'react'
-import { View, StyleSheet, TextInput, Button } from 'react-native'
+import { View, StyleSheet, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { useTranslation } from 'react-i18next'
 
 import { OS } from '../../lib/consts'
 import Colours from '../../themes/colours'
 import { my } from '../../themes/utils'
-import { Language, registerTranslations } from '../../lib/i18n'
-
-const phrases = registerTranslations( 'Search', {
-  searchPlaceholder: {
-    [ Language.EnUS ]: 'Search',
-    [ Language.Pa ]: 'ਖੌਜ',
-  },
-} )
 
 const styles = StyleSheet.create( {
   searchBar: {
@@ -38,37 +29,18 @@ type SearchBarProps = {
   onChangeText: ( t: string ) => void,
 }
 
-const SearchBar = ( { onChangeText }: SearchBarProps ) => {
-  const { t, i18n } = useTranslation()
-
-  const changeLanguage = ( lng: string ) => {
-    // TODO @harjot1singh handle catch properly with sentry
-    i18n.changeLanguage( lng ).catch( console.error )
-  }
-  return (
-    <View style={styles.searchBar}>
-      <Icon name="magnify" size={25} style={styles.searchIcon} />
-      <TextInput
-        placeholder={t( phrases.searchPlaceholder )}
-        style={styles.searchInputBox}
-        clearButtonMode="always"
-        autoCorrect={false}
-        autoCapitalize="none"
-        onChangeText={onChangeText}
-      />
-      {/* // TODO move changeLanguage buttons to 'more' menu */}
-      <Button
-        title="PA"
-        color="orange"
-        onPress={() => changeLanguage( Language.Pa )}
-      />
-      <Button
-        title="EN"
-        color="cadetblue"
-        onPress={() => changeLanguage( Language.EnUS )}
-      />
-    </View>
-  )
-}
+const SearchBar = ( { onChangeText }: SearchBarProps ) => (
+  <View style={styles.searchBar}>
+    <Icon name="magnify" size={25} style={styles.searchIcon} />
+    <TextInput
+      placeholder="Search"
+      style={styles.searchInputBox}
+      clearButtonMode="always"
+      autoCorrect={false}
+      autoCapitalize="none"
+      onChangeText={onChangeText}
+    />
+  </View>
+)
 
 export default SearchBar
