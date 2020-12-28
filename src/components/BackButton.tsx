@@ -9,7 +9,7 @@ export type BackButtonProps = {
   /**
    * Value back button should display
    */
-  label?: string,
+  label?: string | JSX.Element,
 } & Omit<TouchableOpacityProps, 'onPress' | 'children'>
 
 const styles = StyleSheet.create( {
@@ -19,14 +19,15 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
+const BackButton = ( { label: Label = 'Cancel', ...props }: BackButtonProps ) => {
   const navigation = useNavigation()
 
   const goBack = () => navigation.goBack()
 
   return (
     <TouchableOpacity onPress={goBack} {...props}>
-      <Text style={styles.label}>{label}</Text>
+      {Label && <Text style={styles.label}>{Label}</Text>}
+      {!Label && <Label />}
     </TouchableOpacity>
   )
 }
