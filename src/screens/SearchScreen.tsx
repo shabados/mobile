@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
+import AntIcon from 'react-native-vector-icons/AntDesign'
 
 import { SearchBar } from '../components/Search'
 import BackButton from '../components/BackButton'
@@ -35,10 +36,10 @@ const SearchScreen = () => {
   return (
     <Container statusBarColor={Colours.MediumGray}>
       <View style={styles.searchStrip}>
+        <BackButton label={<AntIcon name="arrowleft" size={24} />} style={styles.backButton} />
         <View style={styles.searchBar}>
           <SearchBar onChangeText={handleTextChange} />
         </View>
-        <BackButton style={styles.backButton} />
       </View>
     </Container>
   )
