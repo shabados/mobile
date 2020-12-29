@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { View, StyleSheet, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
@@ -29,18 +29,24 @@ type SearchBarProps = {
   onChangeText: ( t: string ) => void,
 }
 
-const SearchBar = ( { onChangeText }: SearchBarProps ) => (
-  <View style={styles.searchBar}>
-    <Icon name="magnify" size={25} style={styles.searchIcon} />
-    <TextInput
-      placeholder="Search"
-      style={styles.searchInputBox}
-      clearButtonMode="always"
-      autoCorrect={false}
-      autoCapitalize="none"
-      onChangeText={onChangeText}
-    />
-  </View>
+const SearchBar = forwardRef<TextInput, SearchBarProps>(
+  ( { onChangeText }: SearchBarProps, ref ) => (
+    <View style={styles.searchBar}>
+
+      <Icon name="magnify" size={25} style={styles.searchIcon} />
+
+      <TextInput
+        ref={ref}
+        placeholder="Search"
+        style={styles.searchInputBox}
+        clearButtonMode="always"
+        autoCorrect={false}
+        autoCapitalize="none"
+        onChangeText={onChangeText}
+      />
+
+    </View>
+  ),
 )
 
 export default SearchBar
