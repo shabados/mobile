@@ -24,3 +24,10 @@ export const py = ( value: number|string = 'auto' ) => ( {
   paddingBottom: value,
 } )
 
+/**
+ * Only for development purposes
+ */
+export const debugBorder = {
+  borderWidth: 2,
+  borderColor: 'black',
+}
