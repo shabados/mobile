@@ -4,12 +4,13 @@ import AntIcon from 'react-native-vector-icons/AntDesign'
 import EntypoIcon from 'react-native-vector-icons/Entypo'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
-import { SearchBar } from '../components/Search'
+import { SearchBar, SearchResultList } from '../components/Search'
 import BackButton from '../components/BackButton'
 import Container from '../components/Container'
 import Colours from '../themes/colours'
 import { my } from '../themes/utils'
 import { OS } from '../lib/consts'
+import SearchResultsData from '../mock-data/results'
 
 const styles = StyleSheet.create( {
   backButton: {
@@ -52,6 +53,7 @@ const SearchScreen = () => {
 
   return (
     <Container statusBarColor={Colours.MediumGray}>
+
       <View style={styles.searchStrip}>
 
         <BackButton label={<AntIcon name="arrowleft" size={24} />} style={styles.backButton} />
@@ -73,6 +75,9 @@ const SearchScreen = () => {
         </View>
 
       </View>
+
+      { searchValue.length > 0 && <SearchResultList data={SearchResultsData} />}
+
     </Container>
   )
 }
