@@ -63,11 +63,11 @@ const SearchScreen = () => {
           </View>
 
           {OS.android && searchValue.length > 0 && (
-          <View style={styles.clearButton}>
-            <TouchableOpacity onPress={clearInput}>
-              <EntypoIcon name="circle-with-cross" size={17} />
-            </TouchableOpacity>
-          </View>
+            <View style={styles.clearButton}>
+              <TouchableOpacity onPress={clearInput}>
+                <EntypoIcon name="circle-with-cross" size={17} />
+              </TouchableOpacity>
+            </View>
           )}
 
         </View>
