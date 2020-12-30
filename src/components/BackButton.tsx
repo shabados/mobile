@@ -19,15 +19,22 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const BackButton = ( { label: Label = 'Cancel', ...props }: BackButtonProps ) => {
+const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
   const navigation = useNavigation()
 
   const goBack = () => navigation.goBack()
 
+  const render = () => {
+    if ( typeof label === 'string' ) {
+      return <Text style={styles.label}>{label}</Text>
+    }
+
+    return label
+  }
+
   return (
     <TouchableOpacity onPress={goBack} {...props}>
-      {Label && <Text style={styles.label}>{Label}</Text>}
-      {!Label && <Label />}
+      {render()}
     </TouchableOpacity>
   )
 }
