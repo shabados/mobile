@@ -24,17 +24,9 @@ const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
 
   const goBack = () => navigation.goBack()
 
-  const render = () => {
-    if ( typeof label === 'string' ) {
-      return <Text style={styles.label}>{label}</Text>
-    }
-
-    return label
-  }
-
   return (
     <TouchableOpacity onPress={goBack} {...props}>
-      {render()}
+      {typeof label === 'string' ? <Text style={styles.label}>{label}</Text> : label}
     </TouchableOpacity>
   )
 }
