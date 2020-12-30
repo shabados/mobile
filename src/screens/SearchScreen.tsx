@@ -60,7 +60,7 @@ const SearchScreen = () => {
             <SearchBar ref={searchInputRef} onChangeText={handleTextChange} />
           </View>
 
-          {OS.android && ( searchValue.length > 1 ) && (
+          {OS.android && searchValue.length > 0 && (
           <View style={styles.clearButton}>
             <TouchableOpacity onPress={clearInput}>
               <EntypoIcon name="circle-with-cross" size={17} />
