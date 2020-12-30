@@ -1,18 +1,30 @@
-import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, { useRef, useState } from 'react'
+import { StyleSheet, View, TextInput } from 'react-native'
+import AntIcon from 'react-native-vector-icons/AntDesign'
+import EntypoIcon from 'react-native-vector-icons/Entypo'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
-import SearchBar from '../components/Search'
+import { SearchBar } from '../components/Search'
 import BackButton from '../components/BackButton'
 import Container from '../components/Container'
 import Colours from '../themes/colours'
-import { mx } from '../themes/utils'
+import { my } from '../themes/utils'
+import { OS } from '../lib/consts'
 
 const styles = StyleSheet.create( {
   backButton: {
-    ...mx,
+    ...my,
+  },
+  clearButton: {
+    ...my,
+    marginLeft: -30,
   },
   searchBar: {
     flex: 0.95,
+  },
+  searchInput: {
+    flex: 1,
+    flexDirection: 'row',
   },
   searchStrip: {
     paddingTop: 15,
@@ -24,21 +36,42 @@ const styles = StyleSheet.create( {
 } )
 
 const SearchScreen = () => {
-  const [ , setSearch ] = useState( '' )
+  const [ searchValue, setSearch ] = useState( '' )
   const [ , setPageCount ] = useState( 0 )
+  const searchInputRef = useRef<TextInput>( null )
 
   const handleTextChange = ( v: string ) => {
     setSearch( v )
     setPageCount( 0 )
   }
 
+  const clearInput = () => {
+    searchInputRef.current?.clear()
+    setSearch( '' )
+  }
+
   return (
     <Container statusBarColor={Colours.MediumGray}>
       <View style={styles.searchStrip}>
-        <View style={styles.searchBar}>
-          <SearchBar onChangeText={handleTextChange} />
+
+        <BackButton label={<AntIcon name="arrowleft" size={24} />} style={styles.backButton} />
+
+        <View style={styles.searchInput}>
+
+          <View style={styles.searchBar}>
+            <SearchBar ref={searchInputRef} onChangeText={handleTextChange} />
+          </View>
+
+          {OS.android && searchValue.length > 0 && (
+            <View style={styles.clearButton}>
+              <TouchableOpacity onPress={clearInput}>
+                <EntypoIcon name="circle-with-cross" size={17} />
+              </TouchableOpacity>
+            </View>
+          )}
+
         </View>
-        <BackButton style={styles.backButton} />
+
       </View>
     </Container>
   )
