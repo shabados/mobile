@@ -44,10 +44,12 @@ const SearchScreen = () => {
     setSearch( v )
     setPageCount( 0 )
   }
+
   const clearInput = () => {
     searchInputRef.current?.clear()
     setSearch( '' )
   }
+
   return (
     <Container statusBarColor={Colours.MediumGray}>
       <View style={styles.searchStrip}>

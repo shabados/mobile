@@ -29,24 +29,25 @@ type SearchBarProps = {
   onChangeText: ( t: string ) => void,
 }
 
-const SearchBar = forwardRef<TextInput, SearchBarProps>(
-  ( { onChangeText }: SearchBarProps, ref ) => (
-    <View style={styles.searchBar}>
+const SearchBar = forwardRef<TextInput, SearchBarProps>( (
+  { onChangeText }: SearchBarProps,
+  ref,
+) => (
+  <View style={styles.searchBar}>
 
-      <Icon name="magnify" size={25} style={styles.searchIcon} />
+    <Icon name="magnify" size={25} style={styles.searchIcon} />
 
-      <TextInput
-        ref={ref}
-        placeholder="Search"
-        style={styles.searchInputBox}
-        clearButtonMode="always"
-        autoCorrect={false}
-        autoCapitalize="none"
-        onChangeText={onChangeText}
-      />
+    <TextInput
+      ref={ref}
+      placeholder="Search"
+      style={styles.searchInputBox}
+      clearButtonMode="always"
+      autoCorrect={false}
+      autoCapitalize="none"
+      onChangeText={onChangeText}
+    />
 
-    </View>
-  ),
-)
+  </View>
+) )
 
 export default SearchBar
