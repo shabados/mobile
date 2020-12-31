@@ -1,3 +1,4 @@
+import { toUnicode } from 'gurmukhi-utils'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
@@ -62,7 +63,7 @@ const Line = ( {
         key={language}
         style={styles.text}
       >
-        {transliterators[ language ]( gurbani )}
+        {transliterators[ language ]( toUnicode( gurbani ) )}
       </Text>
     ) )}
   </View>
