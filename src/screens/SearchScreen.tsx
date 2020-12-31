@@ -49,7 +49,7 @@ const SearchScreen = () => {
   }
 
   return (
-    <Container statusBarColor={Colours.MediumGray}>
+    <Container>
       <View style={styles.searchStrip}>
         <BackButton label={<Icon name="keyboard-backspace" size={26} />} style={styles.backButton} />
 

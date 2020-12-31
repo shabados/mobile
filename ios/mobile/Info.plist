@@ -62,6 +62,11 @@
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
 		<string>ShabadOsIcons.ttf</string>
+		<string>NotoSans-Bold.ttf</string>
+		<string>NotoSans-Light.ttf</string>
+		<string>NotoSans-Regular.ttf</string>
+		<string>NotoSansGurmukhiUI-Bold.ttf</string>
+		<string>NotoSansGurmukhiUI-Regular.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
