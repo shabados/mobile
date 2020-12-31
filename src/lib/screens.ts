@@ -4,6 +4,7 @@ enum Screens {
   Tabs = 'Tabs',
   Bookmarks = 'Bookmarks',
   History = 'History',
+  Gurbani = 'Gurbani',
 }
 
 export default Screens
