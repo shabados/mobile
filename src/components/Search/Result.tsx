@@ -76,7 +76,7 @@ const SearchResult = ( {
       <View style={styles.header}>
         <Text style={styles.headerText}>{source}</Text>
         <Text>{page}</Text>
-        { date && <Text>{date}</Text>}
+        {date && <Text>{date}</Text>}
       </View>
 
       <Text style={styles.line}>{line}</Text>

@@ -76,7 +76,7 @@ const SearchScreen = () => {
 
       </View>
 
-      { searchValue.length > 0 && <SearchResultList data={SearchResultsData} />}
+      {searchValue.length > 0 && <SearchResultList data={SearchResultsData} />}
 
     </Container>
   )
