@@ -12,7 +12,7 @@ const styles = StyleSheet.create( {
 } )
 
 type TListData = {
-  id: string,
+  key: string,
 } & SearchResultDataProps
 
 type ResultsListProps = {
@@ -27,14 +27,13 @@ const ResultsList = ( { data, ...props }:ResultsListProps ) => {
       <FlatList<TListData>
         data={data}
         extraData={selectedId}
-        keyExtractor={( item ) => item.id}
         renderItem={( { item } ) => {
-          const selected = item.id === selectedId ? Colours.DarkGray : Colours.MediumGray
+          const selected = item.key === selectedId ? Colours.DarkGray : Colours.MediumGray
 
           return (
             <SearchResult
               {...item}
-              onPress={() => setSelectedId( item.id )}
+              onPress={() => setSelectedId( item.key )}
               customStyle={{ backgroundColor: selected }}
             />
           )

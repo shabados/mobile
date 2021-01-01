@@ -1,6 +1,6 @@
 const DATA = [
   {
-    id: '1',
+    key: '1',
     line: 'ਜਾਗਹਿ ਸੰਤ ਜਨਾ ਮੇਰੇ ਰਾਮ ਪਿਆਰੇ ॥',
     source: 'ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ',
     page: 'ਅੰਗ ੪੫੯',
@@ -8,7 +8,7 @@ const DATA = [
     translation: 'The Saints remain wakeful; they are the Beloveds of my Lord.',
   },
   {
-    id: '2',
+    key: '2',
     line: 'ਜਾਗਹਿ ਸੰਤ ਜਨਾ ਮੇਰੇ ਰਾਮ ਪਿਆਰੇ ॥',
     source: 'ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ',
     page: 'ਅੰਗ ੪੫੯',
@@ -16,7 +16,7 @@ const DATA = [
     translation: 'The Saints remain wakeful; they are the Beloveds of my Lord.',
   },
   {
-    id: '3',
+    key: '3',
     line: 'ਜਾਗਹਿ ਸੰਤ ਜਨਾ ਮੇਰੇ ਰਾਮ ਪਿਆਰੇ ॥',
     source: 'ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ',
     page: 'ਅੰਗ ੪੫੯',
@@ -24,7 +24,7 @@ const DATA = [
     translation: 'The Saints remain wakeful; they are the Beloveds of my Lord.',
   },
   {
-    id: '4',
+    key: '4',
     line: 'ਜਾਗਹਿ ਸੰਤ ਜਨਾ ਮੇਰੇ ਰਾਮ ਪਿਆਰੇ ॥',
     source: 'ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ',
     page: 'ਅੰਗ ੪੫੯',
@@ -32,7 +32,7 @@ const DATA = [
     translation: 'The Saints remain wakeful; they are the Beloveds of my Lord.',
   },
   {
-    id: '5',
+    key: '5',
     line: 'ਜਾਗਹਿ ਸੰਤ ਜਨਾ ਮੇਰੇ ਰਾਮ ਪਿਆਰੇ ॥',
     source: 'ਸ਼੍ਰੀ ਗੁਰੂ ਗ੍ਰੰਥ ਸਾਹਿਬ ਜੀ',
     page: 'ਅੰਗ ੪੫੯',
