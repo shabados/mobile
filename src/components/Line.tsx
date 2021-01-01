@@ -4,7 +4,6 @@ import { StyleSheet, View } from 'react-native'
 
 import Languages from '../lib/languages'
 import transliterators from '../lib/transliterators'
-import Colours from '../themes/colours'
 import Fonts from '../themes/fonts'
 import { px, py } from '../themes/utils'
 
@@ -15,11 +14,11 @@ type Translation = {
   translation: string,
 }
 
-type LineProps = {
+export type LineProps = {
   /**
-   * Gurbani line, in ASCII Gurmukhi form.
+   * Gurmukhi line, in ASCII Gurmukhi form.
    */
-  gurbani: string,
+  gurmukhi: string,
   /**
    * Translations, with accompanying languages.
    */
@@ -46,12 +45,12 @@ const styles = StyleSheet.create( {
 } )
 
 const Line = ( {
-  gurbani,
+  gurmukhi,
   translations,
   transliterations,
 }: LineProps ) => (
   <View style={styles.root}>
-    <Text style={[ styles.text, styles.gurbani ]}>{gurbani}</Text>
+    <Text style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Text>
 
     {translations.filter( ( { translationSourceId } ) => translationSourceId === 1 ).map( ( {
       translationSourceId,
@@ -63,7 +62,7 @@ const Line = ( {
         key={language}
         style={styles.text}
       >
-        {transliterators[ language ]( toUnicode( gurbani ) )}
+        {transliterators[ language ]( toUnicode( gurmukhi ) )}
       </Text>
     ) )}
   </View>

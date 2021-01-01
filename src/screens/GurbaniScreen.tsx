@@ -28,7 +28,7 @@ const renderLine = ( {
 }: RenderItem ) => (
   <Line
     key={id}
-    gurbani={stripVishraams( gurmukhi )}
+    gurmukhi={stripVishraams( gurmukhi )}
     translations={translations}
     transliterations={[ Languages.English ]}
   />
