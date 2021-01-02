@@ -2,11 +2,11 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import SearchScreen from './screens/SearchScreen'
-import GurbaniScreen from './screens/GurbaniScreen'
 import Screens from './lib/screens'
 import withContexts from './components/with-contexts'
-import { headerOptions } from './components/Navbar'
+import SearchScreen from './screens/SearchScreen'
+import GurbaniScreen from './screens/Gurbani'
+import { headerOptions } from './screens/Gurbani/Navbar'
 
 const Stack = createStackNavigator()
 

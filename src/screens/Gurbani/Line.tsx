@@ -2,13 +2,12 @@ import { toUnicode } from 'gurmukhi-utils'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import Languages from '../lib/languages'
-import transliterators from '../lib/transliterators'
-import Fonts from '../themes/fonts'
-import { px, py } from '../themes/utils'
-import { TranslationData } from '../types/Data'
-
-import { Text } from './Typography'
+import Languages from '../../lib/languages'
+import transliterators from '../../lib/transliterators'
+import Fonts from '../../themes/fonts'
+import { px, py } from '../../themes/utils'
+import Typography from '../../components/Typography'
+import { TranslationData } from '../../types/Data'
 
 export type LineProps = {
   /**
@@ -49,20 +48,20 @@ const Line = ( {
   transliterations,
 }: LineProps ) => (
   <View style={styles.root}>
-    <Text style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Text>
+    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
 
     {translations.filter( ( { translationSourceId } ) => translationSourceId === 1 ).map( ( {
       translationSourceId,
       translation,
-    } ) => <Text key={translationSourceId} style={styles.text}>{translation}</Text> )}
+    } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
 
     {transliterations.map( ( language ) => (
-      <Text
+      <Typography
         key={language}
         style={styles.text}
       >
         {transliterators[ language ]( toUnicode( gurmukhi ) )}
-      </Text>
+      </Typography>
     ) )}
   </View>
 )

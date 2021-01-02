@@ -3,11 +3,10 @@ import React from 'react'
 import { Dimensions, Image, StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-import logo from '../../assets/images/logo.png'
-import Colours from '../themes/colours'
-import { px } from '../themes/utils'
-
-import { Header } from './Typography'
+import logo from '../../../assets/images/logo.png'
+import Colours from '../../themes/colours'
+import { px } from '../../themes/utils'
+import Typography from '../../components/Typography'
 
 const styles = StyleSheet.create( {
   header: {
@@ -64,7 +63,7 @@ const Navbar = () => (
     <View style={styles.headerRoot}>
       <Image style={styles.logo} source={logo} />
 
-      <Header style={styles.header}>Shabad OS</Header>
+      <Typography variant="header" style={styles.header}>Shabad OS</Typography>
     </View>
 
     <Icon style={styles.headerIcon} name="ios-options-outline" />
