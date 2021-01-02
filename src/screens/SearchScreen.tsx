@@ -11,10 +11,10 @@ import Container from '../components/Container'
 
 const styles = StyleSheet.create( {
   backButton: {
-    ...my,
+    ...my(),
   },
   clearButton: {
-    ...my,
+    ...my(),
     marginLeft: -30,
   },
   searchBar: {
