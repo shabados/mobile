@@ -5,7 +5,7 @@ import { render, fireEvent } from '@testing-library/react-native'
 import SearchResult from './Result'
 
 describe( '<SearchResult />', () => {
-  it( 'should handle an onPress event', () => {
+  it( 'given a press, should fire onPress with details of the pressed line', () => {
     const onEventMock = jest.fn()
 
     const { getByTestId } = render(
