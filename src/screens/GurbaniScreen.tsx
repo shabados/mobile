@@ -4,42 +4,18 @@ import { FlatList } from 'react-native'
 import useSWR from 'swr'
 
 import Container from '../components/Container'
-import Line from '../components/Line'
+import Lines from '../components/Lines'
+import Text from '../components/Text'
 import { getShabad } from '../data/shabads'
-import Languages from '../lib/languages'
-
-type RenderItem = {
-  item: {
-    id: string,
-    gurmukhi: string,
-    translations: {
-      translationSourceId: number,
-      translation: string,
-    }[],
-  },
-}
-
-const renderLine = ( {
-  item: {
-    id,
-    gurmukhi,
-    translations,
-  },
-}: RenderItem ) => (
-  <Line
-    key={id}
-    gurmukhi={stripVishraams( gurmukhi )}
-    translations={translations}
-    transliterations={[ Languages.English ]}
-  />
-)
+import Colours from '../themes/colours'
 
 const GurbaniScreen = () => {
   const { data } = useSWR( 'DMP', getShabad )
 
   return (
     <Container>
-      <FlatList data={data} renderItem={renderLine} />
+      {data && <Lines lines={data} />}
+
     </Container>
   )
 }

@@ -6,13 +6,9 @@ import Languages from '../lib/languages'
 import transliterators from '../lib/transliterators'
 import Fonts from '../themes/fonts'
 import { px, py } from '../themes/utils'
+import { TranslationData } from '../types/Data'
 
 import Text from './Text'
-
-type Translation = {
-  translationSourceId: number,
-  translation: string,
-}
 
 export type LineProps = {
   /**
@@ -22,7 +18,7 @@ export type LineProps = {
   /**
    * Translations, with accompanying languages.
    */
-  translations: Translation[],
+  translations: TranslationData[],
   /**
    * Languages for which transliterations will be generated.
    */
@@ -44,6 +40,9 @@ const styles = StyleSheet.create( {
   },
 } )
 
+/**
+ * Renders the Gurmukhi, any translations, and transliterates the Gurmukhi.
+ */
 const Line = ( {
   gurmukhi,
   translations,
