@@ -34,7 +34,7 @@ const ResultsList = ( { data, ...props }:ResultsListProps ) => {
             <SearchResult
               {...item}
               onPress={() => setSelectedId( item.key )}
-              customStyle={{ backgroundColor: selected }}
+              style={{ backgroundColor: selected }}
             />
           )
         }}

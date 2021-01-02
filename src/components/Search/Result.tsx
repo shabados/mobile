@@ -56,7 +56,7 @@ export type SearchResultProps = {
   /**
    * Style for `View` container
    */
-  customStyle?: ViewStyle,
+  style?: ViewStyle,
   onPress: NonNullable<PressableProps['onPress']>,
 } & Omit<PressableProps, 'style'> & SearchResultDataProps
 
@@ -67,11 +67,11 @@ const SearchResult = ( {
   line,
   translation,
   onPress,
-  customStyle,
+  style,
   ...props
 }:SearchResultProps ) => (
   <Pressable onPress={onPress} {...props}>
-    <View style={[ styles.container, customStyle ]}>
+    <View style={[ styles.container, style ]}>
 
       <View style={styles.header}>
         <Text style={styles.headerText}>{source}</Text>
