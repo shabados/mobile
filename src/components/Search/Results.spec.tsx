@@ -14,25 +14,14 @@ describe( '<SearchResults />', () => {
       <SearchResults data={mockData} testID="search-results" onEndReached={onEndReached} />,
     )
 
-    const eventData = {
+    fireEvent.scroll( getByTestId( 'search-results' ), {
       nativeEvent: {
-        contentOffset: {
-          y: 500,
-        },
-        // Dimensions of the scrollable content
-        contentSize: {
-          height: 500,
-          width: 100,
-        },
-        // Dimensions of the device
-        layoutMeasurement: {
-          height: 100,
-          width: 100,
-        },
+        contentOffset: { y: 500 },
+        contentSize: { height: 500, width: 100 },
+        layoutMeasurement: { height: 100, width: 100 },
       },
-    }
+    } )
 
-    fireEvent.scroll( getByTestId( 'search-results' ), eventData )
     expect( onEndReached ).toHaveBeenCalled()
   } )
 } )
