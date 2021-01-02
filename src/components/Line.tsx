@@ -8,7 +8,7 @@ import Fonts from '../themes/fonts'
 import { px, py } from '../themes/utils'
 import { TranslationData } from '../types/Data'
 
-import Text from './Text'
+import { Text } from './Typography'
 
 export type LineProps = {
   /**

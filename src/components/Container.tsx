@@ -20,6 +20,9 @@ type ContainerProps = {
   children: ReactNode,
 } & ViewProps
 
+/**
+ * Component to wrap a page in.
+ */
 const Container = ( {
   children,
   style,

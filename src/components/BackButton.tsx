@@ -20,6 +20,9 @@ const styles = StyleSheet.create( {
   },
 } )
 
+/**
+ * Button to navigate to previous page.
+ */
 const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
   const navigation = useNavigation()
 

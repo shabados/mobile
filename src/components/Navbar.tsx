@@ -7,7 +7,7 @@ import logo from '../../assets/images/logo.png'
 import Colours from '../themes/colours'
 import { px } from '../themes/utils'
 
-import Header from './Header'
+import { Header } from './Typography'
 
 const styles = StyleSheet.create( {
   header: {
@@ -54,6 +54,9 @@ const styles = StyleSheet.create( {
   },
 } )
 
+/**
+ * Navbar component for main header.
+ */
 const Navbar = () => (
   <View style={styles.root}>
     <Icon style={styles.headerIcon} name="menu" />
