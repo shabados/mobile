@@ -4,11 +4,13 @@
     {
       "extends": ["plugin:jest/recommended", "plugin:jest/style"],
       "files": [
+        "e2e/**",
         "**/test/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)",
         "*.config.js"
       ],
       "env": {
+        "detox/detox": true,
         "jest": true
       },
       "rules": {
@@ -44,7 +46,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["react-native", "simple-import-sort"],
+  "plugins": ["react-native", "simple-import-sort", "detox"],
   "rules": {
     // Spacing in brackets is consistent and readable
     "array-bracket-spacing": ["error", "always"],
