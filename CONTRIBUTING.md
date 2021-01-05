@@ -43,6 +43,13 @@ For Android or iOS, you'll need the following:
 - [Flipper](https://fbflipper.com/) (Debugging)
 - [Watchman](https://facebook.github.io/watchman/docs/install.html) (Live-reloading support)
 
+For running end to end tests, you'll need the following:
+
+- Globally installed [`detox-cli`](https://github.com/wix/Detox/blob/master/docs/Introduction.GettingStarted.md#install-detox-command-line-tools-detox-cli)
+- AppleSimulatorUtils [`applesimutils`](https://github.com/wix/AppleSimulatorUtils#applesimulatorutils)
+
+For more detailed instructions checkout detox introduction guides for [iOS](https://github.com/wix/Detox/blob/master/docs/Introduction.IosDevEnv.md) and [Android](https://github.com/wix/Detox/blob/master/docs/Introduction.AndroidDevEnv.md).
+
 Then according to your platform and target OS, follow the [React Native CLI Quickstart](https://reactnative.dev/docs/environment-setup) to setup your dev environment.
 
 **NOTE**: The React Native CLI is already bundled with the `mobile` repo. If you need to manage multiple Node.JS versions, use a node version manager to install [Node.JS](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) instead of chocolatey like the Quickstart suggests. **_Use only jdk 8 and python2_**.
@@ -78,6 +85,14 @@ clean:ios         # Clean iOS build files
 install-assets    # Install any changed files in the "assets/" directory
 lint              # ESLint and checks code style
 test              # Typechecks + Unit + integration tests
+
+build:e2e         # Build iOS and Android apps for e2e tests
+build:e2e-ios     # Build iOS using detox
+build:e2e-ios     # Build Android using detox
+
+e2e               # Run End to End tests on iOS and Android
+e2e:ios           # Run iOS end to end tests using detox
+e2e:android       # Run Android end to end tests using detox
 ```
 
 **NOTE**: You will need to [connect a device via USB](https://developer.android.com/studio/run/device#connect) or [create an AVD](https://developer.android.com/studio/run/managing-avds#createavd) to start the [Android Emulator](https://developer.android.com/studio/run/emulator).

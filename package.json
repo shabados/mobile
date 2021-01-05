@@ -17,7 +17,13 @@
     "clean:android:windows": "cd android && gradlew clean",
     "start": "react-native start",
     "install-assets": "react-native link",
-    "postinstall": "pod-install ios"
+    "postinstall": "pod-install ios",
+    "build:e2e-ios": "detox build -c ios",
+    "build:e2e-android": "detox build -c android",
+    "build:e2e": "run-p -l build:e2e-*",
+    "e2e:ios": "detox test -c ios",
+    "e2e:android": "detox test -c android",
+    "e2e": "run-p -l e2e:*"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
