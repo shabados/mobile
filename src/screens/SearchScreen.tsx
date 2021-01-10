@@ -1,16 +1,13 @@
 import React, { useRef, useState } from 'react'
-import { StyleSheet, View, TextInput } from 'react-native'
-import AntIcon from 'react-native-vector-icons/AntDesign'
-import EntypoIcon from 'react-native-vector-icons/Entypo'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
+import Colours from '../themes/colours'
+import { my } from '../themes/utils'
+import SearchResultsData from '../mock-data/results'
 import { SearchBar, SearchResultList } from '../components/Search'
 import BackButton from '../components/BackButton'
 import Container from '../components/Container'
-import Colours from '../themes/colours'
-import { my } from '../themes/utils'
-import { OS } from '../lib/consts'
-import SearchResultsData from '../mock-data/results'
 
 const styles = StyleSheet.create( {
   backButton: {
@@ -53,31 +50,25 @@ const SearchScreen = () => {
 
   return (
     <Container statusBarColor={Colours.MediumGray}>
-
       <View style={styles.searchStrip}>
-
-        <BackButton label={<AntIcon name="arrowleft" size={24} />} style={styles.backButton} />
+        <BackButton label={<Icon name="keyboard-backspace" size={26} />} style={styles.backButton} />
 
         <View style={styles.searchInput}>
-
           <View style={styles.searchBar}>
             <SearchBar ref={searchInputRef} onChangeText={handleTextChange} />
           </View>
 
-          {OS.android && !!searchValue.length && (
+          {!!searchValue.length && (
             <View style={styles.clearButton}>
               <TouchableOpacity onPress={clearInput}>
-                <EntypoIcon name="circle-with-cross" size={17} />
+                <Icon name="cancel" size={22} />
               </TouchableOpacity>
             </View>
           )}
-
         </View>
-
       </View>
 
       {!!searchValue.length && <SearchResultList data={SearchResultsData} />}
-
     </Container>
   )
 }
