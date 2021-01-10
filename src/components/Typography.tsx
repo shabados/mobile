@@ -29,10 +29,10 @@ const styles = StyleSheet.create( {
 /**
  * Typography component with different variants.
  */
-const Typograpy = ( {
+const Typography = ( {
   style,
   variant = 'body',
   ...props
 }: TypographyProps ) => <Text style={[ styles.base, styles[ variant ], style ]} {...props} />
 
-export default Typograpy
+export default Typography

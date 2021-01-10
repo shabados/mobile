@@ -4,7 +4,7 @@ import { Pressable, PressableProps, StyleSheet, ViewProps } from 'react-native'
 import Colours from '../themes/colours'
 import { mx } from '../themes/utils'
 
-import Typograpy from './Typography'
+import Typography from './Typography'
 
 const styles = StyleSheet.create( {
   pressed: {
@@ -32,9 +32,9 @@ const Button = ( { style, children, ...props }: ButtonProps ) => (
     style={( { pressed } ) => [ styles.root, pressed && styles.pressed, style ]}
     {...props}
   >
-    <Typograpy variant="button">
+    <Typography variant="button">
       {children}
-    </Typograpy>
+    </Typography>
   </Pressable>
 )
 
