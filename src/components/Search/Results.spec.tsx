@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react-native'
 import SearchResults from './Results'
 
 describe( '<SearchResults />', () => {
-  it( 'should scroll down to end of the list', async () => {
+  it( 'should render all search results', async () => {
     const results = Array.from(
       { length: 15 },
       ( _, index ) => ( { key: index.toString(), source: 'source', page: 1, line: `line-${index}`, translation: `translation-${index}` } ),
