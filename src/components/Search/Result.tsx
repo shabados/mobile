@@ -71,7 +71,6 @@ const SearchResult = ( {
 }:SearchResultProps ) => (
   <Pressable onPress={onPress} {...props}>
     <View style={[ styles.container, style ]}>
-
       <View style={styles.header}>
         <Text style={styles.headerText}>{source}</Text>
         <Text>{page}</Text>
