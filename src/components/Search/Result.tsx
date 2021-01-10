@@ -37,7 +37,7 @@ export type SearchResultDataProps = {
   /**
    * Page number in source
    */
-  page: string,
+  page: number,
   /**
    * Last accessed date
    */
@@ -68,7 +68,7 @@ const SearchResult = ( {
   onPress = () => {},
   style,
   ...props
-}:SearchResultProps ) => (
+}: SearchResultProps ) => (
   <Pressable onPress={onPress} {...props}>
     <View style={[ styles.container, style ]}>
       <View style={styles.header}>

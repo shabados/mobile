@@ -12,7 +12,7 @@ describe( '<SearchResult />', () => {
       <SearchResult
         line="line"
         source="source"
-        page="page"
+        page={1}
         translation="translation"
         testID="search-result-test"
         onPress={onPress}
