@@ -1,6 +1,6 @@
-import { StackNavigationOptions } from '@react-navigation/stack'
 import React from 'react'
 import { Dimensions, Image, StyleSheet, View } from 'react-native'
+import { StackNavigationOptions } from '@react-navigation/stack'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import logo from '../../../assets/images/logo.png'
