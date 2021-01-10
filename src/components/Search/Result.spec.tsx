@@ -6,20 +6,20 @@ import SearchResult from './Result'
 
 describe( '<SearchResult />', () => {
   it( 'given a press, should fire onPress with details of the pressed line', () => {
-    const onEventMock = jest.fn()
+    const onPress = jest.fn()
 
-    const { getByTestId } = render(
+    const { getByText } = render(
       <SearchResult
         line="line"
         source="source"
         page="page"
         translation="translation"
         testID="search-result-test"
-        onPress={onEventMock}
+        onPress={onPress}
       />,
     )
 
-    fireEvent.press( getByTestId( 'search-result-test' ) )
-    expect( onEventMock ).toHaveBeenCalled()
+    fireEvent.press( getByText( 'translation' ) )
+    expect( onPress ).toHaveBeenCalled()
   } )
 } )
