@@ -54,38 +54,43 @@ export type SearchResultDataProps = {
   translation: string,
 }
 
-export type SearchResultProps = {
+export type SearchResultProps = PressableProps & SearchResultDataProps & {
   /**
    * Style for `View` container
    */
   style?: ViewStyle,
-} & Omit<PressableProps, 'style'> & SearchResultDataProps
+  onPress?: ( data: SearchResultDataProps ) => void,
+}
 
 const SearchResult = ( {
+  onPress = () => {},
+  style,
   source,
   page,
   date,
   line,
   translation,
-  onPress = () => {},
-  style,
   ...props
-}: SearchResultProps ) => (
-  <Pressable onPress={onPress} {...props}>
-    <View style={[ styles.container, style ]}>
-      <View style={styles.headerContainer}>
-        {/* Todo: toAscii or toUnicode + add font from #129 */}
-        <Text style={styles.header}>{source}</Text>
-        {/* Todo: toAscii or toUnicode + add font from #129 */}
-        <Text>{`AMg ${page}`}</Text>
-        {date && <Text>{date}</Text>}
+}: SearchResultProps ) => {
+  const handlePress = () => { onPress( { source, page, date, line, translation } ) }
+
+  return (
+    <Pressable onPress={handlePress} {...props}>
+      <View style={[ styles.container, style ]}>
+        <View style={styles.headerContainer}>
+          {/* Todo: toAscii or toUnicode + add font from #129 */}
+          <Text style={styles.header}>{source}</Text>
+          {/* Todo: toAscii or toUnicode + add font from #129 */}
+          <Text>{`AMg ${page}`}</Text>
+          {date && <Text>{date}</Text>}
+        </View>
+
+        <Text style={styles.line}>{line}</Text>
+
+        <Text style={styles.translation}>{translation}</Text>
       </View>
-
-      <Text style={styles.line}>{line}</Text>
-
-      <Text style={styles.translation}>{translation}</Text>
-    </View>
-  </Pressable>
-)
+    </Pressable>
+  )
+}
 
 export default SearchResult
