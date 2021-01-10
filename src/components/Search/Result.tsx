@@ -57,7 +57,6 @@ export type SearchResultProps = {
    * Style for `View` container
    */
   style?: ViewStyle,
-  onPress: NonNullable<PressableProps['onPress']>,
 } & Omit<PressableProps, 'style'> & SearchResultDataProps
 
 const SearchResult = ( {
@@ -66,7 +65,7 @@ const SearchResult = ( {
   date,
   line,
   translation,
-  onPress,
+  onPress = () => {},
   style,
   ...props
 }:SearchResultProps ) => (
