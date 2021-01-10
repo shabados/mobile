@@ -70,7 +70,7 @@ const Navbar = () => (
   </View>
 )
 
-export const headerOptions: StackNavigationOptions = {
+export const options: StackNavigationOptions = {
   headerTitle: Navbar,
   headerStyle: styles.rootContainer,
 }

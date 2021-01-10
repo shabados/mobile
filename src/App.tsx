@@ -4,20 +4,15 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import Screens from './lib/screens'
 import withContexts from './components/with-contexts'
-import SearchScreen from './screens/SearchScreen'
-import GurbaniScreen from './screens/Gurbani'
-import { headerOptions } from './screens/Gurbani/Navbar'
+import SearchScreen from './screens/Search'
+import { gurbaniScreen } from './screens/Gurbani'
 
 const Stack = createStackNavigator()
 
 const App = () => (
   <NavigationContainer>
     <Stack.Navigator mode="modal">
-      <Stack.Screen
-        name={Screens.Gurbani}
-        component={GurbaniScreen}
-        options={headerOptions}
-      />
+      <Stack.Screen name={Screens.Gurbani} {...gurbaniScreen} />
 
       <Stack.Screen
         name={Screens.Search}
