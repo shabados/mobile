@@ -2,12 +2,12 @@ import { toUnicode } from 'gurmukhi-utils'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
+import { TranslationData } from '../../types/data'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 import Typography from '../../components/Typography'
-import { TranslationData } from '../../types/Data'
 
 export type LineProps = {
   /**

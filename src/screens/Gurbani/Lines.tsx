@@ -2,8 +2,8 @@ import React from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import { stripVishraams } from 'gurmukhi-utils'
 
+import { LineData } from '../../types/data'
 import Languages from '../../lib/languages'
-import { LineData } from '../../types/Data'
 
 import Line from './Line'
 

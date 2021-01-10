@@ -1,5 +1,5 @@
 import React from 'react'
-import useSWR from 'swr'
+import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
 import { getShabad } from '../../data/shabads'
@@ -7,8 +7,10 @@ import { getShabad } from '../../data/shabads'
 import BottomBar from './BottomBar'
 import Lines from './Lines'
 
+type ShabadQuery = { queryKey: [string] }
+
 const GurbaniScreen = () => {
-  const { data } = useSWR( 'DMP', getShabad )
+  const { data } = useQuery( 'DMP', ( { queryKey }: ShabadQuery ) => getShabad( ...queryKey ) )
 
   return (
     <Container>

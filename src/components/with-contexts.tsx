@@ -1,8 +1,8 @@
 import React, { ElementType } from 'react'
-import { SWRConfig } from 'swr'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const contexts: [ElementType, {[k: string]: any}?][] = [
-  [ SWRConfig ],
+  [ QueryClientProvider, { client: new QueryClient() } ],
 ]
 
 // Generate a context wrapper function
