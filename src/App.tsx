@@ -2,23 +2,20 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Screens from './lib/screens'
 import withContexts from './components/with-contexts'
-import SearchScreen from './screens/Search'
+import { searchScreen } from './screens/Search'
 import { gurbaniScreen } from './screens/Gurbani'
 
+const screens = [ gurbaniScreen, searchScreen ]
+
 const Stack = createStackNavigator()
+
+type ScreenProps = Parameters<typeof Stack.Screen>[0]
 
 const App = () => (
   <NavigationContainer>
     <Stack.Navigator mode="modal">
-      <Stack.Screen name={Screens.Gurbani} {...gurbaniScreen} />
-
-      <Stack.Screen
-        name={Screens.Search}
-        component={SearchScreen}
-        options={{ headerShown: false }}
-      />
+      {screens.map( ( props: ScreenProps ) => <Stack.Screen key={props.name} {...props} /> )}
     </Stack.Navigator>
   </NavigationContainer>
 )

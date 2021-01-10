@@ -29,10 +29,7 @@ const styles = StyleSheet.create( {
   },
 } )
 
-type SearchBarProps = {
-  onChangeText?: ( text: string ) => void,
-  style?: ViewStyle,
-} & TextInputProps
+type SearchBarProps = TextInputProps
 
 const SearchBar = forwardRef<TextInput, SearchBarProps>( ( {
   onChangeText = () => {},

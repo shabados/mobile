@@ -18,7 +18,7 @@ type ResultsListProps = {
   onPress?: SearchResultProps['onPress'],
 } & Omit<FlatListProps<TListData>, 'renderItem' | 'keyExtractor' | 'renderItem'>
 
-const ResultsList = ( { data, onPress, ...props }: ResultsListProps ) => (
+const Results = ( { data, onPress, ...props }: ResultsListProps ) => (
   <View style={styles.container}>
     <FlatList
       data={data}
@@ -30,4 +30,4 @@ const ResultsList = ( { data, onPress, ...props }: ResultsListProps ) => (
   </View>
 )
 
-export default ResultsList
+export default Results

@@ -2,12 +2,15 @@ import React, { useRef, useState } from 'react'
 import { StyleSheet, View, TextInput, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
-import Colours from '../themes/colours'
-import { my } from '../themes/utils'
-import SearchResultsData from '../mock-data/results'
-import { SearchBar, SearchResultList } from '../components/Search'
-import BackButton from '../components/BackButton'
-import Container from '../components/Container'
+import Screens from '../../lib/screens'
+import Colours from '../../themes/colours'
+import { my } from '../../themes/utils'
+import SearchResultsData from '../../mock-data/results'
+import BackButton from '../../components/BackButton'
+import Container from '../../components/Container'
+
+import SearchBar from './Bar'
+import Results from './Results'
 
 const styles = StyleSheet.create( {
   backButton: {
@@ -68,9 +71,15 @@ const SearchScreen = () => {
         </View>
       </View>
 
-      {!!searchValue.length && <SearchResultList data={SearchResultsData} />}
+      {!!searchValue.length && <Results data={SearchResultsData} />}
     </Container>
   )
+}
+
+export const searchScreen = {
+  name: Screens.Search,
+  component: SearchScreen,
+  options: { headerShown: false },
 }
 
 export default SearchScreen

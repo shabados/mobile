@@ -6,8 +6,8 @@ import { useNavigation } from '@react-navigation/native'
 import Screens from '../../lib/screens'
 import Colours from '../../themes/colours'
 import { px, py } from '../../themes/utils'
-import { SearchBar } from '../../components/Search'
 import Button from '../../components/Button'
+import SearchBar from '../Search/Bar'
 
 const styles = StyleSheet.create( {
   background: {
