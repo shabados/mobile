@@ -45,7 +45,7 @@ const BottomBar = () => {
 
       <View style={styles.container}>
         <Pressable style={styles.searchBarContainer} onPress={onSearchPress}>
-          <SearchBar editable={false} />
+          <SearchBar editable={false} onTouchStart={onSearchPress} />
         </Pressable>
 
         <Button onPress={onBookmarkPress}>
