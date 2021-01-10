@@ -12,14 +12,18 @@ const Stack = createStackNavigator()
 
 const App = () => (
   <NavigationContainer>
-    <Stack.Navigator>
+    <Stack.Navigator mode="modal">
       <Stack.Screen
         name={Screens.Gurbani}
         component={GurbaniScreen}
         options={headerOptions}
       />
 
-      <Stack.Screen name={Screens.Search} component={SearchScreen} />
+      <Stack.Screen
+        name={Screens.Search}
+        component={SearchScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
 )

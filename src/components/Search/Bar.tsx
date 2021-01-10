@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import { View, StyleSheet, TextInput, ViewStyle } from 'react-native'
+import { View, StyleSheet, TextInput, ViewStyle, TextInputProps } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { OS } from '../../lib/consts'
@@ -30,13 +30,14 @@ const styles = StyleSheet.create( {
 } )
 
 type SearchBarProps = {
-  onChangeText: ( text: string ) => void,
-  style: ViewStyle,
-}
+  onChangeText?: ( text: string ) => void,
+  style?: ViewStyle,
+} & TextInputProps
 
 const SearchBar = forwardRef<TextInput, SearchBarProps>( ( {
-  onChangeText,
+  onChangeText = () => {},
   style,
+  ...props
 }: SearchBarProps,
 ref ) => (
   <View style={[ styles.searchBar, style ]}>
@@ -51,6 +52,7 @@ ref ) => (
       autoCorrect={false}
       autoCapitalize="none"
       onChangeText={onChangeText}
+      {...props}
     />
   </View>
 ) )
