@@ -26,7 +26,7 @@ const styles = StyleSheet.create( {
 } )
 
 type SearchBarProps = {
-  onChangeText: ( t: string ) => void,
+  onChangeText: ( text: string ) => void,
 }
 
 const SearchBar = forwardRef<TextInput, SearchBarProps>( (
@@ -34,19 +34,17 @@ const SearchBar = forwardRef<TextInput, SearchBarProps>( (
   ref,
 ) => (
   <View style={styles.searchBar}>
-
     <Icon name="magnify" size={25} style={styles.searchIcon} />
 
     <TextInput
       ref={ref}
       placeholder="Search"
       style={styles.searchInputBox}
-      clearButtonMode="always"
+      clearButtonMode="never"
       autoCorrect={false}
       autoCapitalize="none"
       onChangeText={onChangeText}
     />
-
   </View>
 ) )
 
