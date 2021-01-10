@@ -1,27 +1,38 @@
-import 'react-native'
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
-
-import mockData from '../../mock-data/results'
 
 import SearchResults from './Results'
 
 describe( '<SearchResults />', () => {
-  it( 'should scroll down to end of the list', () => {
-    const onEndReached = jest.fn()
-
-    const { getByTestId } = render(
-      <SearchResults data={mockData} testID="search-results" onEndReached={onEndReached} />,
+  it( 'should scroll down to end of the list', async () => {
+    const results = Array.from(
+      { length: 15 },
+      ( _, index ) => ( { key: index.toString(), source: 'source', page: 1, line: `line-${index}`, translation: `translation-${index}` } ),
     )
 
-    fireEvent.scroll( getByTestId( 'search-results' ), {
-      nativeEvent: {
-        contentOffset: { y: 500 },
-        contentSize: { height: 500, width: 100 },
-        layoutMeasurement: { height: 100, width: 100 },
-      },
-    } )
+    const { getByText, queryByText, findByText } = render( <SearchResults data={results} /> )
 
-    expect( onEndReached ).toHaveBeenCalled()
+    const container = getByText( 'line-0' ).parent!
+
+    await results.reduce( async ( promise, { line } ) => {
+      await promise
+
+      let resultElement = queryByText( line )
+
+      // Scroll if we can't see the line
+      if ( !resultElement ) {
+        fireEvent.scroll( container, {
+          nativeEvent: {
+            contentOffset: { y: 500 },
+            contentSize: { height: 500, width: 100 },
+            layoutMeasurement: { height: 100, width: 100 },
+          },
+        } )
+
+        resultElement = await findByText( line )
+      }
+
+      expect( resultElement ).toBeTruthy()
+    }, Promise.resolve() )
   } )
 } )

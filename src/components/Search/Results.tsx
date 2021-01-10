@@ -17,9 +17,9 @@ type TListData = {
 
 type ResultsListProps = {
   data: TListData[],
-} & Omit<FlatListProps<TListData>, 'renderItem'|'keyExtractor'|'renderItem'>
+} & Omit<FlatListProps<TListData>, 'renderItem' | 'keyExtractor' | 'renderItem'>
 
-const ResultsList = ( { data, ...props }:ResultsListProps ) => {
+const ResultsList = ( { data, ...props }: ResultsListProps ) => {
   const [ selectedId, setSelectedId ] = useState<string>()
 
   return (
