@@ -2,22 +2,24 @@ import React from 'react'
 import { Text, StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
 import Colours from '../../themes/colours'
+import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   container: {
-    padding: 5,
+    ...px( 10 ),
+    ...py( 10 ),
     backgroundColor: Colours.MediumGray,
     borderBottomColor: Colours.LightGray,
     borderBottomWidth: 1,
   },
   header: {
+    fontSize: 15,
+    fontWeight: '400',
+  },
+  headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  headerText: {
-    fontSize: 15,
-    fontWeight: '400',
   },
   line: {
     marginBottom: 5,
@@ -71,9 +73,11 @@ const SearchResult = ( {
 }: SearchResultProps ) => (
   <Pressable onPress={onPress} {...props}>
     <View style={[ styles.container, style ]}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>{source}</Text>
-        <Text>{page}</Text>
+      <View style={styles.headerContainer}>
+        {/* Todo: toAscii or toUnicode + add font from #129 */}
+        <Text style={styles.header}>{source}</Text>
+        {/* Todo: toAscii or toUnicode + add font from #129 */}
+        <Text>{`AMg ${page}`}</Text>
         {date && <Text>{date}</Text>}
       </View>
 
