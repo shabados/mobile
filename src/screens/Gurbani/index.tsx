@@ -8,9 +8,10 @@ import BottomBar from './BottomBar'
 import Lines from './Lines'
 
 type ShabadQuery = { queryKey: [string] }
+const shabadQuery = ( { queryKey }: ShabadQuery ) => getShabad( ...queryKey )
 
 const GurbaniScreen = () => {
-  const { data } = useQuery( 'DMP', ( { queryKey }: ShabadQuery ) => getShabad( ...queryKey ) )
+  const { data } = useQuery( 'DMP', shabadQuery )
 
   return (
     <Container>
