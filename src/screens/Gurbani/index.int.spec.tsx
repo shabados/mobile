@@ -7,7 +7,7 @@ import { when } from 'jest-when'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../data/shabads'
 
-import GurbaniScreen from './index'
+import GurbaniScreen from '.'
 
 const Stack = createStackNavigator()
 

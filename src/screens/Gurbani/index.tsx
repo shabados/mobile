@@ -7,7 +7,7 @@ import { getShabad } from '../../data/shabads'
 
 import BottomBar from './BottomBar'
 import Lines from './Lines'
-import { options } from './Navbar'
+import Navbar from './Navbar'
 
 type ShabadQuery = { queryKey: [string] }
 const shabadQuery = ( { queryKey }: ShabadQuery ) => getShabad( ...queryKey )
@@ -27,7 +27,7 @@ const GurbaniScreen = () => {
 export const gurbaniScreen = {
   name: Screens.Gurbani,
   component: GurbaniScreen,
-  options,
+  options: { header: Navbar },
 }
 
 export default GurbaniScreen
