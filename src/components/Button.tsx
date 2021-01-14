@@ -7,12 +7,14 @@ import { mx } from '../themes/utils'
 import Typography from './Typography'
 
 const styles = StyleSheet.create( {
+  filled: {
+    backgroundColor: Colours.LightGray,
+  },
   pressed: {
     opacity: 0.6,
   },
   root: {
     borderRadius: 10,
-    backgroundColor: Colours.LightGray,
     width: 75,
     ...mx( 10 ),
     height: '100%',
@@ -20,16 +22,30 @@ const styles = StyleSheet.create( {
     justifyContent: 'center',
     alignItems: 'center',
   },
+  text: {},
 } )
 
-export type ButtonProps = PressableProps & { style?: ViewProps }
+type Variants = 'filled' | 'text'
+
+export type ButtonProps = PressableProps & {
+  style?: ViewProps,
+  /**
+   * The type of typography to render.
+   */
+  variant?: Variants,
+}
 
 /**
  * Themed button component, pressable.
  */
-const Button = ( { style, children, ...props }: ButtonProps ) => (
+const Button = ( {
+  variant = 'filled',
+  style,
+  children,
+  ...props
+}: ButtonProps ) => (
   <Pressable
-    style={( { pressed } ) => [ styles.root, pressed && styles.pressed, style ]}
+    style={( { pressed } ) => [ styles.root, styles[ variant ], pressed && styles.pressed, style ]}
     {...props}
   >
     <Typography variant="button">
