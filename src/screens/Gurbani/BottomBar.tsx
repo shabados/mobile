@@ -1,13 +1,14 @@
 import React from 'react'
-import { Pressable, SafeAreaView, StyleSheet, View } from 'react-native'
+import { Pressable, StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Screens from '../../lib/screens'
 import Colours from '../../themes/colours'
 import { px, py } from '../../themes/utils'
 import Button from '../../components/Button'
-import SearchBar from '../Search/Bar'
+import SearchBar from '../../components/SearchBar'
 
 const styles = StyleSheet.create( {
   background: {
@@ -40,7 +41,7 @@ const BottomBar = () => {
   const onBookmarkPress = () => navigation.navigate( Screens.Bookmarks )
 
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={[ 'bottom', 'left', 'right' ]}>
       <View style={styles.background} />
 
       <View style={styles.container}>
