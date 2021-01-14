@@ -20,7 +20,9 @@ const BookmarksScreen = () => {
     if ( isFolder ) {
       navigation.push( Screens.Bookmarks,
         {
-          folderData: folderData.find( ( folder ) => folder.name === name )?.bookmarks,
+          folderData:
+          folderData.find( ( folder ) => folder.name === name )?.bookmarks
+          || folderData,
           currentFolder: name,
         } )
     } else {

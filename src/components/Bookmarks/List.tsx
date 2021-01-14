@@ -21,7 +21,7 @@ const BookmarksList = ( { data, onItemPress }: BookmarksListProps ) => (
           <Item
             title={item.name}
             isFolder={isFolder}
-            onPress={() => onItemPress( isFolder, isFolder ? item?.name : item )}
+            onPress={() => onItemPress( isFolder, item.name )}
           />
         )
       }}
