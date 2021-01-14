@@ -1,10 +1,8 @@
 import React from 'react'
-import { Pressable, StyleSheet, Text } from 'react-native'
+import { Pressable, PressableProps, StyleSheet, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import Colours from '../../themes/colours'
-
-import { Folder, FolderItem } from './types'
 
 const styles = StyleSheet.create( {
   container: {
@@ -17,14 +15,14 @@ const styles = StyleSheet.create( {
 } )
 
 type BookmarkListItemProps = {
-  item: Folder | FolderItem,
+  title: string,
   isFolder: boolean,
   onPress: () => void,
-}
+} & PressableProps
 
-const BookmarkListItem = ( { item, isFolder, onPress }: BookmarkListItemProps ) => (
-  <Pressable style={styles.container} onPress={onPress}>
-    <Text>{item?.name ?? item}</Text>
+const BookmarkListItem = ( { title, isFolder, onPress, ...props }: BookmarkListItemProps ) => (
+  <Pressable style={styles.container} onPress={onPress} {...props}>
+    <Text>{title}</Text>
     {isFolder && <Icon name="chevron-right" size={25} />}
   </Pressable>
 )
