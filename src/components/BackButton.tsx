@@ -1,22 +1,22 @@
 import React from 'react'
-import { Text, StyleSheet, TouchableOpacityProps } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import Colours from '../themes/colours'
+
+import Button, { ButtonProps } from './Button'
 
 export type BackButtonProps = {
   /**
    * Value back button should display
    */
   label?: string | JSX.Element,
-} & Omit<TouchableOpacityProps, 'onPress' | 'children'>
+} & ButtonProps
 
 const styles = StyleSheet.create( {
   label: {
     color: Colours.Blue,
     fontSize: 16,
-    // Todo: add margin using mx utility from #129
   },
 } )
 
@@ -28,11 +28,10 @@ const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
 
   const goBack = () => navigation.goBack()
 
-  // Todo: Replace with pressable/Button from #129
   return (
-    <TouchableOpacity onPress={goBack} {...props}>
+    <Button onPress={goBack} {...props}>
       {typeof label === 'string' ? <Text style={styles.label}>{label}</Text> : label}
-    </TouchableOpacity>
+    </Button>
   )
 }
 
