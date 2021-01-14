@@ -1,8 +1,8 @@
 import Screens from '../lib/screens'
-import { Folder, FolderItem } from '../components/Bookmarks'
+import { Folder } from '../components/Bookmarks'
 
 export type NavigationParams = {
-  [Screens.Bookmarks]: {currentFolder?: string, folderData: Array<Folder | FolderItem>},
+  [Screens.Bookmarks]: {currentFolder?: string, folderData: Folder[]},
   [Screens.Home]: undefined,
   [Screens.Search]: undefined,
   [Screens.Tabs]: undefined,

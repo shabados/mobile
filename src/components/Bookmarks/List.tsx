@@ -1,12 +1,12 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { Folder, FolderItem } from './types'
+import { Folder } from './types'
 import { checkIsFolder } from './utils'
 import Item from './Item'
 
 type BookmarksListProps = {
-  data: ( Folder| FolderItem )[],
+  data: Folder[],
   onItemPress: ( isFolder: boolean, name: string ) => void,
 }
 
