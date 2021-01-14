@@ -3,7 +3,6 @@ import {
   StyleSheet,
   View,
   ViewProps,
-  StatusBar,
 } from 'react-native'
 
 import Colours from '../themes/colours'
@@ -28,13 +27,9 @@ const Container = ( {
   style,
   ...props
 }: ContainerProps ) => (
-  <>
-    <StatusBar translucent barStyle="light-content" />
-
-    <View style={[ styles.main, style ]} {...props}>
-      {children}
-    </View>
-  </>
+  <View style={[ styles.main, style ]} {...props}>
+    {children}
+  </View>
 )
 
 export default Container
