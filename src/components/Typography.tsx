@@ -4,13 +4,6 @@ import { StyleSheet, Text, TextProps } from 'react-native'
 import Colours from '../themes/colours'
 import Fonts from '../themes/fonts'
 
-type Variants = 'body' | 'header' | 'button'
-
-export type TypographyProps = TextProps & {
-  children: ReactNode,
-  variant?: Variants,
-}
-
 const styles = StyleSheet.create( {
   base: {
     color: Colours.White,
@@ -25,6 +18,16 @@ const styles = StyleSheet.create( {
     fontFamily: Fonts.NotoSansLight,
   },
 } )
+
+type Variants = 'body' | 'header' | 'button'
+
+export type TypographyProps = TextProps & {
+  children: ReactNode,
+  /**
+   * The type of typography to render.
+   */
+  variant?: Variants,
+}
 
 /**
  * Typography component with different variants.
