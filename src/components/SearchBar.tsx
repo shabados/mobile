@@ -79,7 +79,7 @@ const SearchBar = ( {
       {!!input.length && (
         <View style={styles.clearButtonContainer}>
           <Pressable onPress={clearInput}>
-            <Icon style={styles.clearButton} name="close-circle" size={22} />
+            <Icon style={styles.clearButton} name="close-circle" size={22} testID="clear-search" />
           </Pressable>
         </View>
       )}
