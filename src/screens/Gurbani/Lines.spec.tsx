@@ -7,13 +7,11 @@ import Lines from './Lines'
 
 describe( '<Lines />', () => {
   it( 'should render all supplied lines', async () => {
-    const lines = factories.line
-      .buildList( 15 )
-      .map( ( { gurmukhi, ...rest }, index ) => ( { gurmukhi: `line-${index}`, ...rest } ) )
+    const lines = factories.line.buildList( 15 )
 
     const { findByText, queryByText, getByText } = render( <Lines lines={lines} /> )
 
-    const container = getByText( 'line-0' ).parent!
+    const container = getByText( lines[ 0 ].gurmukhi ).parent!
 
     await lines.reduce( async ( promise, { gurmukhi } ) => {
       await promise

@@ -23,10 +23,11 @@ const wrapper = ( { children }: WrapperProps ) => withContexts(
 
 describe( '<GurbaniScreen />', () => {
   describe( 'on mount', () => {
+    const lineData = factories.line.buildList( 5 )
     const getShabadMock = jest.spyOn( shabads, 'getShabad' )
     when( getShabadMock )
       .calledWith( 'DMP' )
-      .mockResolvedValue( factories.line.buildList( 5 ) )
+      .mockResolvedValue( lineData )
 
     it( 'should render a bottom bar', () => {
       const { unmount, getByPlaceholderText } = render( <GurbaniScreen />, { wrapper } )
@@ -39,7 +40,7 @@ describe( '<GurbaniScreen />', () => {
     it( 'should load and render a target shabad', async () => {
       const { unmount, findByText } = render( <GurbaniScreen />, { wrapper } )
 
-      expect( await findByText( 'test-gurmukhi' ) ).toBeTruthy()
+      expect( await findByText( lineData[ 0 ].gurmukhi ) ).toBeTruthy()
 
       unmount()
     } )

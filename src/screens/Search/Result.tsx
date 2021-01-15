@@ -1,37 +1,40 @@
+import { toUnicode } from 'gurmukhi-utils'
 import React from 'react'
-import { Text, StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
+import { StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
-import Colours from '../../themes/colours'
+import Typography from '../../components/Typography'
+import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
-  container: {
-    ...px( 10 ),
-    ...py( 10 ),
-    backgroundColor: Colours.MediumGray,
-    borderBottomColor: Colours.LightGray,
-    borderBottomWidth: 1,
+  gurbani: {
+    fontFamily: Fonts.OpenGurbaniAkharBlack,
+    fontSize: 18,
+    paddingBottom: 0,
+    color: '#EDEDED',
   },
   header: {
-    fontSize: 15,
-    fontWeight: '400',
-  },
-  headerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  line: {
-    marginBottom: 5,
-    fontSize: 22,
-    fontWeight: '600',
+  root: {
+    ...px( 10 ),
+    ...py( 7 ),
+  },
+  subText: {
+    color: '#BCBCBC',
+  },
+  text: {
+    ...py( 10 ),
   },
   translation: {
-    fontSize: 15,
+    ...py( 5 ),
+    fontSize: 12,
   },
 } )
 
-export type SearchResultDataProps = {
+export type ResultDataProps = {
   /**
    * Name of gurbani source
    */
@@ -43,54 +46,48 @@ export type SearchResultDataProps = {
   /**
    * Last accessed date
    */
-  date?: string,
+  lastViewedAt?: string,
   /**
-   * Gurbani Line
+   * Gurmukhi line, in ASCII Gurmukhi form.
    */
-  line: string,
+  gurmukhi: string,
   /**
-   * Translation for gurbani line
+   * Translation for gurbani line.
    */
   translation: string,
 }
 
-export type SearchResultProps = PressableProps & SearchResultDataProps & {
+export type ResultProps = PressableProps & ResultDataProps & {
   /**
    * Style for `View` container
    */
   style?: ViewStyle,
-  onPress?: ( data: SearchResultDataProps ) => void,
 }
 
-const SearchResult = ( {
-  onPress = () => {},
+const getShortDate = ( date?: string ) => ( date
+  ? new Date( date ).toLocaleDateString( 'en', { month: 'short', day: 'numeric' } )
+  : '' )
+
+const Result = ( {
   style,
   source,
   page,
-  date,
-  line,
+  lastViewedAt,
+  gurmukhi,
   translation,
   ...props
-}: SearchResultProps ) => {
-  const handlePress = () => { onPress( { source, page, date, line, translation } ) }
+}: ResultProps ) => (
+  <Pressable style={[ styles.root, style ]} {...props}>
+    <View style={styles.header}>
+      <Typography style={styles.subText}>{toUnicode( source )}</Typography>
+      <Typography style={styles.subText}>{toUnicode( `AMg ${page}` )}</Typography>
+      <Typography style={styles.subText}>{getShortDate( lastViewedAt )}</Typography>
+    </View>
 
-  return (
-    <Pressable onPress={handlePress} {...props}>
-      <View style={[ styles.container, style ]}>
-        <View style={styles.headerContainer}>
-          {/* Todo: toAscii or toUnicode + add font from #129 */}
-          <Text style={styles.header}>{source}</Text>
-          {/* Todo: toAscii or toUnicode + add font from #129 */}
-          <Text>{`AMg ${page}`}</Text>
-          {date && <Text>{date}</Text>}
-        </View>
+    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
 
-        <Text style={styles.line}>{line}</Text>
+    <Typography style={[ styles.subText, styles.translation ]}>{translation}</Typography>
+  </Pressable>
+)
 
-        <Text style={styles.translation}>{translation}</Text>
-      </View>
-    </Pressable>
-  )
-}
-
-export default SearchResult
+export default Result
