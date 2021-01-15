@@ -44,7 +44,7 @@ const SearchNavbar = ( {
       <View style={styles.root}>
         <BackButton testID="back-button" style={styles.back} variant="text" label={<Icon style={styles.backIcon} name="arrow-back" />} />
 
-        <SearchBar style={styles.searchBar} onChangeText={onSearchChange} />
+        <SearchBar style={styles.searchBar} autoFocus onChangeText={onSearchChange} />
       </View>
     )}
   />
