@@ -1,23 +1,22 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
+import factories from '../../../test/factories'
+
 import SearchResults from './Results'
 
 describe( '<SearchResults />', () => {
   it( 'should render all search results', async () => {
-    const results = Array.from(
-      { length: 15 },
-      ( _, index ) => ( { key: index.toString(), source: 'source', page: 1, line: `line-${index}`, translation: `translation-${index}` } ),
-    )
+    const results = factories.line.buildList( 15 )
 
-    const { getByText, queryByText, findByText } = render( <SearchResults data={results} /> )
+    const { getByText, queryByText, findByText } = render( <SearchResults results={results} /> )
 
-    const container = getByText( 'line-0' ).parent!
+    const container = getByText( results[ 0 ].gurmukhi ).parent!
 
-    await results.reduce( async ( promise, { line } ) => {
+    await results.reduce( async ( promise, { gurmukhi } ) => {
       await promise
 
-      let resultElement = queryByText( line )
+      let resultElement = queryByText( gurmukhi )
 
       // Scroll if we can't see the line
       if ( !resultElement ) {
@@ -29,7 +28,7 @@ describe( '<SearchResults />', () => {
           },
         } )
 
-        resultElement = await findByText( line )
+        resultElement = await findByText( gurmukhi )
       }
 
       expect( resultElement ).toBeTruthy()

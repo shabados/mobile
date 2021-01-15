@@ -29,6 +29,9 @@ module.exports = {
     'react-native-gesture-handler/jestSetup.js',
     '<rootDir>/test/setup-jest.js',
   ],
+  setupFilesAfterEnv: [
+    '@testing-library/jest-native/extend-expect',
+  ],
   moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
   // https://github.com/react-navigation/react-navigation/issues/7950#issuecomment-615220412
   moduleNameMapper: {
@@ -36,5 +39,4 @@ module.exports = {
       'jest-transform-stub',
     '\\.(css|less)$': 'identity-obj-proxy',
   },
-  setupFilesAfterEnv: [ '@testing-library/jest-native/extend-expect' ],
 }
