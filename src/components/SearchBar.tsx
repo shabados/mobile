@@ -73,6 +73,7 @@ const SearchBar = ( {
         clearButtonMode="never"
         autoCorrect={false}
         autoCapitalize="none"
+        returnKeyType="search"
         onChangeText={handleChangeText}
         {...props}
       />
