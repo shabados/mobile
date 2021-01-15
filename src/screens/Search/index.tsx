@@ -1,7 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react'
-import { RouteProp, useNavigation } from '@react-navigation/native'
-import { ResultOptions, useQuery } from 'react-query'
-import { Alert } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { useQuery } from 'react-query'
 
 import Screens from '../../lib/screens'
 import { search } from '../../data/lines'

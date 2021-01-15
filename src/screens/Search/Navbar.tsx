@@ -2,8 +2,6 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-import Colours from '../../themes/colours'
-import { px } from '../../themes/utils'
 import Navbar from '../../components/Navbar'
 import SearchBar, { SearchBarProps } from '../../components/SearchBar'
 import BackButton from '../../components/BackButton'
