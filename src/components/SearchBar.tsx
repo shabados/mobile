@@ -67,6 +67,7 @@ const SearchBar = ( {
       <TextInput
         ref={inputRef}
         placeholder="Search"
+        keyboardAppearance="dark"
         placeholderTextColor={Colours.TintedWhite}
         style={styles.searchInputBox}
         clearButtonMode="never"
