@@ -9,4 +9,6 @@ export type LineData = {
   id: string,
   gurmukhi: string,
   translations: TranslationData[],
+  sourcePage: number,
+  sourceLine: number,
 }
