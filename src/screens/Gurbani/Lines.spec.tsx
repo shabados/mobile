@@ -7,7 +7,9 @@ import Lines from './Lines'
 
 describe( '<Lines />', () => {
   it( 'should render all supplied lines', async () => {
-    const lines = factories.line.buildList( 15 )
+    const lines = factories.line
+      .buildList( 15 )
+      .map( ( { gurmukhi, ...rest }, index ) => ( { gurmukhi: `line-${index}`, ...rest } ) )
 
     const { findByText, queryByText, getByText } = render( <Lines lines={lines} /> )
 
