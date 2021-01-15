@@ -8,15 +8,15 @@ import { gurbaniScreen } from './screens/Gurbani'
 
 const screens = [ gurbaniScreen, searchScreen ]
 
-const Stack = createStackNavigator()
+const { Screen, Navigator } = createStackNavigator()
 
-type ScreenProps = Parameters<typeof Stack.Screen>[0]
+type ScreenProps = Parameters<typeof Screen>[0]
 
 const App = () => (
   <NavigationContainer>
-    <Stack.Navigator mode="modal">
-      {screens.map( ( props: ScreenProps ) => <Stack.Screen key={props.name} {...props} /> )}
-    </Stack.Navigator>
+    <Navigator mode="modal">
+      {screens.map( ( props: ScreenProps ) => <Screen key={props.name} {...props} /> )}
+    </Navigator>
   </NavigationContainer>
 )
 
