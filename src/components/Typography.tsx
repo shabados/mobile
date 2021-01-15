@@ -7,7 +7,6 @@ import Fonts from '../themes/fonts'
 const styles = StyleSheet.create( {
   base: {
     color: Colours.White,
-    fontFamily: Fonts.NotoSansRegular,
   },
   body: {},
   button: {
