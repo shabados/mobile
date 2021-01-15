@@ -29,6 +29,9 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  root: {
+    marginTop: 'auto',
+  },
   searchBarContainer: {
     flex: 1,
   },
@@ -41,7 +44,7 @@ const BottomBar = () => {
   const onBookmarkPress = () => navigation.navigate( Screens.Bookmarks )
 
   return (
-    <SafeAreaView edges={[ 'bottom', 'left', 'right' ]}>
+    <SafeAreaView style={styles.root} edges={[ 'bottom', 'left', 'right' ]}>
       <View style={styles.background} />
 
       <View style={styles.container}>
