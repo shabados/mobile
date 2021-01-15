@@ -9,21 +9,6 @@ import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 import Typography from '../../components/Typography'
 
-export type LineProps = {
-  /**
-   * Gurmukhi line, in ASCII Gurmukhi form.
-   */
-  gurmukhi: string,
-  /**
-   * Translations, with accompanying languages.
-   */
-  translations: TranslationData[],
-  /**
-   * Languages for which transliterations will be generated.
-   */
-  transliterations: ( Languages.English | Languages.Hindi | Languages.Urdu )[],
-}
-
 const styles = StyleSheet.create( {
   gurbani: {
     fontFamily: Fonts.OpenGurbaniAkharBlack,
@@ -38,6 +23,21 @@ const styles = StyleSheet.create( {
     ...py( 2 ),
   },
 } )
+
+export type LineProps = {
+  /**
+   * Gurmukhi line, in ASCII Gurmukhi form.
+   */
+  gurmukhi: string,
+  /**
+   * Translations, with accompanying languages.
+   */
+  translations: TranslationData[],
+  /**
+   * Languages for which transliterations will be generated.
+   */
+  transliterations: ( Languages.English | Languages.Hindi | Languages.Urdu )[],
+}
 
 /**
  * Renders the Gurmukhi, any translations, and transliterates the Gurmukhi.
