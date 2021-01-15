@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { render } from '@testing-library/react-native'
 import { when } from 'jest-when'
 
+import factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../data/shabads'
 
@@ -25,9 +26,7 @@ describe( '<GurbaniScreen />', () => {
     const getShabadMock = jest.spyOn( shabads, 'getShabad' )
     when( getShabadMock )
       .calledWith( 'DMP' )
-      .mockResolvedValue( [
-        { id: '123', gurmukhi: 'test-gurmukhi', translations: [] },
-      ] )
+      .mockResolvedValue( factories.line.buildList( 5 ) )
 
     it( 'should render a bottom bar', () => {
       const { unmount, getByPlaceholderText } = render( <GurbaniScreen />, { wrapper } )

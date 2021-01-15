@@ -1,14 +1,13 @@
 import React from 'react'
 import { fireEvent, render } from '@testing-library/react-native'
 
+import factories from '../../../test/factories'
+
 import Lines from './Lines'
 
 describe( '<Lines />', () => {
   it( 'should render all supplied lines', async () => {
-    const lines = Array.from(
-      { length: 15 },
-      ( _, index ) => ( { gurmukhi: `line-${index}`, id: `${index}`, translations: [] } ),
-    )
+    const lines = factories.line.buildList( 15 )
 
     const { findByText, queryByText, getByText } = render( <Lines lines={lines} /> )
 
