@@ -5,6 +5,5 @@ export type NavigationParams = {
   [Screens.Bookmarks]: {currentFolder?: string, folderData: Folder[]},
   [Screens.Home]: undefined,
   [Screens.Search]: undefined,
-  [Screens.Tabs]: undefined,
-  [Screens.History]: undefined,
+  [Screens.Gurbani]: undefined,
 }
