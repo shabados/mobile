@@ -35,4 +35,9 @@ const BookmarksScreen = () => {
   )
 }
 
-export { BookmarksScreen }
+export const bookmarksScreen = {
+  name: Screens.Bookmarks,
+  component: BookmarksScreen,
+}
+
+export default BookmarksScreen

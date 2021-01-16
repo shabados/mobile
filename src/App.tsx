@@ -5,9 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack'
 import withContexts from './components/with-contexts'
 import { searchScreen } from './screens/Search'
 import { gurbaniScreen } from './screens/Gurbani'
+import { bookmarksScreen } from './screens/BookmarksScreen'
 import { AppStackParams } from './lib/screens'
 
-const screens = [ gurbaniScreen, searchScreen ]
+const screens = [ gurbaniScreen, searchScreen, bookmarksScreen ]
 
 const { Screen, Navigator } = createStackNavigator<AppStackParams>()
 
