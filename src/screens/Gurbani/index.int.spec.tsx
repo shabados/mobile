@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { render } from '@testing-library/react-native'
@@ -7,30 +7,30 @@ import { when } from 'jest-when'
 import factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../data/shabads'
+import { AppStackParams } from '../../lib/screens'
 
-import GurbaniScreen from '.'
+import { gurbaniScreen } from '.'
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator<AppStackParams>()
 
-type WrapperProps = { children: ReactNode }
-const wrapper = ( { children }: WrapperProps ) => withContexts(
+const GurbaniScreenWrapper = () => withContexts(
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="default">{() => children}</Stack.Screen>
+      <Stack.Screen {...gurbaniScreen} />
     </Stack.Navigator>
   </NavigationContainer>,
 )
 
 describe( '<GurbaniScreen />', () => {
   describe( 'on mount', () => {
-    const lineData = factories.line.buildList( 5 )
+    const shabadData = factories.shabad.build()
     const getShabadMock = jest.spyOn( shabads, 'getShabad' )
     when( getShabadMock )
       .calledWith( 'DMP' )
-      .mockResolvedValue( lineData )
+      .mockResolvedValue( shabadData )
 
     it( 'should render a bottom bar', () => {
-      const { unmount, getByPlaceholderText } = render( <GurbaniScreen />, { wrapper } )
+      const { unmount, getByPlaceholderText } = render( <GurbaniScreenWrapper /> )
 
       expect( getByPlaceholderText( 'Search' ) ).toBeTruthy()
 
@@ -38,9 +38,9 @@ describe( '<GurbaniScreen />', () => {
     } )
 
     it( 'should load and render a target shabad', async () => {
-      const { unmount, findByText } = render( <GurbaniScreen />, { wrapper } )
+      const { unmount, findByText } = render( <GurbaniScreenWrapper /> )
 
-      expect( await findByText( lineData[ 0 ].gurmukhi ) ).toBeTruthy()
+      expect( await findByText( shabadData.lines[ 0 ].gurmukhi ) ).toBeTruthy()
 
       unmount()
     } )

@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useState } from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 
-import Screens from '../../lib/screens'
-import { search } from '../../data/lines'
+import Screens, { AppStackParams } from '../../lib/screens'
+import { search } from '../../data/search'
 import Container from '../../components/Container'
 
 import Results, { ResultsProps } from './Results'
@@ -12,18 +12,19 @@ import Navbar from './Navbar'
 type SearchQuery = { queryKey: [string] }
 const searchQuery = ( { queryKey }: SearchQuery ) => search( ...queryKey )
 
-const SearchScreen = () => {
+export type SearchScreenProps = StackScreenProps<AppStackParams, Screens.Search>
+
+const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   const [ searchValue, setSearch ] = useState( '' )
   const { data } = useQuery( searchValue, searchQuery )
 
   const handleTextChange = ( text: string ) => setSearch( text )
 
-  const navigation = useNavigation()
   useLayoutEffect( () => navigation.setOptions( {
     header: () => ( <Navbar onSearchChange={handleTextChange} /> ),
-  } ) )
+  } ), [ navigation ] )
 
-  const openShabad: ResultsProps['onPress'] = ( shabad ) => navigation.navigate( Screens.Gurbani, shabad )
+  const openShabad: ResultsProps['onPress'] = ( { shabad: { id } } ) => navigation.navigate( Screens.Gurbani, { shabadId: id } )
 
   return (
     <Container>

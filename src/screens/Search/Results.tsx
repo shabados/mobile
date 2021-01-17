@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, FlatList, View } from 'react-native'
 
-import { LineData } from '../../types/data'
+import { SearchData } from '../../types/data'
 
 import Result from './Result'
 
@@ -17,8 +17,8 @@ const styles = StyleSheet.create( {
 } )
 
 export type ResultsProps = {
-  results: LineData[],
-  onPress?: ( line: LineData ) => void,
+  results: SearchData[],
+  onPress?: ( line: SearchData ) => void,
 }
 
 const Results = ( {
@@ -30,20 +30,26 @@ const Results = ( {
     <FlatList
       {...props}
       data={results}
+      keyExtractor={( { line: { id } } ) => id}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
       renderItem={( {
         index,
         item: {
-          translations,
-          gurmukhi,
-          sourcePage,
-          id,
+          line: {
+            id,
+            translations,
+            gurmukhi,
+            sourcePage,
+          },
+          shabad: {
+            source: { nameGurmukhi, pageNameGurmukhi },
+          },
         },
       } ) => (
         <Result
           key={id}
-          page={sourcePage}
-          source="SRI gurU gRMQ swihb jI"
+          page={`${pageNameGurmukhi} ${sourcePage}`}
+          source={nameGurmukhi}
           translation={translations[ 0 ].translation}
           gurmukhi={gurmukhi}
           onPress={() => onPress( results[ index ] )}

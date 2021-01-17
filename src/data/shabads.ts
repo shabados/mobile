@@ -1,8 +1,47 @@
-import { LineData } from '../types/data'
+import { ShabadData } from '../types/data'
+import Languages from '../lib/languages'
 
-import data from './mock/sggs-first-shabad.json'
+import * as gurbaniNow from './gurbaninow'
 
-export const getShabad = ( _id: string ) => new Promise<LineData[]>( ( resolve ) => setTimeout(
-  () => resolve( data ),
-  50,
-) )
+export const getShabad = async ( id: string ): Promise<ShabadData> => {
+  const {
+    shabadinfo: { shabadid, source, writer, pageno },
+    shabad,
+  } = await gurbaniNow.getShabad( id )
+
+  return {
+    id: shabadid,
+    source: {
+      id: source.id,
+      length: source.length,
+      nameGurmukhi: source.akhar,
+      pageNameGurmukhi: source.pageName.akhar,
+    },
+    writer: {
+      id: writer.id,
+      nameGurmukhi: writer.akhar,
+    },
+    lines: shabad.map( ( { line: { id, translation, gurmukhi, linenum } } ) => ( {
+      id,
+      gurmukhi: gurmukhi.akhar,
+      sourceLine: linenum,
+      //! This is wrong for each line, but API doesn't provide this
+      sourcePage: pageno,
+      //! translationSourceId is just set per language for now
+      translations: [
+        {
+          translationSourceId: Languages.English,
+          translation: translation.english.default,
+        },
+        {
+          translationSourceId: Languages.Punjabi,
+          translation: translation.punjabi.default.akhar,
+        },
+        {
+          translationSourceId: Languages.Spanish,
+          translation: translation.spanish,
+        },
+      ].filter( ( { translation } ) => translation ),
+    } ) ),
+  }
+}

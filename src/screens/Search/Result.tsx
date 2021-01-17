@@ -36,13 +36,13 @@ const styles = StyleSheet.create( {
 
 export type ResultDataProps = {
   /**
-   * Name of gurbani source
+   * Name of gurbani source.
    */
   source: string,
   /**
-   * Page number in source
+   * Page string including page name.
    */
-  page: number,
+  page: string,
   /**
    * Last accessed date
    */
@@ -80,7 +80,7 @@ const Result = ( {
   <Pressable style={[ styles.root, style ]} {...props}>
     <View style={styles.header}>
       <Typography style={styles.subText}>{toUnicode( source )}</Typography>
-      <Typography style={styles.subText}>{toUnicode( `AMg ${page}` )}</Typography>
+      <Typography style={styles.subText}>{toUnicode( page )}</Typography>
       <Typography style={styles.subText}>{getShortDate( lastViewedAt )}</Typography>
     </View>
 
