@@ -6,18 +6,21 @@ import Colours from '../../themes/colours'
 import { py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
+  chevron: {
+    color: Colours.TintedWhite,
+  },
   container: {
     ...py( 15 ),
     paddingLeft: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottomWidth: 2,
-    backgroundColor: Colours.White,
-    borderBottomColor: Colours.MediumGray,
+    borderBottomWidth: 1,
+    borderBottomColor: Colours.LightGray,
   },
   title: {
-    fontSize: 16,
+    color: Colours.TintedWhite,
+    fontSize: 18,
   },
 } )
 
@@ -30,7 +33,7 @@ type BookmarkListItemProps = {
 const BookmarkListItem = ( { title, isFolder, onPress, ...props }: BookmarkListItemProps ) => (
   <Pressable style={styles.container} onPress={onPress} {...props}>
     <Text style={styles.title}>{title}</Text>
-    {isFolder && <Icon name="chevron-right" size={25} />}
+    {isFolder && <Icon style={styles.chevron} name="chevron-right" size={25} />}
   </Pressable>
 )
 
