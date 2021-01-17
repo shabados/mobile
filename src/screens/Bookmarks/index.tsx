@@ -3,9 +3,10 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import React from 'react'
 import { Alert } from 'react-native'
 
-import { BookmarksList } from '../components/Bookmarks'
-import Screens from '../lib/screens'
-import { NavigationParams } from '../types/navigation'
+import { BookmarksList } from '../../components/Bookmarks'
+import Container from '../../components/Container'
+import Screens from '../../lib/screens'
+import { NavigationParams } from '../../types/navigation'
 
 type Route = RouteProp<NavigationParams, Screens.Bookmarks>
 type Navigation = StackNavigationProp<NavigationParams, Screens.Bookmarks>
@@ -31,13 +32,18 @@ const BookmarksScreen = () => {
   }
 
   return (
-    <BookmarksList data={folderData} onItemPress={onItemPress} />
+    <Container>
+      <BookmarksList data={folderData} onItemPress={onItemPress} />
+    </Container>
   )
 }
 
 export const bookmarksScreen = {
   name: Screens.Bookmarks,
   component: BookmarksScreen,
+  options: {
+    cardStyle: { backgroundColor: 'transparent' },
+  },
 }
 
 export default BookmarksScreen
