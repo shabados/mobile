@@ -8,6 +8,8 @@ import Container from '../../components/Container'
 import Screens from '../../lib/screens'
 import { NavigationParams } from '../../types/navigation'
 
+import Navbar from './Navbar'
+
 type Route = RouteProp<NavigationParams, Screens.Bookmarks>
 type Navigation = StackNavigationProp<NavigationParams, Screens.Bookmarks>
 
@@ -42,6 +44,7 @@ export const bookmarksScreen = {
   name: Screens.Bookmarks,
   component: BookmarksScreen,
   options: {
+    header: Navbar,
     cardStyle: { backgroundColor: 'transparent' },
   },
 }
