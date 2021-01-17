@@ -1,10 +1,11 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 
 import Screens, { AppStackParams } from '../../lib/screens'
 import { search } from '../../data/search'
 import Container from '../../components/Container'
+import { SearchData } from '../../types/data'
 
 import Results, { ResultsProps } from './Results'
 import Navbar from './Navbar'
@@ -16,7 +17,10 @@ export type SearchScreenProps = StackScreenProps<AppStackParams, Screens.Search>
 
 const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   const [ searchValue, setSearch ] = useState( '' )
-  const { data } = useQuery( searchValue, searchQuery )
+
+  const previousData = useRef<SearchData[]>()
+  const { data } = useQuery( searchValue, searchQuery, { placeholderData: previousData.current } )
+  useEffect( () => { previousData.current = data }, [ data ] )
 
   const handleTextChange = ( text: string ) => setSearch( text )
 
@@ -28,7 +32,7 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
 
   return (
     <Container>
-      {!!searchValue.length && data && ( <Results results={data} onPress={openShabad} /> )}
+      {data && ( <Results results={data} onPress={openShabad} /> )}
     </Container>
   )
 }
