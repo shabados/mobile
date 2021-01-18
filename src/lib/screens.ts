@@ -1,3 +1,4 @@
+import { ContentTypes } from '../types/data'
 import { Override } from '../types/utils'
 
 enum Screens {
@@ -8,7 +9,7 @@ enum Screens {
 }
 
 export type AppStackParams = Override<{ [screen in Screens]: undefined }, {
-  [Screens.Gurbani]: { shabadId: string },
+  [Screens.Gurbani]: { id: string, type: ContentTypes },
 }>
 
 export default Screens

@@ -48,7 +48,8 @@ export type ShabadResponse = {
 
 export type BaniResponse = {
   baniinfo: {
-    id: number,
+    id: string,
+    akhar: string,
     unicode: string,
     english: string,
     pageno: number,

@@ -2,7 +2,6 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { render } from '@testing-library/react-native'
-import { when } from 'jest-when'
 
 import factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
@@ -24,10 +23,7 @@ const GurbaniScreenWrapper = () => withContexts(
 describe( '<GurbaniScreen />', () => {
   describe( 'on mount', () => {
     const shabadData = factories.shabad.build()
-    const getShabadMock = jest.spyOn( shabads, 'getShabad' )
-    when( getShabadMock )
-      .calledWith( 'DMP' )
-      .mockResolvedValue( shabadData )
+    jest.spyOn( shabads, 'getShabad' ).mockResolvedValue( shabadData )
 
     it( 'should render a bottom bar', () => {
       const { unmount, getByPlaceholderText } = render( <GurbaniScreenWrapper /> )
