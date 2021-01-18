@@ -1,32 +1,54 @@
 import React from 'react'
-import { FlatList, FlatListProps, View } from 'react-native'
+import { FlatList, View, Alert } from 'react-native'
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 
-import { Folder } from './types'
+import Screens from '../../lib/screens'
+import { NavigationParams } from '../../types/navigation'
+
 import { checkIsFolder } from './utils'
 import Item from './Item'
 
-type BookmarksListProps = {
-  data: Folder[],
-  onItemPress: ( isFolder: boolean, name: string ) => void,
-} & Omit<FlatListProps<Folder>, 'renderItem' | 'keyExtractor' | 'renderItem'>
+type Route = RouteProp<NavigationParams, Screens.Bookmarks>
+type Navigation = StackNavigationProp<NavigationParams, Screens.Bookmarks>
 
-const BookmarksList = ( { data, onItemPress }: BookmarksListProps ) => (
-  <View>
-    <FlatList
-      keyExtractor={( { name } ) => name}
-      data={data}
-      renderItem={( { item } ) => {
-        const isFolder = checkIsFolder( item )
-        return (
-          <Item
-            title={item.name}
-            isFolder={isFolder}
-            onPress={() => onItemPress( isFolder, item.name )}
-          />
-        )
-      }}
-    />
-  </View>
-)
+const BookmarksList = () => {
+  const route = useRoute<Route>()
+  const navigation = useNavigation<Navigation>()
+
+  const { folderData } = route.params
+
+  const onItemPress = ( isFolder: boolean, name: string ) => {
+    if ( isFolder ) {
+      navigation.push( Screens.Bookmarks,
+        {
+          folderData:
+          folderData.find( ( folder ) => folder.name === name )?.bookmarks
+          || folderData,
+          currentFolder: name,
+        } )
+    } else {
+      Alert.alert( `you clicked on ${name}` )
+    }
+  }
+  return (
+    <View>
+      <FlatList
+        keyExtractor={( { name } ) => name}
+        data={folderData}
+        renderItem={( { item } ) => {
+          const isFolder = checkIsFolder( item )
+          return (
+            <Item
+              title={item.name}
+              isFolder={isFolder}
+              onPress={() => onItemPress( isFolder, item.name )}
+            />
+          )
+        }}
+      />
+    </View>
+  )
+}
 
 export default BookmarksList
