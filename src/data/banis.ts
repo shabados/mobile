@@ -1,16 +1,17 @@
-import { ShabadData } from '../types/data'
+import { BaniData } from '../types/data'
 import Languages from '../lib/languages'
 
 import * as gurbaniNow from './gurbaninow'
 
-export const getShabad = async ( id: string ): Promise<ShabadData> => {
+export const getBani = async ( id: string ): Promise<BaniData> => {
   const {
-    shabadinfo: { source, writer, pageno },
-    shabad,
-  } = await gurbaniNow.getShabad( id )
+    baniinfo: { source, writer, akhar },
+    bani,
+  } = await gurbaniNow.getBani( id )
 
   return {
     id,
+    nameGurmukhi: akhar,
     source: {
       id: source.id,
       length: source.length,
@@ -21,11 +22,10 @@ export const getShabad = async ( id: string ): Promise<ShabadData> => {
       id: writer.id,
       nameGurmukhi: writer.akhar,
     },
-    lines: shabad.map( ( { line: { id, translation, gurmukhi, linenum } } ) => ( {
+    lines: bani.map( ( { line: { id, translation, gurmukhi, lineno, pageno } } ) => ( {
       id,
       gurmukhi: gurmukhi.akhar,
-      sourceLine: linenum,
-      //! This is wrong for each line, but API doesn't provide this
+      sourceLine: lineno,
       sourcePage: pageno,
       //! translationSourceId is just set per language for now
       translations: [

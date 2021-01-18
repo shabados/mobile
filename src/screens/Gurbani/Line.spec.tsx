@@ -19,11 +19,11 @@ describe( '<Line />', () => {
     expect( getByText( 'ihr' ) ).toBeTruthy()
   } )
 
-  it( 'should render only translations with translationSourceId=1', () => {
+  it( 'should render only translations with translationSourceId=0 (English)', () => {
     const { queryByText } = render( <Line
       {...testProps}
       translations={[
-        { translation: '1', translationSourceId: 1 },
+        { translation: '1', translationSourceId: Languages.English },
         { translation: '2', translationSourceId: 2 },
       ]}
     /> )

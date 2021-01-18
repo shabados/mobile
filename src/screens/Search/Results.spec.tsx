@@ -7,13 +7,13 @@ import SearchResults from './Results'
 
 describe( '<SearchResults />', () => {
   it( 'should render all search results', async () => {
-    const results = factories.line.buildList( 15 )
+    const results = factories.search.buildList( 15 )
 
     const { getByText, queryByText, findByText } = render( <SearchResults results={results} /> )
 
-    const container = getByText( results[ 0 ].gurmukhi ).parent!
+    const container = getByText( results[ 0 ].line.gurmukhi ).parent!
 
-    await results.reduce( async ( promise, { gurmukhi } ) => {
+    await results.reduce( async ( promise, { line: { gurmukhi } } ) => {
       await promise
 
       let resultElement = queryByText( gurmukhi )

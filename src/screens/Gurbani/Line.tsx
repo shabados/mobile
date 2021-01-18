@@ -50,10 +50,12 @@ const Line = ( {
   <View style={styles.root}>
     <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
 
-    {translations.filter( ( { translationSourceId } ) => translationSourceId === 1 ).map( ( {
-      translationSourceId,
-      translation,
-    } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
+    {translations
+      .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
+      .map( ( {
+        translationSourceId,
+        translation,
+      } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
 
     {transliterations.map( ( language ) => (
       <Typography

@@ -9,7 +9,7 @@ describe( '<SearchResult />', () => {
       <Result
         gurmukhi="line"
         source="source"
-        page={1}
+        page="AMg 1"
         translation="translation"
       />,
     )
@@ -24,7 +24,7 @@ describe( '<SearchResult />', () => {
       <Result
         gurmukhi="line"
         source="source"
-        page={1}
+        page="AMg 1"
         translation="translation"
         lastViewedAt={lastViewedAt}
       />,
@@ -40,7 +40,7 @@ describe( '<SearchResult />', () => {
       <Result
         gurmukhi="line"
         source="source"
-        page={1}
+        page="AMg 1"
         translation="translation"
         onPress={onPress}
       />,
