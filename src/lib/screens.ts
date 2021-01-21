@@ -1,9 +1,15 @@
+import { ContentTypes } from '../types/data'
+import { Override } from '../types/utils'
+
 enum Screens {
   Home = 'Home',
   Search = 'Search',
-  Tabs = 'Tabs',
   Bookmarks = 'Bookmarks',
-  History = 'History',
+  Gurbani = 'Gurbani',
 }
+
+export type AppStackParams = Override<{ [screen in Screens]: undefined }, {
+  [Screens.Gurbani]: { id: string, type: ContentTypes },
+}>
 
 export default Screens

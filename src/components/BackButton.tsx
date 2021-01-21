@@ -1,16 +1,17 @@
 import React from 'react'
-import { Text, StyleSheet, TouchableOpacityProps } from 'react-native'
+import { Text, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 
 import Colours from '../themes/colours'
+
+import Button, { ButtonProps } from './Button'
 
 export type BackButtonProps = {
   /**
    * Value back button should display
    */
   label?: string | JSX.Element,
-} & Omit<TouchableOpacityProps, 'onPress' | 'children'>
+} & ButtonProps
 
 const styles = StyleSheet.create( {
   label: {
@@ -19,15 +20,18 @@ const styles = StyleSheet.create( {
   },
 } )
 
+/**
+ * Button to navigate to previous page.
+ */
 const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
   const navigation = useNavigation()
 
   const goBack = () => navigation.goBack()
 
   return (
-    <TouchableOpacity onPress={goBack} {...props}>
+    <Button onPress={goBack} {...props}>
       {typeof label === 'string' ? <Text style={styles.label}>{label}</Text> : label}
-    </TouchableOpacity>
+    </Button>
   )
 }
 
