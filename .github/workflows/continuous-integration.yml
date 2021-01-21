@@ -92,3 +92,49 @@ jobs:
 
       - name: Run tests
         run: npm run test:types
+
+  ios-e2e:
+    name: iOS End to End Tests
+    runs-on: macos-latest
+    needs: lint
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_12.2.app
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+            ${{ runner.OS }}-
+
+      - name: Install npm dependencies
+        run: npm i
+
+      - name: Cache Pods
+        uses: actions/cache@v1
+        id: podcache
+        with:
+          path: ios/Pods
+          key: pods-${{ hashFiles('**/Podfile.lock') }}
+
+      - name: Install dependencies for Detox
+        run: |
+          brew tap wix/brew
+          brew install applesimutils
+
+      - name: Build iOS
+        run: npm run build:e2e-ios
+
+      - name: Run E2E Tests
+        run: npm run e2e:ios -- --cleanup
