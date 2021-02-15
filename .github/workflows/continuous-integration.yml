@@ -142,6 +142,7 @@ jobs:
   android-e2e:
     name: Android End to End tests
     runs-on: macos-latest
+    needs: lint
 
     steps:
       - name: Checkout
@@ -151,6 +152,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+
+      - name: Use JDK 1.8
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+          java-package: jdk
+          architecture: x64
 
       - name: Cache Node.js modules
         uses: actions/cache@v1
@@ -164,17 +172,10 @@ jobs:
       - name: Install npm dependencies
         run: npm i
 
-      - name: Use specific Java version for sdkmanager to work
-        uses: joschi/setup-jdk@v1
-        with:
-          java-version: 'openjdk8'
-          architecture: 'x64'
-
       - name: Download Android Emulator Image
         run: |
-          echo "y" | $ANDROID_HOME/tools/bin/sdkmanager --install "system-images;android-29;google_apis;x86"
-          echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd --force --name emu --device "Nexus 5X" -k 'system-images;android-29;google_apis;x86'
-          $ANDROID_HOME/emulator/emulator -list-avds
+          echo y | sudo $ANDROID_HOME/tools/bin/sdkmanager --verbose "system-images;android-27;google_apis;x86"
+          $ANDROID_HOME/tools/bin/avdmanager create avd -n emu -k "system-images;android-27;google_apis;x86" -b "x86" -c 1G -d 7 -f
 
       - name: Build Android
         run: npm run build:e2e-android
