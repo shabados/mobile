@@ -1,7 +1,6 @@
 import React from 'react'
-import { Image, StyleSheet, ToastAndroid, TouchableWithoutFeedback } from 'react-native'
+import { Image, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
-import { useNavigation } from '@react-navigation/native'
 
 import logo from '../../../assets/images/logo.png'
 import Colours from '../../themes/colours'
@@ -28,34 +27,33 @@ const styles = StyleSheet.create( {
 /**
  * Navbar component for main header.
  */
-const GurbaniNavbar = () => {
-  const navigation = useNavigation()
-  return (
-    <Navbar
-      left={(
-        <TouchableWithoutFeedback onPress={() => {
-          navigation.openDrawer()
-        }}
-        >
-          <Icon style={styles.headerIcon} name="menu" />
-        </TouchableWithoutFeedback>
+const GurbaniNavbar = () => (
+  <Navbar
+    left={(
+      <TouchableWithoutFeedback onPress={() => {
+        // navigation.dispatch(
+        //     DrawerActions.toggleDrawer('ghtgh')
+        // )
+      }}
+      >
+        <Icon style={styles.headerIcon} name="menu" />
+      </TouchableWithoutFeedback>
       )}
-      right={(
-        <TouchableWithoutFeedback onPress={() => {
-          navigation.openDrawer()
-        }}
-        >
-          <Icon style={styles.headerIcon} name="ios-options-outline" />
-        </TouchableWithoutFeedback>
+    right={(
+      <TouchableWithoutFeedback onPress={() => {
+        // navigation.openDrawer()
+      }}
+      >
+        <Icon style={styles.headerIcon} name="ios-options-outline" />
+      </TouchableWithoutFeedback>
       )}
-      main={(
-        <>
-          <Image style={styles.logo} source={logo} />
-          <Typography variant="header" style={styles.heading}>Shabad OS</Typography>
-        </>
+    main={(
+      <>
+        <Image style={styles.logo} source={logo} />
+        <Typography variant="header" style={styles.heading}>Shabad OS</Typography>
+      </>
             )}
-    />
-  )
-}
+  />
+)
 
 export default GurbaniNavbar
