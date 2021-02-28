@@ -6,6 +6,8 @@ enum Screens {
   Search = 'Search',
   Bookmarks = 'Bookmarks',
   Gurbani = 'Gurbani',
+  LDrawer = 'LDrawer',
+  RDrawer = 'RDrawer',
 }
 
 export type AppStackParams = Override<{ [screen in Screens]: undefined }, {
