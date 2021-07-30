@@ -5,12 +5,12 @@ import {
   ViewProps,
 } from 'react-native'
 
-import Colours from '../themes/colours'
+import Colors from '../themes/colors'
 
 const styles = StyleSheet.create( {
   main: {
     flex: 1,
-    backgroundColor: Colours.MediumGray,
+    backgroundColor: Colors.MediumGray,
     paddingTop: 10,
   },
 } )

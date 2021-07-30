@@ -2,11 +2,11 @@ import React, { ReactNode } from 'react'
 import { StatusBar, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import Colours from '../themes/colours'
+import Colors from '../themes/colors'
 
 const styles = StyleSheet.create( {
   header: {
-    backgroundColor: Colours.DarkGray,
+    backgroundColor: Colors.DarkGray,
     flexDirection: 'row',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -46,7 +46,7 @@ type NavbarProps = {
  * Works with react navigation.
  */
 const Navbar = ( {
-  backgroundColor = Colours.DarkestGray,
+  backgroundColor = Colors.DarkestGray,
   main,
   left,
   right,

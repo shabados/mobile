@@ -3,13 +3,13 @@ import { View, StyleSheet, TextInput, TextInputProps, Pressable } from 'react-na
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import { OS } from '../lib/consts'
-import Colours from '../themes/colours'
+import Colors from '../themes/colors'
 import Fonts from '../themes/fonts'
 import { my } from '../themes/utils'
 
 const styles = StyleSheet.create( {
   clearButton: {
-    color: Colours.TintedWhite,
+    color: Colors.TintedWhite,
     opacity: 0.6,
   },
   clearButtonContainer: {
@@ -22,20 +22,20 @@ const styles = StyleSheet.create( {
     ...( OS.ios && { padding: 10 } ),
     flexDirection: 'row',
     borderRadius: 10,
-    backgroundColor: Colours.LightGray,
+    backgroundColor: Colors.LightGray,
     width: '100%',
     height: 36,
   },
   searchIcon: {
     ...my(),
     fontSize: 16,
-    color: Colours.TintedWhite,
+    color: Colors.TintedWhite,
   },
   searchInputBox: {
     flex: 1,
     fontFamily: Fonts.NotoSansRegular,
     marginLeft: 5,
-    color: Colours.TintedWhite,
+    color: Colors.TintedWhite,
     ...my(),
   },
 } )
@@ -68,7 +68,7 @@ const SearchBar = ( {
         ref={inputRef}
         placeholder="Search"
         keyboardAppearance="dark"
-        placeholderTextColor={Colours.TintedWhite}
+        placeholderTextColor={Colors.TintedWhite}
         style={styles.searchInputBox}
         clearButtonMode="never"
         autoCorrect={false}
