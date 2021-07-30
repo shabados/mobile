@@ -16,7 +16,7 @@ const styles = StyleSheet.create( {
     paddingRight: 20,
   },
   heading: {
-    ...px( 10 ),
+    ...px( 6 ),
   },
   logo: {
     width: 25,
