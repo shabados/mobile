@@ -65,9 +65,6 @@ export type ResultProps = PressableProps & ResultDataProps & {
   style?: ViewStyle,
 }
 
-// const getShortDate = ( date?: string ) => ( date
-//   ? new Date( date ).toLocaleDateString( 'en', { month: 'short', day: 'numeric' } )
-//   : '' )
 
 const Result = ( {
   style,
@@ -82,7 +79,6 @@ const Result = ( {
     <View style={styles.header}>
       <Typography style={styles.subText}>{toUnicode( source )}</Typography>
       <Typography style={styles.subText}>{toUnicode( page )}</Typography>
-      {/* <Typography style={styles.subText}>{getShortDate( lastViewedAt )}</Typography> */}
     </View>
 
     <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>

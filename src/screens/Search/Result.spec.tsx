@@ -17,21 +17,6 @@ describe( '<SearchResult />', () => {
     expect( getByText( 'ਅੰਗ ੧' ) ).toBeTruthy()
   } )
 
-  // it( 'should render a last viewed at date, if supplied', () => {
-  //   const lastViewedAt = new Date( '21 September 2020' ).toJSON()
-
-  //   const { getByText } = render(
-  //     <Result
-  //       gurmukhi="line"
-  //       source="source"
-  //       page="AMg 1"
-  //       translation="translation"
-  //       lastViewedAt={lastViewedAt}
-  //     />,
-  //   )
-
-  //   expect( getByText( 'Sep 21' ) ).toBeTruthy()
-  // } )
 
   it( 'given a press, should fire onPress', () => {
     const onPress = jest.fn()
