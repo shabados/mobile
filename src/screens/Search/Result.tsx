@@ -65,7 +65,6 @@ export type ResultProps = PressableProps & ResultDataProps & {
   style?: ViewStyle,
 }
 
-
 const Result = ( {
   style,
   source,

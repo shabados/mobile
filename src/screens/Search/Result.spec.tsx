@@ -17,7 +17,6 @@ describe( '<SearchResult />', () => {
     expect( getByText( 'ਅੰਗ ੧' ) ).toBeTruthy()
   } )
 
-
   it( 'given a press, should fire onPress', () => {
     const onPress = jest.fn()
 
