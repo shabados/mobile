@@ -10,7 +10,7 @@ import { px, py } from '../../themes/utils'
 const styles = StyleSheet.create( {
   gurbani: {
     fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 18,
+    fontSize: 16,
     paddingBottom: 0,
     color: Colors.PrimaryText,
   },
@@ -20,18 +20,18 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
   },
   root: {
-    ...px( 10 ),
-    ...py( 7 ),
+    ...px( 12 ),
+    ...py( 12 ),
   },
   subText: {
     color: Colors.SecondaryText,
+    fontSize: 14,
   },
   text: {
-    ...py( 10 ),
+    ...py( 6 ),
   },
   translation: {
-    ...py( 5 ),
-    fontSize: 12,
+    ...py( 6 ),
   },
 } )
 
