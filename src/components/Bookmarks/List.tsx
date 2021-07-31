@@ -1,16 +1,24 @@
 import React from 'react'
-import { FlatList, View, Alert } from 'react-native'
+import { FlatList, View, Alert, StyleSheet } from 'react-native'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
 import Screens from '../../lib/screens'
 import { NavigationParams } from '../../types/navigation'
+import Colors from '../../themes/colors'
 
 import { checkIsFolder } from './utils'
 import Item from './Item'
 
 type Route = RouteProp<NavigationParams, Screens.Bookmarks>
 type Navigation = StackNavigationProp<NavigationParams, Screens.Bookmarks>
+
+const styles = StyleSheet.create( {
+  screen: {
+    flex: 1,
+    backgroundColor: Colors.ModalSheet,
+  },
+} )
 
 const BookmarksList = () => {
   const route = useRoute<Route>()
@@ -31,8 +39,9 @@ const BookmarksList = () => {
       Alert.alert( `you clicked on ${name}` )
     }
   }
+
   return (
-    <View>
+    <View style={styles.screen}>
       <FlatList
         keyExtractor={( { name } ) => name}
         data={folderData}

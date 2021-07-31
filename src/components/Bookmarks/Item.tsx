@@ -2,12 +2,12 @@ import React from 'react'
 import { Pressable, PressableProps, StyleSheet, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-import Colours from '../../themes/colours'
+import Colors from '../../themes/colors'
 import { py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   chevron: {
-    color: Colours.TintedWhite,
+    color: Colors.PrimaryText,
   },
   container: {
     ...py( 15 ),
@@ -16,10 +16,10 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: Colours.LightGray,
+    borderBottomColor: Colors.Disabled,
   },
   title: {
-    color: Colours.TintedWhite,
+    color: Colors.PrimaryText,
     fontSize: 18,
   },
 } )

@@ -21,7 +21,7 @@ const BookmarksScreen = () => {
   return (
     <Container>
       <Navigator>
-        <Screen name={Screens.Bookmarks} component={BookmarksList} initialParams={folderData} />
+        <Screen name={Screens.Bookmarks} component={BookmarksList} initialParams={{ folderData }} />
       </Navigator>
     </Container>
   )
