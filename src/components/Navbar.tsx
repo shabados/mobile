@@ -6,7 +6,7 @@ import Colors from '../themes/colors'
 
 const styles = StyleSheet.create( {
   header: {
-    backgroundColor: Colors.DarkGray,
+    backgroundColor: Colors.ModalSheetTitleBar,
     flexDirection: 'row',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -46,7 +46,7 @@ type NavbarProps = {
  * Works with react navigation.
  */
 const Navbar = ( {
-  backgroundColor = Colors.DarkestGray,
+  backgroundColor = Colors.MainView,
   main,
   left,
   right,

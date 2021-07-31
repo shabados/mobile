@@ -6,11 +6,11 @@ import Fonts from '../themes/fonts'
 
 const styles = StyleSheet.create( {
   base: {
-    color: Colors.White,
+    color: Colors.PrimaryText,
   },
   body: {},
   button: {
-    color: Colors.TintedWhite,
+    color: Colors.PrimaryText,
   },
   header: {
     fontSize: 18,

@@ -1,12 +1,13 @@
 enum Colors {
-  Black = '#000000',
-  White = '#FFFFFF',
-  TintedWhite = '#CCCCCC',
-  Blue = '#2F7CF6',
-  LightGray = '#555555',
-  MediumGray = '#424242',
-  DarkGray = '#383838',
-  DarkestGray = '#2F2F2F',
+  MainView = '#000',
+  ModalSheet = '#1A1A1A',
+  ModalSheetTitleBar = '#242424',
+  InputBox = '#3C3C3C',
+  Separator = '#3C3C3C',
+  Disabled = '#3C3C3C',
+  PrimaryText = '#FFF',
+  SecondaryText = '#8A8A8A',
+  Dev = '#FF0000'
 }
 
 export default Colors

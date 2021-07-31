@@ -8,7 +8,7 @@ import Typography from './Typography'
 
 const styles = StyleSheet.create( {
   filled: {
-    backgroundColor: Colors.LightGray,
+    backgroundColor: Colors.InputBox,
   },
   pressed: {
     opacity: 0.6,

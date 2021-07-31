@@ -9,7 +9,7 @@ import { my } from '../themes/utils'
 
 const styles = StyleSheet.create( {
   clearButton: {
-    color: Colors.TintedWhite,
+    color: Colors.SecondaryText,
     opacity: 0.6,
   },
   clearButtonContainer: {
@@ -22,20 +22,20 @@ const styles = StyleSheet.create( {
     ...( OS.ios && { padding: 10 } ),
     flexDirection: 'row',
     borderRadius: 10,
-    backgroundColor: Colors.LightGray,
+    backgroundColor: Colors.InputBox,
     width: '100%',
     height: 36,
   },
   searchIcon: {
     ...my(),
     fontSize: 16,
-    color: Colors.TintedWhite,
+    color: Colors.SecondaryText,
   },
   searchInputBox: {
     flex: 1,
     fontFamily: Fonts.NotoSansRegular,
     marginLeft: 5,
-    color: Colors.TintedWhite,
+    color: Colors.PrimaryText,
     ...my(),
   },
 } )
@@ -68,7 +68,7 @@ const SearchBar = ( {
         ref={inputRef}
         placeholder="Search"
         keyboardAppearance="dark"
-        placeholderTextColor={Colors.TintedWhite}
+        placeholderTextColor={Colors.SecondaryText}
         style={styles.searchInputBox}
         clearButtonMode="never"
         autoCorrect={false}

@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
 import Typography from '../../components/Typography'
+import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 
@@ -11,7 +12,7 @@ const styles = StyleSheet.create( {
     fontFamily: Fonts.OpenGurbaniAkharBlack,
     fontSize: 18,
     paddingBottom: 0,
-    color: '#EDEDED',
+    color: Colors.PrimaryText,
   },
   header: {
     flexDirection: 'row',
@@ -23,7 +24,7 @@ const styles = StyleSheet.create( {
     ...py( 7 ),
   },
   subText: {
-    color: '#BCBCBC',
+    color: Colors.SecondaryText,
   },
   text: {
     ...py( 10 ),

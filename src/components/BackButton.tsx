@@ -15,7 +15,7 @@ export type BackButtonProps = {
 
 const styles = StyleSheet.create( {
   label: {
-    color: Colors.Blue,
+    color: Colors.PrimaryText,
     fontSize: 16,
   },
 } )

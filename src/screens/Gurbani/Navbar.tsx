@@ -11,7 +11,7 @@ import Navbar from '../../components/Navbar'
 const styles = StyleSheet.create( {
   headerIcon: {
     fontSize: 22,
-    color: Colors.White,
+    color: Colors.Disabled,
     paddingLeft: 20,
     paddingRight: 20,
   },
