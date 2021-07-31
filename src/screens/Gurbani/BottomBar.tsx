@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Screens from '../../lib/screens'
-import Colours from '../../themes/colours'
 import { px, py } from '../../themes/utils'
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
@@ -18,7 +17,6 @@ const styles = StyleSheet.create( {
     left: 0,
     right: 0,
     opacity: 0.9,
-    backgroundColor: Colours.MediumGray,
   },
   button: {
     fontSize: 26,

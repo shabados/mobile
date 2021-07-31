@@ -5,22 +5,27 @@ import { StyleSheet, View } from 'react-native'
 import { TranslationData } from '../../types/data'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
+import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 import Typography from '../../components/Typography'
 
 const styles = StyleSheet.create( {
   gurbani: {
+    color: Colors.PrimaryText,
     fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 18,
-    ...py( 0 ),
+    fontSize: 16,
+    lineHeight: 24,
   },
   root: {
-    ...px( 10 ),
-    ...py( 7 ),
+    ...px( 12 ),
+    ...py( 12 ),
   },
   text: {
-    ...py( 2 ),
+    color: Colors.SecondaryText,
+    fontSize: 14,
+    lineHeight: 24,
+    paddingTop: 6,
   },
 } )
 

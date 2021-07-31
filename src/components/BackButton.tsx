@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
-import Colours from '../themes/colours'
+import Colors from '../themes/colors'
 
 import Button, { ButtonProps } from './Button'
 
@@ -15,7 +15,7 @@ export type BackButtonProps = {
 
 const styles = StyleSheet.create( {
   label: {
-    color: Colours.Blue,
+    color: Colors.PrimaryText,
     fontSize: 16,
   },
 } )

@@ -1,16 +1,16 @@
 import React, { ReactNode } from 'react'
 import { StyleSheet, Text, TextProps } from 'react-native'
 
-import Colours from '../themes/colours'
+import Colors from '../themes/colors'
 import Fonts from '../themes/fonts'
 
 const styles = StyleSheet.create( {
   base: {
-    color: Colours.White,
+    color: Colors.PrimaryText,
   },
   body: {},
   button: {
-    color: Colours.TintedWhite,
+    color: Colors.PrimaryText,
   },
   header: {
     fontSize: 18,

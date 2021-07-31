@@ -1,14 +1,14 @@
 import React from 'react'
 import { Pressable, PressableProps, StyleSheet, ViewProps } from 'react-native'
 
-import Colours from '../themes/colours'
+import Colors from '../themes/colors'
 import { mx } from '../themes/utils'
 
 import Typography from './Typography'
 
 const styles = StyleSheet.create( {
   filled: {
-    backgroundColor: Colours.LightGray,
+    backgroundColor: Colors.InputBox,
   },
   pressed: {
     opacity: 0.6,
