@@ -27,6 +27,7 @@ type GurbaniScreenProps = StackScreenProps<AppStackParams, Screens.Gurbani>
 const GurbaniScreen = ( {
   route: { params: { id, type } },
 }: GurbaniScreenProps ) => {
+  // const { data } = useQuery( id, loaders[ type ] )
   const { data } = useQuery( id, loaders[ type ] )
 
   return (

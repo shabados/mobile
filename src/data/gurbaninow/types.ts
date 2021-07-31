@@ -46,6 +46,15 @@ export type ShabadResponse = {
   shabad: { line: LinePartial & { linenum: number } }[],
 }
 
+export type BaniListResponse = {
+  list: {
+    id: number,
+    akhar: string,
+    unicode: string,
+    english: string,
+  },
+}
+
 export type BaniResponse = {
   baniinfo: {
     id: string,
