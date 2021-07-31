@@ -1,10 +1,12 @@
 import { fetchJson } from '../../lib/fetch'
 
-import { BaniResponse, SearchResponse, ShabadResponse } from './types'
+import { BaniListResponse, BaniResponse, SearchResponse, ShabadResponse } from './types'
 
 const API_ROOT = 'https://api.gurbaninow.com/v2'
 
 export const getShabad = ( id: string ) => fetchJson<ShabadResponse>( `${API_ROOT}/shabad/${id}` )
+
+export const getBaniList = () => fetchJson<BaniListResponse>( `${API_ROOT}/banis/` )
 
 export const getBani = ( id: string ) => fetchJson<BaniResponse>( `${API_ROOT}/banis/${id}` )
 
