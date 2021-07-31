@@ -1,23 +1,9 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import React from 'react'
 import { fireEvent, render } from '@testing-library/react-native'
-import React, { ReactNode } from 'react'
 
-import withContexts from '../../components/with-contexts'
+import wrapper from '../../lib/NavigatorContext'
 
 import SearchNavbar from './Navbar'
-
-const { Screen, Navigator } = createStackNavigator()
-
-type WrapperProps = { children: ReactNode }
-
-const wrapper = ( { children }: WrapperProps ) => withContexts(
-  <NavigationContainer>
-    <Navigator>
-      <Screen name="default">{() => children}</Screen>
-    </Navigator>
-  </NavigationContainer>,
-)
 
 describe( '<Navbar />', () => {
   it( 'should render a back button', () => {
