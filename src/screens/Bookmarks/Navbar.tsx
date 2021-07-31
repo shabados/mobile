@@ -7,16 +7,16 @@ import Navbar from '../../components/Navbar'
 import BackButton from '../../components/BackButton'
 import Typography from '../../components/Typography'
 import { px } from '../../themes/utils'
-import Colours from '../../themes/colours'
+import Colors from '../../themes/colors'
 
 const styles = StyleSheet.create( {
   backButton: {
-    marginRight: -5,
+    marginLeft: -5,
   },
   headerIcon: {
     ...px( 20 ),
     fontSize: 22,
-    color: Colours.White,
+    color: Colors.PrimaryText,
   },
   heading: {
     fontSize: 16,
@@ -29,10 +29,9 @@ const styles = StyleSheet.create( {
 const BookmarksNavbar = () => (
   <Navbar
     backgroundColor="transparent"
-    // FIXME: swapped the button order because `left` will not fire the `onPress` event
-    right={<BackButton testID="back-button" style={styles.backButton} variant="text" label={<IonIcon style={styles.headerIcon} name="arrow-back" />} />}
+    right={<AntIcon testID="add-button" style={styles.headerIcon} name="plus" />}
     main={<Typography variant="header" style={styles.heading}>Bookmarks Collection</Typography>}
-    left={<AntIcon testID="add-button" style={styles.headerIcon} name="plus" />}
+    left={<BackButton testID="back-button" style={styles.backButton} variant="text" label={<IonIcon style={styles.headerIcon} name="arrow-back" />} />}
   />
 )
 
