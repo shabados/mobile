@@ -35,5 +35,5 @@ export const py = ( value: number|string = 'auto' ) => ( {
  */
 export const debugBorder = {
   borderWidth: 2,
-  borderColor: 'black',
+  borderColor: 'red',
 }
