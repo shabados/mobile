@@ -27,17 +27,16 @@ const BookmarksList = () => {
   const { folderData } = route.params
 
   const onItemPress = ( isFolder: boolean, name: string ) => {
-    if ( isFolder ) {
-      navigation.push( Screens.Bookmarks,
-        {
-          folderData:
+    if ( !isFolder ) {
+      return Alert.alert( `you clicked on ${name}` )
+    }
+
+    return navigation.push( Screens.Bookmarks, {
+      folderData:
           folderData.find( ( folder ) => folder.name === name )?.bookmarks
           || folderData,
-          currentFolder: name,
-        } )
-    } else {
-      Alert.alert( `you clicked on ${name}` )
-    }
+      currentFolder: name,
+    } )
   }
 
   return (
