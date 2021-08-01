@@ -7,7 +7,7 @@ import Screens from '../../lib/screens'
 
 import BookmarksList from './List'
 
-const bookmarkScreen = ( { children }:WrapperProps ) => (
+const bookmarkScreen = ( { children }: WrapperProps ) => (
   <Wrapper name={Screens.Bookmarks} initialParams={{ folderData: defaultFolderData }}>
     {children}
   </Wrapper>
