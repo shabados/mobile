@@ -56,6 +56,7 @@
     "@types/react-test-renderer": "^16.9.3",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "babel-jest": "^26.3.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^7.9.0",
     "eslint-config-airbnb-typescript": "^10.0.0",
     "eslint-plugin-import": "^2.22.0",
