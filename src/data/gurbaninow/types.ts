@@ -47,12 +47,10 @@ export type ShabadResponse = {
 }
 
 export type BaniListResponse = {
-  list: {
-    id: number,
-    akhar: string,
-    unicode: string,
-    english: string,
-  },
+  id: number,
+  akhar: string,
+  unicode: string,
+  english: string,
 }
 
 export type BaniResponse = {
