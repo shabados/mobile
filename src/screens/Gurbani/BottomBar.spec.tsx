@@ -5,20 +5,21 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
 import Screens from '../../lib/screens'
+import withContexts from '../../components/with-contexts'
 
 import BottomBar from './BottomBar'
 
 const Stack = createStackNavigator()
 
 type WrapperProps = { children: ReactNode }
-const wrapper = ( { children }: WrapperProps ) => (
+const wrapper = ( { children }: WrapperProps ) => withContexts(
   <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name="default">{() => children}</Stack.Screen>
       <Stack.Screen name={Screens.Bookmarks}>{() => <Text>bookmarks</Text>}</Stack.Screen>
       <Stack.Screen name={Screens.Search}>{() => <Text>search</Text>}</Stack.Screen>
     </Stack.Navigator>
-  </NavigationContainer>
+  </NavigationContainer>,
 )
 
 describe( '<BottomBar />', () => {
