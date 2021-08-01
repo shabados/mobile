@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { name } from 'faker'
 
 import withContexts from '../components/with-contexts'
 
