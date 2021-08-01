@@ -1,11 +1,12 @@
 import React from 'react'
-import { FlatList, View, Alert, StyleSheet } from 'react-native'
+import { FlatList, View, StyleSheet } from 'react-native'
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
 import Screens from '../../lib/screens'
 import { NavigationParams } from '../../types/navigation'
 import Colors from '../../themes/colors'
+import { ContentTypes } from '../../types/data'
 
 import { checkIsFolder } from './utils'
 import Item from './Item'
@@ -26,9 +27,10 @@ const BookmarksList = () => {
 
   const { folderData } = route.params
 
-  const onItemPress = ( isFolder: boolean, name: string ) => {
+  const onItemPress = ( isFolder: boolean, name: string, id: string, type: ContentTypes ) => {
     if ( !isFolder ) {
-      return Alert.alert( `you clicked on ${name}` )
+      console.log( `Navigating to ${Screens.Gurbani} ${id} ${type} ${name}` )
+      navigation.navigate( Screens.Gurbani, { id, type } )
     }
 
     return navigation.push( Screens.Bookmarks, {
@@ -50,7 +52,7 @@ const BookmarksList = () => {
             <Item
               title={item.name}
               isFolder={isFolder}
-              onPress={() => onItemPress( isFolder, item.name )}
+              onPress={() => onItemPress( isFolder, item.name, item.id, item.type )}
             />
           )
         }}
