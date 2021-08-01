@@ -1,41 +1,44 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
+import Wrapper, { WrapperProps } from '../../lib/NavigatorContext'
+import defaultFolderData from '../../defaults/collections.json'
+import Screens from '../../lib/screens'
+
 import BookmarksList from './List'
+
+const bookmarkScreen = ( { children }:WrapperProps ) => (
+  <Wrapper name={Screens.Bookmarks} initialParams={{ folderData: defaultFolderData }}>
+    {children}
+  </Wrapper>
+)
 
 describe( '<BookmarksList />', () => {
   it( 'should render list of bookmark items', async () => {
-    const results = Array.from(
-      { length: 15 },
-      ( _, index ) => ( { name: index.toString() } ),
-    )
-    const onPressMock = jest.fn()
-
-    const { getByText, queryByText, findByText } = render(
-      <BookmarksList data={results} onItemPress={onPressMock} />,
+    const { queryByText, unmount } = render(
+      <BookmarksList />, { wrapper: bookmarkScreen },
     )
 
-    const container = getByText( '0' ).parent!
+    defaultFolderData.forEach( ( { name } ) => {
+      expect( queryByText( name ) ).toBeTruthy()
+    } )
 
-    await results.reduce( async ( promise, { name } ) => {
-      await promise
+    unmount()
+  } )
 
-      let resultElement = queryByText( name )
+  it( 'should open a folder', async () => {
+    const { queryByText, unmount } = render(
+      <BookmarksList />, { wrapper: bookmarkScreen },
+    )
 
-      // Scroll if we can't see the line
-      if ( !resultElement ) {
-        fireEvent.scroll( container, {
-          nativeEvent: {
-            contentOffset: { y: 500 },
-            contentSize: { height: 500, width: 100 },
-            layoutMeasurement: { height: 100, width: 100 },
-          },
-        } )
+    const folder = queryByText( defaultFolderData[ 0 ].name )
+    expect( folder ).toBeTruthy()
+    fireEvent.press( folder! )
 
-        resultElement = await findByText( name )
-      }
+    defaultFolderData[ 0 ].bookmarks.forEach( ( { name } ) => {
+      expect( queryByText( name ) ).toBeTruthy()
+    } )
 
-      expect( resultElement ).toBeTruthy()
-    }, Promise.resolve() )
+    unmount()
   } )
 } )

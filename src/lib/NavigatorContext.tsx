@@ -1,17 +1,22 @@
 import React, { ReactNode } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { name } from 'faker'
 
 import withContexts from '../components/with-contexts'
 
 const { Screen, Navigator } = createStackNavigator()
 
-type WrapperProps = { children: ReactNode }
+export type WrapperProps = {
+  children: ReactNode,
+  initialParams?: Record<string, any>,
+  name?:string,
+}
 
-const Wrapper = ( { children }: WrapperProps ) => withContexts(
+const Wrapper = ( { children, initialParams, name = 'default' }: WrapperProps ) => withContexts(
   <NavigationContainer>
     <Navigator>
-      <Screen name="default">{() => children}</Screen>
+      <Screen name={name} initialParams={initialParams}>{() => children}</Screen>
     </Navigator>
   </NavigationContainer>,
 )
