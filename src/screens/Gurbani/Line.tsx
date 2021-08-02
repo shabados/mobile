@@ -1,30 +1,21 @@
 import React from 'react'
 import { toUnicode } from 'gurmukhi-utils'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 import { TranslationData } from '../../types/data'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
-import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 import Typography from '../../components/Typography'
 
 const styles = StyleSheet.create( {
-  gurbani: {
-    color: Colors.PrimaryText,
-    fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 16,
-    lineHeight: 24,
-  },
   root: {
     ...px( 12 ),
     ...py( 12 ),
   },
-  text: {
+  supportingText: {
     color: Colors.SecondaryText,
-    fontSize: 14,
-    lineHeight: 24,
     paddingTop: 6,
   },
 } )
@@ -53,19 +44,25 @@ const Line = ( {
   transliterations,
 }: LineProps ) => (
   <View style={styles.root}>
-    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
+    <Typography font="gurmukhi" variant="header">
+      { toUnicode( gurmukhi ) }
+    </Typography>
 
     {translations
       .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
       .map( ( {
         translationSourceId,
         translation,
-      } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
+      } ) => (
+        <Typography key={translationSourceId} variant="caption">
+          {translation}
+        </Typography>
+      ) )}
 
     {transliterations.map( ( language ) => (
       <Typography
         key={language}
-        style={styles.text}
+        variant="caption"
       >
         {transliterators[ language ]( toUnicode( gurmukhi ) )}
       </Typography>

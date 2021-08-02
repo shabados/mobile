@@ -21,9 +21,6 @@ const styles = StyleSheet.create( {
     fontSize: 22,
     color: Colors.PrimaryText,
   },
-  heading: {
-    fontSize: 16,
-  },
 } )
 
 /**
@@ -33,7 +30,7 @@ const BookmarksNavbar = () => (
   <Navbar
     backgroundColor="transparent"
     left={<BackButton testID="back-button" style={styles.backButton} variant="text" label={<IonIcon style={styles.headerIcon} name="arrow-back" />} />}
-    main={<Typography variant="header" style={styles.heading}>Bookmarks</Typography>}
+    main={<Typography variant="subtitle">Bookmarks</Typography>}
     right={<AntIcon testID="add-button" style={[ styles.headerIcon, styles.disabled ]} name="plus" />}
   />
 )
