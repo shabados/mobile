@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
 import Wrapper, { WrapperProps } from '../../lib/NavigatorContext'
-import defaultFolderData from '../../defaults/collections.json'
+import defaultFolderData from '../../defaults/collections'
 import Screens from '../../lib/screens'
 
 import BookmarksList from './List'
