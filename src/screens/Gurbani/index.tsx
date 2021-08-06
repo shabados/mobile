@@ -29,6 +29,8 @@ const GurbaniScreen = ( {
 }: GurbaniScreenProps ) => {
   const { data } = useQuery( id, loaders[ type ] )
 
+  console.log( `Gurbani Screen: ${type} ${id} ` )
+
   return (
     <Container>
       {data && <Lines lines={data.lines} />}
@@ -42,7 +44,7 @@ export const gurbaniScreen = {
   name: Screens.Gurbani,
   component: GurbaniScreen,
   options: { header: Navbar },
-  initialParams: { id: 'DMP', type: ContentTypes.Shabad },
+  initialParams: { id: '1YU', type: ContentTypes.Shabad },
 }
 
 export default GurbaniScreen
