@@ -9,7 +9,7 @@ describe( '<SearchResults />', () => {
   it( 'should render all search results', async () => {
     const results = factories.search.buildList( 15 )
 
-    const { getByText, queryByText, findByText } = render( <SearchResults results={results} /> )
+    const { getByText, queryByText, findByText, unmount } = render( <SearchResults results={results} /> )
 
     const container = getByText( results[ 0 ].line.gurmukhi ).parent!
 
@@ -33,5 +33,7 @@ describe( '<SearchResults />', () => {
 
       expect( resultElement ).toBeTruthy()
     }, Promise.resolve() )
+
+    unmount()
   } )
 } )
