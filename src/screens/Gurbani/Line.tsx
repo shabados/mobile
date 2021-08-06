@@ -1,6 +1,6 @@
 import React from 'react'
 import { toUnicode } from 'gurmukhi-utils'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
 import { TranslationData } from '../../types/data'
 import Languages from '../../lib/languages'

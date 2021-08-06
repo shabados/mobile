@@ -3,8 +3,6 @@ import React from 'react'
 import { StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
 import Typography from '../../components/Typography'
-import Colors from '../../themes/colors'
-import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
