@@ -4,7 +4,6 @@ export default [
   {
     name: 'Nitnem',
     id: '0',
-    type: ContentTypes.Bani,
     bookmarks: [
       { id: '1', type: ContentTypes.Bani, name: 'Jap Ji Sahib' },
       { id: '2', type: ContentTypes.Bani, name: 'Jaap Sahib' },
@@ -19,7 +18,6 @@ export default [
   {
     name: 'Sundar Gutka',
     id: '0',
-    type: ContentTypes.Bani,
     bookmarks: [
       { id: '1', type: ContentTypes.Bani, name: 'Jap Ji Sahib' },
       { id: '2', type: ContentTypes.Bani, name: 'Jaap Sahib' },
