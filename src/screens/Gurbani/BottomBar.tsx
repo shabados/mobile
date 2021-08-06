@@ -3,12 +3,15 @@ import { Pressable, StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { useQuery } from 'react-query'
 
-import defaultFolderData from '../../defaults/collections.json'
 import Screens from '../../lib/screens'
 import { px, py } from '../../themes/utils'
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
+import { getBaniList } from '../../data/gurbaninow'
+import { Folder } from '../../components/Bookmarks'
+import { ContentTypes } from '../../types/data'
 
 const styles = StyleSheet.create( {
   background: {
@@ -38,11 +41,18 @@ const styles = StyleSheet.create( {
 
 const BottomBar = () => {
   const navigation = useNavigation()
+  const { data } = useQuery( 'baniList', getBaniList )
+
+  const folderData:Folder[] = data ? data.map( ( bani ) => ( {
+    id: bani.id.toString(),
+    name: bani.english,
+    type: ContentTypes.Bani,
+  } ) ) : []
 
   const onSearchPress = () => navigation.navigate( Screens.Search )
   const onBookmarkPress = () => navigation.navigate(
     Screens.Bookmarks,
-    { folderData: defaultFolderData },
+    { folderData },
   )
 
   return (

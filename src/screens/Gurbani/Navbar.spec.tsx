@@ -5,8 +5,10 @@ import Navbar from './Navbar'
 
 describe( '<Navbar />', () => {
   it( 'should render a Navbar with the Shabad OS text', () => {
-    const { getByText } = render( <Navbar /> )
+    const { getByText, unmount } = render( <Navbar /> )
 
     expect( getByText( 'Shabad OS' ) ).toBeTruthy()
+
+    unmount()
   } )
 } )

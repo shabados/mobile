@@ -17,9 +17,11 @@ export type SearchScreenProps = StackScreenProps<AppStackParams, Screens.Search>
 
 const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   const [ searchValue, setSearch ] = useState( '' )
+  console.log( `Searching: ${searchValue}` )
 
   const previousData = useRef<SearchData[]>()
   const { data } = useQuery( searchValue, searchQuery, { placeholderData: previousData.current } )
+  console.log( `Search Result: ${JSON.stringify( data )}` )
   useEffect( () => { previousData.current = data }, [ data ] )
 
   const handleTextChange = ( text: string ) => setSearch( text )

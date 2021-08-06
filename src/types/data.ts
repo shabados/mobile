@@ -38,6 +38,12 @@ export type ShabadData = {
   lines: LineData[],
 }
 
+export type BaniListData = {
+  id: number,
+  akhar: string,
+  english: string,
+}
+
 export type BaniData = {
   id: string,
   nameGurmukhi: string,

@@ -2,6 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
 import factories from '../../../test/factories'
+import wrapper from '../../lib/NavigatorContext'
 
 import SearchResults from './Results'
 
@@ -9,7 +10,12 @@ describe( '<SearchResults />', () => {
   it( 'should render all search results', async () => {
     const results = factories.search.buildList( 15 )
 
-    const { getByText, queryByText, findByText } = render( <SearchResults results={results} /> )
+    const {
+      getByText,
+      queryByText,
+      findByText,
+      unmount,
+    } = render( <SearchResults results={results} />, { wrapper } )
 
     const container = getByText( results[ 0 ].line.gurmukhi ).parent!
 
@@ -33,5 +39,7 @@ describe( '<SearchResults />', () => {
 
       expect( resultElement ).toBeTruthy()
     }, Promise.resolve() )
+
+    unmount()
   } )
 } )

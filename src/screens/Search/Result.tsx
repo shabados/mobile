@@ -2,18 +2,10 @@ import { toUnicode } from 'gurmukhi-utils'
 import React from 'react'
 import { StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
-import Typography from '../../components/Typography'
-import Colors from '../../themes/colors'
-import Fonts from '../../themes/fonts'
+import Typography, { Font } from '../../components/Typography'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
-  gurbani: {
-    fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 16,
-    paddingBottom: 0,
-    color: Colors.PrimaryText,
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -22,16 +14,6 @@ const styles = StyleSheet.create( {
   root: {
     ...px( 12 ),
     ...py( 12 ),
-  },
-  subText: {
-    color: Colors.SecondaryText,
-    fontSize: 14,
-  },
-  text: {
-    ...py( 6 ),
-  },
-  translation: {
-    ...py( 6 ),
   },
 } )
 
@@ -76,13 +58,13 @@ const Result = ( {
 }: ResultProps ) => (
   <Pressable style={[ styles.root, style ]} {...props}>
     <View style={styles.header}>
-      <Typography style={styles.subText}>{toUnicode( source )}</Typography>
-      <Typography style={styles.subText}>{toUnicode( page )}</Typography>
+      <Typography font={Font.Gurmukhi} variant="caption">{toUnicode( source )}</Typography>
+      <Typography font={Font.Gurmukhi} variant="caption">{toUnicode( page )}</Typography>
     </View>
 
-    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
+    <Typography font={Font.Gurmukhi} variant="header">{toUnicode( gurmukhi )}</Typography>
 
-    <Typography style={[ styles.subText, styles.translation ]}>{translation}</Typography>
+    <Typography variant="caption">{translation}</Typography>
   </Pressable>
 )
 
