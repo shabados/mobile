@@ -3,7 +3,7 @@ import { Image, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import logo from '../../../assets/images/logo.png'
-import Colours from '../../themes/colours'
+import Colors from '../../themes/colors'
 import { px } from '../../themes/utils'
 import Typography from '../../components/Typography'
 import Navbar from '../../components/Navbar'
@@ -11,12 +11,12 @@ import Navbar from '../../components/Navbar'
 const styles = StyleSheet.create( {
   headerIcon: {
     fontSize: 22,
-    color: Colours.White,
+    color: Colors.Disabled,
     paddingLeft: 20,
     paddingRight: 20,
   },
   heading: {
-    ...px( 10 ),
+    ...px( 6 ),
   },
   logo: {
     width: 25,

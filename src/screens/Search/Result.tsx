@@ -3,15 +3,16 @@ import React from 'react'
 import { StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
 import Typography from '../../components/Typography'
+import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   gurbani: {
     fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 18,
+    fontSize: 16,
     paddingBottom: 0,
-    color: '#EDEDED',
+    color: Colors.PrimaryText,
   },
   header: {
     flexDirection: 'row',
@@ -19,18 +20,18 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
   },
   root: {
-    ...px( 10 ),
-    ...py( 7 ),
+    ...px( 12 ),
+    ...py( 12 ),
   },
   subText: {
-    color: '#BCBCBC',
+    color: Colors.SecondaryText,
+    fontSize: 14,
   },
   text: {
-    ...py( 10 ),
+    ...py( 6 ),
   },
   translation: {
-    ...py( 5 ),
-    fontSize: 12,
+    ...py( 6 ),
   },
 } )
 
@@ -64,10 +65,6 @@ export type ResultProps = PressableProps & ResultDataProps & {
   style?: ViewStyle,
 }
 
-const getShortDate = ( date?: string ) => ( date
-  ? new Date( date ).toLocaleDateString( 'en', { month: 'short', day: 'numeric' } )
-  : '' )
-
 const Result = ( {
   style,
   source,
@@ -81,7 +78,6 @@ const Result = ( {
     <View style={styles.header}>
       <Typography style={styles.subText}>{toUnicode( source )}</Typography>
       <Typography style={styles.subText}>{toUnicode( page )}</Typography>
-      <Typography style={styles.subText}>{getShortDate( lastViewedAt )}</Typography>
     </View>
 
     <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>

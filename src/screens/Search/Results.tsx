@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, FlatList, View } from 'react-native'
 
 import { SearchData } from '../../types/data'
+import Colors from '../../themes/colors'
 
 import Result from './Result'
 
@@ -11,8 +12,7 @@ const styles = StyleSheet.create( {
   },
   separator: {
     borderBottomWidth: 0.5,
-    borderBottomColor: '#BBBBE1',
-    opacity: 0.3,
+    borderBottomColor: Colors.Separator,
   },
 } )
 
