@@ -2,6 +2,7 @@ import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
 import factories from '../../../test/factories'
+import wrapper from '../../lib/NavigatorContext'
 
 import SearchResults from './Results'
 
@@ -14,7 +15,7 @@ describe( '<SearchResults />', () => {
       queryByText,
       findByText,
       unmount,
-    } = render( <SearchResults results={results} /> )
+    } = render( <SearchResults results={results} />, { wrapper } )
 
     const container = getByText( results[ 0 ].line.gurmukhi ).parent!
 
