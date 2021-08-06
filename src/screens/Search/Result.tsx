@@ -2,7 +2,7 @@ import { toUnicode } from 'gurmukhi-utils'
 import React from 'react'
 import { StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
-import Typography from '../../components/Typography'
+import Typography, { Font } from '../../components/Typography'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
@@ -58,11 +58,11 @@ const Result = ( {
 }: ResultProps ) => (
   <Pressable style={[ styles.root, style ]} {...props}>
     <View style={styles.header}>
-      <Typography font="gurmukhi" variant="caption">{toUnicode( source )}</Typography>
-      <Typography font="gurmukhi" variant="caption">{toUnicode( page )}</Typography>
+      <Typography font={Font.Gurmukhi} variant="caption">{toUnicode( source )}</Typography>
+      <Typography font={Font.Gurmukhi} variant="caption">{toUnicode( page )}</Typography>
     </View>
 
-    <Typography font="gurmukhi" variant="header">{toUnicode( gurmukhi )}</Typography>
+    <Typography font={Font.Gurmukhi} variant="header">{toUnicode( gurmukhi )}</Typography>
 
     <Typography variant="caption">{translation}</Typography>
   </Pressable>

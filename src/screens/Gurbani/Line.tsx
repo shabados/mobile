@@ -7,7 +7,7 @@ import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
 import { px, py } from '../../themes/utils'
-import Typography from '../../components/Typography'
+import Typography, { Font } from '../../components/Typography'
 
 const styles = StyleSheet.create( {
   root: {
@@ -44,7 +44,7 @@ const Line = ( {
   transliterations,
 }: LineProps ) => (
   <View style={styles.root}>
-    <Typography font="gurmukhi" variant="header">
+    <Typography font={Font.Gurmukhi} variant="header">
       { toUnicode( gurmukhi ) }
     </Typography>
 

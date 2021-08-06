@@ -23,15 +23,14 @@ const styles = StyleSheet.create( {
 } )
 
 type Variants = 'caption' | 'body' | 'header' | 'subtitle' | 'title' | 'button'
-enum Font {
+export enum Font {
   Latin = 'latin',
   Gurmukhi = 'gurmukhi'
 }
 
 type FontName = ValueOf<typeof Font>
-
-type VariantStyles = { [key in string]: TextStyle }
-type FontVariants = { [key in FontName]: VariantStyles }
+type VariantStyles = Record<string, TextStyle>
+type FontVariants = Record<FontName, VariantStyles>
 
 const fontVariants: FontVariants = {
   gurmukhi: StyleSheet.create( {
