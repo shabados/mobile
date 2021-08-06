@@ -27,8 +27,8 @@ const BookmarksList = () => {
 
   const { folderData } = route.params
 
-  const onItemPress = ( isFolder: boolean, name: string, id: string, type: ContentTypes ) => {
-    if ( !isFolder ) {
+  const onItemPress = ( isFolder: boolean, name: string, id: string, type?: ContentTypes ) => {
+    if ( !isFolder && type ) {
       console.log( `Navigating to ${Screens.Gurbani} ${id} ${type} ${name}` )
       navigation.navigate( Screens.Gurbani, { id, type } )
     }
@@ -52,7 +52,7 @@ const BookmarksList = () => {
             <Item
               title={item.name}
               isFolder={isFolder}
-              onPress={() => onItemPress( isFolder, item.name, item.id, item.type )}
+              onPress={() => onItemPress( isFolder, item.name, item.id, item?.type )}
             />
           )
         }}
