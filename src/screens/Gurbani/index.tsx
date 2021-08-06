@@ -44,7 +44,7 @@ export const gurbaniScreen = {
   name: Screens.Gurbani,
   component: GurbaniScreen,
   options: { header: Navbar },
-  initialParams: { id: '1', type: ContentTypes.Bani },
+  initialParams: { id: '1YU', type: ContentTypes.Shabad },
 }
 
 export default GurbaniScreen
