@@ -7,7 +7,7 @@ import Screens from '../../lib/screens'
 
 import BookmarksList from './List'
 
-const bookmarkScreen = ( { children }: WrapperProps ) => (
+const wrapper = ( { children }: WrapperProps ) => (
   <Wrapper name={Screens.Bookmarks} initialParams={{ folderData: defaultFolderData }}>
     {children}
   </Wrapper>
@@ -15,10 +15,7 @@ const bookmarkScreen = ( { children }: WrapperProps ) => (
 
 describe( '<BookmarksList />', () => {
   it( 'should render list of bookmark items', async () => {
-    const { queryByText, unmount } = render(
-      <BookmarksList />,
-      { wrapper: bookmarkScreen },
-    )
+    const { queryByText, unmount } = render( <BookmarksList />, { wrapper } )
 
     defaultFolderData.forEach( ( { name } ) => {
       expect( queryByText( name ) ).toBeTruthy()
@@ -28,10 +25,7 @@ describe( '<BookmarksList />', () => {
   } )
 
   it( 'should open a folder', async () => {
-    const { queryByText, unmount } = render(
-      <BookmarksList />,
-      { wrapper: bookmarkScreen },
-    )
+    const { queryByText, unmount } = render( <BookmarksList />, { wrapper } )
 
     const folder = queryByText( defaultFolderData[ 0 ].name )
     expect( folder ).toBeTruthy()

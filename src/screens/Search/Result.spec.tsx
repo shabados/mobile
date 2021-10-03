@@ -1,6 +1,8 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
+import wrapper from '../../lib/NavigatorContext'
+
 import Result from './Result'
 
 describe( '<SearchResult />', () => {
@@ -11,7 +13,7 @@ describe( '<SearchResult />', () => {
         source="source"
         page="AMg 1"
         translation="translation"
-      />,
+      />, { wrapper },
     )
 
     expect( getByText( 'ਅੰਗ ੧' ) ).toBeTruthy()
@@ -27,7 +29,7 @@ describe( '<SearchResult />', () => {
         page="AMg 1"
         translation="translation"
         onPress={onPress}
-      />,
+      />, { wrapper },
     )
 
     fireEvent.press( getByText( 'translation' ) )
