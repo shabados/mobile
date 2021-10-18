@@ -1,0 +1,20 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.json",
+  "configurations": {
+    "ios": {
+      "type": "ios.simulator",
+      "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Shabad OS.app",
+      "build": "xcodebuild -workspace ios/mobile.xcworkspace -scheme mobile -configuration Release -sdk iphonesimulator -derivedDataPath ios/build -destination 'name=iPhone 11' -quiet",
+      "device": {
+        "type": "iPhone 11"
+      }
+    },
+    "android": {
+      "type": "android.emulator",
+      "device": "emu",
+      "build": "cd android ; ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug ; cd -",
+      "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk"
+    }
+  }
+}
