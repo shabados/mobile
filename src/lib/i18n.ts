@@ -9,7 +9,7 @@ export enum Language {
 }
 
 export function registerTranslations<
-  Translations extends Record<string, Partial<Record<Language, string>>>
+  Translations extends Record<string, Partial<Record<Language, string>>>,
 >(
   namespace: string,
   translations: Translations,

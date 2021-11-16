@@ -7,7 +7,7 @@ enum Colors {
   Disabled = '#3C3C3C',
   PrimaryText = '#FFF',
   SecondaryText = '#8A8A8A',
-  Dev = '#FF0000'
+  Dev = '#FF0000',
 }
 
 export default Colors
