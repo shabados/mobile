@@ -3,7 +3,7 @@
 export enum ContentTypes {
   Shabad = 'shabad',
   Bani = 'bani',
-  Ang = 'ang'
+  Ang = 'ang',
 }
 
 export type TranslationData = {
