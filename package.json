@@ -2,6 +2,10 @@
   "name": "@shabados/mobile",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": ">=16",
+    "npm": ">=7"
+  },
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx --color",
     "test:types": "tsc --pretty",
