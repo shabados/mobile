@@ -32,7 +32,7 @@
     "fbjs": "^2.0.0",
     "gurmukhi-utils": "^3.2.0",
     "i18next": "^19.7.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "react": "16.13.1",
     "react-i18next": "^11.7.3",
     "react-native": "0.63.2",
