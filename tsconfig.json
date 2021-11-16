@@ -2,9 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "es6"
-    ],
+    "lib": ["es6"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
@@ -16,11 +14,5 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules",
-    "android",
-    "ios",
-    "coverage",
-    "docs"
-  ]
+  "exclude": ["node_modules", "android", "ios", "coverage", "docs"]
 }
