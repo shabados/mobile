@@ -1,7 +1,7 @@
 /**
  * Set Top and Bottom margin to given value.
  */
-export const my = ( value: number|string = 'auto' ) => ( {
+export const my = ( value: number | string = 'auto' ) => ( {
   marginTop: value,
   marginBottom: value,
 } )
@@ -9,7 +9,7 @@ export const my = ( value: number|string = 'auto' ) => ( {
 /**
  * Set Left and Right margin to given value.
  */
-export const mx = ( value: number|string = 'auto' ) => ( {
+export const mx = ( value: number | string = 'auto' ) => ( {
   marginLeft: value,
   marginRight: value,
 } )
@@ -17,7 +17,7 @@ export const mx = ( value: number|string = 'auto' ) => ( {
 /**
  * Set Left and Right padding to given value.
  */
-export const px = ( value: number|string = 'auto' ) => ( {
+export const px = ( value: number | string = 'auto' ) => ( {
   paddingLeft: value,
   paddingRight: value,
 } )
@@ -25,7 +25,7 @@ export const px = ( value: number|string = 'auto' ) => ( {
 /**
  * Set Top and Bottom padding to given value.
  */
-export const py = ( value: number|string = 'auto' ) => ( {
+export const py = ( value: number | string = 'auto' ) => ( {
   paddingTop: value,
   paddingBottom: value,
 } )
