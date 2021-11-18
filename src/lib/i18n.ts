@@ -9,7 +9,7 @@ export enum Language {
 }
 
 export function registerTranslations<
-  Translations extends Record<string, Partial<Record<Language, string>>>
+  Translations extends Record<string, Partial<Record<Language, string>>>,
 >(
   namespace: string,
   translations: Translations,
@@ -29,7 +29,7 @@ export function registerTranslations<
     // Transform the grouped pairs into an object keyed by the phrase
     .mapValues( ( phrases ) => phrases.reduce( ( acc, [ , phraseName, phrase ] ) => ( {
       ...acc,
-      [ phraseName as string ]: phrase,
+      [ phraseName  ]: phrase,
     } ), {} ) )
     .value()
 

@@ -1,7 +1,7 @@
 import React, { ElementType } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-const contexts: [ElementType, {[k: string]: any}?][] = [
+const contexts: [ElementType, { [k: string]: any }?][] = [
   [ QueryClientProvider, { client: new QueryClient() } ],
 ]
 

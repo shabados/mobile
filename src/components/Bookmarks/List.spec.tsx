@@ -16,7 +16,8 @@ const bookmarkScreen = ( { children }: WrapperProps ) => (
 describe( '<BookmarksList />', () => {
   it( 'should render list of bookmark items', async () => {
     const { queryByText, unmount } = render(
-      <BookmarksList />, { wrapper: bookmarkScreen },
+      <BookmarksList />,
+      { wrapper: bookmarkScreen },
     )
 
     defaultFolderData.forEach( ( { name } ) => {
@@ -28,7 +29,8 @@ describe( '<BookmarksList />', () => {
 
   it( 'should open a folder', async () => {
     const { queryByText, unmount } = render(
-      <BookmarksList />, { wrapper: bookmarkScreen },
+      <BookmarksList />,
+      { wrapper: bookmarkScreen },
     )
 
     const folder = queryByText( defaultFolderData[ 0 ].name )

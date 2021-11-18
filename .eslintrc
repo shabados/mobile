@@ -1,32 +1,5 @@
 {
   "root": true,
-  "overrides": [
-    {
-      "extends": ["plugin:jest/recommended", "plugin:jest/style"],
-      "files": [
-        "**/test/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[jt]s?(x)",
-        "*.config.js"
-      ],
-      "env": {
-        "jest": true
-      },
-      "rules": {
-        // In testing, devDependencies are often imported, and this rule would complain
-        "import/no-extraneous-dependencies": "off",
-        // In testing, dynamic requires are often required
-        "@typescript-eslint/no-var-requires": "off",
-        // Allows destructuring class methods - up to us to determine if it is an issue
-        "@typescript-eslint/unbound-method": "off",
-        // Strict type safety can be more of a hindrance in tests sometimes
-        "@typescript-eslint/no-unsafe-assignment": "off",
-        "@typescript-eslint/no-unsafe-member-access": "off",
-        "@typescript-eslint/no-unsafe-return": "off",
-        // Requiring in local scopes is useful in tests
-        "global-require": "off"
-      }
-    }
-  ],
   "globals": {
     "JSX": "readonly"
   },
@@ -36,6 +9,7 @@
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "airbnb",
     "airbnb-typescript",
     "airbnb/hooks"
   ],
@@ -56,6 +30,8 @@
         "exceptions": ["empty"]
       }
     ],
+    // Allow line breaks inside function parameters to enhance readability vs line length
+    "function-paren-newline": ["error", "multiline-arguments"],
     // Doesn't really help to check if the module is on the filesystem, and can harm when using Docker etc: https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
     "import/no-unresolved": "off",
     // Do not require .js/ts extensions, except for .json
@@ -79,7 +55,11 @@
     "no-multiple-empty-lines": [
       "error",
       {
-        "max": 1
+        "max": 1,
+        // eol-last always adds 1 line to the end, so 1 would result in 2 EOL lines
+        "maxEOF": 0,
+        // No need to ever have a newline at the beginning of a file
+        "maxBOF": 0
       }
     ],
     // No unused variables except when prepended with _, to indicate that they're not to be used, but require definition to be valid code
@@ -121,6 +101,8 @@
     "react/sort-comp": "off",
     // There's no point disabling prop spreading, it can be useful if not abused
     "react/jsx-props-no-spreading": "off",
+    // Allow components to be rendered as inline functions to allow for render prop pattern
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
     // Let Typescript infer the return types
     "@typescript-eslint/explicit-module-boundary-types": "off",
     // Sometimes you want to declare a function as async so that it returns a Promisified value
@@ -153,6 +135,14 @@
     ],
     // Prefer passing in ES6 default values to function components (ideal solution resolve #113)
     "react/require-default-props": "off",
+    // Prefer arrow functions for all React functional components
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
     // This plugin sorts alphabetically by default
     "simple-import-sort/sort": "off",
     // Add new line between imports
@@ -162,5 +152,32 @@
         "newlines-between": "always"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "extends": ["plugin:jest/recommended", "plugin:jest/style"],
+      "files": [
+        "**/test/**/*.[jt]s?(x)",
+        "**/?(*.)+(spec|test).[jt]s?(x)",
+        "*.config.js"
+      ],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        // In testing, devDependencies are often imported, and this rule would complain
+        "import/no-extraneous-dependencies": "off",
+        // In testing, dynamic requires are often required
+        "@typescript-eslint/no-var-requires": "off",
+        // Allows destructuring class methods - up to us to determine if it is an issue
+        "@typescript-eslint/unbound-method": "off",
+        // Strict type safety can be more of a hindrance in tests sometimes
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-return": "off",
+        // Requiring in local scopes is useful in tests
+        "global-require": "off"
+      }
+    }
+  ]
 }
