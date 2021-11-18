@@ -8,14 +8,16 @@ This document is for developers or programmers contributing to the source code o
 
 **Table of Contents**
 
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Build](#build)
-  - [Run](#run)
-- [Workflow](#workflow)
-  - [Coding Guidelines](#coding-guidelines)
-  - [Scope](#scope)
-- [Thank you](#thank-you)
+- [Contributing to Mobile](#contributing-to-mobile)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Build](#build)
+    - [Run](#run)
+  - [Fastlane](#fastlane)
+  - [Workflow](#workflow)
+    - [Coding Guidelines](#coding-guidelines)
+    - [Scope](#scope)
+  - [Thank you](#thank-you)
 
 ## Getting Started
 
@@ -83,6 +85,13 @@ test              # Typechecks + Unit + integration tests
 **NOTE**: You will need to [connect a device via USB](https://developer.android.com/studio/run/device#connect) or [create an AVD](https://developer.android.com/studio/run/managing-avds#createavd) to start the [Android Emulator](https://developer.android.com/studio/run/emulator).
 
 **NOTE**: If having issues starting the emulator, try cleaning your build files and running `npm i`.
+
+## Fastlane
+
+`fastlane` is automation tool for deployments for iOS and Android. We use this to sign code and bump versions for releases. To setup `fastlane` locally you need to have [`ruby`](https://www.ruby-lang.org/en/documentation/installation/)installed.
+
+1. Install [`Bundler`](https://bundler.io): `gem install bundler`
+2. Now install `fastlane`: `bundle install`
 
 ## Workflow
 
