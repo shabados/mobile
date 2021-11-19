@@ -1,12 +1,12 @@
 import { Factory } from 'fishery'
 import { name, random } from 'faker'
 
-import { BaniData } from '../../src/types/data'
+import { BookmarkLinesData } from '../../src/types/data'
 
 import { line } from './line'
 
-export const bani = Factory.define<BaniData>( ( { sequence } ) => ( {
-  id: `bani-${sequence}`,
+export const bookmark = Factory.define<BookmarkLinesData>( ( { sequence } ) => ( {
+  id: `bookmark-${sequence}`,
   nameGurmukhi: random.word(),
   source: {
     id: random.number( 10 ),
