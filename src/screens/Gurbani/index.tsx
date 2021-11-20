@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 
 import Screens, { AppStackParams } from '../../lib/screens'
 import { ContentTypes, LineData } from '../../types/data'
-import { getBani, getShabad } from '../../data'
+import { getBookmark, getShabad } from '../../data'
 import Container from '../../components/Container'
 
 import BottomBar from './BottomBar'
@@ -18,7 +18,7 @@ type Loaders = {
 // Loaders all return a common interface. Is there a better way to deal with specifics of each type?
 const loaders: Loaders = {
   [ ContentTypes.Shabad ]: ( { queryKey } ) => getShabad( ...queryKey ),
-  [ ContentTypes.Bani ]: ( { queryKey } ) => getBani( ...queryKey ),
+  [ ContentTypes.Bookmark ]: ( { queryKey } ) => getBookmark( ...queryKey ),
   [ ContentTypes.Ang ]: () => Promise.resolve( { lines: [] } ),
 }
 
