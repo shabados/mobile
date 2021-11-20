@@ -2,7 +2,7 @@
 
 export enum ContentTypes {
   Shabad = 'shabad',
-  Bani = 'bani',
+  Bookmark = 'bookmark',
   Ang = 'ang',
 }
 
@@ -38,18 +38,19 @@ export type ShabadData = {
   lines: LineData[],
 }
 
-export type BaniListData = {
-  id: number,
-  akhar: string,
-  english: string,
-}
-
-export type BaniData = {
+//! Bookmarks should be line ranges and line groups
+export type BookmarkLinesData = {
   id: string,
   nameGurmukhi: string,
   writer: WriterPartial,
   source: SourcePartial,
   lines: LineData[],
+}
+
+export type BookmarkData = {
+  id: string,
+  nameGurmukhi: string,
+  items?: { [path in string]: BookmarkData },
 }
 
 export type SearchData = {

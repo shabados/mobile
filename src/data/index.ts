@@ -1,3 +1,3 @@
 export * from './search'
-export * from './banis'
+export * from './bookmarks'
 export * from './shabads'
