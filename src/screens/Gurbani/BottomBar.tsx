@@ -39,7 +39,7 @@ const BottomBar = () => {
   const navigation = useNavigation()
 
   const onSearchPress = () => navigation.navigate( Screens.Search )
-  const onBookmarkPress = () => navigation.navigate( Screens.Bookmarks )
+  const onCollectionsPress = () => navigation.navigate( Screens.Collections )
 
   return (
     <SafeAreaView style={styles.root} edges={[ 'bottom', 'left', 'right' ]}>
@@ -50,8 +50,8 @@ const BottomBar = () => {
           <SearchBar editable={false} onTouchStart={onSearchPress} />
         </Pressable>
 
-        <Button onPress={onBookmarkPress}>
-          <Icon name="bookmark-outline" style={styles.button} testID="bookmarks-icon" />
+        <Button onPress={onCollectionsPress}>
+          <Icon name="bookmark-outline" style={styles.button} testID="collections-icon" />
         </Button>
       </View>
     </SafeAreaView>

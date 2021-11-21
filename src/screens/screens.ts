@@ -4,13 +4,13 @@ import { Override } from '../types/utils'
 enum Screens {
   Home = 'Home',
   Search = 'Search',
-  Bookmarks = 'Bookmarks',
+  Collections = 'Collections',
   Gurbani = 'Gurbani',
 }
 
 export type AppStackParams = Override<{ [screen in Screens]: undefined }, {
   [Screens.Gurbani]: { id: string, type: ContentType },
-  [Screens.Bookmarks]: { path: string },
+  [Screens.Collections]: { path: string },
   [Screens.Search]: undefined,
 }>
 

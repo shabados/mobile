@@ -22,10 +22,10 @@ describe( '<Navbar />', () => {
     unmount()
   } )
 
-  it( 'should render a Navbar with the Bookmarks text', () => {
+  it( 'should render a Navbar with the Collections text', () => {
     const { getByText, unmount } = render( <Navbar />, { wrapper } )
 
-    expect( getByText( 'Bookmarks' ) ).toBeTruthy()
+    expect( getByText( 'Collections' ) ).toBeTruthy()
 
     unmount()
   } )

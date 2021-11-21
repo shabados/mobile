@@ -29,13 +29,13 @@ const styles = StyleSheet.create( {
 /**
  * Navbar component for main header.
  */
-const BookmarksNavbar = () => (
+const CollectionsNavbar = () => (
   <Navbar
     backgroundColor="transparent"
     left={<BackButton testID="back-button" style={styles.backButton} variant="text" label={<IonIcon style={styles.headerIcon} name="arrow-back" />} />}
-    main={<Typography variant="header" style={styles.heading}>Bookmarks</Typography>}
+    main={<Typography variant="header" style={styles.heading}>Collections</Typography>}
     right={<AntIcon testID="add-button" style={[ styles.headerIcon, styles.disabled ]} name="plus" />}
   />
 )
 
-export default BookmarksNavbar
+export default CollectionsNavbar

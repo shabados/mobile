@@ -6,10 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { ContentType } from '../../types/data'
 
 import Items, { ItemsProps } from './Items'
-import { BookmarksScreens, BookmarksStackParams } from './screens'
+import { CollectionScreens, CollectionsStackParams } from './screens'
 import { Folder, FolderItem } from './types'
 
-const { Navigator, Screen } = createStackNavigator<BookmarksStackParams>()
+const { Navigator, Screen } = createStackNavigator<CollectionsStackParams>()
 
 const getFolderItems = (): FolderItem[] => [
   {
@@ -32,13 +32,13 @@ const getFolderItems = (): FolderItem[] => [
 const setup = ( initialParams?: ItemsProps['route']['params'] ) => render(
   <NavigationContainer>
     <Navigator>
-      <Screen name={BookmarksScreens.List} component={Items} initialParams={initialParams} />
+      <Screen name={CollectionScreens.List} component={Items} initialParams={initialParams} />
     </Navigator>
   </NavigationContainer>,
 )
 
 describe( '<Items />', () => {
-  it( 'should render list of bookmark items', async () => {
+  it( 'should render list of collection items', async () => {
     const items = getFolderItems()
     const { queryByText, unmount } = setup( { items } )
 

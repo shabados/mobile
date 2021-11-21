@@ -24,17 +24,17 @@ const styles = StyleSheet.create( {
   },
 } )
 
-type BookmarkListItemProps = {
+type CollectionItemProps = {
   title: string,
   icon?: string,
   onPress: () => void,
 } & PressableProps
 
-const BookmarkListItem = ( { title, icon, onPress, ...props }: BookmarkListItemProps ) => (
+const CollectionItem = ( { title, icon, onPress, ...props }: CollectionItemProps ) => (
   <Pressable style={styles.container} onPress={onPress} {...props}>
     <Text style={styles.title}>{title}</Text>
     {icon && <Icon style={styles.chevron} name={icon} size={25} />}
   </Pressable>
 )
 
-export default BookmarkListItem
+export default CollectionItem
