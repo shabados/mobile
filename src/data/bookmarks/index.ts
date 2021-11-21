@@ -6,11 +6,7 @@ import defaultBookmarks from './default-bookmarks'
 
 //! Really bookmarks should be defined as a fetch between line groups and line ranges
 //! but they're currently constrained by shabad and bani according to legacy design
-export const getBookmarks = async (): Promise<BookmarkData> => ( {
-  id: 'all',
-  nameGurmukhi: '',
-  items: defaultBookmarks,
-} )
+export const getBookmarks = async (): Promise<BookmarkData[]> => Object.values( defaultBookmarks )
 
 export const getBookmark = async ( id: string ): Promise<BookmarkLinesData> => {
   const {
