@@ -1,14 +1,9 @@
-import { BookmarkLinesData, BookmarkData } from '../../types/data'
-import Languages from '../../lib/languages'
-import * as gurbaniNow from '../gurbaninow'
+import { BookmarkData } from '../types/data'
+import Languages from '../lib/languages'
 
-import defaultBookmarks from './default-bookmarks'
+import * as gurbaniNow from './gurbaninow'
 
-//! Really bookmarks should be defined as a fetch between line groups and line ranges
-//! but they're currently constrained by shabad and bani according to legacy design
-export const getBookmarks = async (): Promise<BookmarkData[]> => Object.values( defaultBookmarks )
-
-export const getBookmark = async ( id: string ): Promise<BookmarkLinesData> => {
+export const getBookmark = async ( id: string ): Promise<BookmarkData> => {
   const {
     baniinfo: { source, writer, akhar },
     bani,

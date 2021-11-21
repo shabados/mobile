@@ -39,7 +39,7 @@ export type ShabadData = {
 }
 
 //! Bookmarks should be line ranges and line groups
-export type BookmarkLinesData = {
+export type BookmarkData = {
   id: string,
   nameGurmukhi: string,
   writer: WriterPartial,
@@ -47,10 +47,10 @@ export type BookmarkLinesData = {
   lines: LineData[],
 }
 
-export type BookmarkData = {
+export type CollectionData = {
   id: string,
   nameGurmukhi: string,
-  items?: { [path in string]: BookmarkData },
+  items?: CollectionData[],
 }
 
 export type SearchData = {

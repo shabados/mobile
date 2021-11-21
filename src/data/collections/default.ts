@@ -1,6 +1,6 @@
-import { pick } from 'lodash'
+import { CollectionData } from '../../types/data'
 
-export const allDefaultBookmarks = {
+const defaultBookmarks = {
   japjiSahib: { id: '1', nameGurmukhi: 'jpu jI swihb' },
   jaapSahib: { id: '2', nameGurmukhi: 'jwpu swihb' },
   tavPrasadSravag: { id: '3', nameGurmukhi: 'qÍ pRswid svXy (sRwvg suD)' },
@@ -29,27 +29,26 @@ export const allDefaultBookmarks = {
   raamkaliSadu: { id: '26', nameGurmukhi: 'rwmklI sdu' },
 }
 
-const defaultBookmarks = {
-  nitnem: {
+const defaultCollections: CollectionData[] = [
+  {
     id: 'nitnem',
     nameGurmukhi: 'inqnym',
-    items: pick( allDefaultBookmarks, [
-      'japjiSahib',
-      'jaapSahib',
-      'AS',
-      'tavPrasadSravag',
-      'bentiChaupai',
-      'anandSahib',
-      'rehrasSahib',
-      'ardaas',
-      'sohilaSahib',
-    ] ),
+    items: [
+      defaultBookmarks.japjiSahib,
+      defaultBookmarks.jaapSahib,
+      defaultBookmarks.tavPrasadSravag,
+      defaultBookmarks.bentiChaupai,
+      defaultBookmarks.anandSahib,
+      defaultBookmarks.rehrasSahib,
+      defaultBookmarks.ardaas,
+      defaultBookmarks.sohilaSahib,
+    ],
   },
-  sundarGutka: {
+  {
     id: 'sundarGutka',
     nameGurmukhi: 'suMdr gutkw',
-    items: allDefaultBookmarks,
+    items: Object.values( defaultBookmarks ),
   },
-}
+]
 
-export default defaultBookmarks
+export default defaultCollections

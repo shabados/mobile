@@ -5,7 +5,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import Screens, { AppStackParams } from '../screens'
 import Colors from '../../themes/colors'
 
-import { BookmarksScreens, BookmarksStackParams } from './screens'
+import { CollectionScreens, CollectionsStackParams } from './screens'
 import { getIsFolder } from './utils'
 import Item from './Item'
 import { Folder, FolderContent, FolderItem } from './types'
@@ -17,8 +17,8 @@ const styles = StyleSheet.create( {
   },
 } )
 
-type StackParams = BookmarksStackParams & AppStackParams
-export type ItemsProps = StackScreenProps<StackParams, BookmarksScreens.List>
+type StackParams = CollectionsStackParams & AppStackParams
+export type ItemsProps = StackScreenProps<StackParams, CollectionScreens.List>
 
 const Items = ( {
   navigation,
@@ -29,7 +29,7 @@ const Items = ( {
     { id, type },
   )
 
-  const openFolder = ( { items }: Folder ) => navigation.push( BookmarksScreens.List, { items } )
+  const openFolder = ( { items }: Folder ) => navigation.push( CollectionScreens.List, { items } )
 
   const onItemPress = ( item: FolderItem ) => ( getIsFolder( item )
     ? openFolder( item as Folder )

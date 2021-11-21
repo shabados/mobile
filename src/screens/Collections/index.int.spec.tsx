@@ -7,22 +7,21 @@ import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
-import * as bookmarks from '../../data/bookmarks'
+import * as collections from '../../data/collections'
 import Screens, { AppStackParams } from '../screens'
-import { BookmarkData } from '../../types/data'
-import { bookmarkDataToItems } from '../../../test/factories'
+import { CollectionData } from '../../types/data'
 
-import { bookmarksScreen } from '.'
+import { collectionsScreen } from '.'
 
-const setup = async ( data: BookmarkData[] ) => {
-  jest.spyOn( bookmarks, 'getBookmarks' ).mockResolvedValue( data )
+const setup = async ( data: CollectionData[] ) => {
+  jest.spyOn( collections, 'getCollections' ).mockResolvedValue( data )
 
   const { Navigator, Screen } = createStackNavigator<AppStackParams>()
 
   const queries = render( withContexts(
     <NavigationContainer>
       <Navigator>
-        <Screen {...bookmarksScreen} />
+        <Screen {...collectionsScreen} />
         <Screen name={Screens.Gurbani}>
           {( { route: { params: { id } } } ) => <Text>{id}</Text>}
         </Screen>
@@ -36,28 +35,28 @@ const setup = async ( data: BookmarkData[] ) => {
   return queries
 }
 
-describe( '<BookmarksScreen />', () => {
+describe( '<CollectionsScreen />', () => {
   describe( 'on mount', () => {
-    it( 'should display a list of bookmarks retrieved', async () => {
-      const bookmarks = factories.bookmarkItem.buildList( 5 )
+    it( 'should display a list of collections retrieved', async () => {
+      const collections = factories.collection.buildList( 5 )
 
-      const { queryByText } = await setup( bookmarks )
+      const { queryByText } = await setup( collections )
 
-      bookmarks.map(
+      collections.map(
         ( { nameGurmukhi } ) => expect( queryByText( toUnicode( nameGurmukhi ) ) ).toBeTruthy(),
       )
     } )
   } )
 
   describe( 'given a press on a folder item', () => {
-    it( 'should display the folder\'s list of bookmarks', async () => {
-      const items = bookmarkDataToItems( factories.bookmarkItem.buildList( 5 ) )
-      const bookmark = factories.bookmarkItem.build( { items } )
-      const { getByText, queryByText } = await setup( [ bookmark ] )
+    it( 'should display the collection\'s list of items', async () => {
+      const items = factories.collection.buildList( 5 )
+      const collection = factories.collection.build( { items } )
+      const { getByText, queryByText } = await setup( [ collection ] )
 
-      fireEvent.press( getByText( toUnicode( bookmark.nameGurmukhi ) ) )
+      fireEvent.press( getByText( toUnicode( collection.nameGurmukhi ) ) )
 
-      Object.values( bookmark.items! ).forEach( ( { nameGurmukhi }: BookmarkData ) => expect(
+      Object.values( collection.items! ).forEach( ( { nameGurmukhi }: CollectionData ) => expect(
         queryByText( toUnicode( nameGurmukhi ) ),
       ).toBeTruthy() )
     } )
@@ -66,12 +65,12 @@ describe( '<BookmarksScreen />', () => {
   describe( 'given a press on a content item', () => {
     // ? Flaky - Does react-query+- dedupe cause this to fail sometimes
     it( 'should navigate to the Gurbani screen', async () => {
-      const bookmark = factories.bookmarkItem.build( { items: undefined } )
-      const { getByText, findByText } = await setup( [ bookmark ] )
+      const collection = factories.collection.build( { items: undefined } )
+      const { getByText, findByText } = await setup( [ collection ] )
 
-      fireEvent.press( getByText( toUnicode( bookmark.nameGurmukhi ) ) )
+      fireEvent.press( getByText( toUnicode( collection.nameGurmukhi ) ) )
 
-      expect( await findByText( bookmark.id ) ).toBeTruthy()
+      expect( await findByText( collection.id ) ).toBeTruthy()
     } )
   } )
 } )

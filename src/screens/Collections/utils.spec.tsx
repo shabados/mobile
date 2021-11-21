@@ -9,14 +9,14 @@ const getFolderContent = (): FolderContent => ( {
   type: ContentType.Shabad,
 } )
 
-describe( 'Bookmarks Utilities', () => {
+describe( 'Collection Utilities', () => {
   it( 'should return false when items are not present on the FolderItem', () => {
     const isFolder = getIsFolder( getFolderContent() )
 
     expect( isFolder ).toBe( false )
   } )
 
-  it( 'should return true when bookmarks array is given', () => {
+  it( 'should return true when collection array is given', () => {
     const folder: Folder = {
       id: '1',
       name: 'test folder',

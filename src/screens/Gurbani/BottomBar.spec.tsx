@@ -15,7 +15,7 @@ const wrapper = ( { children }: WrapperProps ) => (
   <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name="default">{() => children}</Stack.Screen>
-      <Stack.Screen name={Screens.Bookmarks}>{() => <Text>bookmarks</Text>}</Stack.Screen>
+      <Stack.Screen name={Screens.Collections}>{() => <Text>collections</Text>}</Stack.Screen>
       <Stack.Screen name={Screens.Search}>{() => <Text>search</Text>}</Stack.Screen>
     </Stack.Navigator>
   </NavigationContainer>
@@ -32,12 +32,12 @@ describe( '<BottomBar />', () => {
     unmount()
   } )
 
-  it( 'given a click on the bookmarks button, should go to the bookmarks screen', () => {
+  it( 'given a click on the collections button, should go to the collections screen', () => {
     const { unmount, getByText, getByTestId } = render( <BottomBar />, { wrapper } )
 
-    fireEvent.press( getByTestId( 'bookmarks-icon' ) )
+    fireEvent.press( getByTestId( 'collections-icon' ) )
 
-    expect( getByText( 'bookmarks' ) ).toBeTruthy()
+    expect( getByText( 'collections' ) ).toBeTruthy()
 
     unmount()
   } )
