@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
-import wrapper from '../../lib/NavigatorContext'
+import wrapper from '../../../test/utils/NavigatorContext'
 
 import Result from './Result'
 
