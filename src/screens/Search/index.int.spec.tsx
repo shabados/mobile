@@ -6,6 +6,7 @@ import { fireEvent, render } from '@testing-library/react-native'
 
 import * as factories from '../../../test/factories'
 import Screens, { AppStackParams } from '../screens'
+import { LineData, SearchData } from '../../types/data'
 import * as lines from '../../data/search'
 import withContexts from '../../components/with-contexts'
 
@@ -18,24 +19,25 @@ type StackParamList = AppStackParams & {
 
 const Stack = createStackNavigator<StackParamList>()
 
-const SearchScreenWrapper = () => withContexts(
-  <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen {...searchScreen} />
-      <Stack.Screen name={Screens.Gurbani}>
-        {( { route: { params: { gurmukhi } } } ) => <Text>{gurmukhi}</Text>}
-      </Stack.Screen>
-    </Stack.Navigator>
-  </NavigationContainer>,
-)
+const setup = ( results = factories.search.buildList( 5 ) ) => {
+  jest.spyOn( lines, 'search' ).mockResolvedValue( results )
+
+  return render( withContexts(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen {...searchScreen} />
+        <Stack.Screen name={Screens.Gurbani}>
+          {( { route: { params: { gurmukhi } } } ) => <Text>{gurmukhi}</Text>}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>,
+  ) )
+}
 
 describe( '<SearchScreen />', () => {
-  const searchResults = factories.search.buildList( 5 )
-  jest.spyOn( lines, 'search' ).mockResolvedValue( searchResults )
-
   describe( 'on mount', () => {
     it( 'should render a search bar', () => {
-      const { unmount, getByPlaceholderText } = render( <SearchScreenWrapper /> )
+      const { unmount, getByPlaceholderText } = setup()
 
       expect( getByPlaceholderText( 'Search' ) ).toBeTruthy()
 
@@ -45,19 +47,20 @@ describe( '<SearchScreen />', () => {
 
   describe( 'on search', () => {
     it( 'should render results', async () => {
-      const { unmount, findByText, getByPlaceholderText } = render( <SearchScreenWrapper /> )
+      const results = factories.search.buildList( 5 )
+      const { unmount, findByText, getByPlaceholderText } = setup( results )
 
       fireEvent.changeText( getByPlaceholderText( 'Search' ), 'hhg' )
 
-      expect( await findByText( searchResults[ 0 ].line.gurmukhi ) ).toBeTruthy()
+      expect( await findByText( results[ 0 ].line.gurmukhi ) ).toBeTruthy()
 
       unmount()
     } )
   } )
 
   describe( 'on press', () => {
-    const setup = () => {
-      const screen = render( <SearchScreenWrapper /> )
+    const localSetup = ( results: SearchData[] ) => {
+      const screen = setup( results )
       const { getByPlaceholderText } = screen
 
       fireEvent.changeText( getByPlaceholderText( 'Search' ), 'hhg' )
@@ -66,9 +69,10 @@ describe( '<SearchScreen />', () => {
     }
 
     it( 'should navigate to the Gurbani screen', async () => {
-      const { unmount, findByText } = setup()
+      const results = factories.search.buildList( 5 )
+      const { unmount, findByText } = localSetup( results )
 
-      fireEvent.press( await findByText( searchResults[ 0 ].line.gurmukhi ) )
+      fireEvent.press( await findByText( results[ 0 ].line.gurmukhi ) )
 
       unmount()
     } )

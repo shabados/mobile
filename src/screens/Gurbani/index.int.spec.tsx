@@ -12,33 +12,31 @@ import { gurbaniScreen } from '.'
 
 const Stack = createStackNavigator<AppStackParams>()
 
-const GurbaniScreenWrapper = () => withContexts(
-  <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen {...gurbaniScreen} />
-    </Stack.Navigator>
-  </NavigationContainer>,
-)
+const setup = ( shabad = factories.shabad.build() ) => {
+  jest.spyOn( shabads, 'getShabad' ).mockResolvedValue( shabad )
+
+  return render( withContexts(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen {...gurbaniScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>,
+  ) )
+}
 
 describe( '<GurbaniScreen />', () => {
   describe( 'on mount', () => {
-    const shabadData = factories.shabad.build()
-    jest.spyOn( shabads, 'getShabad' ).mockResolvedValue( shabadData )
-
     it( 'should render a bottom bar', () => {
-      const { unmount, getByPlaceholderText } = render( <GurbaniScreenWrapper /> )
+      const { getByPlaceholderText } = setup()
 
       expect( getByPlaceholderText( 'Search' ) ).toBeTruthy()
-
-      unmount()
     } )
 
     it( 'should load and render a target shabad', async () => {
-      const { unmount, findByText } = render( <GurbaniScreenWrapper /> )
+      const shabad = factories.shabad.build()
+      const { findByText } = setup( shabad )
 
-      expect( await findByText( shabadData.lines[ 0 ].gurmukhi ) ).toBeTruthy()
-
-      unmount()
+      expect( await findByText( shabad.lines[ 0 ].gurmukhi ) ).toBeTruthy()
     } )
   } )
 } )
