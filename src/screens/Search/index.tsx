@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 
-import Screens, { AppStackParams } from '../../lib/screens'
+import Screens, { AppStackParams } from '../screens'
 import { search } from '../../data/search'
 import Container from '../../components/Container'
 import { ContentType, SearchData } from '../../types/data'

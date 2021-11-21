@@ -4,8 +4,7 @@ import { fireEvent, render } from '@testing-library/react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
-import Screens from '../../lib/screens'
-import withContexts from '../../components/with-contexts'
+import Screens from '../screens'
 
 import BottomBar from './BottomBar'
 

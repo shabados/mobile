@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 import { Text } from 'react-native'
 
-import Screens from '../../lib/screens'
+import Screens from '../screens'
 import Container from '../../components/Container'
 import { getBookmarks } from '../../data'
 

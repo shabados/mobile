@@ -8,7 +8,7 @@ import { Text } from 'react-native'
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as bookmarks from '../../data/bookmarks'
-import Screens, { AppStackParams } from '../../lib/screens'
+import Screens, { AppStackParams } from '../screens'
 import { BookmarkData } from '../../types/data'
 import { bookmarkDataToItems } from '../../../test/factories'
 

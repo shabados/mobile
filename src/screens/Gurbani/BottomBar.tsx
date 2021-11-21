@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useQuery } from 'react-query'
 
-import Screens from '../../lib/screens'
+import Screens from '../screens'
 import { px, py } from '../../themes/utils'
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'

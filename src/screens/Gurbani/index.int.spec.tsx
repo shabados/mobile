@@ -6,7 +6,7 @@ import { render } from '@testing-library/react-native'
 import factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../data/shabads'
-import { AppStackParams } from '../../lib/screens'
+import { AppStackParams } from '../screens'
 
 import { gurbaniScreen } from '.'
 

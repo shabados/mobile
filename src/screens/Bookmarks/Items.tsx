@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
 
-import Screens, { AppStackParams } from '../../lib/screens'
+import Screens, { AppStackParams } from '../screens'
 import Colors from '../../themes/colors'
 
 import { BookmarksScreens, BookmarksStackParams } from './screens'
