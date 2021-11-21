@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { render } from '@testing-library/react-native'
 
-import factories from '../../../test/factories'
+import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../data/shabads'
 import { AppStackParams } from '../screens'

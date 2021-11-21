@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { fireEvent, render } from '@testing-library/react-native'
 
+import * as factories from '../../../test/factories'
 import Screens, { AppStackParams } from '../screens'
 import * as lines from '../../data/search'
 import withContexts from '../../components/with-contexts'

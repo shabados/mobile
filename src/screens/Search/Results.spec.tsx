@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react-native'
 
-import factories from '../../../test/factories'
-import wrapper from '../../lib/NavigatorContext'
+import * as factories from '../../../test/factories'
+import wrapper from '../../../test/utils/NavigatorContext'
 
 import SearchResults from './Results'
 

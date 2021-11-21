@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import withContexts from '../components/with-contexts'
+import withContexts from '../../src/components/with-contexts'
 
 const { Screen, Navigator } = createStackNavigator()
 
