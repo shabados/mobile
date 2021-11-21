@@ -1,8 +1,10 @@
 import React, { ElementType } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
+export const queryClient = new QueryClient()
+
 const contexts: [ElementType, { [k: string]: any }?][] = [
-  [ QueryClientProvider, { client: new QueryClient() } ],
+  [ QueryClientProvider, { client: queryClient } ],
 ]
 
 // Generate a context wrapper function
