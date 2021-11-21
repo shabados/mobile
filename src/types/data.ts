@@ -1,6 +1,6 @@
 /* Shabad OS data definitions */
 
-export enum ContentTypes {
+export enum ContentType {
   Shabad = 'shabad',
   Bookmark = 'bookmark',
   Ang = 'ang',

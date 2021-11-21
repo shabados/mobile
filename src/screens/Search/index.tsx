@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 import Screens, { AppStackParams } from '../../lib/screens'
 import { search } from '../../data/search'
 import Container from '../../components/Container'
-import { ContentTypes, SearchData } from '../../types/data'
+import { ContentType, SearchData } from '../../types/data'
 
 import Results, { ResultsProps } from './Results'
 import Navbar from './Navbar'
@@ -32,7 +32,7 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
 
   const openShabad: ResultsProps['onPress'] = ( { shabad: { id } } ) => navigation.navigate(
     Screens.Gurbani,
-    { id, type: ContentTypes.Shabad },
+    { id, type: ContentType.Shabad },
   )
 
   return (

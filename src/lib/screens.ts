@@ -1,4 +1,4 @@
-import { ContentTypes } from '../types/data'
+import { ContentType } from '../types/data'
 import { Override } from '../types/utils'
 
 enum Screens {
