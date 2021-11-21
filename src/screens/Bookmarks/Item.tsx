@@ -26,14 +26,14 @@ const styles = StyleSheet.create( {
 
 type BookmarkListItemProps = {
   title: string,
-  isFolder: boolean,
+  icon?: string,
   onPress: () => void,
 } & PressableProps
 
-const BookmarkListItem = ( { title, isFolder, onPress, ...props }: BookmarkListItemProps ) => (
+const BookmarkListItem = ( { title, icon, onPress, ...props }: BookmarkListItemProps ) => (
   <Pressable style={styles.container} onPress={onPress} {...props}>
     <Text style={styles.title}>{title}</Text>
-    {isFolder && <Icon style={styles.chevron} name="chevron-right" size={25} />}
+    {icon && <Icon style={styles.chevron} name={icon} size={25} />}
   </Pressable>
 )
 

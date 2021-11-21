@@ -1,27 +1,30 @@
 import React from 'react'
-import { RouteProp, useRoute } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { useQuery } from 'react-query'
+import { Text } from 'react-native'
 
-import { BookmarksList } from '../../components/Bookmarks'
-import Container from '../../components/Container'
 import Screens from '../../lib/screens'
-import { NavigationParams } from '../../types/navigation'
+import Container from '../../components/Container'
+import { getBookmarks } from '../../data'
 
+import Items from './Items'
 import Navbar from './Navbar'
+import { BookmarksScreens, BookmarksStackParams } from './screens'
+import { bookmarksToFolder } from './utils'
 
-type Route = RouteProp<NavigationParams, Screens.Bookmarks>
+const { Screen, Navigator } = createStackNavigator<BookmarksStackParams>()
 
-const { Screen, Navigator } = createStackNavigator()
+const bookmarksQuery = () => getBookmarks().then( bookmarksToFolder )
 
 const BookmarksScreen = () => {
-  const route = useRoute<Route>()
+  const { data: items } = useQuery( 'bookmarks-screen', bookmarksQuery )
 
-  const { folderData } = route.params
+  if ( !items ) return <Text>Loading</Text>
 
   return (
     <Container>
       <Navigator>
-        <Screen name={Screens.Bookmarks} component={BookmarksList} initialParams={{ folderData }} />
+        <Screen name={BookmarksScreens.List} component={Items} initialParams={{ items }} />
       </Navigator>
     </Container>
   )
