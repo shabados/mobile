@@ -31,7 +31,9 @@ module.exports = {
   ],
   setupFilesAfterEnv: [
     '@testing-library/jest-native/extend-expect',
+    '<rootDir>/test/after-env.js',
   ],
+  resetMocks: true,
   moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
   // https://github.com/react-navigation/react-navigation/issues/7950#issuecomment-615220412
   moduleNameMapper: {
