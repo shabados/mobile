@@ -3,7 +3,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 
 import Screens, { AppStackParams } from '../../lib/screens'
-import { ContentTypes, LineData } from '../../types/data'
+import { ContentType, LineData } from '../../types/data'
 import { getBookmark, getShabad } from '../../data'
 import Container from '../../components/Container'
 
@@ -12,14 +12,14 @@ import Lines from './Lines'
 import Navbar from './Navbar'
 
 type Loaders = {
-  [screen in ContentTypes]: ( options : { queryKey: [string] } ) => Promise<{ lines: LineData[] }>
+  [screen in ContentType]: ( options : { queryKey: [string] } ) => Promise<{ lines: LineData[] }>
 }
 
 // Loaders all return a common interface. Is there a better way to deal with specifics of each type?
 const loaders: Loaders = {
-  [ ContentTypes.Shabad ]: ( { queryKey } ) => getShabad( ...queryKey ),
-  [ ContentTypes.Bookmark ]: ( { queryKey } ) => getBookmark( ...queryKey ),
-  [ ContentTypes.Ang ]: () => Promise.resolve( { lines: [] } ),
+  [ ContentType.Shabad ]: ( { queryKey } ) => getShabad( ...queryKey ),
+  [ ContentType.Bookmark ]: ( { queryKey } ) => getBookmark( ...queryKey ),
+  [ ContentType.Ang ]: () => Promise.resolve( { lines: [] } ),
 }
 
 type GurbaniScreenProps = StackScreenProps<AppStackParams, Screens.Gurbani>
@@ -44,7 +44,7 @@ export const gurbaniScreen = {
   name: Screens.Gurbani,
   component: GurbaniScreen,
   options: { header: Navbar },
-  initialParams: { id: '1YU', type: ContentTypes.Shabad },
+  initialParams: { id: '1YU', type: ContentType.Shabad },
 }
 
 export default GurbaniScreen
