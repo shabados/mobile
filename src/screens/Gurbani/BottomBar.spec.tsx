@@ -11,14 +11,14 @@ import BottomBar from './BottomBar'
 const Stack = createStackNavigator()
 
 type WrapperProps = { children: ReactNode }
-const wrapper = ( { children }: WrapperProps ) => withContexts(
+const wrapper = ( { children }: WrapperProps ) => (
   <NavigationContainer>
     <Stack.Navigator>
       <Stack.Screen name="default">{() => children}</Stack.Screen>
       <Stack.Screen name={Screens.Bookmarks}>{() => <Text>bookmarks</Text>}</Stack.Screen>
       <Stack.Screen name={Screens.Search}>{() => <Text>search</Text>}</Stack.Screen>
     </Stack.Navigator>
-  </NavigationContainer>,
+  </NavigationContainer>
 )
 
 describe( '<BottomBar />', () => {
