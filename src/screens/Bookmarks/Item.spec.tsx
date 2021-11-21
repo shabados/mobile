@@ -8,7 +8,7 @@ describe( '<BookmarkItem />', () => {
     const onPress = jest.fn()
 
     const { getByText } = render(
-      <BookmarkItem title="Test Me" isFolder={false} onPress={onPress} />,
+      <BookmarkItem title="Test Me" onPress={onPress} />,
     )
 
     fireEvent.press( getByText( 'Test Me' ) )

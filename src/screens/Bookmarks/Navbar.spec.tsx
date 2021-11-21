@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react-native'
 import React from 'react'
 
-import wrapper from '../../lib/NavigatorContext'
+import wrapper from '../../../test/utils/NavigatorContext'
 
 import Navbar from './Navbar'
 
