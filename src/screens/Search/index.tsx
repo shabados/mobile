@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 

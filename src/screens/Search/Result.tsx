@@ -1,5 +1,4 @@
 import { toUnicode } from 'gurmukhi-utils'
-import React from 'react'
 import { StyleSheet, View, Pressable, PressableProps, ViewStyle } from 'react-native'
 
 import Typography from '../../components/Typography'

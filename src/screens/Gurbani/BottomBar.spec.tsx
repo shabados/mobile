@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 import { Text } from 'react-native'
 import { fireEvent, render } from '@testing-library/react-native'
 import { createStackNavigator } from '@react-navigation/stack'

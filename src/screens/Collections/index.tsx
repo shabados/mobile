@@ -1,4 +1,3 @@
-import React from 'react'
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 import { Text } from 'react-native'
