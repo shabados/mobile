@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 import { Text } from 'react-native'
 
@@ -14,6 +14,8 @@ import { collectionsToFolder } from './utils'
 
 const { Screen, Navigator } = createStackNavigator<CollectionsStackParams>()
 
+const screenOptions: StackNavigationOptions = { headerShown: false }
+
 const collectionsQuery = () => getCollections().then( collectionsToFolder )
 
 const CollectionsScreen = () => {
@@ -23,7 +25,7 @@ const CollectionsScreen = () => {
 
   return (
     <Container>
-      <Navigator>
+      <Navigator defaultScreenOptions={screenOptions}>
         <Screen name={CollectionScreens.List} component={Items} initialParams={{ items }} />
       </Navigator>
     </Container>
