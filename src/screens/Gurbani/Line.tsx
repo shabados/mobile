@@ -1,4 +1,3 @@
-import React from 'react'
 import { toUnicode } from 'gurmukhi-utils'
 import { StyleSheet, View } from 'react-native'
 

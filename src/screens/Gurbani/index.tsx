@@ -1,4 +1,3 @@
-import React from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 

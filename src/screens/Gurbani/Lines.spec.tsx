@@ -1,4 +1,3 @@
-import React from 'react'
 import { fireEvent, render } from '@testing-library/react-native'
 
 import * as factories from '../../../test/factories'

@@ -43,6 +43,7 @@
     "react-query": "^3.33.6"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.16.0",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@prettier/plugin-ruby": "^2.0.0",
@@ -57,7 +58,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
-    "babel-jest": "^27.3.1",
+    "babel-jest": "^27.4.2",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^8.3.0",
     "eslint-config-airbnb": "^19.0.1",

@@ -1,4 +1,3 @@
-import React from 'react'
 import { StyleSheet, FlatList, View } from 'react-native'
 
 import { SearchData } from '../../types/data'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Pressable, PressableProps, StyleSheet, ViewProps } from 'react-native'
 
 import Colors from '../themes/colors'

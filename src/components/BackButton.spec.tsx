@@ -1,5 +1,4 @@
 import { Text } from 'react-native'
-import React from 'react'
 import { fireEvent, render, waitForElementToBeRemoved } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
