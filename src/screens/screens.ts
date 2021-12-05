@@ -10,7 +10,7 @@ enum Screens {
 
 export type AppStackParams = Override<{ [screen in Screens]: undefined }, {
   [Screens.Gurbani]: { id: string, type: ContentType },
-  [Screens.Collections]: { path: string },
+  [Screens.Collections]?: { path: string },
   [Screens.Search]: undefined,
 }>
 
