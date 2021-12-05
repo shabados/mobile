@@ -146,15 +146,9 @@
         "unnamedComponents": "arrow-function"
       }
     ],
-    // This plugin sorts alphabetically by default
-    "simple-import-sort/sort": "off",
-    // Add new line between imports
-    "import/order": [
-      "error",
-      {
-        "newlines-between": "always"
-      }
-    ]
+    // Sort imports alphabetically and separate groups with a newline
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
   "overrides": [
     {
