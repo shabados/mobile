@@ -43,7 +43,6 @@
     "react-query": "^3.33.6"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.16.0",
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
     "@prettier/plugin-ruby": "^2.0.0",
