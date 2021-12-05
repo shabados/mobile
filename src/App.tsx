@@ -2,10 +2,10 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
 
 import withContexts from './components/with-contexts'
-import { searchScreen } from './screens/Search'
-import { gurbaniScreen } from './screens/Gurbani'
 import { collectionsScreen } from './screens/Collections'
+import { gurbaniScreen } from './screens/Gurbani'
 import { AppStackParams } from './screens/screens'
+import { searchScreen } from './screens/Search'
 
 const screens = [ gurbaniScreen, searchScreen, collectionsScreen ]
 

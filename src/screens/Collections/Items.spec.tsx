@@ -1,9 +1,8 @@
-import { render, fireEvent } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { fireEvent, render } from '@testing-library/react-native'
 
 import { ContentType } from '../../types/data'
-
 import Items, { ItemsProps } from './Items'
 import { CollectionScreens, CollectionsStackParams } from './screens'
 import { Folder, FolderItem } from './types'

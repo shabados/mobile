@@ -1,8 +1,7 @@
-import { StyleSheet, FlatList, View } from 'react-native'
+import { FlatList, StyleSheet, View } from 'react-native'
 
-import { SearchData } from '../../types/data'
 import Colors from '../../themes/colors'
-
+import { SearchData } from '../../types/data'
 import Result from './Result'
 
 const styles = StyleSheet.create( {

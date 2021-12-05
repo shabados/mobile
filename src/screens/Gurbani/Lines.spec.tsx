@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native'
 
 import * as factories from '../../../test/factories'
-
 import Lines from './Lines'
 
 describe( '<Lines />', () => {

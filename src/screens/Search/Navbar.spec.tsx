@@ -1,7 +1,6 @@
 import { fireEvent, render } from '@testing-library/react-native'
 
 import wrapper from '../../../test/utils/NavigatorContext'
-
 import SearchNavbar from './Navbar'
 
 describe( '<Navbar />', () => {

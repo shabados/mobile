@@ -1,11 +1,10 @@
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import { fireEvent, render } from '@testing-library/react-native'
 import { ReactNode } from 'react'
 import { Text } from 'react-native'
-import { fireEvent, render } from '@testing-library/react-native'
-import { createStackNavigator } from '@react-navigation/stack'
-import { NavigationContainer } from '@react-navigation/native'
 
 import Screens from '../screens'
-
 import BottomBar from './BottomBar'
 
 const Stack = createStackNavigator()

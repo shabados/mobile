@@ -6,7 +6,6 @@ import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../data/shabads'
 import { AppStackParams } from '../screens'
-
 import { gurbaniScreen } from '.'
 
 const Stack = createStackNavigator<AppStackParams>()

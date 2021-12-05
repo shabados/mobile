@@ -1,9 +1,8 @@
-import { FlatList, StyleSheet, View } from 'react-native'
 import { stripVishraams } from 'gurmukhi-utils'
+import { FlatList, StyleSheet, View } from 'react-native'
 
-import { LineData } from '../../types/data'
 import Languages from '../../lib/languages'
-
+import { LineData } from '../../types/data'
 import Line from './Line'
 
 const styles = StyleSheet.create( {

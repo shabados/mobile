@@ -1,8 +1,7 @@
+import { datatype, name, random } from 'faker'
 import { Factory } from 'fishery'
-import { name, random, datatype } from 'faker'
 
 import { ShabadData } from '../../src/types/data'
-
 import { line } from './line'
 
 export const shabad = Factory.define<ShabadData>( ( { sequence } ) => ( {

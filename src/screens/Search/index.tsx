@@ -1,14 +1,13 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query'
 
-import Screens, { AppStackParams } from '../screens'
-import { search } from '../../data/search'
 import Container from '../../components/Container'
+import { search } from '../../data/search'
 import { ContentType, SearchData } from '../../types/data'
-
-import Results, { ResultsProps } from './Results'
+import Screens, { AppStackParams } from '../screens'
 import Navbar from './Navbar'
+import Results, { ResultsProps } from './Results'
 
 type SearchQuery = { queryKey: [string] }
 const searchQuery = ( { queryKey }: SearchQuery ) => search( ...queryKey )

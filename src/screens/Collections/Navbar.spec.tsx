@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react-native'
 
 import wrapper from '../../../test/utils/NavigatorContext'
-
 import Navbar from './Navbar'
 
 describe( '<Navbar />', () => {

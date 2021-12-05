@@ -1,8 +1,7 @@
-import { Text, StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { StyleSheet, Text } from 'react-native'
 
 import Colors from '../themes/colors'
-
 import Button, { ButtonProps } from './Button'
 
 export type BackButtonProps = {

@@ -1,5 +1,5 @@
-import { Factory } from 'fishery'
 import { datatype, random } from 'faker'
+import { Factory } from 'fishery'
 
 import { LineData } from '../../src/types/data'
 

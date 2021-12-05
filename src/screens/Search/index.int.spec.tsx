@@ -1,14 +1,13 @@
-import { Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { fireEvent, render } from '@testing-library/react-native'
+import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
-import Screens, { AppStackParams } from '../screens'
-import { LineData, SearchData } from '../../types/data'
-import * as lines from '../../data/search'
 import withContexts from '../../components/with-contexts'
-
+import * as lines from '../../data/search'
+import { LineData, SearchData } from '../../types/data'
+import Screens, { AppStackParams } from '../screens'
 import { searchScreen } from '.'
 
 type StackParamList = AppStackParams & {

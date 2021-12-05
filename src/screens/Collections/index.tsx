@@ -1,11 +1,10 @@
 import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
-import { useQuery } from 'react-query'
 import { Text } from 'react-native'
+import { useQuery } from 'react-query'
 
-import Screens from '../screens'
 import Container from '../../components/Container'
 import { getCollections } from '../../data/collections'
-
+import Screens from '../screens'
 import Items from './Items'
 import Navbar from './Navbar'
 import { CollectionScreens, CollectionsStackParams } from './screens'
