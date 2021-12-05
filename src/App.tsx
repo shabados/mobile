@@ -7,16 +7,18 @@ import { gurbaniScreen } from './screens/Gurbani'
 import { AppStackParams } from './screens/screens'
 import { searchScreen } from './screens/Search'
 
-const screens = [ gurbaniScreen, searchScreen, collectionsScreen ]
+const { Screen, Navigator, Group } = createStackNavigator<AppStackParams>()
 
-const { Screen, Navigator } = createStackNavigator<AppStackParams>()
+const screens = [ gurbaniScreen, searchScreen, collectionsScreen ]
 
 const defaultScreenOptions: StackNavigationOptions = { presentation: 'modal' }
 
 const App = () => (
   <NavigationContainer>
-    <Navigator defaultScreenOptions={defaultScreenOptions}>
-      {screens.map( ( options ) => <Screen key={options.name} {...options} /> )}
+    <Navigator>
+      <Group screenOptions={defaultScreenOptions}>
+        {screens.map( ( options ) => <Screen key={options.name} {...options} /> )}
+      </Group>
     </Navigator>
   </NavigationContainer>
 )

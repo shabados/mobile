@@ -23,8 +23,13 @@ const CollectionsScreen = () => {
 
   return (
     <Container>
-      <Navigator defaultScreenOptions={screenOptions}>
-        <Screen name={CollectionScreens.List} component={Items} initialParams={{ items }} />
+      <Navigator>
+        <Screen
+          name={CollectionScreens.List}
+          component={Items}
+          options={screenOptions}
+          initialParams={{ items }}
+        />
       </Navigator>
     </Container>
   )
