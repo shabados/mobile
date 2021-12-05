@@ -1,0 +1,21 @@
+platform :ios do
+  lane :clean do
+    xcodebuild(
+      workspace: './ios/Mobile.xcworkspace',
+      scheme: 'Mobile',
+      xcargs: 'clean',
+    )
+    cocoapods(clean_install: true, podfile: './ios/Podfile')
+  end
+
+  lane :build do |options|
+    build_app(
+      workspace: './ios/Mobile.xcworkspace',
+      scheme: 'Mobile',
+      skip_package_ipa: true,
+      skip_archive: true,
+      skip_codesigning: true,
+      silent: true,
+    )
+  end
+end

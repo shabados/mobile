@@ -1,0 +1,9 @@
+platform :android do
+  lane :clean do
+    gradle(task: 'clean', project_dir: 'android')
+  end
+
+  lane :build do
+    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android')
+  end
+end
