@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import { Pressable, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -6,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
 import { px, py } from '../../themes/utils'
-import Screens from '../screens'
+import Screens, { AppStackParams } from '../screens'
 
 const styles = StyleSheet.create( {
   background: {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create( {
 } )
 
 const BottomBar = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation<StackScreenProps<AppStackParams>['navigation']>()
 
   const onSearchPress = () => navigation.navigate( Screens.Search )
   const onCollectionsPress = () => navigation.navigate( Screens.Collections )
