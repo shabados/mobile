@@ -44,5 +44,11 @@ jobs:
         with:
           node-version: 16
           cache: npm
+      - uses: actions/cache@v2
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
       - run: npm ci
       - run: npm run build:${{ matrix.platform }}
