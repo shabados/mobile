@@ -74,6 +74,9 @@ start:ios         # Start the app on iOS emulator with tests in watch mode
 emulator:android  # Start the Android emulator
 emulator:ios      # Start the iOS emulator
 
+build:android     # Build the Android app, without artifacts or code signing
+build:ios         # Build the iOS app, without artifacts or code signing
+
 clean:android     # Clean Android build files
 clean:ios         # Clean iOS build files
 
