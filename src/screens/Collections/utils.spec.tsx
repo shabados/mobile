@@ -1,5 +1,4 @@
 import { ContentType } from '../../types/data'
-
 import { Folder, FolderContent } from './types'
 import { getIsFolder } from './utils'
 

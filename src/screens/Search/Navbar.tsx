@@ -1,9 +1,9 @@
 import { StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
+import BackButton from '../../components/BackButton'
 import Navbar from '../../components/Navbar'
 import SearchBar, { SearchBarProps } from '../../components/SearchBar'
-import BackButton from '../../components/BackButton'
 
 const styles = StyleSheet.create( {
   back: {

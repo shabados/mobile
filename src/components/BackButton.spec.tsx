@@ -1,7 +1,7 @@
-import { Text } from 'react-native'
-import { fireEvent, render, waitForElementToBeRemoved } from '@testing-library/react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack'
+import { fireEvent, render, waitForElementToBeRemoved } from '@testing-library/react-native'
+import { Text } from 'react-native'
 
 import BackButton, { BackButtonProps } from './BackButton'
 

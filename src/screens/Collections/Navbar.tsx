@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native'
-import IonIcon from 'react-native-vector-icons/Ionicons'
 import AntIcon from 'react-native-vector-icons/AntDesign'
+import IonIcon from 'react-native-vector-icons/Ionicons'
 
-import Navbar from '../../components/Navbar'
 import BackButton from '../../components/BackButton'
+import Navbar from '../../components/Navbar'
 import Typography from '../../components/Typography'
-import { px } from '../../themes/utils'
 import Colors from '../../themes/colors'
+import { px } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   backButton: {

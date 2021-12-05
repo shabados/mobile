@@ -1,13 +1,12 @@
-import { FlatList, StyleSheet, View } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
+import { FlatList, StyleSheet, View } from 'react-native'
 
-import Screens, { AppStackParams } from '../screens'
 import Colors from '../../themes/colors'
-
-import { CollectionScreens, CollectionsStackParams } from './screens'
-import { getIsFolder } from './utils'
+import Screens, { AppStackParams } from '../screens'
 import Item from './Item'
+import { CollectionScreens, CollectionsStackParams } from './screens'
 import { Folder, FolderContent, FolderItem } from './types'
+import { getIsFolder } from './utils'
 
 const styles = StyleSheet.create( {
   root: {

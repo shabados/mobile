@@ -1,11 +1,10 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 
-import Screens, { AppStackParams } from '../screens'
-import { ContentType, LineData } from '../../types/data'
-import { getBookmark, getShabad } from '../../data'
 import Container from '../../components/Container'
-
+import { getBookmark, getShabad } from '../../data'
+import { ContentType, LineData } from '../../types/data'
+import Screens, { AppStackParams } from '../screens'
 import BottomBar from './BottomBar'
 import Lines from './Lines'
 import Navbar from './Navbar'

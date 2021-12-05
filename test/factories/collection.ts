@@ -1,5 +1,5 @@
-import { Factory } from 'fishery'
 import { random } from 'faker'
+import { Factory } from 'fishery'
 
 import { CollectionData } from '../../src/types/data'
 

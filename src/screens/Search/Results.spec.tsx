@@ -1,8 +1,7 @@
-import { render, fireEvent } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 
 import * as factories from '../../../test/factories'
 import wrapper from '../../../test/utils/NavigatorContext'
-
 import SearchResults from './Results'
 
 describe( '<SearchResults />', () => {

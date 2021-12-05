@@ -2,10 +2,10 @@ import { Image, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import logo from '../../../assets/images/logo.png'
+import Navbar from '../../components/Navbar'
+import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
 import { px } from '../../themes/utils'
-import Typography from '../../components/Typography'
-import Navbar from '../../components/Navbar'
 
 const styles = StyleSheet.create( {
   headerIcon: {

@@ -1,7 +1,6 @@
 import { toUnicode } from 'gurmukhi-utils'
 
 import { CollectionData, ContentType } from '../../types/data'
-
 import { Folder, FolderItem } from './types'
 
 export const getIsFolder = ( item: FolderItem ): boolean => !!( item as Folder ).items

@@ -7,9 +7,8 @@ import { Text } from 'react-native'
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as collections from '../../data/collections'
-import Screens, { AppStackParams } from '../screens'
 import { CollectionData } from '../../types/data'
-
+import Screens, { AppStackParams } from '../screens'
 import { collectionsScreen } from '.'
 
 const setup = async ( data: CollectionData[] ) => {

@@ -1,6 +1,5 @@
-import { BookmarkData } from '../types/data'
 import Languages from '../lib/languages'
-
+import { BookmarkData } from '../types/data'
 import * as gurbaniNow from './gurbaninow'
 
 export const getBookmark = async ( id: string ): Promise<BookmarkData> => {

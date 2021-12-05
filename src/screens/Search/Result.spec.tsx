@@ -1,7 +1,6 @@
-import { render, fireEvent } from '@testing-library/react-native'
+import { fireEvent, render } from '@testing-library/react-native'
 
 import wrapper from '../../../test/utils/NavigatorContext'
-
 import Result, { ResultProps } from './Result'
 
 const setup = ( props: Partial<ResultProps> ) => render(

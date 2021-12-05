@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { View, StyleSheet, TextInput, TextInputProps, Pressable } from 'react-native'
+import { Pressable, StyleSheet, TextInput, TextInputProps, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import { OS } from '../lib/consts'
