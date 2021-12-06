@@ -1,0 +1,97 @@
+name: Release Next
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency: release
+
+jobs:
+  prepare:
+    runs-on: ubuntu-20.04
+    outputs:
+      release-version: ${{ steps.bump-version.outputs.next }}
+    steps:
+      - uses: shabados/actions/setup-git-identity@release/v2
+        with:
+          user: Shabad OS Bot
+          email: team@shabados.com
+
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_BOT_TOKEN }}
+
+      - uses: shabados/actions/bump-version@release/v2
+        id: bump-version
+        with:
+          prerelease: true
+
+      - uses: shabados/actions/generate-changelog@release/v2
+
+      - name: Upload workspace
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
+
+  build-release:
+    needs: prepare
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-11
+            platform: ios
+          - os: ubuntu-latest
+            platform: android
+    steps:
+      - name: Download workspace
+        uses: actions/download-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - uses: actions/cache@v2
+        with:
+          path: ios/Pods
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - run: npm ci
+
+      - run: npm run release:next:${{ matrix.platform }}
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
+          MATCH_REPOSITORY: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+
+  publish-github:
+    runs-on: ubuntu-20.04
+    needs: build-release
+    steps:
+      - name: Download workspace
+        uses: actions/download-artifact@v2
+        with:
+          name: release-workspace
+          path: ${{ github.workspace }}
+
+      - uses: shabados/actions/publish-github@release/v2
+        with:
+          github_token: ${{ secrets.GH_BOT_TOKEN }}
+          release_version: ${{ needs.prepare.outputs.release-version }}
