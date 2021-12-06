@@ -19,6 +19,7 @@
     "build:ios": "fastlane ios build",
     "clean:android": "fastlane android clean",
     "clean:ios": "fastlane ios clean",
+    "release:next:ios": "fastlane ios release_next",
     "install-assets": "react-native link",
     "postinstall": "pod-install ios"
   },
