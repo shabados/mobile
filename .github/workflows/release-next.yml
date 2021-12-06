@@ -2,6 +2,7 @@ name: Release Next
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - main
