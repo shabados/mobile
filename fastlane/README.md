@@ -26,6 +26,16 @@ fastlane ios clean
 fastlane ios build
 ```
 
+### ios sync_version
+```
+fastlane ios sync_version
+```
+
+### ios release_next
+```
+fastlane ios release_next
+```
+
 
 ----
 
