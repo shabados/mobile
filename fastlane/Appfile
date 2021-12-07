@@ -1,3 +1,4 @@
-json_key_file("") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+identifier = 'com.shabados.app'
 
-package_name("com.shabados.mobile")
+app_identifier(identifier)
+package_name(identifier)
