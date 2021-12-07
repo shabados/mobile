@@ -18,7 +18,7 @@ platform :ios do
       key_content: ENV['APP_STORE_CONNECT_KEY'],
     )
 
-    sync_code_signing
+    sync_code_signing(type: 'appstore')
   end
 
   lane :build do |options|
