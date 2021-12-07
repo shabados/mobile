@@ -1,0 +1,28 @@
+name: Sync Certificates
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * SUN
+
+concurrency: sync-certificates
+
+jobs:
+  sync-certificates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - run: bundle exec fastlane match
+        env:
+          APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          APP_STORE_CONNECT_KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
+          MATCH_REPOSITORY: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          GIT_FULL_NAME: Shabad OS Bot
+          GIT_USER_EMAIL: team@shabados.com
