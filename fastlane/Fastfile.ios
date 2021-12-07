@@ -8,6 +8,27 @@ platform :ios do
     cocoapods(clean_install: true, podfile: './ios/Podfile')
   end
 
+  lane :sync_certificates do
+    if ENV['CI']
+      create_keychain(
+        name: 'fastlane_tmp_keychain',
+        default_keychain: true,
+        password: '',
+        unlock: true,
+        timeout: 3600,
+        lock_when_sleeps: true,
+      )
+    end
+
+    app_store_connect_api_key(
+      key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
+      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
+      key_content: ENV['APP_STORE_CONNECT_KEY'],
+    )
+
+    sync_code_signing
+  end
+
   lane :build do |options|
     build_app(
       workspace: './ios/Mobile.xcworkspace',
