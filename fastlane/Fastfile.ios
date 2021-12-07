@@ -9,16 +9,8 @@ platform :ios do
   end
 
   lane :sync_certificates do
-    if ENV['CI']
-      create_keychain(
-        name: 'fastlane_tmp_keychain',
-        default_keychain: true,
-        password: '',
-        unlock: true,
-        timeout: 3600,
-        lock_when_sleeps: true,
-      )
-    end
+    setup_ci if ENV['CI']
+    ENV['MATCH_READONLY'] = false.to_s
 
     app_store_connect_api_key(
       key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
