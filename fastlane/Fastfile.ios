@@ -13,19 +13,6 @@ platform :ios do
     cocoapods(clean_install: true, podfile: "./#{project_dir}/Podfile")
   end
 
-  lane :sync_certificates do
-    setup_ci if ENV['CI']
-    ENV['MATCH_READONLY'] = false.to_s
-
-    app_store_connect_api_key(
-      key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
-      issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
-      key_content: ENV['APP_STORE_CONNECT_KEY'],
-    )
-
-    sync_code_signing(type: 'appstore')
-  end
-
   lane :build do |options|
     should_skip_release_options = options[:is_release] ? false : true
 
@@ -45,6 +32,14 @@ platform :ios do
       issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
       key_content: ENV['APP_STORE_CONNECT_KEY'],
     )
+  end
+
+  lane :sync_certificates do
+    setup_ci if is_ci
+
+    get_api_key
+
+    sync_code_signing(type: 'appstore', readonly: false)
   end
 
   lane :sync_version do
