@@ -50,15 +50,21 @@ platform :ios do
     )
   end
 
-  lane :prepare_release do
+  lane :prepare_release do |options|
     setup_ci
+
+    appicon(
+      appicon_path: "./#{project_dir}/#{project_scheme}/Images.xcassets",
+      appicon_devices: %i[ipad iphone ios_marketing watch watch_marketing],
+    )
+    add_badge if options[:is_next_release]
 
     sync_version
     sync_code_signing(type: 'appstore', readonly: true)
   end
 
-  lane :release_next do
+  lane :release do |options|
     setup_api_key
-    upload_to_testflight
+    upload_to_testflight if options[:is_next_release]
   end
 end

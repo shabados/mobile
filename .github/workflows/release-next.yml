@@ -73,14 +73,14 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run prepare-release:ios
+      - run: npm run prepare-release:${{ matrix.platform }} -- is_next_release:true
         env:
           MATCH_REPOSITORY: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
 
       - run: npm run build -- is_release:true
 
-      - run: npm run release:next:${{ matrix.platform }}
+      - run: npm run release:${{ matrix.platform }} -- is_next_release:true
         env:
           APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
