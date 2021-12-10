@@ -26,18 +26,14 @@ platform :ios do
     )
   end
 
-  private_lane :get_api_key do
+  lane :sync_certificates do
+    setup_ci
+
     app_store_connect_api_key(
       key_id: ENV['APP_STORE_CONNECT_KEY_ID'],
       issuer_id: ENV['APP_STORE_CONNECT_ISSUER_ID'],
       key_content: ENV['APP_STORE_CONNECT_KEY'],
     )
-  end
-
-  lane :sync_certificates do
-    setup_ci
-
-    get_api_key
 
     sync_code_signing(type: 'appstore', readonly: false)
   end
@@ -52,10 +48,10 @@ platform :ios do
   end
 
   private_lane :prepare_release do
-    get_api_key
+    setup_ci
 
     sync_version
-    sync_code_signing(type: 'appstore')
+    sync_code_signing(type: 'appstore', readonly: true)
 
     build(is_release: true)
   end
