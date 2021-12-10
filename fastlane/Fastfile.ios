@@ -35,7 +35,7 @@ platform :ios do
   end
 
   lane :sync_certificates do
-    setup_ci if is_ci
+    setup_ci
 
     get_api_key
 
