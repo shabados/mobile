@@ -50,18 +50,14 @@ platform :ios do
     )
   end
 
-  private_lane :prepare_release do
+  lane :prepare_release do
     setup_ci
 
     sync_version
     sync_code_signing(type: 'appstore', readonly: true)
-
-    build(is_release: true)
   end
 
   lane :release_next do
-    prepare_release
-
     setup_api_key
     upload_to_testflight
   end
