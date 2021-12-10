@@ -21,6 +21,11 @@ or alternatively using `brew install fastlane`
 fastlane ios clean
 ```
 
+### ios sync_certificates
+```
+fastlane ios sync_certificates
+```
+
 ### ios build
 ```
 fastlane ios build
