@@ -1,38 +1,200 @@
 {
-  "images" : [
+  "images": [
     {
-      "idiom" : "iphone",
-      "size" : "29x29",
-      "scale" : "2x"
+      "idiom": "ios-marketing",
+      "filename": "icon-1024x1024.png",
+      "scale": "1x",
+      "size": "1024x1024"
     },
     {
-      "idiom" : "iphone",
-      "size" : "29x29",
-      "scale" : "3x"
+      "idiom": "watch-marketing",
+      "filename": "icon-1024x1024.png",
+      "scale": "1x",
+      "size": "1024x1024"
     },
     {
-      "idiom" : "iphone",
-      "size" : "40x40",
-      "scale" : "2x"
+      "idiom": "watch",
+      "filename": "icon-216x216.png",
+      "scale": "2x",
+      "size": "108x108",
+      "role": "quickLook",
+      "subtype": "44mm"
     },
     {
-      "idiom" : "iphone",
-      "size" : "40x40",
-      "scale" : "3x"
+      "idiom": "watch",
+      "filename": "icon-196x196.png",
+      "scale": "2x",
+      "size": "98x98",
+      "role": "quickLook",
+      "subtype": "42mm"
     },
     {
-      "idiom" : "iphone",
-      "size" : "60x60",
-      "scale" : "2x"
+      "idiom": "iphone",
+      "filename": "icon-180x180.png",
+      "scale": "3x",
+      "size": "60x60"
     },
     {
-      "idiom" : "iphone",
-      "size" : "60x60",
-      "scale" : "3x"
+      "idiom": "watch",
+      "filename": "icon-172x172.png",
+      "scale": "2x",
+      "size": "86x86",
+      "role": "quickLook",
+      "subtype": "38mm"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-167x167.png",
+      "scale": "2x",
+      "size": "83.5x83.5"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-152x152.png",
+      "scale": "2x",
+      "size": "76x76"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "icon-120x120.png",
+      "scale": "2x",
+      "size": "60x60"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "icon-120x120.png",
+      "scale": "3x",
+      "size": "40x40"
+    },
+    {
+      "idiom": "watch",
+      "filename": "icon-100x100.png",
+      "scale": "2x",
+      "size": "50x50",
+      "role": "appLauncher",
+      "subtype": "44mm"
+    },
+    {
+      "idiom": "watch",
+      "filename": "icon-88x88.png",
+      "scale": "2x",
+      "size": "44x44",
+      "role": "appLauncher",
+      "subtype": "40mm"
+    },
+    {
+      "idiom": "watch",
+      "filename": "icon-87x87.png",
+      "scale": "3x",
+      "size": "29x29",
+      "role": "companionSettings"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "icon-87x87.png",
+      "scale": "3x",
+      "size": "29x29"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-80x80.png",
+      "scale": "2x",
+      "size": "40x40"
+    },
+    {
+      "idiom": "watch",
+      "filename": "icon-80x80.png",
+      "scale": "2x",
+      "size": "40x40",
+      "role": "appLauncher",
+      "subtype": "38mm"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "icon-80x80.png",
+      "scale": "2x",
+      "size": "40x40"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-76x76.png",
+      "scale": "1x",
+      "size": "76x76"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "icon-60x60.png",
+      "scale": "3x",
+      "size": "20x20"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "icon-58x58.png",
+      "scale": "2x",
+      "size": "29x29"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-58x58.png",
+      "scale": "2x",
+      "size": "29x29"
+    },
+    {
+      "idiom": "watch",
+      "filename": "icon-58x58.png",
+      "scale": "2x",
+      "size": "29x29",
+      "role": "companionSettings"
+    },
+    {
+      "idiom": "watch",
+      "filename": "icon-55x55.png",
+      "scale": "2x",
+      "size": "27.5x27.5",
+      "role": "notificationCenter",
+      "subtype": "42mm"
+    },
+    {
+      "idiom": "watch",
+      "filename": "icon-48x48.png",
+      "scale": "2x",
+      "size": "24x24",
+      "role": "notificationCenter",
+      "subtype": "38mm"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-40x40.png",
+      "scale": "2x",
+      "size": "20x20"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-40x40.png",
+      "scale": "1x",
+      "size": "40x40"
+    },
+    {
+      "idiom": "iphone",
+      "filename": "icon-40x40.png",
+      "scale": "2x",
+      "size": "20x20"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-29x29.png",
+      "scale": "1x",
+      "size": "29x29"
+    },
+    {
+      "idiom": "ipad",
+      "filename": "icon-20x20.png",
+      "scale": "1x",
+      "size": "20x20"
     }
   ],
-  "info" : {
-    "version" : 1,
-    "author" : "xcode"
+  "info": {
+    "version": 1,
+    "author": "fastlane"
   }
 }
