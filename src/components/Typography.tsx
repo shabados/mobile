@@ -16,9 +16,13 @@ const styles = StyleSheet.create( {
     fontSize: 18,
     fontFamily: Fonts.NotoSansLight,
   },
+  logo: {
+    fontSize: 20,
+    fontWeight: '300',
+  },
 } )
 
-type Variants = 'body' | 'header' | 'button'
+type Variants = 'body' | 'header' | 'button' | 'logo'
 
 export type TypographyProps = TextProps & {
   children: ReactNode,

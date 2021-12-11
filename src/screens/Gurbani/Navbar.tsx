@@ -5,7 +5,7 @@ import logo from '../../../assets/images/logo.png'
 import Navbar from '../../components/Navbar'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
-import { px } from '../../themes/utils'
+import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   headerIcon: {
@@ -16,10 +16,11 @@ const styles = StyleSheet.create( {
   },
   heading: {
     ...px( 6 ),
+    ...py( 2 ),
   },
   logo: {
-    width: 25,
-    height: 25,
+    width: 28,
+    height: 28,
   },
 } )
 
@@ -33,7 +34,7 @@ const GurbaniNavbar = () => (
     main={(
       <>
         <Image style={styles.logo} source={logo} />
-        <Typography variant="header" style={styles.heading}>Shabad OS</Typography>
+        <Typography variant="logo" style={styles.heading}>Shabad OS</Typography>
       </>
     )}
   />
