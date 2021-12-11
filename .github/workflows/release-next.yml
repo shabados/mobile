@@ -80,7 +80,7 @@ jobs:
           MATCH_REPOSITORY: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
 
-      - run: npm run build -- is_release:true
+      - run: npm run build:${{ matrix.platform }} -- is_release:true
 
       - run: npm run release:${{ matrix.platform }} -- is_next_release:true
         env:
