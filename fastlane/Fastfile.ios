@@ -70,7 +70,9 @@ platform :ios do
   end
 
   lane :release do |options|
+    setup_ci
     setup_api_key
+
     upload_to_testflight if options[:is_next_release]
   end
 end
