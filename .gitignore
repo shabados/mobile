@@ -68,3 +68,6 @@ fastlane/screenshots
 # Coverage reports
 coverage
 *.lcov
+
+# Generated icons
+AppIcon.appiconset
