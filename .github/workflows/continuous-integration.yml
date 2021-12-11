@@ -51,6 +51,8 @@ jobs:
         with:
           bundler-cache: true
 
+      - run: brew bundle
+
       - uses: actions/cache@v2
         with:
           path: ios/Pods
