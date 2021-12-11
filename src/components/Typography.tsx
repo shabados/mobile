@@ -12,9 +12,9 @@ const styles = StyleSheet.create( {
   button: {
     color: Colors.PrimaryText,
   },
-  header: {
-    fontSize: 18,
-    fontFamily: Fonts.NotoSansLight,
+  headline: {
+    fontSize: 17,
+    fontWeight: '600',
   },
   logo: {
     fontSize: 20,
@@ -22,7 +22,7 @@ const styles = StyleSheet.create( {
   },
 } )
 
-type Variants = 'body' | 'header' | 'button' | 'logo'
+type Variants = 'body' | 'headline' | 'button' | 'logo'
 
 export type TypographyProps = TextProps & {
   children: ReactNode,
