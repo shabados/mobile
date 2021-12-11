@@ -9,10 +9,10 @@ import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   headerIcon: {
-    fontSize: 22,
+    fontSize: 28,
     color: Colors.Disabled,
-    paddingLeft: 20,
-    paddingRight: 20,
+    ...px( 20 ),
+    ...py( 10 ),
   },
   logo: {
     display: 'flex',
