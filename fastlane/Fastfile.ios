@@ -16,11 +16,6 @@ platform :ios do
   lane :build do |options|
     should_skip_release_options = options[:is_release] ? false : true
 
-    appicon(
-      appicon_path: "./#{project_dir}/#{project_scheme}/Images.xcassets",
-      appicon_devices: %i[ipad iphone ios_marketing watch watch_marketing],
-    )
-
     build_app(
       workspace: project_workspace,
       scheme: project_scheme,
