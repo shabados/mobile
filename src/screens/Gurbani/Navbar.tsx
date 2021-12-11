@@ -1,4 +1,4 @@
-import { Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import logo from '../../../assets/images/logo.png'
@@ -14,13 +14,15 @@ const styles = StyleSheet.create( {
     paddingLeft: 20,
     paddingRight: 20,
   },
-  heading: {
-    ...px( 6 ),
-    ...py( 2 ),
-  },
   logo: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  logoIcon: {
     width: 28,
     height: 28,
+    marginRight: 6,
   },
 } )
 
@@ -32,10 +34,10 @@ const GurbaniNavbar = () => (
     left={<Icon style={styles.headerIcon} name="menu" />}
     right={<Icon style={styles.headerIcon} name="ios-options-outline" />}
     main={(
-      <>
-        <Image style={styles.logo} source={logo} />
-        <Typography variant="logo" style={styles.heading}>Shabad OS</Typography>
-      </>
+      <View style={styles.logo}>
+        <Image style={styles.logoIcon} source={logo} />
+        <Typography variant="logo">Shabad OS</Typography>
+      </View>
     )}
   />
 )
