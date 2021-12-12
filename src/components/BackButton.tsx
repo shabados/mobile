@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 import Colors from '../themes/colors'
 import Button, { ButtonProps } from './Button'
