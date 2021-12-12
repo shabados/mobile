@@ -24,6 +24,10 @@ const styles = StyleSheet.create( {
     height: 28,
     marginRight: 6,
   },
+  logoText: {
+    fontSize: 20,
+    fontWeight: '300',
+  },
 } )
 
 /**
@@ -36,7 +40,7 @@ const GurbaniNavbar = () => (
     main={(
       <View style={styles.logo}>
         <Image style={styles.logoIcon} source={logo} />
-        <Typography variant="logo">Shabad OS</Typography>
+        <Typography style={styles.logoText}>Shabad OS</Typography>
       </View>
     )}
   />

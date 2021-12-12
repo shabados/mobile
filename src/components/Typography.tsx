@@ -19,13 +19,9 @@ const styles = StyleSheet.create( {
     fontSize: 17,
     fontWeight: '600',
   },
-  logo: {
-    fontSize: 20,
-    fontWeight: '300',
-  },
 } )
 
-type Variants = 'body' | 'headline' | 'button' | 'logo'
+type Variants = 'body' | 'headline' | 'button'
 
 export type TypographyProps = TextProps & {
   children: ReactNode,
