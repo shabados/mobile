@@ -10,15 +10,15 @@ import { TranslationData } from '../../types/data'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    fontSize: 19.5, // 16/14*base
+    fontSize: 17 * ( 16 / 14 ),
   },
   root: {
     ...px( 20 ),
-    ...py( 14.875 ),
+    ...py( ( 17 * 1.75 ) / 2 ),
   },
   text: {
     color: Colors.SecondaryText,
-    paddingTop: 7.4375, // base*lineHeight/4
+    paddingTop: ( 17 * 1.75 ) / 4,
   },
 } )
 

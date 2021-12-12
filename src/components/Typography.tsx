@@ -9,7 +9,7 @@ const styles = StyleSheet.create( {
   },
   body: {
     fontSize: 17,
-    lineHeight: 29.75,
+    lineHeight: 17 * 1.75,
     fontWeight: '400',
   },
   button: {
