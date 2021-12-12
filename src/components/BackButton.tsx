@@ -3,6 +3,7 @@ import { StyleSheet, Text } from 'react-native'
 
 import Colors from '../themes/colors'
 import Button, { ButtonProps } from './Button'
+import Typography from './Typography'
 
 export type BackButtonProps = {
   /**
@@ -14,7 +15,6 @@ export type BackButtonProps = {
 const styles = StyleSheet.create( {
   label: {
     color: Colors.PrimaryText,
-    fontSize: 16,
   },
 } )
 
@@ -28,7 +28,7 @@ const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
 
   return (
     <Button onPress={goBack} {...props}>
-      {typeof label === 'string' ? <Text style={styles.label}>{label}</Text> : label}
+      {typeof label === 'string' ? <Typography style={styles.label}>{label}</Typography> : label}
     </Button>
   )
 }

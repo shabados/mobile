@@ -19,6 +19,8 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    minHeight: 42,
+    minWidth: 42,
   },
   text: {},
 } )
