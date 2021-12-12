@@ -14,7 +14,7 @@ const styles = StyleSheet.create( {
   },
   root: {
     ...px( 20 ),
-    ...py( 7.4375 ),
+    ...py( 14.875 ),
   },
   text: {
     color: Colors.SecondaryText,
