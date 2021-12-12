@@ -8,29 +8,27 @@ import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 16,
-    paddingBottom: 0,
-    color: Colors.PrimaryText,
+    fontSize: 19.5,
+    ...py( 4 ),
+  },
+  root: {
+    ...px( 20 ),
+    ...py( 12 ),
+  },
+  secondaryText: {
+    color: Colors.SecondaryText,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  root: {
-    ...px( 12 ),
-    ...py( 12 ),
-  },
-  subText: {
-    color: Colors.SecondaryText,
-    fontSize: 14,
-  },
-  text: {
-    ...py( 6 ),
+  headerGurmukhi: {
+    fontSize: 14.5,
   },
   translation: {
-    ...py( 6 ),
+    fontSize: 13,
+    lineHeight: 14.875,
   },
 } )
 
@@ -75,13 +73,19 @@ const Result = ( {
 }: ResultProps ) => (
   <Pressable style={[ styles.root, style ]} {...props}>
     <View style={styles.header}>
-      <Typography style={styles.subText}>{toUnicode( source )}</Typography>
-      <Typography style={styles.subText}>{toUnicode( page )}</Typography>
+      <Typography style={[styles.secondaryText, styles.headerGurmukhi]}>{toUnicode( source )}</Typography>
+      <Typography style={[styles.secondaryText, styles.headerGurmukhi]}>{toUnicode( page )}</Typography>
     </View>
 
-    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
+    <Typography style={[ styles.text, styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
 
-    <Typography style={[ styles.subText, styles.translation ]}>{translation}</Typography>
+    <Typography style={[
+      styles.translation,
+      styles.secondaryText ]}
+    >
+      {translation}
+
+    </Typography>
   </Pressable>
 )
 
