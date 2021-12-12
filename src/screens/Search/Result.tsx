@@ -82,10 +82,7 @@ const Result = ( {
 
     <Typography style={[ styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
 
-    <Typography style={[
-      styles.translation,
-      styles.secondaryText ]}
-    >
+    <Typography style={[ styles.translation, styles.secondaryText ]}>
       {translation}
 
     </Typography>
