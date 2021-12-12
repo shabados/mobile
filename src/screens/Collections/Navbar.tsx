@@ -14,6 +14,7 @@ const styles = StyleSheet.create( {
   },
   headerIcon: {
     ...px( 20 ),
+    fontSize: 28,
     color: Colors.PrimaryText,
   },
 } )
