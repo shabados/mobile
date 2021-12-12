@@ -4,27 +4,25 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 import { OS } from '../lib/consts'
 import Colors from '../themes/colors'
-import Fonts from '../themes/fonts'
 import { my } from '../themes/utils'
 
 const styles = StyleSheet.create( {
   clearButton: {
     color: Colors.SecondaryText,
     opacity: 0.6,
+    padding: 12,
   },
   clearButtonContainer: {
     ...my(),
-    marginLeft: -30,
-    borderRadius: 100,
   },
   searchBar: {
     ...( OS.android && { paddingLeft: 10 } ),
-    ...( OS.ios && { padding: 10 } ),
+    ...( OS.ios && { paddingLeft: 10 } ),
     flexDirection: 'row',
     borderRadius: 10,
     backgroundColor: Colors.InputBox,
     width: '100%',
-    height: 36,
+    height: 42,
   },
   searchIcon: {
     ...my(),
@@ -32,8 +30,8 @@ const styles = StyleSheet.create( {
     color: Colors.SecondaryText,
   },
   searchInputBox: {
+    fontSize: 17,
     flex: 1,
-    fontFamily: Fonts.NotoSansRegular,
     marginLeft: 5,
     color: Colors.PrimaryText,
     ...my(),
