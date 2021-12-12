@@ -5,26 +5,20 @@ import Typography from '../../components/Typography'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
-import Fonts from '../../themes/fonts'
 import { px, py } from '../../themes/utils'
 import { TranslationData } from '../../types/data'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    color: Colors.PrimaryText,
-    fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 19.5, // 16/14*base
   },
   root: {
-    ...px( 12 ),
-    ...py( 12 ),
+    ...px( 20 ),
+    ...py( 7.4375 ),
   },
   text: {
     color: Colors.SecondaryText,
-    fontSize: 14,
-    lineHeight: 24,
-    paddingTop: 6,
+    paddingTop: 7.4375, // base*lineHeight/4
   },
 } )
 
@@ -52,7 +46,7 @@ const Line = ( {
   transliterations,
 }: LineProps ) => (
   <View style={styles.root}>
-    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
+    <Typography style={[ styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
 
     {translations
       .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )

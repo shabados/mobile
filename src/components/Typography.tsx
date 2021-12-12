@@ -8,7 +8,11 @@ const styles = StyleSheet.create( {
   base: {
     color: Colors.PrimaryText,
   },
-  body: {},
+  body: {
+    fontSize: 17,
+    lineHeight: 29.75,
+    fontWeight: '400',
+  },
   button: {
     color: Colors.PrimaryText,
   },
