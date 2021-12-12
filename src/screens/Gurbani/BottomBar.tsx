@@ -19,7 +19,7 @@ const styles = StyleSheet.create( {
     opacity: 0.9,
   },
   button: {
-    fontSize: 26,
+    fontSize: 28,
   },
   container: {
     ...px( 10 ),

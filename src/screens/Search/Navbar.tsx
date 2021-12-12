@@ -10,7 +10,7 @@ const styles = StyleSheet.create( {
     width: 30,
   },
   backIcon: {
-    fontSize: 20,
+    fontSize: 28,
   },
   root: {
     flex: 1,

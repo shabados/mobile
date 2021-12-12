@@ -2,7 +2,6 @@ import { ReactNode } from 'react'
 import { StyleSheet, Text, TextProps } from 'react-native'
 
 import Colors from '../themes/colors'
-import Fonts from '../themes/fonts'
 
 const styles = StyleSheet.create( {
   base: {

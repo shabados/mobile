@@ -26,7 +26,7 @@ const styles = StyleSheet.create( {
   },
   searchIcon: {
     ...my(),
-    fontSize: 16,
+    fontSize: 22,
     color: Colors.SecondaryText,
   },
   searchInputBox: {

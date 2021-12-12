@@ -9,15 +9,11 @@ import Colors from '../../themes/colors'
 import { px } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
-  backButton: {
-    marginLeft: -5,
-  },
   disabled: {
     color: Colors.Disabled,
   },
   headerIcon: {
     ...px( 20 ),
-    fontSize: 22,
     color: Colors.PrimaryText,
   },
 } )
@@ -28,7 +24,7 @@ const styles = StyleSheet.create( {
 const CollectionsNavbar = () => (
   <Navbar
     backgroundColor="transparent"
-    left={<BackButton testID="back-button" style={styles.backButton} variant="text" label={<IonIcon style={styles.headerIcon} name="arrow-back" />} />}
+    left={<BackButton testID="back-button" variant="text" label={<IonIcon style={styles.headerIcon} name="arrow-back" />} />}
     main={<Typography variant="headline">Collections</Typography>}
     right={<AntIcon testID="add-button" style={[ styles.headerIcon, styles.disabled ]} name="plus" />}
   />
