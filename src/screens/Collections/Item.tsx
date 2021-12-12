@@ -1,16 +1,17 @@
 import { Pressable, PressableProps, StyleSheet, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
-import { py } from '../../themes/utils'
+import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   chevron: {
     color: Colors.PrimaryText,
   },
   container: {
+    ...px( 20 ),
     ...py( 21 ),
-    paddingLeft: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -19,7 +20,7 @@ const styles = StyleSheet.create( {
   },
   title: {
     color: Colors.PrimaryText,
-    fontSize: 14,
+    fontSize: 19.5,
   },
 } )
 
@@ -31,7 +32,7 @@ type CollectionItemProps = {
 
 const CollectionItem = ( { title, icon, onPress, ...props }: CollectionItemProps ) => (
   <Pressable style={styles.container} onPress={onPress} {...props}>
-    <Text style={styles.title}>{title}</Text>
+    <Typography style={styles.title}>{title}</Typography>
     {icon && <Icon style={styles.chevron} name={icon} size={25} />}
   </Pressable>
 )
