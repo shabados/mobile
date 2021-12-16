@@ -16,6 +16,9 @@ const styles = StyleSheet.create( {
     fontSize: Units.Title1,
     color: Colors.PrimaryText,
   },
+  rightButton: {
+    marginRight: Units.HorizontalLayoutMargin,
+  },
 } )
 
 /**
@@ -35,7 +38,7 @@ const CollectionsNavbar = () => (
     right={(
       <AntIcon
         testID="add-button"
-        style={[ styles.headerIcon, styles.disabled ]}
+        style={[ styles.headerIcon, styles.disabled, styles.rightButton ]}
         name="plus"
       />
     )}

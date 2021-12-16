@@ -15,6 +15,7 @@ const styles = StyleSheet.create( {
   },
   searchBar: {
     flex: 1,
+    marginRight: Units.HorizontalLayoutMargin,
   },
 } )
 

@@ -14,8 +14,6 @@ const styles = StyleSheet.create( {
     alignItems: 'center',
     justifyContent: 'space-between',
     height: Units.MinimumTouchDimension + Units.HorizontalLayoutMargin / 2,
-    paddingRight: Units.HorizontalLayoutMargin,
-    // @bhajneet investigate why right pad is required, start with backbutton
   },
   // this ensures these buttons are always clickable when they are visible
   liftUp: {
