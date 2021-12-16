@@ -35,6 +35,8 @@ platform :ios do
   end
 
   lane :sync_certificates do
+    setup_api_key
+
     sync_code_signing(type: 'appstore', readonly: false)
   end
 
