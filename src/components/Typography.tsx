@@ -2,21 +2,22 @@ import { ReactNode } from 'react'
 import { StyleSheet, Text, TextProps } from 'react-native'
 
 import Colors from '../themes/colors'
+import Units from '../themes/units'
 
 const styles = StyleSheet.create( {
   base: {
     color: Colors.PrimaryText,
   },
   body: {
-    fontSize: 17,
-    lineHeight: 17 * 1.75,
+    fontSize: Units.Base,
+    lineHeight: Units.Base * Units.LineHeightMultiplier,
     fontWeight: '400',
   },
   button: {
     color: Colors.PrimaryText,
   },
   headline: {
-    fontSize: 17,
+    fontSize: Units.Base,
     fontWeight: '600',
   },
 } )

@@ -5,20 +5,21 @@ import Typography from '../../components/Typography'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
+import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 import { TranslationData } from '../../types/data'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    fontSize: 17 * ( 16 / 14 ),
+    fontSize: Units.Base * Units.GurmukhiLatinRatio,
   },
   root: {
     ...px( 20 ),
-    ...py( ( 17 * 1.75 ) / 2 ),
+    ...py( ( Units.Base * Units.LineHeightMultiplier ) / 2 ),
   },
   text: {
     color: Colors.SecondaryText,
-    paddingTop: ( 17 * 1.75 ) / 4,
+    paddingTop: ( Units.Base * Units.LineHeightMultiplier ) / 4,
   },
 } )
 

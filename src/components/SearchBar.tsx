@@ -4,35 +4,37 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 import { OS } from '../lib/consts'
 import Colors from '../themes/colors'
+import Units from '../themes/units'
 import { my } from '../themes/utils'
 
 const styles = StyleSheet.create( {
   clearButton: {
     color: Colors.SecondaryText,
-    opacity: 0.6,
-    padding: 12,
+    fontSize: 18,
+    padding: Units.MinimumTouchDimension / 4,
   },
   clearButtonContainer: {
     ...my(),
   },
   searchBar: {
-    ...( OS.android && { paddingLeft: 10 } ),
-    ...( OS.ios && { paddingLeft: 10 } ),
+    ...( OS.android && { paddingLeft: Units.HorizontalLayoutMargin / 2 } ),
+    ...( OS.ios && { paddingLeft: Units.HorizontalLayoutMargin / 2 } ),
     flexDirection: 'row',
-    borderRadius: 10,
+    borderRadius: Units.HorizontalLayoutMargin / 2,
     backgroundColor: Colors.InputBox,
     width: '100%',
-    height: 42,
+    height: Units.MinimumTouchDimension,
   },
   searchIcon: {
     ...my(),
-    fontSize: 22,
+    fontSize: Units.MinimumTouchDimension / 2,
     color: Colors.SecondaryText,
   },
   searchInputBox: {
-    fontSize: 17,
+    fontSize: Units.Base,
     flex: 1,
-    marginLeft: 5,
+    ...( OS.android && { marginLeft: Units.Base / 4 } ),
+    ...( OS.ios && { marginLeft: Units.Base / 2 } ),
     color: Colors.PrimaryText,
     ...my(),
   },
@@ -60,7 +62,7 @@ const SearchBar = ( {
 
   return (
     <View style={[ styles.searchBar, style ]}>
-      <Icon name="search" size={25} style={styles.searchIcon} />
+      <Icon name="search" style={styles.searchIcon} />
 
       <TextInput
         ref={inputRef}
@@ -79,7 +81,7 @@ const SearchBar = ( {
       {!!input.length && (
         <View style={styles.clearButtonContainer}>
           <Pressable onPress={clearInput}>
-            <Icon style={styles.clearButton} name="close-circle" size={17} testID="clear-search" />
+            <Icon style={styles.clearButton} name="close-circle" testID="clear-search" />
           </Pressable>
         </View>
       )}

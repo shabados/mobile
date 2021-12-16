@@ -4,21 +4,17 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import BackButton from '../../components/BackButton'
 import Navbar from '../../components/Navbar'
 import SearchBar, { SearchBarProps } from '../../components/SearchBar'
+import Units from '../../themes/units'
 
 const styles = StyleSheet.create( {
-  back: {
-    width: 30,
-  },
   backIcon: {
-    fontSize: 28,
+    fontSize: Units.Title1,
   },
   root: {
-    flex: 1,
     flexDirection: 'row',
   },
   searchBar: {
     flex: 1,
-    marginRight: 20,
   },
 } )
 
@@ -39,7 +35,7 @@ const SearchNavbar = ( {
     backgroundColor="transparent"
     main={(
       <View style={styles.root}>
-        <BackButton testID="back-button" style={styles.back} variant="text" label={<Icon style={styles.backIcon} name="arrow-back" />} />
+        <BackButton testID="back-button" variant="text" label={<Icon style={styles.backIcon} name="arrow-back" />} />
 
         <SearchBar style={styles.searchBar} autoFocus onChangeText={onSearchChange} />
       </View>

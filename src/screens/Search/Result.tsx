@@ -1,14 +1,23 @@
 import { toUnicode } from 'gurmukhi-utils'
-import { Pressable, PressableProps, StyleSheet, View, ViewStyle } from 'react-native'
+import {
+  Pressable,
+  PressableProps,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native'
 
+import { OS } from '../../../build/src/lib/consts'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
+import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    fontSize: 19.5,
-    ...py( 4 ),
+    fontSize: Units.Base * Units.GurmukhiLatinRatio,
+    ...( OS.android && { paddingBottom: 6 } ),
+    ...( OS.ios && { paddingBottom: 2.5 } ),
   },
   header: {
     flexDirection: 'row',
@@ -16,18 +25,18 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
   },
   headerGurmukhi: {
-    fontSize: 14.5,
+    fontSize: Units.Footnote * Units.GurmukhiLatinRatio,
   },
   root: {
-    ...px( 20 ),
-    ...py( 12 ),
+    ...px( Units.HorizontalLayoutMargin ),
+    ...py( ( Units.Base * Units.LineHeightMultiplier ) / 2 ),
   },
   secondaryText: {
     color: Colors.SecondaryText,
   },
   translation: {
-    fontSize: 13,
-    lineHeight: 14.875,
+    fontSize: Units.Footnote,
+    lineHeight: ( Units.Base * Units.LineHeightMultiplier ) / 2,
   },
 } )
 
@@ -54,10 +63,11 @@ export type ResultDataProps = {
   translation: string,
 }
 
-export type ResultProps = PressableProps & ResultDataProps & {
+export type ResultProps = PressableProps &
+ResultDataProps & {
   /**
-   * Style for `View` container
-   */
+     * Style for `View` container
+     */
   style?: ViewStyle,
 }
 
@@ -84,7 +94,6 @@ const Result = ( {
 
     <Typography style={[ styles.translation, styles.secondaryText ]}>
       {translation}
-
     </Typography>
   </Pressable>
 )

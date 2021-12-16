@@ -3,26 +3,26 @@ import { StatusBar, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '../themes/colors'
+import Units from '../themes/units'
 
 const styles = StyleSheet.create( {
   header: {
     backgroundColor: Colors.ModalSheetTitleBar,
     flexDirection: 'row',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
+    borderTopLeftRadius: Units.HorizontalLayoutMargin,
+    borderTopRightRadius: Units.HorizontalLayoutMargin,
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 50,
+    height: Units.MinimumTouchDimension + Units.HorizontalLayoutMargin / 2,
+    paddingRight: Units.HorizontalLayoutMargin,
+    // @bhajneet investigate why right pad is required, start with backbutton
   },
   // this ensures these buttons are always clickable when they are visible
   liftUp: {
     zIndex: 10,
   },
   main: {
-    position: 'absolute',
     flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
   },
 } )
 

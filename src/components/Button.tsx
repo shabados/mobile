@@ -1,6 +1,7 @@
 import { Pressable, PressableProps, StyleSheet, ViewProps } from 'react-native'
 
 import Colors from '../themes/colors'
+import Units from '../themes/units'
 import { mx } from '../themes/utils'
 import Typography from './Typography'
 
@@ -12,15 +13,14 @@ const styles = StyleSheet.create( {
     opacity: 0.6,
   },
   root: {
-    borderRadius: 10,
-    width: 75,
-    ...mx( 10 ),
+    borderRadius: Units.HorizontalLayoutMargin / 2,
+    ...mx( Units.HorizontalLayoutMargin / 2 ),
     height: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    minHeight: 42,
-    minWidth: 42,
+    minHeight: Units.MinimumTouchDimension,
+    minWidth: Units.MinimumTouchDimension,
   },
   text: {},
 } )

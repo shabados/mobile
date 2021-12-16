@@ -3,24 +3,25 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
-import { px, py } from '../../themes/utils'
+import Units from '../../themes/units'
+import { px } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   chevron: {
     color: Colors.PrimaryText,
   },
   container: {
-    ...px( 20 ),
-    ...py( 21 ),
+    ...px( Units.HorizontalLayoutMargin ),
+    minHeight: Units.MinimumTouchDimension * Units.LineHeightMultiplier,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: Units.Separator,
     borderBottomColor: Colors.Separator,
   },
   title: {
     color: Colors.PrimaryText,
-    fontSize: 19.5,
+    fontSize: Units.Base * Units.GurmukhiLatinRatio,
   },
 } )
 
@@ -33,7 +34,7 @@ type CollectionItemProps = {
 const CollectionItem = ( { title, icon, onPress, ...props }: CollectionItemProps ) => (
   <Pressable style={styles.container} onPress={onPress} {...props}>
     <Typography style={styles.title}>{title}</Typography>
-    {icon && <Icon style={styles.chevron} name={icon} size={25} />}
+    {icon && <Icon style={styles.chevron} name={icon} size={Units.Title1} />}
   </Pressable>
 )
 
