@@ -10,14 +10,20 @@ import {
 import { OS } from '../../../build/src/lib/consts'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
+import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   gurbani: {
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
-    ...( OS.android && { paddingBottom: 6 } ),
-    ...( OS.ios && { paddingBottom: 2.5 } ),
+    ...( OS.android && {
+      paddingBottom: 6,
+      fontFamily: Fonts.MuktaMahee,
+    } ),
+    ...( OS.ios && {
+      paddingBottom: 2.5,
+    } ),
   },
   header: {
     flexDirection: 'row',
@@ -26,6 +32,7 @@ const styles = StyleSheet.create( {
   },
   headerGurmukhi: {
     fontSize: Units.Footnote * Units.GurmukhiLatinRatio,
+    ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
   },
   root: {
     ...px( Units.HorizontalLayoutMargin ),

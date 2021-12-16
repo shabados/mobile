@@ -1,8 +1,10 @@
 import { Pressable, PressableProps, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
+import { OS } from '../../../build/src/lib/consts'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
+import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'
 import { px } from '../../themes/utils'
 
@@ -22,6 +24,7 @@ const styles = StyleSheet.create( {
   title: {
     color: Colors.PrimaryText,
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
+    ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
   },
 } )
 

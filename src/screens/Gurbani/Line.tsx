@@ -1,10 +1,12 @@
 import { toUnicode } from 'gurmukhi-utils'
 import { StyleSheet, View } from 'react-native'
 
+import { OS } from '../../../build/src/lib/consts'
 import Typography from '../../components/Typography'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
+import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 import { TranslationData } from '../../types/data'
@@ -12,6 +14,7 @@ import { TranslationData } from '../../types/data'
 const styles = StyleSheet.create( {
   gurbani: {
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
+    ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
   },
   root: {
     ...px( 20 ),
