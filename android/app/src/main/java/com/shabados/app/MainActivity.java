@@ -1,4 +1,4 @@
-package com.shabados.mobile;
+package com.shabados.app;
 
 import com.facebook.react.ReactActivity;
 
