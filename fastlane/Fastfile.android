@@ -1,9 +1,40 @@
+project_dir = 'android'
+
 platform :android do
   lane :clean do
-    gradle(task: 'clean', project_dir: 'android')
+    gradle(task: 'clean', project_dir: project_dir)
   end
 
-  lane :build do
-    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android')
+  lane :build do |options|
+    version = get_version
+    code = options[:is_release] ? google_play_track_version_codes.first : 1
+
+    gradle(
+      task: 'build',
+      project_dir: project_dir,
+      properties: {
+        'version.name' => version,
+        'version.code' => code,
+      },
+    )
+  end
+
+  lane :prepare_release do |options|
+    setup_ci
+
+    android_appicon(
+      appicon_path: "#{project_dir}/app/res/mipmap",
+      appicon_icon_types: %i[launcher notification splash_land splash_port],
+    )
+    add_badge if options[:is_next_release]
+  end
+
+  lane :release do |options|
+    setup_ci
+
+    upload_to_play_store(
+      json_key_data: ENV['PLAY_STORE_CREDENTIALS'],
+      track: options[:is_next_release] ? 'internal' : 'production',
+    )
   end
 end
