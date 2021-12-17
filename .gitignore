@@ -71,4 +71,4 @@ coverage
 
 # Generated icons
 AppIcon.appiconset
-ic_launcher.png
+ic_launcher*.png

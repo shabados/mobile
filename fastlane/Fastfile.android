@@ -5,9 +5,15 @@ platform :android do
     gradle(task: 'clean', project_dir: project_dir)
   end
 
+  private_lane :get_latest_version_code do
+    google_play_track_version_codes(
+      json_key_data: ENV['PLAY_STORE_CREDENTIALS'],
+    ).first
+  end
+
   lane :build do |options|
     version = get_version
-    code = options[:is_release] ? google_play_track_version_codes.first : 1
+    code = options[:is_release] ? get_latest_version_code : 1
 
     gradle(
       task: 'build',
@@ -22,18 +28,18 @@ platform :android do
   end
 
   lane :prepare_release do |options|
-    setup_ci
-
     android_appicon(
       appicon_path: "#{project_dir}/app/res/mipmap",
       appicon_icon_types: %i[launcher notification splash_land splash_port],
+      generate_rounded: true,
     )
-    add_badge if options[:is_next_release]
+
+    if options[:is_next_release]
+      add_badge(glob: "/#{project_dir}/app/res/mipmap-*/ic_launcher*.png")
+    end
   end
 
   lane :release do |options|
-    setup_ci
-
     upload_to_play_store(
       json_key_data: ENV['PLAY_STORE_CREDENTIALS'],
       track: options[:is_next_release] ? 'internal' : 'production',
