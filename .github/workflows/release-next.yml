@@ -43,11 +43,15 @@ jobs:
 
       - uses: shabados/actions/generate-changelog@release/v2
 
+        # .tar to preserve permissions - https://github.com/actions/upload-artifact#maintaining-file-permissions-and-case-sensitive-files
+      - name: Create tar workspace archive to preserve file permissions
+        run: tar -cf workspace.tar ${{ github.workspace }}
+
       - name: Upload workspace
         uses: actions/upload-artifact@v2
         with:
           name: release-workspace
-          path: ${{ github.workspace }}
+          path: workspace.tar
 
   build-release:
     needs: prepare
@@ -65,7 +69,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: release-workspace
-          path: ${{ github.workspace }}
+
+        # .tar to preserve permissions - https://github.com/actions/upload-artifact#maintaining-file-permissions-and-case-sensitive-files
+      - name: Extract tar workspace archive to preserve file permissions
+        run: tar -xf workspace.tar -C /
 
       - uses: actions/setup-node@v2
         with:
@@ -101,7 +108,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: release-workspace
-          path: ${{ github.workspace }}
+
+        # .tar to preserve permissions - https://github.com/actions/upload-artifact#maintaining-file-permissions-and-case-sensitive-files
+      - name: Extract tar workspace archive to preserve file permissions
+        run: tar -xf workspace.tar -C /
 
       - uses: shabados/actions/publish-github@release/v2
         with:
