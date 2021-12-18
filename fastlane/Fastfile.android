@@ -17,13 +17,17 @@ platform :android do
 
     gradle(
       task: 'bundle',
-      build_type: 'Release',
+      build_type: options[:is_release] ? 'Release' : 'Debug',
       project_dir: project_dir,
       properties: {
         'applicationId' =>
           CredentialsManager::AppfileConfig.try_fetch_value(:package_name),
         'version.name' => version,
         'version.code' => code,
+        'keystore.path' => ENV['UPLOAD_KEYSTORE_PATH'],
+        'keystore.password' => ENV['UPLOAD_KEYSTORE_PASSWORD'],
+        'keystore.key.alias' => ENV['UPLOAD_KEYSTORE_KEY_ALIAS'],
+        'keystore.key.password' => ENV['UPLOAD_KEYSTORE_KEY_PASSWORD'],
       },
     )
   end
