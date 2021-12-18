@@ -11,9 +11,19 @@ platform :android do
     ).first
   end
 
+  private_lane :decode_keystore_to_file do
+    ENV['UPLOAD_KEYSTORE_PATH'] = "#{Dir.pwd}/../github-actions.keystore"
+
+    base64_to_file(ENV['UPLOAD_KEYSTORE_FILE'], ENV['UPLOAD_KEYSTORE_PATH'])
+
+    UI.message("Decoded upload keystore to #{ENV['UPLOAD_KEYSTORE_PATH']}")
+  end
+
   lane :build do |options|
     version = get_version
     code = options[:is_release] ? get_latest_version_code : 1
+
+    decode_keystore_to_file if (ENV['UPLOAD_KEYSTORE_FILE'])
 
     gradle(
       task: 'bundle',
