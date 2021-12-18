@@ -9,8 +9,11 @@ on:
 concurrency: release
 
 env:
-  MATCH_REPOSITORY: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
+  MATCH_GIT_URL: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
   MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+  APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+  APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+  APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
   SUPPLY_JSON_KEY_DATA: ${{ secrets.PLAY_STORE_CREDENTIALS }}
   UPLOAD_KEYSTORE_FILE: ${{ secrets.UPLOAD_KEYSTORE_FILE }}
   UPLOAD_KEYSTORE_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_PASSWORD }}

@@ -1,8 +1,3 @@
-git_full_name(ENV['GIT_FULL_NAME'])
-git_user_email(ENV['GIT_USER_EMAIL'])
-
-git_url(ENV['MATCH_REPOSITORY'])
-
 app_identifier(
   CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),
 )
