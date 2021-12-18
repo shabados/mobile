@@ -16,7 +16,8 @@ platform :android do
     code = options[:is_release] ? get_latest_version_code : 1
 
     gradle(
-      task: 'build',
+      task: 'bundle',
+      build_type: 'Release',
       project_dir: project_dir,
       properties: {
         'applicationId' =>
