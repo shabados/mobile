@@ -2,7 +2,6 @@ project_dir = 'android'
 
 def get_play_store_params(options)
   play_store_params = {
-    json_key_data: ENV['PLAY_STORE_CREDENTIALS'],
     track: options[:is_next_release] ? 'internal' : 'production',
   }
 end
