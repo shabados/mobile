@@ -60,6 +60,9 @@ platform :android do
   end
 
   lane :release do |options|
-    upload_to_play_store(get_play_store_params(options))
+    upload_to_play_store(
+      release_status: 'draft',
+      **get_play_store_params(options),
+    )
   end
 end
