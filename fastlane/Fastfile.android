@@ -60,7 +60,6 @@ platform :android do
 
   lane :release do |options|
     upload_to_play_store(
-      release_status: 'draft',
       aab: "#{project_dir}/app/build/outputs/bundle/release/app-release.aab",
       **get_play_store_params(options),
     )
