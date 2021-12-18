@@ -26,7 +26,7 @@ platform :android do
 
   lane :build do |options|
     version = get_version
-    code = options[:is_release] ? get_latest_version_code(options) : 1
+    code = (options[:is_release] ? get_latest_version_code(options) : 0) + 1
 
     decode_keystore_to_file if (ENV['UPLOAD_KEYSTORE_FILE'])
 
