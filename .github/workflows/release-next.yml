@@ -89,7 +89,7 @@ jobs:
 
       - run: npm run prepare-release:${{ matrix.platform }} -- is_next_release:true
 
-      - run: npm run build:${{ matrix.platform }} -- is_release:true
+      - run: npm run build:${{ matrix.platform }} -- is_release:true is_next_release:true
 
       - run: npm run release:${{ matrix.platform }} -- is_next_release:true
 
