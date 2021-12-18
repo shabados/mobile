@@ -21,7 +21,7 @@
     "clean:ios": "bundle exec fastlane ios clean",
     "prepare-release:android": "bundle exec fastlane android prepare_release",
     "prepare-release:ios": "bundle exec fastlane ios prepare_release",
-    "release:android": "bundle exec fastlane ios release",
+    "release:android": "bundle exec fastlane android release",
     "release:ios": "bundle exec fastlane ios release",
     "install-assets": "react-native link",
     "postinstall": "pod-install ios"
