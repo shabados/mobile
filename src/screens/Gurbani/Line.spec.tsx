@@ -12,9 +12,9 @@ const testProps: LineProps = {
 
 describe( '<Line />', () => {
   it( 'should render gurmukhi', () => {
-    const { getByText } = render( <Line {...testProps} gurmukhi="ihr" /> )
+    const { getByText } = render( <Line {...testProps} gurmukhi="ਹਰ" /> )
 
-    expect( getByText( 'ihr' ) ).toBeTruthy()
+    expect( getByText( 'ਹਰ' ) ).toBeTruthy()
   } )
 
   it( 'should render only translations with translationSourceId=0 (English)', () => {
@@ -34,12 +34,12 @@ describe( '<Line />', () => {
     const languages: LineProps['transliterations'] = [ Languages.English, Languages.Hindi ]
     const { getByText } = render( <Line
       {...testProps}
-      gurmukhi="ihr"
+      gurmukhi="ਹਰ"
       transliterations={languages}
     /> )
 
     languages.forEach( ( language ) => {
-      const transliteration = transliterators[ language ]( 'ihr' )
+      const transliteration = transliterators[ language ]( 'har' )
 
       expect( getByText( transliteration ) ).toBeTruthy()
     } )
