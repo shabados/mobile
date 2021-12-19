@@ -19,12 +19,12 @@ const styles = StyleSheet.create( {
     right: 0,
     opacity: 0.9,
   },
+  button: {
+    fontSize: 28,
+  },
   buttonContainer: {
     minWidth: Units.MinimumTouchDimension * 2,
     marginRight: 0,
-  },
-  button: {
-    fontSize: 28,
   },
   container: {
     ...px( 10 ),
