@@ -46,7 +46,7 @@ export function registerTranslations<
   return mapValues( translations, ( _, phraseName ) => ( `${namespace}:${phraseName}` ) )
 }
 
-i18n
+export const initialise = () => i18n
   .use( initReactI18next )
   .init( {
     resources: {},
