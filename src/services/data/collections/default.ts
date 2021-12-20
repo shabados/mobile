@@ -1,4 +1,4 @@
-import { CollectionData } from '../../types/data'
+import { CollectionData } from '../../../types/data'
 
 const defaultBookmarks = {
   japjiSahib: { id: '1', nameGurmukhi: 'jpu jI swihb' },

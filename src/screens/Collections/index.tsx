@@ -3,7 +3,7 @@ import { Text } from 'react-native'
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
-import { getCollections } from '../../data/collections'
+import { getCollections } from '../../services/data/collections'
 import Screens from '../screens'
 import Items from './Items'
 import Navbar from './Navbar'

@@ -3,7 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
-import { search } from '../../data/search'
+import { search } from '../../services/data/search'
 import { ContentType, SearchData } from '../../types/data'
 import Screens, { AppStackParams } from '../screens'
 import Navbar from './Navbar'

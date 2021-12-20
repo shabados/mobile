@@ -5,7 +5,7 @@ import { toUnicode } from 'gurmukhi-utils'
 
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
-import * as shabads from '../../data/shabads'
+import * as shabads from '../../services/data/shabads'
 import { AppStackParams } from '../screens'
 import { gurbaniScreen } from '.'
 
