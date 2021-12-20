@@ -393,6 +393,8 @@ PODS:
   - RNScreens (3.9.0):
     - React-Core
     - React-RCTImage
+  - RNSplit (0.1.0):
+    - React
   - RNVectorIcons (9.0.0):
     - React-Core
   - toolbar-android (0.2.1):
@@ -462,6 +464,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - "RNSplit (from `../node_modules/@splitsoftware/splitio-react-native`)"
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - "toolbar-android (from `../node_modules/@react-native-community/toolbar-android`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -555,6 +558,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSplit:
+    :path: "../node_modules/@splitsoftware/splitio-react-native"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   toolbar-android:
@@ -612,6 +617,7 @@ SPEC CHECKSUMS:
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
   RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
+  RNSplit: e75dc5a74f4c0e34bec2b68a6d075cbd8aadbe48
   RNVectorIcons: 4143ba35feebab8fdbe6bc43d1e776b393d47ac8
   toolbar-android: 2a73856e98b750d7e71ce4644d3f41cc98211719
   Yoga: 32a18c0e845e185f4a2a66ec76e1fd1f958f22fa
