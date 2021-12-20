@@ -5,7 +5,7 @@ def read_json(params)
 end
 
 def get_version
-  version = read_json(path: '../package.json')['version']
+  version, = read_json(path: '../package.json')['version'].split('-')
 
   return version
 end
