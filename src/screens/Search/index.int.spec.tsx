@@ -6,7 +6,7 @@ import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
-import * as lines from '../../data/search'
+import * as lines from '../../services/data/search'
 import { LineData, SearchData } from '../../types/data'
 import Screens, { AppStackParams } from '../screens'
 import { searchScreen } from '.'
