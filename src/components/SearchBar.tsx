@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 import { Pressable, StyleSheet, TextInput, TextInputProps, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
-import { OS } from '../lib/consts'
+import OS from '../helpers/os'
 import Colors from '../themes/colors'
 import Units from '../themes/units'
 import { my } from '../themes/utils'

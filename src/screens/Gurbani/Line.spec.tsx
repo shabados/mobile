@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react-native'
 
-import Languages from '../../lib/languages'
-import transliterators from '../../lib/transliterators'
+import Languages from '../../helpers/languages'
+import transliterators from '../../helpers/transliterators'
 import Line, { LineProps } from './Line'
 
 const testProps: LineProps = {

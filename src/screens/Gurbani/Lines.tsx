@@ -1,7 +1,7 @@
 import { stripVishraams } from 'gurmukhi-utils'
 import { FlatList, StyleSheet, View } from 'react-native'
 
-import Languages from '../../lib/languages'
+import Languages from '../../helpers/languages'
 import Units from '../../themes/units'
 import { LineData } from '../../types/data'
 import Line from './Line'
