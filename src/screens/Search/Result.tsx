@@ -7,8 +7,8 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import { OS } from '../../../build/src/lib/consts'
 import Typography from '../../components/Typography'
+import { OS } from '../../lib/consts'
 import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'

@@ -1,8 +1,8 @@
 import { toUnicode } from 'gurmukhi-utils'
 import { StyleSheet, View } from 'react-native'
 
-import { OS } from '../../../build/src/lib/consts'
 import Typography from '../../components/Typography'
+import { OS } from '../../lib/consts'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
