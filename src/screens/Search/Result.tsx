@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 
 import Typography from '../../components/Typography'
-import { OS } from '../../lib/consts'
+import OS from '../../helpers/os'
 import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'

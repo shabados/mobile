@@ -1,6 +1,8 @@
 import { Platform } from 'react-native'
 
-export const OS = {
+const OS = {
   ios: Platform.OS === 'ios',
   android: Platform.OS === 'android',
 }
+
+export default OS

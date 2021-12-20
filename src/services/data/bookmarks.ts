@@ -1,4 +1,4 @@
-import Languages from '../../lib/languages'
+import Languages from '../../helpers/languages'
 import { BookmarkData } from '../../types/data'
 import * as gurbaniNow from './gurbaninow'
 
