@@ -70,8 +70,7 @@ export type ResultDataProps = {
   translation: string,
 }
 
-export type ResultProps = PressableProps &
-ResultDataProps & {
+export type ResultProps = PressableProps & ResultDataProps & {
   /**
      * Style for `View` container
      */
