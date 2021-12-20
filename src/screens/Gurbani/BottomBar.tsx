@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
+import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 import Screens, { AppStackParams } from '../screens'
 
@@ -19,7 +20,11 @@ const styles = StyleSheet.create( {
     opacity: 0.9,
   },
   button: {
-    fontSize: 26,
+    fontSize: 28,
+  },
+  buttonContainer: {
+    minWidth: Units.MinimumTouchDimension * 2,
+    marginRight: 0,
   },
   container: {
     ...px( 10 ),
@@ -50,7 +55,7 @@ const BottomBar = () => {
           <SearchBar editable={false} onTouchStart={onSearchPress} />
         </Pressable>
 
-        <Button onPress={onCollectionsPress}>
+        <Button onPress={onCollectionsPress} style={styles.buttonContainer}>
           <Icon name="bookmark-outline" style={styles.button} testID="collections-icon" />
         </Button>
       </View>

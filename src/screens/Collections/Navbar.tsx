@@ -6,22 +6,18 @@ import BackButton from '../../components/BackButton'
 import Navbar from '../../components/Navbar'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
-import { px } from '../../themes/utils'
+import Units from '../../themes/units'
 
 const styles = StyleSheet.create( {
-  backButton: {
-    marginLeft: -5,
-  },
   disabled: {
     color: Colors.Disabled,
   },
   headerIcon: {
-    ...px( 20 ),
-    fontSize: 22,
+    fontSize: Units.Title1,
     color: Colors.PrimaryText,
   },
-  heading: {
-    fontSize: 16,
+  rightButton: {
+    marginRight: Units.HorizontalLayoutMargin,
   },
 } )
 
@@ -31,9 +27,21 @@ const styles = StyleSheet.create( {
 const CollectionsNavbar = () => (
   <Navbar
     backgroundColor="transparent"
-    left={<BackButton testID="back-button" style={styles.backButton} variant="text" label={<IonIcon style={styles.headerIcon} name="arrow-back" />} />}
-    main={<Typography variant="header" style={styles.heading}>Collections</Typography>}
-    right={<AntIcon testID="add-button" style={[ styles.headerIcon, styles.disabled ]} name="plus" />}
+    left={(
+      <BackButton
+        testID="back-button"
+        variant="text"
+        label={<IonIcon style={styles.headerIcon} name="arrow-back" />}
+      />
+    )}
+    main={<Typography variant="headline">Collections</Typography>}
+    right={(
+      <AntIcon
+        testID="add-button"
+        style={[ styles.headerIcon, styles.disabled, styles.rightButton ]}
+        name="plus"
+      />
+    )}
   />
 )
 

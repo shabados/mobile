@@ -2,29 +2,27 @@ import { toUnicode } from 'gurmukhi-utils'
 import { StyleSheet, View } from 'react-native'
 
 import Typography from '../../components/Typography'
+import { OS } from '../../lib/consts'
 import Languages from '../../lib/languages'
 import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
+import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 import { TranslationData } from '../../types/data'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    color: Colors.PrimaryText,
-    fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: Units.Base * Units.GurmukhiLatinRatio,
+    ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
   },
   root: {
-    ...px( 12 ),
-    ...py( 12 ),
+    ...px( 20 ),
+    ...py( ( Units.Base * Units.LineHeightMultiplier ) / 2 ),
   },
   text: {
     color: Colors.SecondaryText,
-    fontSize: 14,
-    lineHeight: 24,
-    paddingTop: 6,
+    paddingTop: ( Units.Base * Units.LineHeightMultiplier ) / 4,
   },
 } )
 
@@ -52,7 +50,7 @@ const Line = ( {
   transliterations,
 }: LineProps ) => (
   <View style={styles.root}>
-    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
+    <Typography style={[ styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
 
     {translations
       .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )

@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { render } from '@testing-library/react-native'
+import { toUnicode } from 'gurmukhi-utils'
 
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
@@ -34,7 +35,7 @@ describe( '<GurbaniScreen />', () => {
       const shabad = factories.shabad.build()
       const { findByText } = setup( shabad )
 
-      expect( await findByText( shabad.lines[ 0 ].gurmukhi ) ).toBeTruthy()
+      expect( await findByText( toUnicode( shabad.lines[ 0 ].gurmukhi ) ) ).toBeTruthy()
     } )
   } )
 } )

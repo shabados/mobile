@@ -1,25 +1,32 @@
-import { Image, StyleSheet } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import logo from '../../../assets/images/logo.png'
 import Navbar from '../../components/Navbar'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
-import { px } from '../../themes/utils'
+import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   headerIcon: {
-    fontSize: 22,
+    fontSize: 28,
     color: Colors.Disabled,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  heading: {
-    ...px( 6 ),
+    ...px( 20 ),
+    ...py( 10 ),
   },
   logo: {
-    width: 25,
-    height: 25,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  logoIcon: {
+    width: 28,
+    height: 28,
+    marginRight: 6,
+  },
+  logoText: {
+    fontSize: 20,
+    fontWeight: '300',
   },
 } )
 
@@ -31,10 +38,10 @@ const GurbaniNavbar = () => (
     left={<Icon style={styles.headerIcon} name="menu" />}
     right={<Icon style={styles.headerIcon} name="ios-options-outline" />}
     main={(
-      <>
-        <Image style={styles.logo} source={logo} />
-        <Typography variant="header" style={styles.heading}>Shabad OS</Typography>
-      </>
+      <View style={styles.logo}>
+        <Image style={styles.logoIcon} source={logo} />
+        <Typography style={styles.logoText}>Shabad OS</Typography>
+      </View>
     )}
   />
 )

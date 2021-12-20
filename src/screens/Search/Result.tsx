@@ -1,36 +1,49 @@
 import { toUnicode } from 'gurmukhi-utils'
-import { Pressable, PressableProps, StyleSheet, View, ViewStyle } from 'react-native'
+import {
+  Pressable,
+  PressableProps,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native'
 
 import Typography from '../../components/Typography'
+import { OS } from '../../lib/consts'
 import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
+import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    fontFamily: Fonts.OpenGurbaniAkharBlack,
-    fontSize: 16,
-    paddingBottom: 0,
-    color: Colors.PrimaryText,
+    fontSize: Units.Base * Units.GurmukhiLatinRatio,
+    ...( OS.android && {
+      paddingBottom: 6,
+      fontFamily: Fonts.MuktaMahee,
+    } ),
+    ...( OS.ios && {
+      paddingBottom: 2.5,
+    } ),
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  headerGurmukhi: {
+    fontSize: Units.Footnote * Units.GurmukhiLatinRatio,
+    ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
+  },
   root: {
-    ...px( 12 ),
-    ...py( 12 ),
+    ...px( Units.HorizontalLayoutMargin ),
+    ...py( ( Units.Base * Units.LineHeightMultiplier ) / 2 ),
   },
-  subText: {
+  secondaryText: {
     color: Colors.SecondaryText,
-    fontSize: 14,
-  },
-  text: {
-    ...py( 6 ),
   },
   translation: {
-    ...py( 6 ),
+    fontSize: Units.Footnote,
+    lineHeight: ( Units.Base * Units.LineHeightMultiplier ) / 2,
   },
 } )
 
@@ -59,8 +72,8 @@ export type ResultDataProps = {
 
 export type ResultProps = PressableProps & ResultDataProps & {
   /**
-   * Style for `View` container
-   */
+     * Style for `View` container
+     */
   style?: ViewStyle,
 }
 
@@ -75,13 +88,19 @@ const Result = ( {
 }: ResultProps ) => (
   <Pressable style={[ styles.root, style ]} {...props}>
     <View style={styles.header}>
-      <Typography style={styles.subText}>{toUnicode( source )}</Typography>
-      <Typography style={styles.subText}>{toUnicode( page )}</Typography>
+      <Typography style={[ styles.secondaryText, styles.headerGurmukhi ]}>
+        {toUnicode( source )}
+      </Typography>
+      <Typography style={[ styles.secondaryText, styles.headerGurmukhi ]}>
+        {toUnicode( page )}
+      </Typography>
     </View>
 
-    <Typography style={[ styles.text, styles.gurbani ]}>{gurmukhi}</Typography>
+    <Typography style={[ styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
 
-    <Typography style={[ styles.subText, styles.translation ]}>{translation}</Typography>
+    <Typography style={[ styles.translation, styles.secondaryText ]}>
+      {translation}
+    </Typography>
   </Pressable>
 )
 

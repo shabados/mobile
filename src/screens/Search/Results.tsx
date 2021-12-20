@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, View } from 'react-native'
 
 import Colors from '../../themes/colors'
+import Units from '../../themes/units'
 import { SearchData } from '../../types/data'
 import Result from './Result'
 
@@ -9,7 +10,7 @@ const styles = StyleSheet.create( {
     flex: 1,
   },
   separator: {
-    borderBottomWidth: 0.5,
+    borderBottomWidth: Units.Separator,
     borderBottomColor: Colors.Separator,
   },
 } )

@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react-native'
+import { toUnicode } from 'gurmukhi-utils'
 
 import * as factories from '../../../test/factories'
 import wrapper from '../../../test/utils/NavigatorContext'
@@ -15,12 +16,12 @@ describe( '<SearchResults />', () => {
       unmount,
     } = render( <SearchResults results={results} />, { wrapper } )
 
-    const container = getByText( results[ 0 ].line.gurmukhi ).parent!
+    const container = getByText( toUnicode( results[ 0 ].line.gurmukhi ) ).parent!
 
     await results.reduce( async ( promise, { line: { gurmukhi } } ) => {
       await promise
 
-      let resultElement = queryByText( gurmukhi )
+      let resultElement = queryByText( toUnicode( gurmukhi ) )
 
       // Scroll if we can't see the line
       if ( !resultElement ) {
@@ -32,7 +33,7 @@ describe( '<SearchResults />', () => {
           },
         } )
 
-        resultElement = await findByText( gurmukhi )
+        resultElement = await findByText( toUnicode( gurmukhi ) )
       }
 
       expect( resultElement ).toBeTruthy()

@@ -1,4 +1,5 @@
 import { fireEvent, render } from '@testing-library/react-native'
+import { toUnicode } from 'gurmukhi-utils'
 
 import * as factories from '../../../test/factories'
 import Lines from './Lines'
@@ -9,7 +10,7 @@ describe( '<Lines />', () => {
 
     const { findByText, queryByText, getByText } = render( <Lines lines={lines} /> )
 
-    const container = getByText( lines[ 0 ].gurmukhi ).parent!
+    const container = getByText( toUnicode( lines[ 0 ].gurmukhi ) ).parent!
 
     await lines.reduce( async ( promise, { gurmukhi } ) => {
       await promise
@@ -26,7 +27,7 @@ describe( '<Lines />', () => {
           },
         } )
 
-        lineElement = await findByText( gurmukhi )
+        lineElement = await findByText( toUnicode( gurmukhi ) )
       }
 
       expect( lineElement ).toBeTruthy()

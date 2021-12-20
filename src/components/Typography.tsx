@@ -2,23 +2,27 @@ import { ReactNode } from 'react'
 import { StyleSheet, Text, TextProps } from 'react-native'
 
 import Colors from '../themes/colors'
-import Fonts from '../themes/fonts'
+import Units from '../themes/units'
 
 const styles = StyleSheet.create( {
   base: {
     color: Colors.PrimaryText,
   },
-  body: {},
+  body: {
+    fontSize: Units.Base,
+    lineHeight: Units.Base * Units.LineHeightMultiplier,
+    fontWeight: '400',
+  },
   button: {
     color: Colors.PrimaryText,
   },
-  header: {
-    fontSize: 18,
-    fontFamily: Fonts.NotoSansLight,
+  headline: {
+    fontSize: Units.Base,
+    fontWeight: '600',
   },
 } )
 
-type Variants = 'body' | 'header' | 'button'
+type Variants = 'body' | 'headline' | 'button'
 
 export type TypographyProps = TextProps & {
   children: ReactNode,
