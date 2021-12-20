@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { fireEvent, render } from '@testing-library/react-native'
+import { toUnicode } from 'gurmukhi-utils'
 import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
@@ -50,7 +51,7 @@ describe( '<SearchScreen />', () => {
 
       fireEvent.changeText( getByPlaceholderText( 'Search' ), 'hhg' )
 
-      expect( await findByText( results[ 0 ].line.gurmukhi ) ).toBeTruthy()
+      expect( await findByText( toUnicode( results[ 0 ].line.gurmukhi ) ) ).toBeTruthy()
 
       unmount()
     } )
@@ -70,7 +71,7 @@ describe( '<SearchScreen />', () => {
       const results = factories.search.buildList( 5 )
       const { unmount, findByText } = localSetup( results )
 
-      fireEvent.press( await findByText( results[ 0 ].line.gurmukhi ) )
+      fireEvent.press( await findByText( toUnicode( results[ 0 ].line.gurmukhi ) ) )
 
       unmount()
     } )
