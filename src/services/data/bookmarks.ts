@@ -1,6 +1,6 @@
 import Languages from '../../helpers/languages'
 import { BookmarkData } from '../../types/data'
-import * as gurbaniNow from './gurbaninow'
+import * as gurbaniNow from '../gurbaninow'
 
 export const getBookmark = async ( id: string ): Promise<BookmarkData> => {
   const {
