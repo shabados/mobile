@@ -1,6 +1,6 @@
 import Languages from '../../helpers/languages'
 import { ShabadData } from '../../types/data'
-import * as gurbaniNow from './gurbaninow'
+import * as gurbaniNow from '../gurbaninow'
 
 export const getShabad = async ( id: string ): Promise<ShabadData> => {
   const {

@@ -1,4 +1,4 @@
-import { fetchJson } from '../../../helpers/fetch'
+import { fetchJson } from '../../helpers/fetch'
 import { BaniListResponse, BaniResponse, SearchResponse, ShabadResponse } from './types'
 
 const API_ROOT = 'https://api.gurbaninow.com/v2'
