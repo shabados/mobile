@@ -55,13 +55,6 @@ const Line = ( {
   <View style={styles.root}>
     <Typography style={[ styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
 
-    {translations
-      .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
-      .map( ( {
-        translationSourceId,
-        translation,
-      } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
-
     {transliterations.map( ( language ) => (
       <Typography
         key={language}
@@ -70,6 +63,13 @@ const Line = ( {
         {transliterators[ language ]( toUnicode( gurmukhi ) )}
       </Typography>
     ) )}
+
+    {translations
+      .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
+      .map( ( {
+        translationSourceId,
+        translation,
+      } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
   </View>
 )
 
