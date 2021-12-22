@@ -8,7 +8,7 @@ import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'
-import { px, py } from '../../themes/utils'
+import { px } from '../../themes/utils'
 import { TranslationData } from '../../types/data'
 
 const styles = StyleSheet.create( {
