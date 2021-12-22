@@ -6,7 +6,7 @@ enum Units {
   Title3 = 20,
   GurmukhiLatinRatio = 1.143,
   LineHeightMultiplier = 1.25,
-  GurmukhiLineHeightMultiplier = 1.875,
+  GurmukhiLineHeightMultiplier = 1.75,
   HorizontalLayoutMargin = 20,
   MinimumTouchDimension = 44,
   ThumbFingerRatio = 1.5,
