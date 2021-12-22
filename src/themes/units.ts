@@ -4,10 +4,12 @@ enum Units {
   Title1 = 28,
   Title2 = 22,
   Title3 = 20,
-  LineHeightMultiplier = 1.75,
   GurmukhiLatinRatio = 1.143,
+  LineHeightMultiplier = 1.25,
+  GurmukhiLineHeightMultiplier = 1.875,
   HorizontalLayoutMargin = 20,
   MinimumTouchDimension = 44,
+  ThumbFingerRatio = 1.5,
   Separator = 0.5,
 }
 

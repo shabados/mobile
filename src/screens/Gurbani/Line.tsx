@@ -15,14 +15,17 @@ const styles = StyleSheet.create( {
   gurbani: {
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
     ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
+    lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier,
   },
   root: {
     ...px( 20 ),
-    ...py( ( Units.Base * Units.LineHeightMultiplier ) / 2 ),
+    paddingTop: ( ( Units.Base * Units.LineHeightMultiplier ) ),
   },
   text: {
     color: Colors.SecondaryText,
-    paddingTop: ( Units.Base * Units.LineHeightMultiplier ) / 4,
+  },
+  transliteration: {
+    paddingBottom: ( Units.Base * Units.LineHeightMultiplier ) / 4,
   },
 } )
 
@@ -62,7 +65,7 @@ const Line = ( {
     {transliterations.map( ( language ) => (
       <Typography
         key={language}
-        style={styles.text}
+        style={[ styles.text, styles.transliteration ]}
       >
         {transliterators[ language ]( toUnicode( gurmukhi ) )}
       </Typography>

@@ -14,7 +14,7 @@ const styles = StyleSheet.create( {
   },
   container: {
     ...px( Units.HorizontalLayoutMargin ),
-    minHeight: Units.MinimumTouchDimension * Units.LineHeightMultiplier,
+    minHeight: Units.MinimumTouchDimension * Units.ThumbFingerRatio,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -24,6 +24,7 @@ const styles = StyleSheet.create( {
   title: {
     color: Colors.PrimaryText,
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
+    lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier,
     ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
   },
 } )
