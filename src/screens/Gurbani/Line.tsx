@@ -19,7 +19,7 @@ const styles = StyleSheet.create( {
   },
   root: {
     ...px( 20 ),
-    paddingTop: ( ( Units.Base * Units.LineHeightMultiplier ) ),
+    paddingTop: Units.Base * Units.LineHeightMultiplier,
   },
   text: {
     color: Colors.SecondaryText,
