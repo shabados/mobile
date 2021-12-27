@@ -8,21 +8,24 @@ import transliterators from '../../lib/transliterators'
 import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'
-import { px, py } from '../../themes/utils'
+import { px } from '../../themes/utils'
 import { TranslationData } from '../../types/data'
 
 const styles = StyleSheet.create( {
   gurbani: {
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
     ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
+    lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier,
   },
   root: {
     ...px( 20 ),
-    ...py( ( Units.Base * Units.LineHeightMultiplier ) / 2 ),
+    paddingTop: Units.Base * Units.LineHeightMultiplier,
   },
   text: {
     color: Colors.SecondaryText,
-    paddingTop: ( Units.Base * Units.LineHeightMultiplier ) / 4,
+  },
+  transliteration: {
+    paddingBottom: ( Units.Base * Units.LineHeightMultiplier ) / 4,
   },
 } )
 
@@ -52,21 +55,21 @@ const Line = ( {
   <View style={styles.root}>
     <Typography style={[ styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
 
+    {transliterations.map( ( language ) => (
+      <Typography
+        key={language}
+        style={[ styles.text, styles.transliteration ]}
+      >
+        {transliterators[ language ]( toUnicode( gurmukhi ) )}
+      </Typography>
+    ) )}
+
     {translations
       .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
       .map( ( {
         translationSourceId,
         translation,
       } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
-
-    {transliterations.map( ( language ) => (
-      <Typography
-        key={language}
-        style={styles.text}
-      >
-        {transliterators[ language ]( toUnicode( gurmukhi ) )}
-      </Typography>
-    ) )}
   </View>
 )
 

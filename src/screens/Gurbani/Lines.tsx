@@ -2,16 +2,17 @@ import { stripVishraams } from 'gurmukhi-utils'
 import { FlatList, StyleSheet, View } from 'react-native'
 
 import Languages from '../../lib/languages'
+import Units from '../../themes/units'
 import { LineData } from '../../types/data'
 import Line from './Line'
 
 const styles = StyleSheet.create( {
   linesContent: {
-    paddingBottom: 50,
+    paddingBottom: 63 + ( Units.Base * Units.LineHeightMultiplier ) / 2,
   },
   root: {
     flex: 1,
-    marginBottom: -50,
+    marginBottom: -63,
   },
 } )
 

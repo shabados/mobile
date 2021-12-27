@@ -17,12 +17,10 @@ import { px, py } from '../../themes/utils'
 const styles = StyleSheet.create( {
   gurbani: {
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
+    lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier,
     ...( OS.android && {
       paddingBottom: 6,
       fontFamily: Fonts.MuktaMahee,
-    } ),
-    ...( OS.ios && {
-      paddingBottom: 2.5,
     } ),
   },
   header: {
@@ -32,6 +30,7 @@ const styles = StyleSheet.create( {
   },
   headerGurmukhi: {
     fontSize: Units.Footnote * Units.GurmukhiLatinRatio,
+    lineHeight: Units.Footnote * Units.GurmukhiLineHeightMultiplier,
     ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
   },
   root: {
@@ -43,7 +42,7 @@ const styles = StyleSheet.create( {
   },
   translation: {
     fontSize: Units.Footnote,
-    lineHeight: ( Units.Base * Units.LineHeightMultiplier ) / 2,
+    marginTop: -1,
   },
 } )
 
