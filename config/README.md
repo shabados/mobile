@@ -18,6 +18,7 @@ There are currently 3 environments:
 
 **Each environment-specific dotenv file should contain all keys marked as required.**
 
-| Name     | Data Type | Required | Default | Description                                              |
-| -------- | --------- | -------- | ------- | -------------------------------------------------------- |
-| ENV_NAME | string    | No       | `local` | The name of the environmnent that the app is running in. |
+| Name          | Data Type | Required | Default | Description                                              |
+| ------------- | --------- | -------- | ------- | -------------------------------------------------------- |
+| ENV_NAME      | string    | No       | `local` | The name of the environmnent that the app is running in. |
+| SPLIT_API_KEY | string    | Yes      |         | The API key for the Split feature flagging service.      |
