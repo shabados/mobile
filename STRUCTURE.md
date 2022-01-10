@@ -27,7 +27,7 @@ As a contributor, you'll likely spend the majority of your time inside the [src]
 
 ## Configuration
 
-Dotenv configuration files are stored inside the `config` folder, with a file per environment. More information can be found inside the [Configuration README document](./config/README.md).
+Dotenv configuration files are stored inside the `config` folder, with a file per environment.
 
 ## Source Code
 
