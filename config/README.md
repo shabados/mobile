@@ -4,6 +4,8 @@ This app follows the [12 factor app](https://12factor.net/config) approach to co
 
 _Currently, build configuration in [`fastlane/`](../fastlane) is not configurable through these files._
 
+Specific dotenv files can be loaded by Fastlane by supplying `app_env:name` as an option to any commands. For example, `fastlane ios build app_env:next` would load the variables from `config/.env.next` and make these available to the app.
+
 ## Environments
 
 There are currently 3 environments:
