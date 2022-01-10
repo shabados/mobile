@@ -95,7 +95,7 @@ test                  # Typechecks + Unit + integration tests
 
 ## Project Structure
 
-For information on how this project is structured, please see the [./docs/STRUCTURE.md](structure) documentation.
+For information on how this project is structured, please see the [structure](STRUCTURE.md) documentation.
 
 ## Fastlane
 
