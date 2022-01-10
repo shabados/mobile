@@ -94,11 +94,11 @@ jobs:
 
       - run: npm ci
 
-      - run: npm run prepare-release:${{ matrix.platform }} -- is_next_release:true
+      - run: npm run prepare-release:${{ matrix.platform }} -- app_env:next is_next_release:true
 
-      - run: npm run build:${{ matrix.platform }} -- is_release:true is_next_release:true
+      - run: npm run build:${{ matrix.platform }} -- app_env:next is_release:true is_next_release:true
 
-      - run: npm run release:${{ matrix.platform }} -- is_next_release:true
+      - run: npm run release:${{ matrix.platform }} -- app_env:next is_next_release:true
 
   publish-github:
     runs-on: ubuntu-20.04
