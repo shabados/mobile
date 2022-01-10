@@ -13,6 +13,7 @@ This document is for developers or programmers contributing to the source code o
     - [Prerequisites](#prerequisites)
     - [Build](#build)
     - [Run](#run)
+  - [Project Structure](#project-structure)
   - [Fastlane](#fastlane)
   - [Workflow](#workflow)
     - [Coding Guidelines](#coding-guidelines)
@@ -91,6 +92,10 @@ test                  # Typechecks + Unit + integration tests
 **NOTE**: You will need to [connect a device via USB](https://developer.android.com/studio/run/device#connect) or [create an AVD](https://developer.android.com/studio/run/managing-avds#createavd) to start the [Android Emulator](https://developer.android.com/studio/run/emulator).
 
 **NOTE**: If having issues starting the emulator, try cleaning your build files and running `npm i`.
+
+## Project Structure
+
+For information on how this project is structured, please see the [./docs/STRUCTURE.md](structure) documentation.
 
 ## Fastlane
 
