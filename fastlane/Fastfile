@@ -1,4 +1,3 @@
 import './utils.rb'
-import './load_env.rb'
 import './Fastfile.ios'
 import './Fastfile.android'

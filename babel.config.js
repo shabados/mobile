@@ -12,7 +12,7 @@ module.exports = {
       plugins: [ 'transform-remove-console' ],
     },
     test: {
-      plugins: [ 'transform-remove-console' ],
+      plugins: [ 'react-native-config-node/transform', 'transform-remove-console' ],
     },
   },
 }
