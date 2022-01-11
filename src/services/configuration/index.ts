@@ -1,6 +1,5 @@
-import { get } from 'env-var'
-
 import environment from './environment'
+import get from './get'
 
 const configuration = {
   environment,

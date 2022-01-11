@@ -1,4 +1,4 @@
-import { get } from 'env-var'
+import get from './get'
 
 const LOCAL_ENV = 'local'
 const name = get( 'ENV_NAME' ).default( LOCAL_ENV ).asString()
