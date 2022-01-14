@@ -27,8 +27,6 @@ const GurbaniScreen = ( {
 }: GurbaniScreenProps ) => {
   const { data } = useQuery( id, loaders[ type ] )
 
-  console.log( `Gurbani Screen: ${type} ${id} ` )
-
   return (
     <Container>
       {data && <Lines lines={data.lines} />}

@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import { Pressable, StyleSheet, View } from 'react-native'
+import LinearGradient from 'react-native-linear-gradient'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
@@ -13,10 +14,11 @@ import Screens, { AppStackParams } from '../screens'
 const styles = StyleSheet.create( {
   background: {
     position: 'absolute',
-    top: 0,
+    top: -77 / 2,
     bottom: 0,
     left: 0,
     right: 0,
+    paddingTop: 77 / 2,
   },
   button: {
     fontSize: 28,
@@ -33,6 +35,7 @@ const styles = StyleSheet.create( {
   },
   root: {
     marginTop: 'auto',
+    // backgroundColor: '#fff',
   },
   searchBarContainer: {
     flex: 1,
@@ -47,7 +50,11 @@ const BottomBar = () => {
 
   return (
     <SafeAreaView style={styles.root} edges={[ 'bottom', 'left', 'right' ]}>
-      <View style={styles.background} />
+
+      <LinearGradient
+        style={styles.background}
+        colors={[ 'rgba(26,26,26,0)', 'rgba(26,26,26,.9)', 'rgba(26,26,26,1)' ]}
+      />
 
       <View style={styles.container}>
         <Pressable style={styles.searchBarContainer} onPress={onSearchPress}>
