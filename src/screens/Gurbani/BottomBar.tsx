@@ -35,7 +35,6 @@ const styles = StyleSheet.create( {
   },
   root: {
     marginTop: 'auto',
-    // backgroundColor: '#fff',
   },
   searchBarContainer: {
     flex: 1,
