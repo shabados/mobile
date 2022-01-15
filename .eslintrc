@@ -172,6 +172,8 @@
         "@typescript-eslint/no-unsafe-assignment": "off",
         "@typescript-eslint/no-unsafe-member-access": "off",
         "@typescript-eslint/no-unsafe-return": "off",
+        // We don't care about floating promises in tests, and it causes a typing issue with act()
+        "@typescript-eslint/no-floating-promises": "off",
         // Requiring in local scopes is useful in tests
         "global-require": "off"
       }
