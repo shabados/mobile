@@ -19,3 +19,5 @@ jest.mock( 'react-native/Libraries/Animated/NativeAnimatedHelper' )
 jest.mock( 'react-native/Libraries/EventEmitter/NativeEventEmitter' )
 
 jest.mock( 'react-native-device-info', () => mockRNDeviceInfo )
+
+jest.mock( '../src/services/feature/split/adapter' )
