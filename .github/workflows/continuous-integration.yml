@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        command: ['lint', 'test:unit', 'test:types']
+        command: ['lint', 'test:unit -- --ci --forceExit', 'test:types']
     steps:
       - uses: actions/checkout@v2
 
