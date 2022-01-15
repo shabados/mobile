@@ -17,12 +17,10 @@ const splitAdapterFactory = (): FeatureFlagClient<SplitFeatures, SplitAttributes
   } ).client()
 
   const { get: isReady, set: setReady } = mutableValue( false )
+  client.once( client.Event.SDK_READY, () => setReady( true ) )
 
   const onUpdate = ( callback: () => void ) => client.on( client.Event.SDK_UPDATE, callback )
-  const onReady = ( callback: () => void ) => client.once( client.Event.SDK_READY, () => {
-    setReady( true )
-    callback()
-  } )
+  const onReady = ( callback: () => void ) => client.once( client.Event.SDK_READY, callback )
 
   const getStatus = <Key extends keyof SplitFeatures>( key: Key, attributes?: Attributes ) => {
     const status = client.getTreatment(
