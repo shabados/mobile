@@ -142,7 +142,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionName getProjectProperty('version.name', '0.0.0')
-        versionCode getProjectProperty('version.code', '0') as Integer
+        versionCode getProjectProperty('version.code', '1') as Integer
     }
     splits {
         abi {
