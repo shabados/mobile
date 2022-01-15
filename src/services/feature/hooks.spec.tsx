@@ -3,19 +3,21 @@ import { Text } from 'react-native'
 import { act } from 'react-test-renderer'
 
 import UseFeatureFlagFactory from './hooks'
-import { Feature, FeatureFlagClient } from './types'
+import { FeatureFlagClient } from './types'
 
-const defaultClient: Readonly<FeatureFlagClient> = {
-  getStatus: (): any => 'on',
+type TestFeatures = { test_feature: 'on' | 'red_stars' }
+type DefaultClient = FeatureFlagClient<TestFeatures, never>
+
+const defaultClient: Readonly<DefaultClient> = {
+  getStatus: () => 'on',
   isEnabled: () => true,
   isReady: () => true,
   onReady: () => {},
   onUpdate: () => {},
-  setDefaultAttributes: () => {},
 }
 
-type DemoComponentProps = { feature?: string }
-type SetupParams = { client?: Partial<FeatureFlagClient> } & DemoComponentProps
+type DemoComponentProps = { feature?: keyof TestFeatures }
+type SetupParams = { client?: Partial<DefaultClient> } & DemoComponentProps
 
 const setup = ( { client, ...props }: SetupParams ) => {
   const {
@@ -24,8 +26,8 @@ const setup = ( { client, ...props }: SetupParams ) => {
   } = UseFeatureFlagFactory( { ...defaultClient, ...client } )
 
   const DemoComponent = ( { feature = 'test_feature' }: DemoComponentProps ) => {
-    const isEnabled = useFeatureEnabled( feature as Feature )
-    const status = useFeatureStatus( feature as Feature )
+    const isEnabled = useFeatureEnabled( feature )
+    const status = useFeatureStatus( feature ) as string
 
     return isEnabled ? <Text>{`${feature}: ${status}`}</Text> : null
   }
@@ -36,7 +38,7 @@ const setup = ( { client, ...props }: SetupParams ) => {
 describe( 'useFeatureEnabled', () => {
   describe( 'given the feature service client is not ready', () => {
     it( 'should return a non-truthy value', () => {
-      const client: Partial<FeatureFlagClient> = {
+      const client: Partial<DefaultClient> = {
         isReady: () => false,
         isEnabled: () => false,
       }
@@ -52,7 +54,7 @@ describe( 'useFeatureEnabled', () => {
       let isEnabled = false
       let fireReady: () => void
       const onReady = ( callback: () => void ) => { fireReady = callback }
-      const client: Partial<FeatureFlagClient> = {
+      const client: Partial<DefaultClient> = {
         isEnabled: () => isEnabled,
         isReady: () => false,
         onReady,
@@ -69,7 +71,7 @@ describe( 'useFeatureEnabled', () => {
 
     describe( 'given a feature is enabled', () => {
       it( 'should return true', () => {
-        const client: Partial<FeatureFlagClient> = {
+        const client: Partial<DefaultClient> = {
           isReady: () => true,
           isEnabled: () => true,
         }
@@ -85,8 +87,8 @@ describe( 'useFeatureEnabled', () => {
 describe( 'useFeatureStatus', () => {
   describe( 'given the feature service client is ready', () => {
     it( 'should return the status of a flag', () => {
-      const client: Partial<FeatureFlagClient> = {
-        getStatus: (): any => 'red_stars',
+      const client: Partial<DefaultClient> = {
+        getStatus: () => 'red_stars',
       }
 
       const { queryByText } = setup( { client } )
