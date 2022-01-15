@@ -5,6 +5,7 @@ import Typography from '../../components/Typography'
 import Languages from '../../helpers/languages'
 import OS from '../../helpers/os'
 import transliterators from '../../helpers/transliterators'
+import { useFeatureStatus } from '../../services/feature'
 import Colors from '../../themes/colors'
 import Fonts from '../../themes/fonts'
 import Units from '../../themes/units'
@@ -17,9 +18,15 @@ const styles = StyleSheet.create( {
     ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
     lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier,
   },
+  largeFont: {
+    fontSize: Units.Base * Units.GurmukhiLatinRatio * 1.2,
+  },
   root: {
     ...px( 20 ),
     paddingTop: Units.Base * Units.LineHeightMultiplier,
+  },
+  smallFont: {
+    fontSize: ( Units.Base * Units.GurmukhiLatinRatio ) / 1.2,
   },
   text: {
     color: Colors.SecondaryText,
@@ -44,6 +51,13 @@ export type LineProps = {
   transliterations: ( Languages.English | Languages.Hindi | Languages.Urdu )[],
 }
 
+const getGurmukhiFontStyle = ( size: ReturnType<typeof useFeatureStatus> ) => {
+  if ( size === 'small' ) return styles.smallFont
+  if ( size === 'large' ) return styles.largeFont
+
+  return null
+}
+
 /**
  * Renders the Gurmukhi, any translations, and transliterates the Gurmukhi.
  */
@@ -51,26 +65,34 @@ const Line = ( {
   gurmukhi,
   translations,
   transliterations,
-}: LineProps ) => (
-  <View style={styles.root}>
-    <Typography style={[ styles.gurbani ]}>{toUnicode( gurmukhi )}</Typography>
+}: LineProps ) => {
+  const fontSizeStyle = getGurmukhiFontStyle( useFeatureStatus( 'gurmukhi_font_size' ) )
 
-    {transliterations.map( ( language ) => (
-      <Typography
-        key={language}
-        style={[ styles.text, styles.transliteration ]}
-      >
-        {transliterators[ language ]( toUnicode( gurmukhi ) )}
-      </Typography>
-    ) )}
+  return (
+    <View style={styles.root}>
+      <Typography style={[ styles.gurbani, fontSizeStyle ]}>{toUnicode( gurmukhi )}</Typography>
 
-    {translations
-      .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
-      .map( ( {
-        translationSourceId,
-        translation,
-      } ) => <Typography key={translationSourceId} style={styles.text}>{translation}</Typography> )}
-  </View>
-)
+      {transliterations.map( ( language ) => (
+        <Typography
+          key={language}
+          style={[ styles.text, styles.transliteration ]}
+        >
+          {transliterators[ language ]( toUnicode( gurmukhi ) )}
+        </Typography>
+      ) )}
+
+      {translations
+        .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
+        .map( ( { translationSourceId, translation } ) => (
+          <Typography
+            key={translationSourceId}
+            style={styles.text}
+          >
+            {translation}
+          </Typography>
+        ) )}
+    </View>
+  )
+}
 
 export default Line
