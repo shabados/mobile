@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import { Attributes, Feature, FeatureFlagClient } from './types'
+import { FeatureFlagClient } from './types'
 
-const UseFeatureFlagFactory = ( client: FeatureFlagClient ) => {
+const UseFeatureFlagFactory = <Features, Attributes>(
+  client: FeatureFlagClient<Features, Attributes>,
+) => {
   const useClientReady = () => {
     const [ isReady, setReady ] = useState( client.isReady() )
 
@@ -21,13 +23,13 @@ const UseFeatureFlagFactory = ( client: FeatureFlagClient ) => {
     return value
   }
 
-  const useFeatureStatus = <Status extends string>(
-    key: Feature,
+  const useFeatureStatus = <Key extends keyof Features>(
+    key: Key,
     attributes?: Attributes,
-  ) => useFeatureClientFn( () => client.getStatus<Status>( key, attributes ) )
+  ): Features[Key] => useFeatureClientFn( () => client.getStatus( key, attributes ) )
 
   const useFeatureEnabled = (
-    key: Feature,
+    key: keyof Features,
     attributes?: Attributes,
   ) => useFeatureClientFn( () => client.isEnabled( key, attributes ) )
 

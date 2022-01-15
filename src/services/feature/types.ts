@@ -1,13 +1,6 @@
-export type Feature = ''
-
-export type Attributes = {
-  [key in string]: any
-}
-
-export type FeatureFlagClient = {
-  isEnabled: ( key: string, attributes?: Attributes ) => boolean,
-  getStatus: <Status extends string>( key: Feature, attributes?: Attributes ) => Status,
-  setDefaultAttributes: ( attributes: Attributes ) => void,
+export type FeatureFlagClient<Features, Attributes> = {
+  isEnabled: ( key: keyof Features, attributes?: Attributes ) => boolean,
+  getStatus: <Key extends keyof Features>( key: Key, attributes?: Attributes ) => Features[Key],
   onUpdate: ( callback: () => void ) => void,
   onReady: ( callback: () => void ) => void,
   isReady: () => boolean,
