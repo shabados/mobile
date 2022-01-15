@@ -9,5 +9,5 @@ export type SplitAttributes = {
 }
 
 export type SplitFeatures = {
-
+  gurmukhi_font_size: 'small' | 'normal' | 'large',
 }
