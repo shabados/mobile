@@ -138,7 +138,7 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId getProjectProperty('applicationId', 'com.shabados.app.local')
+        applicationId 'com.shabados.app'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionName getProjectProperty('version.name', '0.0.0')
