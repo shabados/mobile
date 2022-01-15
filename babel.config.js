@@ -11,8 +11,5 @@ module.exports = {
     production: {
       plugins: [ 'transform-remove-console' ],
     },
-    test: {
-      plugins: [ 'react-native-config-node/transform', 'transform-remove-console' ],
-    },
   },
 }
