@@ -5,9 +5,7 @@ import App from './App'
 describe( 'App', () => {
   describe( 'Initial load', () => {
     it( 'Renders without crashing', async () => {
-      const { unmount } = render( <App /> )
-
-      unmount()
+      render( <App /> )
     } )
   } )
 } )
