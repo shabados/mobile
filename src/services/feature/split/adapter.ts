@@ -24,18 +24,21 @@ const splitAdapterFactory = (): FeatureFlagClient<SplitFeatures, SplitAttributes
     callback()
   } )
 
-  const getStatus = <Key extends keyof SplitFeatures>( key: Key, attributes?: Attributes ) => client
-    .getTreatment( key, { ...getDefaultAttributes(), ...attributes } ) as SplitFeatures[Key]
+  const getStatus = <Key extends keyof SplitFeatures>( key: Key, attributes?: Attributes ) => {
+    const status = client.getTreatment(
+      key,
+      { ...getDefaultAttributes(), ...attributes },
+    ) as SplitFeatures[Key] | ControlTreatment
 
-  const isEnabled = ( key: keyof SplitFeatures, attributes?: Attributes ) => {
-    const status = getStatus( key, attributes ) as ControlTreatment | OffTreatment
-
-    const statusWithFallback = status === 'control'
+    return status === 'control'
       ? getDefaultStatus( key )
       : status
-
-    return statusWithFallback !== 'off'
   }
+
+  const isEnabled = (
+    key: keyof SplitFeatures,
+    attributes?: Attributes,
+  ) => getStatus( key, attributes ) as OffTreatment !== 'off'
 
   return {
     getStatus,
