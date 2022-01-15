@@ -7,7 +7,7 @@ export const getDefaultAttributes = (): SplitAttributes => ( {
 } )
 
 const defaultStatuses: { [Key in keyof SplitFeatures]: SplitFeatures[Key] } = {
-
+  gurmukhi_font_size: 'normal',
 }
 
 export const getDefaultStatus = ( key: keyof SplitFeatures ) => defaultStatuses[ key ]
