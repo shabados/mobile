@@ -126,17 +126,23 @@ def enableHermes = project.ext.react.get("enableHermes", false);
  */
 def nativeArchitectures = project.getProperties().get("reactNativeDebugArchitectures")
 
+def getProjectProperty(String key, String fallback) {
+    if (project.hasProperty(key)) return project.property(key)
+
+    return fallback
+}
+
 android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId project.property('applicationId')
+        applicationId getProjectProperty('applicationId', 'com.shabados.app.local')
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName project.property('version.name')
-        versionCode project.property('version.code') as Integer
+        versionName getProjectProperty('version.name', '0.0.0')
+        versionCode getProjectProperty('version.code', '0') as Integer
     }
     splits {
         abi {
