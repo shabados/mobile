@@ -36,19 +36,6 @@ const setup = ( { client, ...props }: SetupParams ) => {
 }
 
 describe( 'useFeatureEnabled', () => {
-  describe( 'given the feature service client is not ready', () => {
-    it( 'should return a non-truthy value', () => {
-      const client: Partial<DefaultClient> = {
-        isReady: () => false,
-        isEnabled: () => false,
-      }
-
-      const { queryByText } = setup( { client } )
-
-      expect( queryByText( /test_feature/ ) ).toBeFalsy()
-    } )
-  } )
-
   describe( 'given the feature service client is ready', () => {
     it( 'should update the value from the feature service when ready', async () => {
       let isEnabled = false
@@ -85,15 +72,13 @@ describe( 'useFeatureEnabled', () => {
 } )
 
 describe( 'useFeatureStatus', () => {
-  describe( 'given the feature service client is ready', () => {
-    it( 'should return the status of a flag', () => {
-      const client: Partial<DefaultClient> = {
-        getStatus: () => 'red_stars',
-      }
+  it( 'should return the status of a flag', () => {
+    const client: Partial<DefaultClient> = {
+      getStatus: () => 'red_stars',
+    }
 
-      const { queryByText } = setup( { client } )
+    const { queryByText } = setup( { client } )
 
-      expect( queryByText( /red_stars/ ) ).toBeTruthy()
-    } )
+    expect( queryByText( /red_stars/ ) ).toBeTruthy()
   } )
 } )
