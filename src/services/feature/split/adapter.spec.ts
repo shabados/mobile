@@ -20,7 +20,7 @@ const featureDefaults = {
 
 const setDefaults = ( overrides: { [key in string]: string } ) => jest
   .spyOn( defaults, 'getDefaultStatus' )
-  .mockImplementation( ( key: string ) => overrides[ key ] )
+  .mockImplementation( ( ( key: string ) => overrides[ key ] ) as typeof defaults.getDefaultStatus )
 
 jest.unmock( './adapter' )
 jest.mock( '@splitsoftware/splitio-react-native', () => {
