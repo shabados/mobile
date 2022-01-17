@@ -1,10 +1,10 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
 import { search } from '../../services/data/search'
-import { ContentType, SearchData } from '../../types/data'
+import { ContentType } from '../../types/data'
 import Screens, { AppStackParams } from '../screens'
 import Navbar from './Navbar'
 import Results, { ResultsProps } from './Results'
@@ -18,10 +18,8 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   const [ searchValue, setSearch ] = useState( '' )
   console.log( `Searching: ${searchValue}` )
 
-  const previousData = useRef<SearchData[]>()
-  const { data } = useQuery( searchValue, searchQuery, { placeholderData: previousData.current } )
+  const { data } = useQuery( searchValue, searchQuery, { keepPreviousData: true } )
   console.log( `Search Result: ${JSON.stringify( data )}` )
-  useEffect( () => { previousData.current = data }, [ data ] )
 
   const handleTextChange = ( text: string ) => setSearch( text )
 
@@ -36,7 +34,7 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
 
   return (
     <Container>
-      {data && ( <Results results={data} onPress={openShabad} /> )}
+      {!!data && <Results results={data} onPress={openShabad} />}
     </Container>
   )
 }
