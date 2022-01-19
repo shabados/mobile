@@ -8,8 +8,6 @@ target 'Mobile' do
 
   use_react_native!(path: config[:reactNativePath], hermes_enabled: true)
 
-  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
-
   target 'MobileTests' do
     inherit! :complete
     # Pods for testing
