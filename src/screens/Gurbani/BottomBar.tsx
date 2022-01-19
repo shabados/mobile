@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
+import { gradient } from '../../themes/gradient'
 import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 import Screens, { AppStackParams } from '../screens'
@@ -14,11 +15,10 @@ import Screens, { AppStackParams } from '../screens'
 const styles = StyleSheet.create( {
   background: {
     position: 'absolute',
-    top: -77 / 2,
+    top: -15,
     bottom: 0,
     left: 0,
     right: 0,
-    paddingTop: 77 / 2,
   },
   button: {
     fontSize: 28,
@@ -52,7 +52,8 @@ const BottomBar = () => {
 
       <LinearGradient
         style={styles.background}
-        colors={[ 'rgba(26,26,26,0)', 'rgba(26,26,26,.9)', 'rgba(26,26,26,1)' ]}
+        locations={[ 0.0, 0.733 ]}
+        colors={gradient.TransparentToBlack.reverse()}
       />
 
       <View style={styles.container}>
