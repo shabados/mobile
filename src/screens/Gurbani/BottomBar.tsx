@@ -15,7 +15,7 @@ import Screens, { AppStackParams } from '../screens'
 const styles = StyleSheet.create( {
   background: {
     position: 'absolute',
-    top: -15,
+    top: -10,
     bottom: 0,
     left: 0,
     right: 0,
