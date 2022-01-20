@@ -8,8 +8,6 @@ enum Colors {
   PrimaryText = '#FFF',
   SecondaryText = '#8A8A8A',
   Dev = '#FF0000',
-  BlackAlpha = 'rgba(0,0,0,1)',
-  Transparent = 'rgba(0,0,0,0)',
 }
 
 export default Colors
