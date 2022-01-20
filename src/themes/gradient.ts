@@ -1,5 +1,3 @@
-import Colors from './colors'
-
 /**
  * The gradients are very specific to the consumption of react-native-linear-gradient.
  */
