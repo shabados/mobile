@@ -54,7 +54,7 @@ const Navbar = ( {
   right,
 }: NavbarProps ) => (
   <View style={[ { backgroundColor } ]}>
-    <StatusBar translucent barStyle="light-content" backgroundColor={backgroundColor} />
+    <StatusBar />
     <SafeAreaView edges={[ 'left', 'top', 'right' ]} />
 
     <View style={styles.header}>
