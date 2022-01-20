@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Button from '../../components/Button'
 import SearchBar from '../../components/SearchBar'
-import { gradient } from '../../themes/gradient'
+import { gradients } from '../../themes/gradients'
 import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
 import Screens, { AppStackParams } from '../screens'
@@ -52,8 +52,8 @@ const BottomBar = () => {
 
       <LinearGradient
         style={styles.background}
-        locations={gradient.TransparentToBlack.locations}
-        colors={gradient.TransparentToBlack.colors}
+        locations={gradients.TransparentToBlack.locations}
+        colors={gradients.TransparentToBlack.colors}
       />
 
       <View style={styles.container}>
