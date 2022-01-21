@@ -1,4 +1,4 @@
-import { Appearance, ColorValue, Platform, PlatformColor } from 'react-native'
+import { ColorValue, Platform, PlatformColor } from 'react-native'
 
 type ColorKeys =
   | 'MainView'
@@ -25,45 +25,17 @@ const ios: Theme = {
   Dev: PlatformColor( 'systemRed' ),
 }
 
-const androidPalette = {
-  p0: '#ffffff',
-  p50: '#f5f5f5',
-  p100: '#e9e9e9',
-  p200: '#d9d9d9',
-  p300: '#c4c4c4',
-  p400: '#9d9d9d',
-  p500: '#7b7b7b',
-  p600: '#555555',
-  p700: '#434343',
-  p800: '#262626',
-  p900: '#000000',
-}
-
-const androidLight: Theme = {
-  MainView: androidPalette.p0,
-  ModalSheet: androidPalette.p50,
-  ModalSheetTitleBar: androidPalette.p50,
-  InputBox: androidPalette.p100,
-  Separator: androidPalette.p200,
-  Disabled: androidPalette.p300,
-  PrimaryText: androidPalette.p900,
-  SecondaryText: androidPalette.p500,
-  Dev: PlatformColor( '@android:color/holo_red_light' ),
-}
-
-const androidDark: Theme = {
-  MainView: androidPalette.p900,
-  ModalSheet: androidPalette.p800,
-  ModalSheetTitleBar: androidPalette.p800,
-  InputBox: androidPalette.p700,
-  Separator: androidPalette.p700,
-  Disabled: androidPalette.p700,
-  PrimaryText: androidPalette.p100,
-  SecondaryText: androidPalette.p400,
+const android: Theme = {
+  MainView: PlatformColor( '?android:attr/colorForegroundInverse' ),
+  ModalSheet: PlatformColor( '?android:attr/colorPrimary' ),
+  ModalSheetTitleBar: PlatformColor( '?android:attr/colorPrimary' ),
+  InputBox: PlatformColor( '?android:attr/colorButtonNormal' ),
+  Separator: '#808080',
+  Disabled: '#808080',
+  PrimaryText: PlatformColor( '?android:attr/colorForeground' ),
+  SecondaryText: '#808080',
   Dev: PlatformColor( '@android:color/holo_red_dark' ),
 }
-
-const android = Appearance.getColorScheme() === 'light' ? androidLight : androidDark
 
 const Colors = Platform.select<Theme>( { android, ios } )!
 
