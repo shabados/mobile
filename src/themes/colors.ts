@@ -1,4 +1,4 @@
-import { Appearance, OpaqueColorValue, Platform, PlatformColor } from 'react-native'
+import { Appearance, ColorValue, Platform, PlatformColor } from 'react-native'
 
 type ColorKeys =
   | 'MainView'
@@ -11,7 +11,7 @@ type ColorKeys =
   | 'SecondaryText'
   | 'Dev'
 
-type Theme = { [key in ColorKeys]: OpaqueColorValue | string }
+type Theme = { [key in ColorKeys]: ColorValue }
 
 const ios: Theme = {
   MainView: PlatformColor( 'systemBackground' ),
