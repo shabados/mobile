@@ -65,6 +65,6 @@ const androidDark: Theme = {
 
 const android = Appearance.getColorScheme() === 'light' ? androidLight : androidDark
 
-const Colors = Platform.select<Theme>( { android, ios } )
+const Colors = Platform.select<Theme>( { android, ios } )!
 
 export default Colors
