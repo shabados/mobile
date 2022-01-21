@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { StatusBar, StyleSheet, View } from 'react-native'
+import { OpaqueColorValue, StatusBar, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '../themes/colors'
@@ -28,7 +28,7 @@ type NavbarProps = {
   /**
    * A valid background colour.
    */
-  backgroundColor?: string,
+  backgroundColor?: OpaqueColorValue | string,
   /**
    * The main element, centered.
    */
