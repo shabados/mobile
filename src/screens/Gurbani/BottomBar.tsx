@@ -52,8 +52,8 @@ const BottomBar = () => {
 
       <LinearGradient
         style={styles.background}
-        locations={gradients.TransparentToBlack.locations}
-        colors={gradients.TransparentToBlack.colors}
+        locations={gradients.TransparentToBackground.locations}
+        colors={gradients.TransparentToBackground.colors}
       />
 
       <View style={styles.container}>
