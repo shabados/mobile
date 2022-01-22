@@ -1,5 +1,6 @@
 import { toUnicode } from 'gurmukhi-utils'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
+import Animated, { FadeInRight } from 'react-native-reanimated'
 
 import Typography from '../../components/Typography'
 import Languages from '../../helpers/languages'
@@ -69,7 +70,7 @@ const Line = ( {
   const fontSizeStyle = getGurmukhiFontStyle( useFeatureStatus( 'gurmukhi_font_size' ) )
 
   return (
-    <View style={styles.root}>
+    <Animated.View style={styles.root} entering={FadeInRight}>
       <Typography style={[ styles.gurbani, fontSizeStyle ]}>{toUnicode( gurmukhi )}</Typography>
 
       {transliterations.map( ( language ) => (
@@ -91,7 +92,7 @@ const Line = ( {
             {translation}
           </Typography>
         ) )}
-    </View>
+    </Animated.View>
   )
 }
 
