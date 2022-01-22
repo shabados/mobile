@@ -1,4 +1,5 @@
-import { ActivityIndicator, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
+import { Pulse } from 'react-native-animated-spinkit'
 
 import Colors from '../themes/colors'
 import Container from './Container'
@@ -13,7 +14,7 @@ const styles = StyleSheet.create( {
 
 const DefaultFallback = () => (
   <Container style={styles.root}>
-    <ActivityIndicator size="large" color={Colors.PrimaryText} />
+    <Pulse color={Colors.PrimaryText} />
   </Container>
 )
 
