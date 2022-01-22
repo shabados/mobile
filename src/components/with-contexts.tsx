@@ -1,3 +1,4 @@
+import { Provider } from 'jotai'
 import { ElementType } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
@@ -8,6 +9,7 @@ export const queryClient = new QueryClient( {
 } )
 
 const contexts: [ElementType, { [k: string]: any }?][] = [
+  [ Provider ],
   [ QueryClientProvider, { client: queryClient } ],
 ]
 

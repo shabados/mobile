@@ -36,6 +36,7 @@
     "env-var": "^7.1.1",
     "gurmukhi-utils": "^3.2.1",
     "i18next": "^21.5.3",
+    "jotai": "^1.5.3",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-i18next": "^11.14.3",
