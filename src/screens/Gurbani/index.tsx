@@ -29,7 +29,7 @@ const GurbaniScreen = ( {
 
   return (
     <Container>
-      {data && <Lines lines={data.lines} />}
+      <Lines lines={data!.lines} />
 
       <BottomBar />
     </Container>
