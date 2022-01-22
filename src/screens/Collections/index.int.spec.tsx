@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { fireEvent, render, waitForElementToBeRemoved } from '@testing-library/react-native'
 import { toUnicode } from 'gurmukhi-utils'
+import { Suspense } from 'react'
 import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
@@ -17,14 +18,17 @@ const setup = async ( data: CollectionData[] ) => {
   const { Navigator, Screen } = createStackNavigator<AppStackParams>()
 
   const queries = render( withContexts(
-    <NavigationContainer>
-      <Navigator>
-        <Screen {...collectionsScreen} />
-        <Screen name={Screens.Gurbani}>
-          {( { route: { params: { id } } } ) => <Text>{id}</Text>}
-        </Screen>
-      </Navigator>
-    </NavigationContainer>,
+    <Suspense fallback={<Text>Loading</Text>}>
+      <NavigationContainer>
+        <Navigator>
+          <Screen {...collectionsScreen} />
+          <Screen name={Screens.Gurbani}>
+            {( { route: { params: { id } } } ) => <Text>{id}</Text>}
+          </Screen>
+        </Navigator>
+      </NavigationContainer>
+      ,
+    </Suspense>,
   ) )
 
   const { getByText } = queries
