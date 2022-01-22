@@ -14,7 +14,7 @@ const styles = StyleSheet.create( {
 
 const DefaultFallback = () => (
   <Container style={styles.root}>
-    <Pulse color={Colors.PrimaryText} />
+    <Pulse color={Colors.PrimaryText as string} />
   </Container>
 )
 
