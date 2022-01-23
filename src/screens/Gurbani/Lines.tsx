@@ -7,12 +7,14 @@ import { LineData } from '../../types/data'
 import Line from './Line'
 
 const styles = StyleSheet.create( {
+  container: {
+    overflow: 'visible',
+  },
   linesContent: {
     paddingBottom: 63 + ( Units.Base * Units.LineHeightMultiplier ) / 2,
   },
   root: {
     flex: 1,
-    marginBottom: -63,
   },
 } )
 
@@ -45,7 +47,12 @@ export type LineProps = {
  */
 const Lines = ( { lines }: LineProps ) => (
   <View style={styles.root}>
-    <FlatList contentContainerStyle={styles.linesContent} data={lines} renderItem={renderLine} />
+    <FlatList
+      style={styles.container}
+      contentContainerStyle={styles.linesContent}
+      data={lines}
+      renderItem={renderLine}
+    />
   </View>
 )
 
