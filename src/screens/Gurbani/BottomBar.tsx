@@ -15,7 +15,7 @@ import Screens, { AppStackParams } from '../screens'
 const styles = StyleSheet.create( {
   background: {
     position: 'absolute',
-    top: -10,
+    top: -20,
     bottom: 0,
     left: 0,
     right: 0,
@@ -33,9 +33,6 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  root: {
-    marginTop: 'auto',
-  },
   searchBarContainer: {
     flex: 1,
   },
@@ -48,12 +45,11 @@ const BottomBar = () => {
   const onCollectionsPress = () => navigation.navigate( Screens.Collections )
 
   return (
-    <SafeAreaView style={styles.root} edges={[ 'bottom', 'left', 'right' ]}>
-
+    <SafeAreaView edges={[ 'bottom', 'left', 'right' ]}>
       <LinearGradient
         style={styles.background}
-        locations={gradients.TransparentToBlack.locations}
-        colors={gradients.TransparentToBlack.colors}
+        locations={gradients.TransparentToBackground.locations}
+        colors={gradients.TransparentToBackground.colors}
       />
 
       <View style={styles.container}>

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { StatusBar, StyleSheet, View } from 'react-native'
+import { ColorValue, StatusBar, StyleSheet, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '../themes/colors'
@@ -28,7 +28,7 @@ type NavbarProps = {
   /**
    * A valid background colour.
    */
-  backgroundColor?: string,
+  backgroundColor?: ColorValue,
   /**
    * The main element, centered.
    */
@@ -54,7 +54,7 @@ const Navbar = ( {
   right,
 }: NavbarProps ) => (
   <View style={[ { backgroundColor } ]}>
-    <StatusBar translucent barStyle="light-content" backgroundColor={backgroundColor} />
+    <StatusBar />
     <SafeAreaView edges={[ 'left', 'top', 'right' ]} />
 
     <View style={styles.header}>

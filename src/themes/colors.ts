@@ -1,13 +1,42 @@
-enum Colors {
-  MainView = '#000',
-  ModalSheet = '#1A1A1A',
-  ModalSheetTitleBar = '#242424',
-  InputBox = '#3C3C3C',
-  Separator = '#3C3C3C',
-  Disabled = '#3C3C3C',
-  PrimaryText = '#FFF',
-  SecondaryText = '#8A8A8A',
-  Dev = '#FF0000',
+import { ColorValue, Platform, PlatformColor } from 'react-native'
+
+type ColorKeys =
+  | 'MainView'
+  | 'ModalSheet'
+  | 'ModalSheetTitleBar'
+  | 'InputBox'
+  | 'Separator'
+  | 'Disabled'
+  | 'PrimaryText'
+  | 'SecondaryText'
+  | 'Dev'
+
+type Theme = { [key in ColorKeys]: ColorValue }
+
+const ios: Theme = {
+  MainView: PlatformColor( 'systemBackground' ),
+  ModalSheet: PlatformColor( 'secondarySystemBackground' ),
+  ModalSheetTitleBar: PlatformColor( 'tertiarySystemBackground' ),
+  InputBox: PlatformColor( 'secondarySystemBackground' ),
+  Separator: PlatformColor( 'separator' ),
+  Disabled: PlatformColor( 'systemFill' ),
+  PrimaryText: PlatformColor( 'label' ),
+  SecondaryText: PlatformColor( 'secondaryLabel' ),
+  Dev: PlatformColor( 'systemRed' ),
 }
+
+const android: Theme = {
+  MainView: PlatformColor( '?android:attr/colorForegroundInverse' ),
+  ModalSheet: PlatformColor( '?android:attr/colorPrimary' ),
+  ModalSheetTitleBar: PlatformColor( '?android:attr/colorPrimary' ),
+  InputBox: PlatformColor( '?android:attr/colorButtonNormal' ),
+  Separator: '#808080',
+  Disabled: '#808080',
+  PrimaryText: PlatformColor( '?android:attr/colorForeground' ),
+  SecondaryText: '#808080',
+  Dev: PlatformColor( '@android:color/holo_red_dark' ),
+}
+
+const Colors = Platform.select<Theme>( { android, ios } )!
 
 export default Colors
