@@ -1,6 +1,5 @@
 import { ReactNode } from 'react'
-import { ColorValue, StatusBar, StyleSheet, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { ColorValue, SafeAreaView, StatusBar, StyleSheet, View } from 'react-native'
 
 import Colors from '../themes/colors'
 import Units from '../themes/units'
@@ -55,7 +54,7 @@ const Navbar = ( {
 }: NavbarProps ) => (
   <View style={[ { backgroundColor } ]}>
     <StatusBar />
-    <SafeAreaView edges={[ 'left', 'top', 'right' ]} />
+    <SafeAreaView />
 
     <View style={styles.header}>
       <View style={styles.liftUp}>
