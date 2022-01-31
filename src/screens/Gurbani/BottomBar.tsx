@@ -1,8 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import { Pressable, StyleSheet, View } from 'react-native'
+import { Pressable, SafeAreaView, StyleSheet, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Button from '../../components/Button'
@@ -45,7 +44,7 @@ const BottomBar = () => {
   const onCollectionsPress = () => navigation.navigate( Screens.Collections )
 
   return (
-    <SafeAreaView edges={[ 'bottom', 'left', 'right' ]}>
+    <SafeAreaView>
       <LinearGradient
         style={styles.background}
         locations={gradients.TransparentToBackground.locations}
