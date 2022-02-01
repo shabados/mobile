@@ -55,9 +55,9 @@
   "devDependencies": {
     "@commitlint/cli": "^15.0.0",
     "@commitlint/config-conventional": "^15.0.0",
+    "@faker-js/faker": "*",
     "@prettier/plugin-ruby": "^2.0.0",
     "@testing-library/react-native": "^8.0.0",
-    "@types/faker": "^5.5.9",
     "@types/jest": "^27.0.3",
     "@types/jest-when": "^2.7.3",
     "@types/lodash": "^4.14.177",
@@ -80,7 +80,6 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-react-native": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "faker": "^5.5.3",
     "fishery": "^2.1.0",
     "husky": "^4.3.8",
     "jest": "^27.3.1",
