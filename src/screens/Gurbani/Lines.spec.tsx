@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react-native'
-import { toUnicode } from 'gurmukhi-utils'
+import { stripVishraams, toUnicode } from 'gurmukhi-utils'
 
 import * as factories from '../../../test/factories'
 import Lines from './Lines'
@@ -12,25 +12,27 @@ describe( '<Lines />', () => {
 
     const container = getByText( toUnicode( lines[ 0 ].gurmukhi ) ).parent!
 
-    await lines.reduce( async ( promise, { gurmukhi } ) => {
-      await promise
+    await lines
+      .map( ( { gurmukhi } ) => stripVishraams( toUnicode( gurmukhi ) ) )
+      .reduce( async ( promise, gurmukhi ) => {
+        await promise
 
-      let lineElement = queryByText( gurmukhi )
+        let lineElement = queryByText( gurmukhi )
 
-      // Scroll if we can't see the line
-      if ( !lineElement ) {
-        fireEvent.scroll( container, {
-          nativeEvent: {
-            contentOffset: { y: 500 },
-            contentSize: { height: 500, width: 100 },
-            layoutMeasurement: { height: 100, width: 100 },
-          },
-        } )
+        // Scroll if we can't see the line
+        if ( !lineElement ) {
+          fireEvent.scroll( container, {
+            nativeEvent: {
+              contentOffset: { y: 500 },
+              contentSize: { height: 500, width: 100 },
+              layoutMeasurement: { height: 100, width: 100 },
+            },
+          } )
 
-        lineElement = await findByText( toUnicode( gurmukhi ) )
-      }
+          lineElement = await findByText( gurmukhi )
+        }
 
-      expect( lineElement ).toBeTruthy()
-    }, Promise.resolve() )
+        expect( lineElement ).toBeTruthy()
+      }, Promise.resolve() )
   } )
 } )
