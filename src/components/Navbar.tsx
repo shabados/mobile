@@ -14,12 +14,24 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
     height: Units.MinimumTouchDimension + Units.HorizontalLayoutMargin / 2,
   },
+  left: {
+    position: 'absolute',
+    left: 0,
+  },
   // this ensures these buttons are always clickable when they are visible
   liftUp: {
     zIndex: 10,
   },
   main: {
+    width: '100%',
+    display: 'flex',
+    alignContent: 'center',
+    justifyContent: 'center',
     flexDirection: 'row',
+  },
+  right: {
+    position: 'absolute',
+    right: 0,
   },
 } )
 
@@ -57,7 +69,7 @@ const Navbar = ( {
     <SafeAreaView />
 
     <View style={styles.header}>
-      <View style={styles.liftUp}>
+      <View style={[ styles.left, styles.liftUp ]}>
         {left}
       </View>
 
@@ -65,7 +77,7 @@ const Navbar = ( {
         {main}
       </View>
 
-      <View style={styles.liftUp}>
+      <View style={[ styles.right, styles.liftUp ]}>
         {right}
       </View>
     </View>
