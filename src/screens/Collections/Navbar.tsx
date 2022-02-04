@@ -1,8 +1,7 @@
 import { StyleSheet } from 'react-native'
 import AntIcon from 'react-native-vector-icons/AntDesign'
-import IonIcon from 'react-native-vector-icons/Ionicons'
 
-import BackButton from '../../components/BackButton'
+import BackButtonIcon from '../../components/BackButtonIcon'
 import Navbar from '../../components/Navbar'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
@@ -27,13 +26,7 @@ const styles = StyleSheet.create( {
 const CollectionsNavbar = () => (
   <Navbar
     backgroundColor="transparent"
-    left={(
-      <BackButton
-        testID="back-button"
-        variant="text"
-        label={<IonIcon style={styles.headerIcon} name="arrow-back" />}
-      />
-    )}
+    left={<BackButtonIcon />}
     main={<Typography variant="headline">Collections</Typography>}
     right={(
       <AntIcon

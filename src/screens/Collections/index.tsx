@@ -41,7 +41,8 @@ export const collectionsScreen = {
   options: {
     header: Navbar,
     cardStyle: { backgroundColor: 'transparent' },
+    presentation: 'modal',
   },
-}
+} as const
 
 export default CollectionsScreen

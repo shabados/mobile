@@ -44,7 +44,8 @@ export const searchScreen = {
   component: SearchScreen,
   options: {
     cardStyle: { backgroundColor: 'transparent' },
+    presentation: 'modal',
   },
-}
+} as const
 
 export default SearchScreen

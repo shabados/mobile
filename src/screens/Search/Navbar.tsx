@@ -1,15 +1,11 @@
 import { StyleSheet, View } from 'react-native'
-import Icon from 'react-native-vector-icons/Ionicons'
 
-import BackButton from '../../components/BackButton'
+import BackButtonIcon from '../../components/BackButtonIcon'
 import Navbar from '../../components/Navbar'
 import SearchBar, { SearchBarProps } from '../../components/SearchBar'
 import Units from '../../themes/units'
 
 const styles = StyleSheet.create( {
-  backIcon: {
-    fontSize: Units.Title1,
-  },
   root: {
     flexDirection: 'row',
   },
@@ -36,7 +32,7 @@ const SearchNavbar = ( {
     backgroundColor="transparent"
     main={(
       <View style={styles.root}>
-        <BackButton testID="back-button" variant="text" label={<Icon style={styles.backIcon} name="arrow-back" />} />
+        <BackButtonIcon />
 
         <SearchBar style={styles.searchBar} autoFocus onChangeText={onSearchChange} />
       </View>
