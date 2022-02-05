@@ -8,6 +8,7 @@ import { collectionsScreen } from './screens/Collections'
 import { gurbaniScreen } from './screens/Gurbani'
 import { AppStackParams } from './screens/screens'
 import { searchScreen } from './screens/Search'
+import { settingsScreen } from './screens/Settings'
 
 const { Screen, Navigator, Group } = createStackNavigator<AppStackParams>()
 
@@ -15,6 +16,7 @@ const screens = [
   gurbaniScreen,
   searchScreen,
   collectionsScreen,
+  settingsScreen,
 ]
 
 const App = () => (
