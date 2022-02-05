@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 import Container from '../../components/Container'
 import { search } from '../../services/data/search'
 import { ContentType } from '../../types/data'
-import Screens, { AppStackParams } from '../screens'
+import Screens, { AppStackParams, ScreenOptions } from '../screens'
 import Navbar from './Navbar'
 import Results, { ResultsProps } from './Results'
 
@@ -39,13 +39,13 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   )
 }
 
-export const searchScreen = {
+export const searchScreen: ScreenOptions<SearchScreenProps> = {
   name: Screens.Search,
   component: SearchScreen,
   options: {
     cardStyle: { backgroundColor: 'transparent' },
     presentation: 'modal',
   },
-} as const
+}
 
 export default SearchScreen
