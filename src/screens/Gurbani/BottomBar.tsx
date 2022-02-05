@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native'
-import { StackScreenProps } from '@react-navigation/stack'
 import { Pressable, SafeAreaView, StyleSheet, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import Icon from 'react-native-vector-icons/MaterialIcons'
@@ -9,7 +8,7 @@ import SearchBar from '../../components/SearchBar'
 import { gradients } from '../../themes/gradients'
 import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
-import Screens, { AppStackParams } from '../screens'
+import Screens, { ScreenProps } from '../screens'
 
 const styles = StyleSheet.create( {
   background: {
@@ -38,7 +37,7 @@ const styles = StyleSheet.create( {
 } )
 
 const BottomBar = () => {
-  const navigation = useNavigation<StackScreenProps<AppStackParams>['navigation']>()
+  const navigation = useNavigation<ScreenProps['navigation']>()
 
   const onSearchPress = () => navigation.navigate( Screens.Search )
   const onCollectionsPress = () => navigation.navigate( Screens.Collections )

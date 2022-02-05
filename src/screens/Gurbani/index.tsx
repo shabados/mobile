@@ -1,10 +1,9 @@
-import { StackScreenProps } from '@react-navigation/stack'
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
 import { getBookmark, getShabad } from '../../services/data'
 import { ContentType, LineData } from '../../types/data'
-import Screens, { AppStackParams } from '../screens'
+import Screens, { ScreenOptions, ScreenProps } from '../screens'
 import BottomBar from './BottomBar'
 import Lines from './Lines'
 import Navbar from './Navbar'
@@ -20,7 +19,7 @@ const loaders: Loaders = {
   [ ContentType.Ang ]: () => Promise.resolve( { lines: [] } ),
 }
 
-type GurbaniScreenProps = StackScreenProps<AppStackParams, Screens.Gurbani>
+type GurbaniScreenProps = ScreenProps<Screens.Gurbani>
 
 const GurbaniScreen = ( {
   route: { params: { id, type } },
@@ -36,7 +35,7 @@ const GurbaniScreen = ( {
   )
 }
 
-export const gurbaniScreen = {
+export const gurbaniScreen: ScreenOptions<GurbaniScreenProps> = {
   name: Screens.Gurbani,
   component: GurbaniScreen,
   options: { header: Navbar },

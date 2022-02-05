@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
 import { getCollections } from '../../services/data/collections'
-import Screens from '../screens'
+import Screens, { ScreenOptions } from '../screens'
 import Items from './Items'
 import Navbar from './Navbar'
 import { CollectionScreens, CollectionsStackParams } from './screens'
@@ -35,7 +35,7 @@ const CollectionsScreen = () => {
   )
 }
 
-export const collectionsScreen = {
+export const collectionsScreen: ScreenOptions<void> = {
   name: Screens.Collections,
   component: CollectionsScreen,
   options: {
@@ -43,6 +43,6 @@ export const collectionsScreen = {
     cardStyle: { backgroundColor: 'transparent' },
     presentation: 'modal',
   },
-} as const
+}
 
 export default CollectionsScreen
