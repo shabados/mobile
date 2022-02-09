@@ -1,78 +1,95 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { fireEvent, render, waitForElementToBeRemoved } from '@testing-library/react-native'
-import { toUnicode } from 'gurmukhi-utils'
-import { Suspense } from 'react'
+import { fireEvent, render } from '@testing-library/react-native'
 import { Text } from 'react-native'
 
-import * as factories from '../../../test/factories'
-import withContexts from '../../components/with-contexts'
-import * as collections from '../../services/data/collections'
-import { CollectionData } from '../../types/data'
-import Screens, { AppStackParams } from '../screens'
-import { collectionsScreen } from '.'
+import wrapper from '../../../test/utils/NavigatorContext'
+import { ContentType } from '../../types/data'
+import { CollectionsStackParams, HomeTabParams, RootStackParams } from '../../types/navigation'
+import CollectionsScreen, { CollectionsScreenProps } from '.'
+import { Folder, FolderContent, FolderItem } from './types'
 
-const setup = async ( data: CollectionData[] ) => {
-  jest.spyOn( collections, 'getCollections' ).mockResolvedValue( data )
+const getFolderItems = (): FolderItem[] => [
+  {
+    id: '1',
+    name: 'folder 1',
+    items: [
+      { id: '123', name: 'shabad 3', type: ContentType.Shabad },
+      { id: '124', name: 'bookmark 2', type: ContentType.Bookmark },
+      { id: '125', name: 'ang 4', type: ContentType.Ang },
+      { id: '234', name: 'nested folder 3', items: [ { id: '34', name: 'shabad 4', type: ContentType.Shabad } ] },
+    ],
+  },
+  {
+    id: '4',
+    name: 'content bookmark',
+    type: ContentType.Bookmark,
+  },
+]
 
-  const { Navigator, Screen } = createStackNavigator<AppStackParams>()
+const CollectionsStack = createStackNavigator<CollectionsStackParams>()
+const HomeStack = createStackNavigator<HomeTabParams>()
+const RootStack = createStackNavigator<RootStackParams>()
 
-  const queries = render( withContexts(
-    <Suspense fallback={<Text>Loading</Text>}>
-      <NavigationContainer>
-        <Navigator>
-          <Screen {...collectionsScreen} />
-          <Screen name={Screens.Gurbani}>
-            {( { route: { params: { id } } } ) => <Text>{id}</Text>}
-          </Screen>
-        </Navigator>
-      </NavigationContainer>
-      ,
-    </Suspense>,
-  ) )
+const setup = ( initialParams?: CollectionsScreenProps['route']['params'] ) => render(
+  <RootStack.Navigator>
+    <RootStack.Screen
+      name="Root.Collections"
+      component={() => (
+        <CollectionsStack.Navigator>
+          <CollectionsStack.Screen
+            name="Collections.List"
+            component={CollectionsScreen}
+            initialParams={initialParams}
+          />
+        </CollectionsStack.Navigator>
+      )}
+    />
 
-  const { getByText } = queries
-  await waitForElementToBeRemoved( () => getByText( 'Loading' ) )
-
-  return queries
-}
+    <RootStack.Screen
+      name="Root.Home"
+      component={() => (
+        <HomeStack.Navigator>
+          <HomeStack.Screen
+            name="Home.Gurbani"
+            component={( { route: { params: { id } } } ) => <Text>{id}</Text>}
+          />
+        </HomeStack.Navigator>
+      )}
+    />
+  </RootStack.Navigator>,
+  { wrapper },
+)
 
 describe( '<CollectionsScreen />', () => {
-  describe( 'on mount', () => {
-    it( 'should display a list of collections retrieved', async () => {
-      const collections = factories.collection.buildList( 5 )
+  it( 'should render list of collection items', async () => {
+    const items = getFolderItems()
+    const { queryByText } = setup( { items } )
 
-      const { queryByText } = await setup( collections )
-
-      collections.map(
-        ( { nameGurmukhi } ) => expect( queryByText( toUnicode( nameGurmukhi ) ) ).toBeTruthy(),
-      )
+    items.forEach( ( { name } ) => {
+      expect( queryByText( name ) ).toBeTruthy()
     } )
   } )
 
-  describe( 'given a press on a folder item', () => {
-    it( 'should display the collection\'s list of items', async () => {
-      const items = factories.collection.buildList( 5 )
-      const collection = factories.collection.build( { items } )
-      const { getByText, queryByText } = await setup( [ collection ] )
+  it( 'should open a content item in Home.Gurbani screen', async () => {
+    const items = getFolderItems()
+    const { getByText } = setup( { items } )
 
-      fireEvent.press( getByText( toUnicode( collection.nameGurmukhi ) ) )
+    const secondItem = items[ 1 ] as FolderContent
+    fireEvent.press( getByText( secondItem.name ) )
 
-      Object.values( collection.items! ).forEach( ( { nameGurmukhi }: CollectionData ) => expect(
-        queryByText( toUnicode( nameGurmukhi ) ),
-      ).toBeTruthy() )
-    } )
+    expect( getByText( secondItem.id ) ).toBeTruthy()
   } )
 
-  describe( 'given a press on a content item', () => {
-    // ? Flaky - Does react-query+- dedupe cause this to fail sometimes
-    it( 'should navigate to the Gurbani screen', async () => {
-      const collection = factories.collection.build( { items: undefined } )
-      const { getByText, findByText } = await setup( [ collection ] )
+  it( 'should open a content folder', async () => {
+    const items = getFolderItems()
+    const { getByText, queryByText } = setup( { items } )
+    const firstFolder = items[ 0 ] as Folder
 
-      fireEvent.press( getByText( toUnicode( collection.nameGurmukhi ) ) )
+    const folderItem = getByText( firstFolder.name )
+    fireEvent.press( folderItem )
 
-      expect( await findByText( collection.id ) ).toBeTruthy()
+    firstFolder.items.forEach( ( { name } ) => {
+      expect( queryByText( name ) ).toBeTruthy()
     } )
   } )
 } )

@@ -3,8 +3,7 @@ import { StyleSheet } from 'react-native'
 import Container from '../../components/Container'
 import Typography from '../../components/Typography'
 import { px, py } from '../../themes/utils'
-import Screens, { ScreenOptions } from '../screens'
-import Navbar from './Navbar'
+import SettingsNavbar from './Navbar'
 
 const styles = StyleSheet.create( {
   root: {
@@ -19,10 +18,5 @@ const SettingsScreen = () => (
   </Container>
 )
 
-export const settingsScreen: ScreenOptions<void> = {
-  name: Screens.Settings,
-  component: SettingsScreen,
-  options: { header: Navbar },
-}
-
+export { SettingsNavbar }
 export default SettingsScreen

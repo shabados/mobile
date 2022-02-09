@@ -7,10 +7,10 @@ import { Text } from 'react-native'
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../services/data/shabads'
-import { AppStackParams } from '../screens'
-import { settingsScreen } from '.'
+import { HomeTabParams } from '../../types/navigation'
+import SettingsScreen from '.'
 
-const Stack = createStackNavigator<AppStackParams>()
+const Stack = createStackNavigator<HomeTabParams>()
 
 const setup = ( shabad = factories.shabad.build() ) => {
   jest.spyOn( shabads, 'getShabad' ).mockResolvedValue( shabad )
@@ -19,7 +19,7 @@ const setup = ( shabad = factories.shabad.build() ) => {
     <Suspense fallback={<Text>Loading</Text>}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen {...settingsScreen} />
+          <Stack.Screen name="Home.Settings" component={SettingsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Suspense>,

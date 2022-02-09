@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import { Image, StyleSheet, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
@@ -7,7 +6,7 @@ import Navbar from '../../components/Navbar'
 import Typography from '../../components/Typography'
 import Colors from '../../themes/colors'
 import { px, py } from '../../themes/utils'
-import Screens, { ScreenProps } from '../screens'
+import { HomeTabScreenProps } from '../../types/navigation'
 
 const styles = StyleSheet.create( {
   disabledIcon: {
@@ -35,15 +34,15 @@ const styles = StyleSheet.create( {
   },
 } )
 
-const GurbaniNavbar = () => {
-  const navigation = useNavigation<ScreenProps['navigation']>()
+type GurbaniNavbarProps = HomeTabScreenProps<'Home.Gurbani'>
 
-  const onSettingsPress = () => navigation.navigate( Screens.Settings )
+const GurbaniNavbar = ( { navigation }: GurbaniNavbarProps ) => {
+  const onSettingsPress = () => navigation.navigate( 'Home.Settings' )
 
   return (
     <Navbar
-      left={<Icon style={[ styles.headerIcon, styles.disabledIcon ]} name="menu" />}
-      right={<Icon style={styles.headerIcon} name="ios-options-outline" onPress={onSettingsPress} />}
+      left={<Icon style={[ styles.headerIcon, styles.disabledIcon ]} name="menu" testID="navbar-menu" />}
+      right={<Icon style={styles.headerIcon} name="ios-options-outline" testID="navbar-settings" onPress={onSettingsPress} />}
       main={(
         <View style={styles.logo}>
           <Image style={styles.logoIcon} source={logo} />

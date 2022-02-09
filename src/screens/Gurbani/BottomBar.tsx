@@ -8,7 +8,7 @@ import SearchBar from '../../components/SearchBar'
 import { gradients } from '../../themes/gradients'
 import Units from '../../themes/units'
 import { px, py } from '../../themes/utils'
-import Screens, { ScreenProps } from '../screens'
+import { HomeTabScreenProps } from '../../types/navigation'
 
 const styles = StyleSheet.create( {
   background: {
@@ -37,10 +37,10 @@ const styles = StyleSheet.create( {
 } )
 
 const BottomBar = () => {
-  const navigation = useNavigation<ScreenProps['navigation']>()
+  const navigation = useNavigation<HomeTabScreenProps<'Home.Gurbani'>['navigation']>()
 
-  const onSearchPress = () => navigation.navigate( Screens.Search )
-  const onCollectionsPress = () => navigation.navigate( Screens.Collections )
+  const onSearchPress = () => navigation.navigate( 'Root.Search' )
+  const onCollectionsPress = () => navigation.navigate( 'Root.Collections' )
 
   return (
     <SafeAreaView>

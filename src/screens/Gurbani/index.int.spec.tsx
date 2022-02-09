@@ -8,10 +8,11 @@ import { Text } from 'react-native'
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as shabads from '../../services/data/shabads'
-import { AppStackParams } from '../screens'
-import { gurbaniScreen } from '.'
+import { ContentType } from '../../types/data'
+import { HomeTabParams } from '../../types/navigation'
+import GurbaniScreen from '.'
 
-const Stack = createStackNavigator<AppStackParams>()
+const Stack = createStackNavigator<HomeTabParams>()
 
 const setup = ( shabad = factories.shabad.build() ) => {
   jest.spyOn( shabads, 'getShabad' ).mockResolvedValue( shabad )
@@ -20,7 +21,7 @@ const setup = ( shabad = factories.shabad.build() ) => {
     <Suspense fallback={<Text>Loading</Text>}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen {...gurbaniScreen} />
+          <Stack.Screen name="Home.Gurbani" component={GurbaniScreen} initialParams={{ id: '123', type: ContentType.Shabad }} />
         </Stack.Navigator>
       </NavigationContainer>
     </Suspense>,

@@ -8,16 +8,10 @@ import { Text } from 'react-native'
 import * as factories from '../../../test/factories'
 import withContexts from '../../components/with-contexts'
 import * as lines from '../../services/data/search'
-import { LineData, SearchData } from '../../types/data'
-import Screens, { AppStackParams } from '../screens'
-import { searchScreen } from '.'
+import { SearchData } from '../../types/data'
+import SearchScreen, { searchScreen } from '.'
 
-type StackParamList = AppStackParams & {
-  [Screens.Search]: undefined,
-  [Screens.Gurbani]: LineData,
-}
-
-const Stack = createStackNavigator<StackParamList>()
+const Stack = createStackNavigator<RootStackParams>()
 
 const setup = ( results = factories.search.buildList( 5 ) ) => {
   jest.spyOn( lines, 'search' ).mockResolvedValue( results )
@@ -26,8 +20,8 @@ const setup = ( results = factories.search.buildList( 5 ) ) => {
     <Suspense fallback={<Text>Loading</Text>}>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen {...searchScreen} />
-          <Stack.Screen name={Screens.Gurbani}>
+          <Stack.Screen name="Root.Search" component={SearchScreen} />
+          <Stack.Screen name="Root.Home">
             {( { route: { params: { gurmukhi } } } ) => <Text>{gurmukhi}</Text>}
           </Stack.Screen>
         </Stack.Navigator>

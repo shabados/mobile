@@ -1,48 +1,50 @@
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
-import { Text } from 'react-native'
-import { useQuery } from 'react-query'
+import { FlatList, StyleSheet, View } from 'react-native'
 
-import Container from '../../components/Container'
-import { getCollections } from '../../services/data/collections'
-import Screens, { ScreenOptions } from '../screens'
-import Items from './Items'
-import Navbar from './Navbar'
-import { CollectionScreens, CollectionsStackParams } from './screens'
-import { collectionsToFolder } from './utils'
+import Colors from '../../themes/colors'
+import { CollectionsStackScreenProps } from '../../types/navigation'
+import Item from './Item'
+import { Folder, FolderContent, FolderItem } from './types'
+import { getIsFolder } from './utils'
 
-const { Screen, Navigator } = createStackNavigator<CollectionsStackParams>()
+const styles = StyleSheet.create( {
+  root: {
+    flex: 1,
+    backgroundColor: Colors.ModalSheet,
+  },
+} )
 
-const screenOptions: StackNavigationOptions = { headerShown: false }
+export type CollectionsScreenProps = CollectionsStackScreenProps<'Collections.List'>
 
-const collectionsQuery = () => getCollections().then( collectionsToFolder )
+const CollectionsScreen = ( {
+  navigation,
+  route: { params: { items } },
+}: CollectionsScreenProps ) => {
+  const openContent = ( { id, type }: FolderContent ) => navigation.navigate(
+    'Root.Home',
+    { screen: 'Home.Gurbani', params: { id, type } },
+  )
 
-const CollectionsScreen = () => {
-  const { data: items } = useQuery( 'collections-screen', collectionsQuery )
+  const openFolder = ( { items }: Folder ) => navigation.push( 'Collections.List', { items } )
 
-  if ( !items ) return <Text>Loading</Text>
+  const onItemPress = ( item: FolderItem ) => ( getIsFolder( item )
+    ? openFolder( item as Folder )
+    : openContent( item as FolderContent ) )
 
   return (
-    <Container>
-      <Navigator>
-        <Screen
-          name={CollectionScreens.List}
-          component={Items}
-          options={screenOptions}
-          initialParams={{ items }}
-        />
-      </Navigator>
-    </Container>
+    <View style={styles.root}>
+      <FlatList
+        keyExtractor={( { id } ) => id}
+        data={items}
+        renderItem={( { item } ) => (
+          <Item
+            title={item.name}
+            icon={getIsFolder( item ) ? 'chevron-right' : undefined}
+            onPress={() => onItemPress( item )}
+          />
+        )}
+      />
+    </View>
   )
-}
-
-export const collectionsScreen: ScreenOptions<void> = {
-  name: Screens.Collections,
-  component: CollectionsScreen,
-  options: {
-    header: Navbar,
-    cardStyle: { backgroundColor: 'transparent' },
-    presentation: 'modal',
-  },
 }
 
 export default CollectionsScreen

@@ -3,10 +3,10 @@ import { useQuery } from 'react-query'
 import Container from '../../components/Container'
 import { getBookmark, getShabad } from '../../services/data'
 import { ContentType, LineData } from '../../types/data'
-import Screens, { ScreenOptions, ScreenProps } from '../screens'
+import { HomeTabScreenProps } from '../../types/navigation'
 import BottomBar from './BottomBar'
 import Lines from './Lines'
-import Navbar from './Navbar'
+import GurbaniNavbar from './Navbar'
 
 type Loaders = {
   [screen in ContentType]: ( options : { queryKey: [string] } ) => Promise<{ lines: LineData[] }>
@@ -19,7 +19,7 @@ const loaders: Loaders = {
   [ ContentType.Ang ]: () => Promise.resolve( { lines: [] } ),
 }
 
-type GurbaniScreenProps = ScreenProps<Screens.Gurbani>
+type GurbaniScreenProps = HomeTabScreenProps<'Home.Gurbani'>
 
 const GurbaniScreen = ( {
   route: { params: { id, type } },
@@ -35,11 +35,6 @@ const GurbaniScreen = ( {
   )
 }
 
-export const gurbaniScreen: ScreenOptions<GurbaniScreenProps> = {
-  name: Screens.Gurbani,
-  component: GurbaniScreen,
-  options: { header: Navbar },
-  initialParams: { id: '1YU', type: ContentType.Shabad },
-}
+export { GurbaniNavbar }
 
 export default GurbaniScreen
