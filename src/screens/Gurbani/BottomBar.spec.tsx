@@ -4,18 +4,18 @@ import { fireEvent, render } from '@testing-library/react-native'
 import { ReactNode } from 'react'
 import { Text } from 'react-native'
 
-import Screens from '../screens'
+import { RootStackParams } from '../../types/navigation'
 import BottomBar from './BottomBar'
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator<RootStackParams>()
 
 type WrapperProps = { children: ReactNode }
 const wrapper = ( { children }: WrapperProps ) => (
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen name="default">{() => children}</Stack.Screen>
-      <Stack.Screen name={Screens.Collections}>{() => <Text>collections</Text>}</Stack.Screen>
-      <Stack.Screen name={Screens.Search}>{() => <Text>search</Text>}</Stack.Screen>
+      <Stack.Screen name="Root.Home">{() => children}</Stack.Screen>
+      <Stack.Screen name="Root.Collections">{() => <Text>collections</Text>}</Stack.Screen>
+      <Stack.Screen name="Root.Search">{() => <Text>search</Text>}</Stack.Screen>
     </Stack.Navigator>
   </NavigationContainer>
 )
