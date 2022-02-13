@@ -81,6 +81,20 @@
     "no-shadow": "off",
     // Although shadow variables can be confusing, disallowing them can lead to terrible naming
     "@typescript-eslint/no-shadow": "off",
+    // Trailing commas result in better diffs and allow generics to work in JSX files
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "only-multiline",
+        "enums": "always-multiline",
+        "generics": "ignore",
+        "tuples": "always-multiline"
+      }
+    ],
     // Be consistent about where the object braces go
     "object-curly-newline": [
       "error",
