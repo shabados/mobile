@@ -8,8 +8,6 @@ const styles = StyleSheet.create( {
   header: {
     backgroundColor: Colors.ModalSheetTitleBar,
     flexDirection: 'row',
-    borderTopLeftRadius: Units.HorizontalLayoutMargin,
-    borderTopRightRadius: Units.HorizontalLayoutMargin,
     alignItems: 'center',
     justifyContent: 'space-between',
     height: Units.MinimumTouchDimension + Units.HorizontalLayoutMargin / 2,
@@ -32,6 +30,9 @@ const styles = StyleSheet.create( {
   right: {
     position: 'absolute',
     right: 0,
+  },
+  root: {
+    zIndex: 1,
   },
 } )
 
@@ -64,7 +65,7 @@ const Navbar = ( {
   left,
   right,
 }: NavbarProps ) => (
-  <View style={[ { backgroundColor } ]}>
+  <View style={[ styles.root, { backgroundColor } ]}>
     <StatusBar />
     <SafeAreaView />
 
