@@ -113,6 +113,8 @@
     "react/jsx-filename-extension": "off",
     // React 17+ does not need to import react
     "react/jsx-uses-react": "off",
+    // In TypeScript projects, validating prop types has low utility
+    "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     // No need to sort methods in class components, and it can sometimes mess with member and function declarations
     "react/sort-comp": "off",
