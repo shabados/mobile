@@ -7,7 +7,7 @@ enum Units {
   GurmukhiLatinRatio = 1.143,
   LineHeightMultiplier = 1.25,
   GurmukhiLineHeightMultiplier = 1.75,
-  HorizontalLayoutMargin = 20,
+  HorizontalLayoutMargin = 16,
   MinimumTouchDimension = 44,
   ThumbFingerRatio = 1.5,
   Separator = 0.5,
