@@ -72,3 +72,6 @@ coverage
 # Generated icons
 AppIcon.appiconset
 ic_launcher*.png
+
+/.bundle/
+/vendor/bundle
