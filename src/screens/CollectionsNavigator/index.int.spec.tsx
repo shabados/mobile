@@ -1,23 +1,28 @@
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { render, waitForElementToBeRemoved } from '@testing-library/react-native'
 import { toUnicode } from 'gurmukhi-utils'
 import { Suspense } from 'react'
 import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
-import wrapper from '../../../test/utils/NavigatorContext'
-import withContexts from '../../components/with-contexts'
+import { wrapper } from '../../../test/utils/navigation'
 import * as collections from '../../services/data/collections'
 import { CollectionData } from '../../types/data'
+import { RootStackParams } from '../../types/navigation'
 import CollectionsNavigator from '.'
 
 const setup = async ( data: CollectionData[] ) => {
+  const Stack = createNativeStackNavigator<RootStackParams>()
   jest.spyOn( collections, 'getCollections' ).mockResolvedValue( data )
 
-  const queries = render( withContexts(
+  const queries = render(
     <Suspense fallback={<Text>Loading</Text>}>
-      <CollectionsNavigator />
+      <Stack.Navigator>
+        <Stack.Screen name="Root.Collections" component={CollectionsNavigator} />
+      </Stack.Navigator>
     </Suspense>,
-  ), { wrapper } )
+    { wrapper }
+  )
 
   const { getByText } = queries
   await waitForElementToBeRemoved( () => getByText( 'Loading' ) )
@@ -26,15 +31,13 @@ const setup = async ( data: CollectionData[] ) => {
 }
 
 describe( '<CollectionsNavigator />', () => {
-  describe( 'on mount', () => {
-    it( 'should display a list of collections retrieved', async () => {
-      const collections = factories.collection.buildList( 5 )
+  it( 'should display a list of collections retrieved', async () => {
+    const collections = factories.collection.buildList( 5 )
 
-      const { queryByText } = await setup( collections )
+    const { queryByText } = await setup( collections )
 
-      collections.map(
-        ( { nameGurmukhi } ) => expect( queryByText( toUnicode( nameGurmukhi ) ) ).toBeTruthy(),
-      )
-    } )
+    collections.map(
+      ( { nameGurmukhi } ) => expect( queryByText( toUnicode( nameGurmukhi ) ) ).toBeTruthy(),
+    )
   } )
 } )

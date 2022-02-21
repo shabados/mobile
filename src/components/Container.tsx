@@ -10,7 +10,7 @@ import Colors from '../themes/colors'
 const styles = StyleSheet.create( {
   main: {
     flex: 1,
-    backgroundColor: Colors.ModalSheet,
+    backgroundColor: Colors.MainView,
   },
 } )
 

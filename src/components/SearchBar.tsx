@@ -17,12 +17,10 @@ const styles = StyleSheet.create( {
     ...my(),
   },
   searchBar: {
-    ...( OS.android && { paddingLeft: Units.HorizontalLayoutMargin / 2 } ),
-    ...( OS.ios && { paddingLeft: Units.HorizontalLayoutMargin / 2 } ),
+    paddingLeft: Units.HorizontalLayoutMargin / 2,
     flexDirection: 'row',
     borderRadius: Units.HorizontalLayoutMargin / 2,
     backgroundColor: Colors.InputBox,
-    width: '100%',
     height: Units.MinimumTouchDimension,
   },
   searchIcon: {

@@ -1,34 +1,28 @@
+import { HeaderBackButton, HeaderBackButtonProps } from '@react-navigation/elements'
 import { useNavigation } from '@react-navigation/native'
-import { StyleSheet, Text } from 'react-native'
-
-import Colors from '../themes/colors'
-import Button, { ButtonProps } from './Button'
-
-export type BackButtonProps = {
-  /**
-   * Value back button should display
-   */
-  label?: string | JSX.Element,
-} & ButtonProps
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create( {
-  label: {
-    color: Colors.PrimaryText,
+  native: {
+    margin: -16,
   },
 } )
 
-/**
- * Button to navigate to previous page.
- */
-const BackButton = ( { label = 'Cancel', ...props }: BackButtonProps ) => {
+export type BackButtonProps = HeaderBackButtonProps & {
+  // To fix https://github.com/react-navigation/react-navigation/issues/10058
+  // Native Stack Navigators + HeaderBackButton has funky margin otherwise
+  native?: boolean,
+}
+
+const BackButton = ( { native = true, ...props }: BackButtonProps ) => {
   const navigation = useNavigation()
 
-  const goBack = () => navigation.goBack()
-
   return (
-    <Button onPress={goBack} {...props}>
-      {typeof label === 'string' ? <Text style={styles.label}>{label}</Text> : label}
-    </Button>
+    <HeaderBackButton
+      style={native && styles.native}
+      {...props}
+      onPress={() => navigation.goBack()}
+    />
   )
 }
 
