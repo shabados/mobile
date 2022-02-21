@@ -33,7 +33,7 @@ const getOptions = ( {
   title: name ?? 'Collections',
   headerRight: () => (
     <HeaderButtons>
-      <Item title="Done" onPress={() => navigation.goBack()} />
+      <Item title="Done" onPress={() => navigation.getParent()?.goBack()} />
     </HeaderButtons>
   ),
 } )
