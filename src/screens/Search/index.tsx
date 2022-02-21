@@ -24,10 +24,7 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   useLayoutEffect( () => {
     navigation.setOptions( {
       headerTitle: () => (
-        <>
-          <Text>Test</Text>
-          <SearchHeader navigation={navigation} onSearchChange={setSearchValue} />
-        </>
+        <SearchHeader navigation={navigation} onSearchChange={setSearchValue} />
       ),
     } )
   }, [ navigation ] )
