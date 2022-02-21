@@ -11,7 +11,7 @@
     "types": "tsc --pretty",
     "test": "ENVFILE=config/.env.local jest --color",
     "start:android": "ENVFILE=config/.env.local react-native run-android",
-    "start:ios": "ENVFILE=config/.env.local react-native run-ios --simulator='iPhone 8'",
+    "start:ios": "ENVFILE=config/.env.local react-native run-ios --simulator='iPhone 12'",
     "build:android": "bundle exec fastlane android build",
     "build:ios": "bundle exec fastlane ios build",
     "clean:android": "bundle exec fastlane android clean",
