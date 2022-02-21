@@ -28,6 +28,7 @@ const Results = ( {
   <View style={styles.container}>
     <FlatList
       {...props}
+      keyboardShouldPersistTaps="always"
       data={results}
       keyExtractor={( { line: { id } } ) => id}
       ItemSeparatorComponent={() => <View style={styles.separator} />}
