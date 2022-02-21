@@ -69,11 +69,8 @@ npm run <command>
 The commands are:
 
 ```shell
-start:android         # Start the app on the Android emulator with tests in watch mode
-start:ios             # Start the app on iOS emulator with tests in watch mode
-
-emulator:android      # Start the Android emulator
-emulator:ios          # Start the iOS emulator
+start:android      # Start the app on the Android emulator
+start:ios          # Start the app on the iOS emulator
 
 build:android         # Build the Android app, without artifacts or code signing
 build:ios             # Build the iOS app, without artifacts or code signing
@@ -86,7 +83,8 @@ clean:ios             # Clean iOS build files
 
 install-assets        # Install any changed files in the "assets/" directory
 lint                  # ESLint and checks code style
-test                  # Typechecks + Unit + integration tests
+test                  # Unit tests
+types                 # TypeScript typechecking
 ```
 
 **NOTE**: You will need to [connect a device via USB](https://developer.android.com/studio/run/device#connect) or [create an AVD](https://developer.android.com/studio/run/managing-avds#createavd) to start the [Android Emulator](https://developer.android.com/studio/run/emulator).
