@@ -1,31 +1,29 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { render } from '@testing-library/react-native'
 import { toUnicode } from 'gurmukhi-utils'
 import { Suspense } from 'react'
 import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
-import withContexts from '../../components/with-contexts'
+import { wrapper } from '../../../test/utils/navigation'
 import * as shabads from '../../services/data/shabads'
 import { ContentType } from '../../types/data'
-import { HomeTabParams } from '../../types/navigation'
+import { GurbaniStackParams } from '../../types/navigation'
 import GurbaniScreen from '.'
 
-const Stack = createStackNavigator<HomeTabParams>()
-
 const setup = ( shabad = factories.shabad.build() ) => {
+  const Stack = createNativeStackNavigator<GurbaniStackParams>()
+
   jest.spyOn( shabads, 'getShabad' ).mockResolvedValue( shabad )
 
-  return render( withContexts(
+  return render(
     <Suspense fallback={<Text>Loading</Text>}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Home.Gurbani" component={GurbaniScreen} initialParams={{ id: '123', type: ContentType.Shabad }} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Gurbani.View" component={GurbaniScreen} initialParams={{ id: '123', type: ContentType.Shabad }} />
+      </Stack.Navigator>
     </Suspense>,
-  ) )
+    { wrapper }
+  )
 }
 
 describe( '<GurbaniScreen />', () => {

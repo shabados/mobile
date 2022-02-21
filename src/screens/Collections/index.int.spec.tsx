@@ -1,95 +1,102 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { fireEvent, render } from '@testing-library/react-native'
-import { Text } from 'react-native'
 
-import wrapper from '../../../test/utils/NavigatorContext'
+import { getNavigationMock, wrapper } from '../../../test/utils/navigation'
 import { ContentType } from '../../types/data'
-import { CollectionsStackParams, HomeTabParams, RootStackParams } from '../../types/navigation'
+import { CollectionsStackParams } from '../../types/navigation'
 import CollectionsScreen, { CollectionsScreenProps } from '.'
-import { Folder, FolderContent, FolderItem } from './types'
+import { Folder, FolderContent } from './types'
 
-const getFolderItems = (): FolderItem[] => [
-  {
-    id: '1',
-    name: 'folder 1',
-    items: [
-      { id: '123', name: 'shabad 3', type: ContentType.Shabad },
-      { id: '124', name: 'bookmark 2', type: ContentType.Bookmark },
-      { id: '125', name: 'ang 4', type: ContentType.Ang },
-      { id: '234', name: 'nested folder 3', items: [ { id: '34', name: 'shabad 4', type: ContentType.Shabad } ] },
-    ],
-  },
-  {
-    id: '4',
-    name: 'content bookmark',
-    type: ContentType.Bookmark,
-  },
-]
+const getFolder = (): Folder => ( {
+  id: '545',
+  name: 'root',
+  items: [
+    {
+      id: '1',
+      name: 'folder 1',
+      items: [
+        { id: '123', name: 'shabad 3', type: ContentType.Shabad },
+        { id: '124', name: 'bookmark 2', type: ContentType.Bookmark },
+        { id: '125', name: 'ang 4', type: ContentType.Ang },
+        { id: '234', name: 'nested folder 3', items: [ { id: '34', name: 'shabad 4', type: ContentType.Shabad } ] },
+      ],
+    },
+    {
+      id: '4',
+      name: 'content bookmark',
+      type: ContentType.Bookmark,
+    },
+  ],
+} )
 
-const CollectionsStack = createStackNavigator<CollectionsStackParams>()
-const HomeStack = createStackNavigator<HomeTabParams>()
-const RootStack = createStackNavigator<RootStackParams>()
+type SetupOptions = Partial<{
+  navigation: any,
+  route: CollectionsScreenProps['route'],
+}>
 
-const setup = ( initialParams?: CollectionsScreenProps['route']['params'] ) => render(
-  <RootStack.Navigator>
-    <RootStack.Screen
-      name="Root.Collections"
-      component={() => (
-        <CollectionsStack.Navigator>
-          <CollectionsStack.Screen
-            name="Collections.List"
-            component={CollectionsScreen}
-            initialParams={initialParams}
+const setup = ( { navigation, ...props }: SetupOptions = {} ) => {
+  const Stack = createNativeStackNavigator<CollectionsStackParams>()
+
+  return render(
+    <Stack.Navigator>
+      <Stack.Screen name="Collections.List">
+        {( screenProps ) => (
+          <CollectionsScreen
+            {...screenProps}
+            {...props}
+            navigation={{ ...screenProps.navigation, ...getNavigationMock(), ...navigation }}
           />
-        </CollectionsStack.Navigator>
-      )}
-    />
-
-    <RootStack.Screen
-      name="Root.Home"
-      component={() => (
-        <HomeStack.Navigator>
-          <HomeStack.Screen
-            name="Home.Gurbani"
-            component={( { route: { params: { id } } } ) => <Text>{id}</Text>}
-          />
-        </HomeStack.Navigator>
-      )}
-    />
-  </RootStack.Navigator>,
-  { wrapper },
-)
+        )}
+      </Stack.Screen>
+    </Stack.Navigator>,
+    { wrapper },
+  )
+}
 
 describe( '<CollectionsScreen />', () => {
-  it( 'should render list of collection items', async () => {
-    const items = getFolderItems()
-    const { queryByText } = setup( { items } )
+  describe( 'on mount', () => {
+    it( 'should render list of collection items', async () => {
+      const folder = getFolder()
+      const { queryByText } = setup( {
+        route: { key: '', name: 'Collections.List', params: folder },
+      } )
 
-    items.forEach( ( { name } ) => {
-      expect( queryByText( name ) ).toBeTruthy()
+      folder.items.forEach( ( { name } ) => {
+        expect( queryByText( name ) ).toBeTruthy()
+      } )
     } )
   } )
 
-  it( 'should open a content item in Home.Gurbani screen', async () => {
-    const items = getFolderItems()
-    const { getByText } = setup( { items } )
+  describe( 'when a folder item is pressed', () => {
+    it( 'should open the item in Home.Gurbani screen', async () => {
+      const folder = getFolder()
+      const navigation = getNavigationMock()
+      const { getByText } = setup( {
+        navigation,
+        route: { key: '', name: 'Collections.List', params: folder },
+      } )
 
-    const secondItem = items[ 1 ] as FolderContent
-    fireEvent.press( getByText( secondItem.name ) )
+      const secondItem = folder.items[ 1 ] as FolderContent
+      fireEvent.press( getByText( secondItem.name ) )
 
-    expect( getByText( secondItem.id ) ).toBeTruthy()
+      expect( navigation.navigate ).toHaveBeenCalledWith( 'Root.Home', expect.anything() )
+    } )
   } )
 
-  it( 'should open a content folder', async () => {
-    const items = getFolderItems()
-    const { getByText, queryByText } = setup( { items } )
-    const firstFolder = items[ 0 ] as Folder
+  describe( 'when a folder is pressed', () => {
+    it( 'should open a content folder', async () => {
+      const navigation = getNavigationMock()
+      const folder = getFolder()
+      const { getByText } = setup( {
+        route: { key: '', name: 'Collections.List', params: folder },
+        navigation,
+      } )
+      const firstFolder = folder.items[ 0 ] as Folder
 
-    const folderItem = getByText( firstFolder.name )
-    fireEvent.press( folderItem )
+      const folderItem = getByText( firstFolder.name )
+      fireEvent.press( folderItem )
 
-    firstFolder.items.forEach( ( { name } ) => {
-      expect( queryByText( name ) ).toBeTruthy()
+      expect( navigation.push ).toHaveBeenCalledWith( 'Collections.List', firstFolder )
     } )
   } )
 } )

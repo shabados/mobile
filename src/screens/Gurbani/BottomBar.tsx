@@ -37,7 +37,7 @@ const styles = StyleSheet.create( {
 } )
 
 const BottomBar = () => {
-  const navigation = useNavigation<HomeTabScreenProps<'Home.Gurbani'>['navigation']>()
+  const navigation = useNavigation<HomeTabScreenProps<'Home.Tab.Gurbani'>['navigation']>()
 
   const onSearchPress = () => navigation.navigate( 'Root.Search' )
   const onCollectionsPress = () => navigation.navigate( 'Root.Collections' )

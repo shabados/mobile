@@ -1,16 +1,15 @@
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack'
+import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { toUnicode } from 'gurmukhi-utils'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { useQuery } from 'react-query'
 
 import { getCollections } from '../../services/data/collections'
 import { CollectionData, ContentType } from '../../types/data'
-import { CollectionsStackParams } from '../../types/navigation'
+import { CollectionsStackParams, CollectionsStackScreenProps } from '../../types/navigation'
 import CollectionsScreen from '../Collections'
 import { FolderItem } from '../Collections/types'
 
-const { Screen, Navigator } = createStackNavigator<CollectionsStackParams>()
-
-const screenOptions: StackNavigationOptions = { headerShown: false }
+const { Screen, Navigator } = createNativeStackNavigator<CollectionsStackParams>()
 
 const collectionsToFolder = ( items: CollectionData[] ): FolderItem[] => items.map( ( {
   nameGurmukhi,
@@ -27,6 +26,18 @@ const collectionsToFolder = ( items: CollectionData[] ): FolderItem[] => items.m
 
 const collectionsQuery = () => getCollections().then( collectionsToFolder )
 
+const getOptions = ( {
+  navigation,
+  route: { params: { name } },
+}: CollectionsStackScreenProps<'Collections.List'> ): NativeStackNavigationOptions => ( {
+  title: name ?? 'Collections',
+  headerRight: () => (
+    <HeaderButtons>
+      <Item title="Done" onPress={() => navigation.goBack()} />
+    </HeaderButtons>
+  ),
+} )
+
 const CollectionsNavigator = () => {
   const { data: items } = useQuery( 'collections-screen', collectionsQuery )
 
@@ -35,8 +46,8 @@ const CollectionsNavigator = () => {
       <Screen
         name="Collections.List"
         component={CollectionsScreen}
-        options={screenOptions}
         initialParams={{ items }}
+        options={getOptions}
       />
     </Navigator>
   )

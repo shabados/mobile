@@ -1,76 +1,79 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { fireEvent, render } from '@testing-library/react-native'
 import { toUnicode } from 'gurmukhi-utils'
 import { Suspense } from 'react'
 import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
-import withContexts from '../../components/with-contexts'
+import { getNavigationMock, wrapper } from '../../../test/utils/navigation'
 import * as lines from '../../services/data/search'
 import { SearchData } from '../../types/data'
-import SearchScreen, { searchScreen } from '.'
+import { RootStackParams } from '../../types/navigation'
+import SearchScreen, { SearchScreenProps } from '.'
 
-const Stack = createStackNavigator<RootStackParams>()
+type SetupOptions = {
+  results?: SearchData[],
+  navigation?: any,
+  route?: SearchScreenProps['route'],
+}
 
-const setup = ( results = factories.search.buildList( 5 ) ) => {
+const setup = ( {
+  results = factories.search.buildList( 5 ),
+  navigation,
+  ...props
+}: SetupOptions = {} ) => {
+  const Stack = createNativeStackNavigator<RootStackParams>()
   jest.spyOn( lines, 'search' ).mockResolvedValue( results )
 
-  return render( withContexts(
+  return render(
     <Suspense fallback={<Text>Loading</Text>}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Root.Search" component={SearchScreen} />
-          <Stack.Screen name="Root.Home">
-            {( { route: { params: { gurmukhi } } } ) => <Text>{gurmukhi}</Text>}
-          </Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Root.Search">
+          {( screenProps ) => (
+            <SearchScreen
+              navigation={{ ...screenProps.navigation, ...getNavigationMock(), ...navigation }}
+              route={{ key: '', name: 'Root.Search' }}
+              {...props}
+            />
+          )}
+        </Stack.Screen>
+      </Stack.Navigator>
     </Suspense>,
-  ) )
+    { wrapper }
+  )
 }
 
 describe( '<SearchScreen />', () => {
   describe( 'on mount', () => {
     it( 'should render a search bar', async () => {
-      const { unmount, findByPlaceholderText } = setup()
+      const { findByPlaceholderText, findByText } = setup()
 
+      expect( await findByText( 'Test' ) ).toBeTruthy()
       expect( await findByPlaceholderText( 'Search' ) ).toBeTruthy()
-
-      unmount()
     } )
   } )
 
   describe( 'on search', () => {
     it( 'should render results', async () => {
       const results = factories.search.buildList( 5 )
-      const { unmount, findByText, findByPlaceholderText } = setup( results )
+      const { findByText, findByPlaceholderText } = setup( { results } )
 
       fireEvent.changeText( await findByPlaceholderText( 'Search' ), 'hhg' )
 
       expect( await findByText( toUnicode( results[ 0 ].line.gurmukhi ) ) ).toBeTruthy()
-
-      unmount()
     } )
   } )
 
   describe( 'on press', () => {
-    const localSetup = async ( results: SearchData[] ) => {
-      const screen = setup( results )
-      const { findByPlaceholderText } = screen
+    it( 'should navigate to the Gurbani screen', async () => {
+      const navigation = getNavigationMock()
+      const results = factories.search.buildList( 1 )
+      const { findByPlaceholderText, findByText } = setup( { results, navigation } )
 
       fireEvent.changeText( await findByPlaceholderText( 'Search' ), 'hhg' )
-
-      return screen
-    }
-
-    it( 'should navigate to the Gurbani screen', async () => {
-      const results = factories.search.buildList( 5 )
-      const { unmount, findByText } = await localSetup( results )
-
       fireEvent.press( await findByText( toUnicode( results[ 0 ].line.gurmukhi ) ) )
 
-      unmount()
+      expect( navigation.navigate ).toHaveBeenCalled()
     } )
   } )
 } )
