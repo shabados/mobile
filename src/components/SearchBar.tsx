@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Pressable, StyleSheet, TextInput, TextInputProps, View } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
 
@@ -43,6 +43,7 @@ export type SearchBarProps = TextInputProps
 const SearchBar = ( {
   onChangeText = () => {},
   style,
+  autoFocus,
   ...props
 }: SearchBarProps ) => {
   const inputRef = useRef<TextInput>( null )
@@ -58,6 +59,14 @@ const SearchBar = ( {
     setInput( '' )
   }
 
+  useEffect( () => {
+    if ( !autoFocus ) return
+
+    // Seems to cause a crash otherwise when autoFocus is true and inside a modal/new screen
+    // It is possible that the keyboard is not always ready without some sort of delay
+    setTimeout( () => inputRef.current?.focus(), 10 )
+  }, [ autoFocus ] )
+
   return (
     <View style={[ styles.searchBar, style ]}>
       <Icon name="search" style={styles.searchIcon} />
@@ -65,7 +74,6 @@ const SearchBar = ( {
       <TextInput
         ref={inputRef}
         placeholder="Search"
-        keyboardAppearance="dark"
         placeholderTextColor={Colors.SecondaryText}
         style={styles.searchInputBox}
         clearButtonMode="never"
