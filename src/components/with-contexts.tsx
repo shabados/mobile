@@ -1,5 +1,6 @@
 import { Provider } from 'jotai'
 import { ElementType } from 'react'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 export const queryClient = new QueryClient( {
@@ -11,6 +12,7 @@ export const queryClient = new QueryClient( {
 const contexts: [ElementType, { [k: string]: any }?][] = [
   [ Provider ],
   [ QueryClientProvider, { client: queryClient } ],
+  [ SafeAreaProvider ],
 ]
 
 // Generate a context wrapper function
