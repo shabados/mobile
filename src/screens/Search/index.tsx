@@ -1,5 +1,4 @@
 import { useLayoutEffect, useState } from 'react'
-import { Text } from 'react-native'
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
