@@ -17,7 +17,7 @@ const styles = StyleSheet.create( {
 
 export type SearchHeaderProps = {
   onSearchChange?: SearchBarProps['onChangeText'],
-  navigation: RootStackScreenProps<'Root.Search'>['navigation'],
+  navigation?: RootStackScreenProps<'Root.Search'>['navigation'],
 }
 
 const SearchHeader = ( {
@@ -28,7 +28,7 @@ const SearchHeader = ( {
     <SearchBar style={styles.searchBar} autoFocus onChangeText={onSearchChange} />
 
     <HeaderButtons>
-      <Item title="Cancel" testID="cancel-button" onPress={() => navigation.goBack()} />
+      <Item title="Cancel" onPress={() => navigation?.goBack()} />
     </HeaderButtons>
   </View>
 )
