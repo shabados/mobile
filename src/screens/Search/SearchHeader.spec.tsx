@@ -10,25 +10,22 @@ const setup = ( props?: Partial<SearchHeaderProps> ) => {
 
   return render(
     <Stack.Navigator>
-      <Stack.Screen
-        name="Root.Search"
-      >
+      <Stack.Screen name="Root.Search">
         {( navigatorProps ) => <SearchHeader {...navigatorProps} {...props} />}
       </Stack.Screen>
     </Stack.Navigator>,
-
     { wrapper }
   )
 }
 
 describe( '<SearchHeader />', () => {
-  it( 'should render a back button', () => {
-    const { queryByTestId } = setup()
+  it( 'should render a done button', () => {
+    const { queryByText } = setup()
 
-    expect( queryByTestId( 'cancel-button' ) ).toBeTruthy()
+    expect( queryByText( 'Cancel' ) ).toBeTruthy()
   } )
 
-  it( 'should render a working search bar', () => {
+  it( 'should fire onSearchChange when the search bar has changed', () => {
     const onSearchChange = jest.fn()
     const { getByPlaceholderText } = setup( { onSearchChange } )
 
