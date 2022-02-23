@@ -1,8 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { fireEvent, render } from '@testing-library/react-native'
 import { toUnicode } from 'gurmukhi-utils'
-import { Suspense } from 'react'
-import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
 import { getNavigationMock, wrapper } from '../../../test/utils/navigation'
@@ -26,39 +24,36 @@ const setup = ( {
   jest.spyOn( lines, 'search' ).mockResolvedValue( results )
 
   return render(
-    <Suspense fallback={<Text>Loading</Text>}>
-      <Stack.Navigator>
-        <Stack.Screen name="Root.Search">
-          {( screenProps ) => (
-            <SearchScreen
-              navigation={{ ...screenProps.navigation, ...getNavigationMock(), ...navigation }}
-              route={{ key: '', name: 'Root.Search' }}
-              {...props}
-            />
-          )}
-        </Stack.Screen>
-      </Stack.Navigator>
-    </Suspense>,
+    <Stack.Navigator>
+      <Stack.Screen name="Root.Search">
+        {( screenProps ) => (
+          <SearchScreen
+            navigation={{ ...screenProps.navigation, ...getNavigationMock(), ...navigation }}
+            route={{ key: '', name: 'Root.Search' }}
+            {...props}
+          />
+        )}
+      </Stack.Screen>
+    </Stack.Navigator>,
     { wrapper }
   )
 }
 
 describe( '<SearchScreen />', () => {
   describe( 'on mount', () => {
-    it( 'should render a search bar', async () => {
-      const { findByPlaceholderText, findByText } = setup()
+    it( 'should render a search bar', () => {
+      const { queryByPlaceholderText } = setup()
 
-      expect( await findByText( 'Test' ) ).toBeTruthy()
-      expect( await findByPlaceholderText( 'Search' ) ).toBeTruthy()
+      expect( queryByPlaceholderText( 'Search' ) ).toBeTruthy()
     } )
   } )
 
   describe( 'on search', () => {
     it( 'should render results', async () => {
       const results = factories.search.buildList( 5 )
-      const { findByText, findByPlaceholderText } = setup( { results } )
+      const { findByText, getByPlaceholderText } = setup( { results } )
 
-      fireEvent.changeText( await findByPlaceholderText( 'Search' ), 'hhg' )
+      fireEvent.changeText( getByPlaceholderText( 'Search' ), 'hhg' )
 
       expect( await findByText( toUnicode( results[ 0 ].line.gurmukhi ) ) ).toBeTruthy()
     } )
@@ -68,9 +63,9 @@ describe( '<SearchScreen />', () => {
     it( 'should navigate to the Gurbani screen', async () => {
       const navigation = getNavigationMock()
       const results = factories.search.buildList( 1 )
-      const { findByPlaceholderText, findByText } = setup( { results, navigation } )
+      const { getByPlaceholderText, findByText } = setup( { results, navigation } )
 
-      fireEvent.changeText( await findByPlaceholderText( 'Search' ), 'hhg' )
+      fireEvent.changeText( getByPlaceholderText( 'Search' ), 'hhg' )
       fireEvent.press( await findByText( toUnicode( results[ 0 ].line.gurmukhi ) ) )
 
       expect( navigation.navigate ).toHaveBeenCalled()

@@ -17,7 +17,7 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   const [ searchValue, setSearchValue ] = useState( '' )
   console.log( `Searching: ${searchValue}` )
 
-  const { data } = useQuery( searchValue, searchQuery, { keepPreviousData: true } )
+  const { data } = useQuery( searchValue, searchQuery, { keepPreviousData: true, suspense: false } )
   console.log( `Search Result: ${JSON.stringify( data )}` )
 
   useLayoutEffect( () => {
