@@ -48,6 +48,7 @@ export const initialise = () => i18n
   .init( {
     resources: {},
     fallbackLng: 'en-US',
+    compatibilityJSON: 'v3',
   } )
   // TODO @harjot1singh handle catch properly with sentry
   .catch( console.error )
