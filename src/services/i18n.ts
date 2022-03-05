@@ -2,9 +2,12 @@ import i18n from 'i18next'
 import { chain, mapValues } from 'lodash'
 import { initReactI18next } from 'react-i18next'
 
+import mutableValue from '../helpers/mutable-value'
 
 export const languages = [ 'en-US', 'en-GB', 'pa' ] as const
 export type Languages = typeof languages[number]
+
+const { set: setIsInitialized, get: getIsInitialized } = mutableValue( false )
 
 export const registerTranslations = <
   Translations extends { [key in string]: Partial<{ [key in Languages]: string }> },
@@ -30,14 +33,16 @@ export const registerTranslations = <
     } ), {} ) )
     .value()
 
-  // Add translations for supported langauges
-  Object
+  const registerResourceBundle = () => Object
     .entries( translationsByLanguage )
     .forEach( ( [ languageCode, languageTranslations ] ) => i18n.addResourceBundle(
       languageCode,
       namespace,
       languageTranslations,
     ) )
+
+  if ( getIsInitialized() ) registerResourceBundle()
+  else i18n.on( 'initialized', registerResourceBundle )
 
   // Return namespaced phrases
   return mapValues( translations, ( _, phraseName ) => ( `${namespace}:${phraseName}` ) )
@@ -49,6 +54,10 @@ export const initialise = () => i18n
     resources: {},
     fallbackLng: 'en-US',
     compatibilityJSON: 'v3',
+  } )
+  .then( () => {
+    setIsInitialized( true )
+    console.log( '[i18n] Loaded i18n' )
   } )
   // TODO @harjot1singh handle catch properly with sentry
   .catch( console.error )
