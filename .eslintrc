@@ -70,6 +70,7 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "no-void": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
