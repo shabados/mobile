@@ -2,18 +2,15 @@ import i18n from 'i18next'
 import { chain, mapValues } from 'lodash'
 import { initReactI18next } from 'react-i18next'
 
-export enum Language {
-  EnGB = 'en-GB',
-  EnUS = 'en-US',
-  Pa = 'pa',
-}
 
-export function registerTranslations<
-  Translations extends Record<string, Partial<Record<Language, string>>>,
->(
-  namespace: string,
-  translations: Translations,
-) {
+export const languages = [ 'en-US', 'en-GB', 'pa' ] as const
+export type Languages = typeof languages[number]
+
+export const registerTranslations = <
+  Translations extends { [key in string]: Partial<{ [key in Languages]: string }> },
+>( namespace: string, translations: Translations ) => {
+  console.log( `[i18n] Adding resources: ${namespace}` )
+
   // Group translations by language, with phrases as sub-keys for each language
   const translationsByLanguage = chain( translations )
     // Turn the object into flat-pairs, where each sub-object has the key of the parent with it
@@ -50,11 +47,7 @@ export const initialise = () => i18n
   .use( initReactI18next )
   .init( {
     resources: {},
-    lng: Language.EnUS,
-    fallbackLng: Language.EnUS,
-    interpolation: {
-      escapeValue: false,
-    },
+    fallbackLng: 'en-US',
   } )
   // TODO @harjot1singh handle catch properly with sentry
   .catch( console.error )
