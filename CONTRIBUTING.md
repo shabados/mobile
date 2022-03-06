@@ -85,6 +85,9 @@ install-assets        # Install any changed files in the "assets/" directory
 lint                  # ESLint and checks code style
 test                  # Unit tests
 types                 # TypeScript typechecking
+
+script                # Run a custom script using Jest
+script:extract-translations   # Extracts all i18next translations
 ```
 
 **NOTE**: You will need to [connect a device via USB](https://developer.android.com/studio/run/device#connect) or [create an AVD](https://developer.android.com/studio/run/managing-avds#createavd) to start the [Android Emulator](https://developer.android.com/studio/run/emulator).
