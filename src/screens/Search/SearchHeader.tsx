@@ -2,8 +2,15 @@ import { StyleSheet, View } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
 import SearchBar, { SearchBarProps } from '../../components/SearchBar'
+import { registerTranslations, useTranslation } from '../../services/i18n'
 import Units from '../../themes/units'
 import { RootStackScreenProps } from '../../types/navigation'
+
+const strings = registerTranslations( {
+  cancelLabel: {
+    'en-US': 'Cancel',
+  },
+} )
 
 const styles = StyleSheet.create( {
   root: {
@@ -23,14 +30,18 @@ export type SearchHeaderProps = {
 const SearchHeader = ( {
   navigation,
   onSearchChange = () => {},
-}: SearchHeaderProps ) => (
-  <View style={styles.root}>
-    <SearchBar style={styles.searchBar} autoFocus onChangeText={onSearchChange} />
+}: SearchHeaderProps ) => {
+  const { t } = useTranslation()
 
-    <HeaderButtons>
-      <Item title="Cancel" onPress={() => navigation?.goBack()} />
-    </HeaderButtons>
-  </View>
-)
+  return (
+    <View style={styles.root}>
+      <SearchBar style={styles.searchBar} autoFocus onChangeText={onSearchChange} />
+
+      <HeaderButtons>
+        <Item title={t( strings.cancelLabel )} onPress={() => navigation?.goBack()} />
+      </HeaderButtons>
+    </View>
+  )
+}
 
 export default SearchHeader
