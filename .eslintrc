@@ -172,6 +172,7 @@
       "extends": ["plugin:jest/recommended", "plugin:jest/style"],
       "files": [
         "**/test/**/*.[jt]s?(x)",
+        "**/scripts/**/*.[jt]s?(x)",
         "**/?(*.)+(spec|test).[jt]s?(x)",
         "*.config.js"
       ],
