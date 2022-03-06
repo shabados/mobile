@@ -2,7 +2,7 @@ import { SplitFactory } from '@splitsoftware/splitio-react-native'
 import { Attributes } from '@splitsoftware/splitio-react-native/types/splitio'
 import { getUniqueId } from 'react-native-device-info'
 
-import mutableValue from '../../../helpers/mutable-value'
+import { mutableValue } from '../../../helpers/mutable-value'
 import configuration from '../../configuration'
 import { FeatureFlagClient } from '../types'
 import { getDefaultAttributes, getDefaultStatus } from './defaults'

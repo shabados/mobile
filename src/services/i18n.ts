@@ -3,17 +3,19 @@ import { chain, mapValues } from 'lodash'
 import { initReactI18next } from 'react-i18next'
 import { findBestAvailableLanguage } from 'react-native-localize'
 
-import mutableValue from '../helpers/mutable-value'
+import { mutableCounter, mutableValue } from '../helpers/mutable-value'
 
 export const languages = [ 'en-US', 'en-GB', 'pa' ] as const
 export type Languages = typeof languages[number]
 
 const { set: setIsInitialized, get: getIsInitialized } = mutableValue( false )
+const { increment: nextNamespace } = mutableCounter()
 
 export const registerTranslations = <
   Translations extends { [key in string]: Partial<{ [key in Languages]: string }> },
->( namespace: string, translations: Translations ) => {
-  console.log( `[i18n] Adding resources: ${namespace}` )
+>( translations: Translations ) => {
+  const namespace = nextNamespace().toString()
+  console.log( `[i18n] Adding resources to namespace ${namespace}: ${JSON.stringify( translations )}` )
 
   // Group translations by language, with phrases as sub-keys for each language
   const translationsByLanguage = chain( translations )
@@ -66,3 +68,5 @@ export const initialise = () => void i18n
   .catch( console.error )
 
 export default i18n
+
+export { Trans, useTranslation } from 'react-i18next'
