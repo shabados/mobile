@@ -7,7 +7,7 @@ import { languages } from './languages'
 
 export const { set: setIsInitialized, get: getIsInitialized } = mutableValue( false )
 
-const initialize = () => void i18n
+const initialize = () => i18n
   .use( initReactI18next )
   .init( {
     resources: {},
