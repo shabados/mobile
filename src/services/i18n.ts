@@ -5,14 +5,20 @@ import { findBestAvailableLanguage } from 'react-native-localize'
 
 import { mutableCounter, mutableValue } from '../helpers/mutable-value'
 
-export const languages = [ 'en-US', 'en-GB', 'pa' ] as const
-export type Languages = typeof languages[number]
+export const languages = {
+  'en-US': 'English (US)',
+  'en-GB': 'English (UK)',
+  pa: 'ਪੰਜਾਬੀ',
+}
+
+export type Languages = keyof typeof languages
+type LanguageTranslations = Partial<typeof languages> & { 'en-US': string }
 
 const { set: setIsInitialized, get: getIsInitialized } = mutableValue( false )
 const { increment: nextNamespace } = mutableCounter()
 
 export const registerTranslations = <
-  Translations extends { [key in string]: Partial<{ [key in Languages]: string }> },
+  Translations extends { [name in string]: LanguageTranslations },
 >( translations: Translations ) => {
   const namespace = nextNamespace().toString()
   console.log( `[i18n] Adding resources to namespace ${namespace}: ${JSON.stringify( translations )}` )
@@ -55,7 +61,7 @@ export const initialise = () => void i18n
   .use( initReactI18next )
   .init( {
     resources: {},
-    lng: findBestAvailableLanguage( languages )?.languageTag,
+    lng: findBestAvailableLanguage( Object.keys( languages ) )?.languageTag,
     fallbackLng: 'en-US',
     compatibilityJSON: 'v3',
     interpolation: { escapeValue: false },
@@ -69,4 +75,5 @@ export const initialise = () => void i18n
 
 export default i18n
 
+export type { TFunction } from 'react-i18next'
 export { Trans, useTranslation } from 'react-i18next'
