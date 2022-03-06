@@ -3,9 +3,16 @@ import { Pressable, StyleSheet, TextInput, TextInputProps, View } from 'react-na
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import OS from '../helpers/os'
+import { registerTranslations, useTranslation } from '../services/i18n'
 import Colors from '../themes/colors'
 import Units from '../themes/units'
 import { my } from '../themes/utils'
+
+const strings = registerTranslations( {
+  placeholder: {
+    'en-US': 'Search',
+  },
+} )
 
 const styles = StyleSheet.create( {
   clearButton: {
@@ -46,6 +53,8 @@ const SearchBar = ( {
   autoFocus,
   ...props
 }: SearchBarProps ) => {
+  const { t } = useTranslation()
+
   const inputRef = useRef<TextInput>( null )
   const [ input, setInput ] = useState( '' )
 
@@ -73,7 +82,7 @@ const SearchBar = ( {
 
       <TextInput
         ref={inputRef}
-        placeholder="Search"
+        placeholder={t( strings.placeholder )}
         placeholderTextColor={Colors.SecondaryText}
         style={styles.searchInputBox}
         clearButtonMode="never"
