@@ -193,7 +193,11 @@
         // We don't care about floating promises in tests, and it causes a typing issue with act()
         "@typescript-eslint/no-floating-promises": "off",
         // Requiring in local scopes is useful in tests
-        "global-require": "off"
+        "global-require": "off",
+        // We know what we're doing in tests
+        "@typescript-eslint/no-non-null-assertion": "off",
+        // It's useful to not have assertions in smoke/crash tests
+        "jest/expect-expect": "off"
       }
     }
   ]
