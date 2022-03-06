@@ -4,10 +4,17 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { useQuery } from 'react-query'
 
 import { getCollections } from '../../services/data/collections'
+import { commonStrings, registerTranslations, TFunction, useTranslation } from '../../services/i18n'
 import { CollectionData, ContentType } from '../../types/data'
 import { CollectionsStackParams, CollectionsStackScreenProps } from '../../types/navigation'
 import CollectionsScreen from '../Collections'
 import { FolderItem } from '../Collections/types'
+
+const strings = registerTranslations( {
+  title: {
+    'en-US': 'Collections',
+  },
+} )
 
 const { Screen, Navigator } = createNativeStackNavigator<CollectionsStackParams>()
 
@@ -26,20 +33,21 @@ const collectionsToFolder = ( items: CollectionData[] ): FolderItem[] => items.m
 
 const collectionsQuery = () => getCollections().then( collectionsToFolder )
 
-const getOptions = ( {
+const getOptions = ( t: TFunction ) => ( {
   navigation,
   route: { params: { name } },
 }: CollectionsStackScreenProps<'Collections.List'> ): NativeStackNavigationOptions => ( {
-  title: name ?? 'Collections',
+  title: name ?? t( strings.title ),
   headerRight: () => (
     <HeaderButtons>
-      <Item title="Done" onPress={() => navigation.getParent()?.goBack()} />
+      <Item title={t( commonStrings.done )} onPress={() => navigation.getParent()?.goBack()} />
     </HeaderButtons>
   ),
 } )
 
 const CollectionsNavigator = () => {
   const { data: items } = useQuery( 'collections-screen', collectionsQuery )
+  const { t } = useTranslation()
 
   return (
     <Navigator>
@@ -47,7 +55,7 @@ const CollectionsNavigator = () => {
         name="Collections.List"
         component={CollectionsScreen}
         initialParams={{ items }}
-        options={getOptions}
+        options={getOptions( t )}
       />
     </Navigator>
   )
