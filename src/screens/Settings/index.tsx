@@ -1,32 +1,57 @@
-import { StyleSheet, View } from 'react-native'
+import { Atom } from 'jotai'
+import { ReactNode } from 'react'
+import { StyleSheet, Switch, View } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
 
-import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Typography from '../../components/Typography'
 import { settings, useSetting } from '../../services/settings'
-import { px, py } from '../../themes/utils'
+import Colors from '../../themes/colors'
+import { px } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
+  option: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: 65,
+    borderBottomColor: Colors.Separator,
+    borderBottomWidth: 0.5,
+  },
+  optionComponent: {
+    marginLeft: 'auto',
+  },
   root: {
-    ...px( 20 ),
-    ...py( 20 ),
+    ...px( 35 ),
   },
 } )
 
-const SettingsScreen = () => {
-  const [ localeSetting, setLocale ] = useSetting( settings.locale )
+type BaseOptionProps<T> = { setting: Atom<T | undefined> }
 
-  return (
-    <Container style={styles.root}>
-      <Typography>{localeSetting}</Typography>
+const ToggleOption = ( { setting }: BaseOptionProps<boolean> ) => {
+  const [ value, setValue ] = useSetting( setting )
 
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <Button onPress={() => void setLocale( 'en-US' )}>en-US</Button>
-        <Button onPress={() => void setLocale( 'fr' )}>Fr</Button>
-      </View>
-    </Container>
-
-  )
+  return ( <Switch value={value} onValueChange={setValue} /> )
 }
+
+type OptionProps = { title: string, component: ReactNode }
+
+const Option = ( { title, component }: OptionProps ) => (
+  <View style={styles.option}>
+    <Typography>{title}</Typography>
+
+    <View style={styles.optionComponent}>
+      {component}
+    </View>
+  </View>
+)
+
+const SettingsScreen = () => (
+  <Container style={styles.root}>
+    <ScrollView>
+      <Option title="Reader" component={<ToggleOption setting={settings.readerMode} />} />
+    </ScrollView>
+  </Container>
+
+)
 
 export default SettingsScreen
