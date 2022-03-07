@@ -7,7 +7,7 @@ import atomWithMMKVStorage from './atom-with-mmkv-storage'
 
 const defaultValue = { value1: 'settings value', darkMode: true }
 
-const setup = <Data extends object | null,>( atom: Atom<Data> ) => {
+const setup = ( atom: Atom< object | null> ) => {
   const Component = () => {
     const [ value ] = useAtom( atom )
 
