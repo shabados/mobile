@@ -2,10 +2,12 @@ import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
 import { getBookmark, getShabad } from '../../services/data'
+import { settings, useSetting } from '../../services/settings'
 import { ContentType, LineData } from '../../types/data'
 import { GurbaniStackScreenProps } from '../../types/navigation'
 import BottomBar from './BottomBar'
 import NormalLines from './NormalLines'
+import ReaderLines from './ReaderLines'
 
 type Loaders = {
   [screen in ContentType]: ( id: string ) => Promise<{ lines: LineData[] }>
@@ -25,9 +27,12 @@ const GurbaniScreen = ( {
 }: GurbaniScreenProps ) => {
   const { data } = useQuery( [ type, id ], () => loaders[ type ]( id ) )
 
+  const [ isReaderMode ] = useSetting( settings.readerMode )
+  const Lines = isReaderMode ? ReaderLines : NormalLines
+
   return (
     <Container>
-      <NormalLines key={id} id={id} lines={data!.lines} />
+      <Lines key={id} id={id} lines={data!.lines} />
 
       <BottomBar />
     </Container>
