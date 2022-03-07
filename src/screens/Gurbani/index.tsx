@@ -6,7 +6,7 @@ import { settings, useSetting } from '../../services/settings'
 import { ContentType, LineData } from '../../types/data'
 import { GurbaniStackScreenProps } from '../../types/navigation'
 import BottomBar from './BottomBar'
-import NormalLines from './NormalLines'
+import DefaultLines from './DefaultLines'
 import ReaderLines from './ReaderLines'
 
 type Loaders = {
@@ -28,7 +28,7 @@ const GurbaniScreen = ( {
   const { data } = useQuery( [ type, id ], () => loaders[ type ]( id ) )
 
   const [ isReaderMode ] = useSetting( settings.readerMode )
-  const Lines = isReaderMode ? ReaderLines : NormalLines
+  const Lines = isReaderMode ? ReaderLines : DefaultLines
 
   return (
     <Container>
