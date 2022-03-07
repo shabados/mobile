@@ -1,14 +1,14 @@
 import { fireEvent, render } from '@testing-library/react-native'
 import { stripVishraams, toUnicode } from 'gurmukhi-utils'
 
-import * as factories from '../../../test/factories'
-import NormalLines from './NormalLines'
+import * as factories from '../../../../test/factories'
+import DefaultLines from '.'
 
-describe( '<Lines />', () => {
+describe( '<DefaultLines />', () => {
   it( 'should render all supplied lines', async () => {
     const lines = factories.line.buildList( 15 )
 
-    const { findByText, queryByText, getByText } = render( <NormalLines lines={lines} /> )
+    const { findByText, queryByText, getByText } = render( <DefaultLines id="" lines={lines} /> )
 
     const container = getByText( toUnicode( lines[ 0 ].gurmukhi ) ).parent!
 

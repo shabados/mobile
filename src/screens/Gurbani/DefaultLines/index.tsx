@@ -1,9 +1,8 @@
-import { stripVishraams } from 'gurmukhi-utils'
 import { FlatList, StyleSheet, View } from 'react-native'
 
-import Languages from '../../helpers/languages'
-import Units from '../../themes/units'
-import { LineData } from '../../types/data'
+import Languages from '../../../helpers/languages'
+import Units from '../../../themes/units'
+import { LineData } from '../../../types/data'
 import Line from './Line'
 
 const styles = StyleSheet.create( {
@@ -27,7 +26,7 @@ const renderLine = ( { item: { id, gurmukhi, translations } }: RenderItem ) => (
   <Line
     key={id}
     style={styles.line}
-    gurmukhi={stripVishraams( gurmukhi )}
+    gurmukhi={gurmukhi}
     translations={translations}
     transliterations={[ Languages.English ]}
   />
