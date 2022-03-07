@@ -6,7 +6,12 @@ import mockRNLocalize from 'react-native-localize/mock'
 import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock'
 
 import * as i18n from '../src/services/i18n'
+import { muteConsole } from './utils/console'
+
+muteConsole( 'log' )
+
 i18n.initialize()
+
 jest.mock( 'react-native-reanimated', () => {
   const Reanimated = require( 'react-native-reanimated/mock' )
 
