@@ -1,5 +1,5 @@
 import { toUnicode } from 'gurmukhi-utils'
-import { StyleSheet } from 'react-native'
+import { StyleProp, StyleSheet, ViewStyle } from 'react-native'
 import Animated, { FadeInRight } from 'react-native-reanimated'
 
 import Typography from '../../components/Typography'
@@ -24,7 +24,6 @@ const styles = StyleSheet.create( {
   },
   root: {
     ...px( 20 ),
-    paddingTop: Units.Base * Units.LineHeightMultiplier,
   },
   smallFont: {
     fontSize: ( Units.Base * Units.GurmukhiLatinRatio ) / 1.2,
@@ -38,18 +37,10 @@ const styles = StyleSheet.create( {
 } )
 
 export type LineProps = {
-  /**
-   * Gurmukhi line, in ASCII Gurmukhi form.
-   */
+  style?: StyleProp<ViewStyle>,
   gurmukhi: string,
-  /**
-   * Translations, with accompanying languages.
-   */
-  translations: TranslationData[],
-  /**
-   * Languages for which transliterations will be generated.
-   */
-  transliterations: ( Languages.English | Languages.Hindi | Languages.Urdu )[],
+  translations?: TranslationData[],
+  transliterations?: ( Languages.English | Languages.Hindi | Languages.Urdu )[],
 }
 
 const getGurmukhiFontStyle = ( size: ReturnType<typeof useFeatureStatus> ) => {
@@ -59,10 +50,8 @@ const getGurmukhiFontStyle = ( size: ReturnType<typeof useFeatureStatus> ) => {
   return null
 }
 
-/**
- * Renders the Gurmukhi, any translations, and transliterates the Gurmukhi.
- */
 const Line = ( {
+  style,
   gurmukhi,
   translations,
   transliterations,
@@ -70,10 +59,10 @@ const Line = ( {
   const fontSizeStyle = getGurmukhiFontStyle( useFeatureStatus( 'gurmukhi_font_size' ) )
 
   return (
-    <Animated.View style={styles.root} entering={FadeInRight}>
+    <Animated.View style={[ styles.root, style ]} entering={FadeInRight}>
       <Typography style={[ styles.gurbani, fontSizeStyle ]}>{toUnicode( gurmukhi )}</Typography>
 
-      {transliterations.map( ( language ) => (
+      {transliterations?.map( ( language ) => (
         <Typography
           key={language}
           style={[ styles.text, styles.transliteration ]}
@@ -83,7 +72,7 @@ const Line = ( {
       ) )}
 
       {translations
-        .filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
+        ?.filter( ( { translationSourceId } ) => translationSourceId === Languages.English )
         .map( ( { translationSourceId, translation } ) => (
           <Typography
             key={translationSourceId}
