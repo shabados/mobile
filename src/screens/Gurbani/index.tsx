@@ -5,7 +5,7 @@ import { getBookmark, getShabad } from '../../services/data'
 import { ContentType, LineData } from '../../types/data'
 import { GurbaniStackScreenProps } from '../../types/navigation'
 import BottomBar from './BottomBar'
-import Lines from './Lines'
+import NormalLines from './NormalLines'
 
 type Loaders = {
   [screen in ContentType]: ( id: string ) => Promise<{ lines: LineData[] }>
@@ -27,7 +27,7 @@ const GurbaniScreen = ( {
 
   return (
     <Container>
-      <Lines key={id} lines={data!.lines} />
+      <NormalLines key={id} id={id} lines={data!.lines} />
 
       <BottomBar />
     </Container>

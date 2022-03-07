@@ -10,6 +10,9 @@ const styles = StyleSheet.create( {
   container: {
     overflow: 'visible',
   },
+  line: {
+    paddingTop: Units.Base * Units.LineHeightMultiplier,
+  },
   linesContent: {
     paddingBottom: 63 + ( Units.Base * Units.LineHeightMultiplier ) / 2,
   },
@@ -20,32 +23,22 @@ const styles = StyleSheet.create( {
 
 type RenderItem = { item: LineData }
 
-const renderLine = ( {
-  item: {
-    id,
-    gurmukhi,
-    translations,
-  },
-}: RenderItem ) => (
+const renderLine = ( { item: { id, gurmukhi, translations } }: RenderItem ) => (
   <Line
     key={id}
+    style={styles.line}
     gurmukhi={stripVishraams( gurmukhi )}
     translations={translations}
     transliterations={[ Languages.English ]}
   />
 )
 
-export type LineProps = {
-  /**
-   * The lines to render.
-   */
+export type NormalLinesProps = {
+  id: string,
   lines: LineData[],
 }
 
-/**
- * Renders a full-height list of lines.
- */
-const Lines = ( { lines }: LineProps ) => (
+const NormalLines = ( { lines }: NormalLinesProps ) => (
   <View style={styles.root}>
     <FlatList
       style={styles.container}
@@ -56,4 +49,4 @@ const Lines = ( { lines }: LineProps ) => (
   </View>
 )
 
-export default Lines
+export default NormalLines
