@@ -8,19 +8,25 @@ import Typography, { TypographyProps } from './Typography'
 
 const styles = StyleSheet.create( {
   root: {
-    fontSize: Units.Base * Units.GurmukhiLatinRatio,
     ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
-    lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier,
   },
+} )
+
+const getFontSizeStyle = ( size = 1 ) => ( {
+  fontSize: Units.Base * Units.GurmukhiLatinRatio * size,
+  lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier * size,
 } )
 
 export type GurmukhiLineProps = {
   style?: TypographyProps['style'],
   children: string,
+  size?: number,
 }
 
-const GurmukhiLine = ( { style, children }: GurmukhiLineProps ) => (
-  <Typography style={[ styles.root, style ]}>{stripVishraams( toUnicode( children ) )}</Typography>
+const GurmukhiLine = ( { style, children, size }: GurmukhiLineProps ) => (
+  <Typography style={[ styles.root, getFontSizeStyle( size ), style ]}>
+    {stripVishraams( toUnicode( children ) ) }
+  </Typography>
 )
 
 export default GurmukhiLine

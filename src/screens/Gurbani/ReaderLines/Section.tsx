@@ -19,7 +19,7 @@ type SectionProps = {
 const Section = ( { lines }:SectionProps ) => (
   <Text style={styles.root}>
     {lines.map( ( { id, gurmukhi } ) => (
-      <GurmukhiLine key={id} style={{ margin: 20 }}>{gurmukhi}</GurmukhiLine>
+      <GurmukhiLine key={id} size={1.25}>{gurmukhi}</GurmukhiLine>
     ) )}
   </Text>
 )
