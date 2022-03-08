@@ -16,5 +16,5 @@ export const shabad = Factory.define<ShabadData>( ( { sequence } ) => ( {
     id: faker.datatype.number( 10 ),
     nameGurmukhi: faker.name.firstName(),
   },
-  lines: line.buildList( 20 ),
+  lines: line.buildList( 10 ),
 } ) )

@@ -15,8 +15,8 @@ type Loaders = {
 
 // ? Loaders return a common interface. Is there a better way to deal with specifics of each type?
 const loaders: Loaders = {
-  [ ContentType.Shabad ]: getShabad,
-  [ ContentType.Bookmark ]: getBookmark,
+  [ ContentType.Shabad ]: ( id: string ) => getShabad( id ),
+  [ ContentType.Bookmark ]: ( id: string ) => getBookmark( id ),
   [ ContentType.Ang ]: () => Promise.resolve( { lines: [] } ),
 }
 
@@ -25,14 +25,14 @@ type GurbaniScreenProps = GurbaniStackScreenProps<'Gurbani.View'>
 const GurbaniScreen = ( {
   route: { params: { id, type } },
 }: GurbaniScreenProps ) => {
-  const { data } = useQuery( [ type, id ], () => loaders[ type ]( id ) )
+  const { data } = useQuery( [ type, id ], () => loaders[ type ]( id ), { suspense: false } )
 
   const [ isReaderMode ] = useSetting( settings.readerMode )
   const Lines = isReaderMode ? ReaderLines : DefaultLines
 
   return (
     <Container>
-      <Lines key={id} id={id} lines={data!.lines} />
+      {data && <Lines key={id} id={id} lines={data.lines} />}
 
       <BottomBar />
     </Container>

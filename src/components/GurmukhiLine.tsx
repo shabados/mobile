@@ -20,7 +20,7 @@ export type GurmukhiLineProps = {
 }
 
 const GurmukhiLine = ( { style, children }: GurmukhiLineProps ) => (
-  <Typography style={[ styles.root, style ]}>{stripVishraams( toUnicode( children ))}</Typography>
+  <Typography style={[ styles.root, style ]}>{stripVishraams( toUnicode( children ) )}</Typography>
 )
 
 export default GurmukhiLine
