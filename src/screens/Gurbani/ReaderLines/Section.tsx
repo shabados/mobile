@@ -1,4 +1,5 @@
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
+import Animated, { FadeInRight } from 'react-native-reanimated'
 
 import GurmukhiLine from '../../../components/GurmukhiLine'
 import Units from '../../../themes/units'
@@ -17,13 +18,13 @@ type SectionProps = {
 }
 
 const Section = ( { lines }:SectionProps ) => (
-  <Text style={styles.root}>
+  <Animated.Text style={styles.root} entering={FadeInRight}>
     {lines.map( ( { id, gurmukhi }, index ) => (
       <GurmukhiLine key={id} size={1.25}>
         {[ gurmukhi, index !== lines.length - 1 ? ' ' : '' ].join( '' )}
       </GurmukhiLine>
     ) )}
-  </Text>
+  </Animated.Text>
 )
 
 export default Section
