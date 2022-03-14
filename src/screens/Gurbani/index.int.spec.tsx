@@ -4,7 +4,6 @@ import { toUnicode } from 'gurmukhi-utils'
 import { atom } from 'jotai'
 
 import * as factories from '../../../test/factories'
-import { unmuteConsole } from '../../../test/utils/console'
 import { wrapper } from '../../../test/utils/navigation'
 import * as shabads from '../../services/data/shabads'
 import { settings } from '../../services/settings'
@@ -44,11 +43,9 @@ describe( '<GurbaniScreen />', () => {
 
     it( 'should load and render a target shabad', async () => {
       const shabad = factories.shabad.build()
-      const { findByText, queryByText, debug } = await setup( { shabad } )
+      const { findByText, queryByText } = await setup( { shabad } )
 
       expect( await findByText( toUnicode( shabad.lines[ 0 ].gurmukhi ) ) ).toBeTruthy()
-      unmuteConsole( 'log' )
-      debug()
       expect( queryByText( shabad.lines[ 0 ].translations[ 0 ].translation ) ).toBeTruthy()
     } )
   } )
