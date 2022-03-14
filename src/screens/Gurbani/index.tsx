@@ -25,7 +25,7 @@ type GurbaniScreenProps = GurbaniStackScreenProps<'Gurbani.View'>
 const GurbaniScreen = ( {
   route: { params: { id, type } },
 }: GurbaniScreenProps ) => {
-  const { data } = useQuery( [ type, id ], () => loaders[ type ]( id ), { suspense: false } )
+  const { data } = useQuery( [ type, id ], () => loaders[ type ]( id ), { keepPreviousData: true } )
 
   const [ isReaderMode ] = useSetting( settings.readerMode )
   const Lines = isReaderMode ? ReaderLines : DefaultLines

@@ -1,7 +1,9 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { render } from '@testing-library/react-native'
+import { render, waitForElementToBeRemoved } from '@testing-library/react-native'
 import { toUnicode } from 'gurmukhi-utils'
 import { atom } from 'jotai'
+import { Suspense } from 'react'
+import { Text } from 'react-native'
 
 import * as factories from '../../../test/factories'
 import { wrapper } from '../../../test/utils/navigation'
@@ -25,12 +27,19 @@ const setup = async ( {
   settings.readerMode = atom( readerMode )
   jest.spyOn( shabads, 'getShabad' ).mockResolvedValue( shabad )
 
-  return render(
-    <Stack.Navigator>
-      <Stack.Screen name="Gurbani.View" component={GurbaniScreen} initialParams={{ id: '123', type: ContentType.Shabad }} />
-    </Stack.Navigator>,
+  const container = render(
+    <Suspense fallback={<Text>Loading</Text>}>
+      <Stack.Navigator>
+        <Stack.Screen name="Gurbani.View" component={GurbaniScreen} initialParams={{ id: '123', type: ContentType.Shabad }} />
+      </Stack.Navigator>
+    </Suspense>,
     { wrapper }
   )
+
+  const { queryByText } = container
+  await waitForElementToBeRemoved( () => queryByText( 'Loading' ) )
+
+  return container
 }
 
 describe( '<GurbaniScreen />', () => {
