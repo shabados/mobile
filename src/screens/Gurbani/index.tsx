@@ -31,7 +31,7 @@ const GurbaniScreen = ( {
   const Lines = isReaderMode ? ReaderLines : DefaultLines
 
   return (
-    <Container>
+    <Container safeArea edges={[ 'left', 'right' ]}>
       {data && <Lines key={id} id={id} lines={data.lines} />}
 
       <BottomBar />

@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
 import { Pressable, StyleSheet, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import { SafeAreaView } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Button from '../../components/Button'
+import Container from '../../components/Container'
 import SearchBar from '../../components/SearchBar'
 import { gradients } from '../../themes/gradients'
 import Units from '../../themes/units'
@@ -32,6 +32,9 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  root: {
+    flex: 0,
+  },
   searchBarContainer: {
     flex: 1,
   },
@@ -44,7 +47,7 @@ const BottomBar = () => {
   const onCollectionsPress = () => navigation.navigate( 'Root.Collections' )
 
   return (
-    <SafeAreaView>
+    <Container style={styles.root} safeArea edges={[ 'bottom' ]}>
       <LinearGradient
         style={styles.background}
         locations={gradients.TransparentToBackground.locations}
@@ -60,7 +63,7 @@ const BottomBar = () => {
           <Icon name="bookmark-outline" style={styles.button} testID="collections-icon" />
         </Button>
       </View>
-    </SafeAreaView>
+    </Container>
   )
 }
 
