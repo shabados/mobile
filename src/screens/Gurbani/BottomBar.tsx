@@ -49,6 +49,7 @@ const BottomBar = () => {
   return (
     <Container style={styles.root} safeArea edges={[ 'bottom' ]}>
       <LinearGradient
+        pointerEvents="none"
         style={styles.background}
         locations={gradients.TransparentToBackground.locations}
         colors={gradients.TransparentToBackground.colors}
