@@ -22,8 +22,27 @@ env:
   ENVFILE: config/.env.next
 
 jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        command: ['lint', 'test -- --ci --forceExit', 'types']
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run ${{ matrix.command }}
+
   prepare:
     runs-on: ubuntu-20.04
+    needs: checks
     outputs:
       release-version: ${{ steps.bump-version.outputs.next }}
     steps:
