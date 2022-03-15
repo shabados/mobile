@@ -5,9 +5,16 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 import Container from '../../components/Container'
 import Typography from '../../components/Typography'
+import { registerTranslations, useTranslation } from '../../services/i18n'
 import { settings, useSetting } from '../../services/settings'
 import Colors from '../../themes/colors'
 import { px } from '../../themes/utils'
+
+const strings = registerTranslations( {
+  reader: {
+    'en-US': 'Reader',
+  },
+} )
 
 const styles = StyleSheet.create( {
   option: {
@@ -45,13 +52,20 @@ const Option = ( { title, component }: OptionProps ) => (
   </View>
 )
 
-const SettingsScreen = () => (
-  <Container style={styles.root}>
-    <ScrollView>
-      <Option title="Reader" component={<ToggleOption setting={settings.readerMode} />} />
-    </ScrollView>
-  </Container>
+const SettingsScreen = () => {
+  const { t } = useTranslation()
 
-)
+  return (
+    <Container style={styles.root}>
+      <ScrollView>
+        <Option
+          title={t( strings.reader )}
+          component={<ToggleOption setting={settings.readerMode} />}
+        />
+      </ScrollView>
+    </Container>
+
+  )
+}
 
 export default SettingsScreen
