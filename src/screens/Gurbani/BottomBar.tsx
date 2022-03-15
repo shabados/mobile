@@ -24,7 +24,7 @@ const styles = StyleSheet.create( {
   },
   buttonContainer: {
     minWidth: Units.MinimumTouchDimension * 2,
-    marginRight: 0,
+    marginLeft: Units.HorizontalLayoutMargin / 2,
   },
   container: {
     ...px( 10 ),

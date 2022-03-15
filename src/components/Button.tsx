@@ -1,9 +1,9 @@
-import { Pressable, PressableProps, StyleSheet, ViewProps } from 'react-native'
+import { Pressable, PressableProps, StyleProp, StyleSheet, ViewProps, ViewStyle } from 'react-native'
 
 import Colors from '../themes/colors'
 import Units from '../themes/units'
-import { mx } from '../themes/utils'
-import Typography from './Typography'
+import {  px } from '../themes/utils'
+import Typography, { TypographyProps } from './Typography'
 
 const styles = StyleSheet.create( {
   filled: {
@@ -14,8 +14,6 @@ const styles = StyleSheet.create( {
   },
   root: {
     borderRadius: Units.HorizontalLayoutMargin / 2,
-    ...mx( Units.HorizontalLayoutMargin / 2 ),
-    height: '100%',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -23,24 +21,22 @@ const styles = StyleSheet.create( {
     minWidth: Units.MinimumTouchDimension,
   },
   text: {},
+  typography: {
+    ...px( 10 ),
+  },
 } )
 
 type Variants = 'filled' | 'text'
 
 export type ButtonProps = PressableProps & {
-  style?: ViewProps,
-  /**
-   * The type of typography to render.
-   */
+  typographyStyle?: TypographyProps['style'],
   variant?: Variants,
 }
 
-/**
- * Themed button component, pressable.
- */
 const Button = ( {
   variant = 'filled',
   style,
+  typographyStyle,
   children,
   ...props
 }: ButtonProps ) => (
@@ -48,7 +44,7 @@ const Button = ( {
     style={( { pressed } ) => [ styles.root, styles[ variant ], pressed && styles.pressed, style ]}
     {...props}
   >
-    <Typography variant="button">
+    <Typography variant="button" style={[ styles.typography, typographyStyle ]}>
       {children}
     </Typography>
   </Pressable>
