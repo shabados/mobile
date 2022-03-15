@@ -8,7 +8,7 @@ describe( '<DefaultLines />', () => {
   it( 'should render all supplied lines', async () => {
     const lines = factories.line.buildList( 15 )
 
-    const { findByText, queryByText, getByText } = render( <DefaultLines id="" lines={lines} /> )
+    const { findByText, queryByText, getByText } = render( <DefaultLines lines={lines} /> )
 
     const container = getByText( toUnicode( lines[ 0 ].gurmukhi ) ).parent!
 
