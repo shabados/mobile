@@ -15,7 +15,7 @@ const setup = () => {
     return (
       <View>
         <Text>{locale}</Text>
-        <Button onPress={() => setLocale( 'de' )}>Change</Button>
+        <Button onPress={() => void setLocale( 'de' )}>Change</Button>
       </View>
     )
   }
