@@ -7,7 +7,7 @@ import Line from './Line'
 
 const styles = StyleSheet.create( {
   container: {
-    // overflow: 'visible',
+    paddingBottom: Units.Base * Units.LineHeightMultiplier,
   },
   line: {
     paddingTop: Units.Base * Units.LineHeightMultiplier,
@@ -36,7 +36,7 @@ export type NormalLinesProps = {
 const NormalLines = ( { lines }: NormalLinesProps ) => (
   <View style={styles.root}>
     <FlatList
-      style={styles.container}
+      contentContainerStyle={styles.container}
       data={lines}
       renderItem={renderLine}
     />

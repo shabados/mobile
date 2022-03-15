@@ -6,9 +6,6 @@ import { LineData } from '../../../types/data'
 import Section from './Section'
 
 const styles = StyleSheet.create( {
-  container: {
-    overflow: 'visible',
-  },
   root: {
     flex: 1,
   },
@@ -28,11 +25,7 @@ const ReaderLines = ( { id, lines }: ReaderLinesProps ) => {
 
   return (
     <View style={styles.root}>
-      <FlatList
-        style={styles.container}
-        data={groupedLines}
-        renderItem={renderLineSection}
-      />
+      <FlatList data={groupedLines} renderItem={renderLineSection} />
     </View>
   )
 }
