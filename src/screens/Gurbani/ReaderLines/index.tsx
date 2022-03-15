@@ -2,16 +2,12 @@ import { FlatList, StyleSheet, View } from 'react-native'
 import { useQuery } from 'react-query'
 
 import { getLineSections } from '../../../helpers/lines'
-import Units from '../../../themes/units'
 import { LineData } from '../../../types/data'
 import Section from './Section'
 
 const styles = StyleSheet.create( {
   container: {
     overflow: 'visible',
-  },
-  linesContent: {
-    paddingBottom: 63 + ( Units.Base * Units.LineHeightMultiplier ) / 2,
   },
   root: {
     flex: 1,
@@ -34,7 +30,6 @@ const ReaderLines = ( { id, lines }: ReaderLinesProps ) => {
     <View style={styles.root}>
       <FlatList
         style={styles.container}
-        contentContainerStyle={styles.linesContent}
         data={groupedLines}
         renderItem={renderLineSection}
       />

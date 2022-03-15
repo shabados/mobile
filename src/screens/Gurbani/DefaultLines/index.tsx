@@ -7,13 +7,10 @@ import Line from './Line'
 
 const styles = StyleSheet.create( {
   container: {
-    overflow: 'visible',
+    // overflow: 'visible',
   },
   line: {
     paddingTop: Units.Base * Units.LineHeightMultiplier,
-  },
-  linesContent: {
-    paddingBottom: 63 + ( Units.Base * Units.LineHeightMultiplier ) / 2,
   },
   root: {
     flex: 1,
