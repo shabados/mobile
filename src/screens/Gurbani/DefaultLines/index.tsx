@@ -30,7 +30,6 @@ const renderLine = ( { item: { id, gurmukhi, translations } }: RenderItem ) => (
 )
 
 export type NormalLinesProps = {
-  id: string,
   lines: LineData[],
 }
 
@@ -38,7 +37,6 @@ const NormalLines = ( { lines }: NormalLinesProps ) => (
   <View style={styles.root}>
     <FlatList
       style={styles.container}
-      contentContainerStyle={styles.linesContent}
       data={lines}
       renderItem={renderLine}
     />
