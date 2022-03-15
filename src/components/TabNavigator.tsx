@@ -56,7 +56,10 @@ const TabNavigator = ( {
     // This is because events are not synchronised in the library at the right time.
     // This turns off swipe once a screen is being navigated away from programatically
     // or with a button press, and re-enables it after some time, to compensate for this.
-    screenListeners: { blur: swipeTimeout },
+    screenListeners: {
+      blur: swipeTimeout,
+      swipeEnd: () => setSwipeEnabled( true ),
+    },
   } )
 
   return (
