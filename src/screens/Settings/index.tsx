@@ -1,11 +1,13 @@
 import { Atom } from 'jotai'
+import { invert } from 'lodash'
 import { ReactNode } from 'react'
 import { StyleSheet, Switch, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
+import Button from '../../components/Button'
 import Container from '../../components/Container'
 import Typography from '../../components/Typography'
-import { registerTranslations, useTranslation } from '../../services/i18n'
+import { languages, registerTranslations, useTranslation } from '../../services/i18n'
 import { settings, useSetting } from '../../services/settings'
 import Colors from '../../themes/colors'
 import { px } from '../../themes/utils'
@@ -13,6 +15,9 @@ import { px } from '../../themes/utils'
 const strings = registerTranslations( {
   reader: {
     'en-US': 'Reader',
+  },
+  language: {
+    'en-US': 'App Language',
   },
 } )
 
@@ -40,6 +45,23 @@ const ToggleOption = ( { setting }: BaseOptionProps<boolean> ) => {
   return ( <Switch value={value} onValueChange={setValue} /> )
 }
 
+type SelectOptionProps<Value> = BaseOptionProps<Value> & {
+  options: [string, Value][],
+}
+
+const SelectOption = <T extends string | number | boolean,>( {
+  setting,
+  options,
+}: SelectOptionProps<T> ) => {
+  const [ value ] = useSetting( setting )
+
+  const [ name ] = options.find( ( [ , optionValue ] ) => optionValue === value ) ?? []
+
+  return (
+    <Button>{name?.toString()}</Button>
+  )
+}
+
 type OptionProps = { title: string, component: ReactNode }
 
 const Option = ( { title, component }: OptionProps ) => (
@@ -61,6 +83,16 @@ const SettingsScreen = () => {
         <Option
           title={t( strings.reader )}
           component={<ToggleOption setting={settings.readerMode} />}
+        />
+
+        <Option
+          title={t( strings.language )}
+          component={(
+            <SelectOption
+              setting={settings.locale}
+              options={Object.entries( invert( languages ) )}
+            />
+          )}
         />
       </ScrollView>
     </Container>
