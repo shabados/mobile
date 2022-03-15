@@ -10,14 +10,14 @@ import DefaultLines from './DefaultLines'
 import ReaderLines from './ReaderLines'
 
 type Loaders = {
-  [screen in ContentType]: ( id: string ) => Promise<{ lines: LineData[] }>
+  [screen in ContentType]: ( id: string ) => Promise<{ id: string, lines: LineData[] }>
 }
 
 // ? Loaders return a common interface. Is there a better way to deal with specifics of each type?
 const loaders: Loaders = {
   [ ContentType.Shabad ]: ( id: string ) => getShabad( id ),
   [ ContentType.Bookmark ]: ( id: string ) => getBookmark( id ),
-  [ ContentType.Ang ]: () => Promise.resolve( { lines: [] } ),
+  [ ContentType.Ang ]: () => Promise.resolve( { id: '', lines: [] } ),
 }
 
 type GurbaniScreenProps = GurbaniStackScreenProps<'Gurbani.View'>
@@ -32,7 +32,7 @@ const GurbaniScreen = ( {
 
   return (
     <Container safeArea edges={[ 'left', 'right' ]}>
-      {data && <Lines key={id} id={id} lines={data.lines} />}
+      {data && <Lines key={data.id} id={data.id} lines={data.lines} />}
 
       <BottomBar />
     </Container>
