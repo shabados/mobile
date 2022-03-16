@@ -34,7 +34,7 @@ const SearchScreen = ( { navigation }: SearchScreenProps ) => {
   )
 
   return (
-    <Container>
+    <Container safeArea left right bottom>
       {!!data && <Results results={data} onPress={openShabad} />}
     </Container>
   )

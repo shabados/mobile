@@ -8,6 +8,9 @@ const styles = StyleSheet.create( {
   container: {
     flex: 1,
   },
+  list: {
+    overflow: 'visible',
+  },
 } )
 
 export type ResultsProps = {
@@ -23,6 +26,7 @@ const Results = ( {
   <View style={styles.container}>
     <FlatList
       {...props}
+      style={styles.list}
       keyboardShouldPersistTaps="always"
       data={results}
       keyExtractor={( { line: { id } } ) => id}

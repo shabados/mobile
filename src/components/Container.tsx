@@ -21,23 +21,32 @@ type ViewContainerProps = {
 
 type SafeAreaViewContainerProps = {
   safeArea: true,
+  top?: boolean,
+  left?: boolean,
+  right?: boolean,
+  bottom?: boolean,
 } & ComponentProps<typeof SafeAreaView>
 
 type ContainerProps = BaseContainerProps & ( ViewContainerProps | SafeAreaViewContainerProps )
 
-/**
- * Component to wrap a page in.
- */
-const Container = ( {
-  children,
-  style,
-  safeArea,
-  ...props
-}: ContainerProps ) => {
+const getEdgeProps = ( { top, left, right, bottom }: SafeAreaViewContainerProps ) => Object
+  .entries( { top, left, right, bottom } )
+  .filter( ( [ , truthy ] ) => truthy )
+  .map( ( [ prop ] ) => prop )
+
+const Container = ( props: ContainerProps ) => {
+  const {
+    children,
+    style,
+    safeArea,
+    ...rest
+  } = props
+
   const ViewComponent = safeArea ? SafeAreaView : View
+  const edgeProps = safeArea ? getEdgeProps( props ) : {}
 
   return (
-    <ViewComponent style={[ styles.main, style ]} {...props}>
+    <ViewComponent style={[ styles.main, style ]} {...edgeProps} {...rest}>
       {children}
     </ViewComponent>
   )

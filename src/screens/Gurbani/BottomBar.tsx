@@ -47,7 +47,7 @@ const BottomBar = () => {
   const onCollectionsPress = () => navigation.navigate( 'Root.Collections' )
 
   return (
-    <Container style={styles.root} safeArea edges={[ 'bottom' ]}>
+    <Container style={styles.root} safeArea bottom>
       <LinearGradient
         pointerEvents="none"
         style={styles.background}

@@ -1,4 +1,4 @@
-import { FlatList } from 'react-native'
+import { FlatList, StyleSheet } from 'react-native'
 
 import Container from '../../components/Container'
 import ItemSeparator from '../../components/ItemSeparator'
@@ -6,6 +6,12 @@ import { CollectionsStackScreenProps } from '../../types/navigation'
 import Item from './Item'
 import { Folder, FolderContent, FolderItem } from './types'
 import { getIsFolder } from './utils'
+
+const styles = StyleSheet.create( {
+  root: {
+    overflow: 'visible',
+  },
+} )
 
 export type CollectionsScreenProps = CollectionsStackScreenProps<'Collections.List'>
 
@@ -25,8 +31,9 @@ const CollectionsScreen = ( {
     : openContent( item as FolderContent ) )
 
   return (
-    <Container>
+    <Container safeArea left right bottom>
       <FlatList
+        style={styles.root}
         ItemSeparatorComponent={ItemSeparator}
         ListFooterComponent={ItemSeparator}
         keyExtractor={( { id } ) => id}
