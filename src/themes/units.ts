@@ -10,7 +10,7 @@ enum Units {
   HorizontalLayoutMargin = 16,
   MinimumTouchDimension = 44,
   ThumbFingerRatio = 1.5,
-  Separator = 0.5,
+  Separator = 1,
 }
 
 export default Units
