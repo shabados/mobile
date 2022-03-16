@@ -6,10 +6,11 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 import Button from '../../components/Button'
 import Container from '../../components/Container'
+import ItemSeparator from '../../components/ItemSeparator'
 import Typography from '../../components/Typography'
 import { languages, registerTranslations, useTranslation } from '../../services/i18n'
 import { settings, useSetting } from '../../services/settings'
-import Colors from '../../themes/colors'
+import Units from '../../themes/units'
 import { px } from '../../themes/utils'
 
 const strings = registerTranslations( {
@@ -25,15 +26,13 @@ const styles = StyleSheet.create( {
   option: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 65,
-    borderBottomColor: Colors.Separator,
-    borderBottomWidth: 0.5,
+    height: Units.MinimumTouchDimension * Units.ThumbFingerRatio,
   },
   optionComponent: {
     marginLeft: 'auto',
   },
   root: {
-    ...px( 35 ),
+    ...px( Units.HorizontalLayoutMargin * 2 ),
   },
 } )
 
@@ -65,12 +64,16 @@ const SelectOption = <T extends string | number | boolean,>( {
 type OptionProps = { title: string, component: ReactNode }
 
 const Option = ( { title, component }: OptionProps ) => (
-  <View style={styles.option}>
-    <Typography>{title}</Typography>
+  <View>
+    <View style={styles.option}>
+      <Typography>{title}</Typography>
 
-    <View style={styles.optionComponent}>
-      {component}
+      <View style={styles.optionComponent}>
+        {component}
+      </View>
     </View>
+
+    <ItemSeparator full />
   </View>
 )
 

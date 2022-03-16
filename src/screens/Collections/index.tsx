@@ -1,6 +1,7 @@
 import { FlatList } from 'react-native'
 
 import Container from '../../components/Container'
+import ItemSeparator from '../../components/ItemSeparator'
 import { CollectionsStackScreenProps } from '../../types/navigation'
 import Item from './Item'
 import { Folder, FolderContent, FolderItem } from './types'
@@ -26,6 +27,8 @@ const CollectionsScreen = ( {
   return (
     <Container>
       <FlatList
+        ItemSeparatorComponent={ItemSeparator}
+        ListFooterComponent={ItemSeparator}
         keyExtractor={( { id } ) => id}
         data={items}
         renderItem={( { item } ) => (

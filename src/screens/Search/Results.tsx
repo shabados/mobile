@@ -1,17 +1,12 @@
 import { FlatList, StyleSheet, View } from 'react-native'
 
-import Colors from '../../themes/colors'
-import Units from '../../themes/units'
+import ItemSeparator from '../../components/ItemSeparator'
 import { SearchData } from '../../types/data'
 import Result from './Result'
 
 const styles = StyleSheet.create( {
   container: {
     flex: 1,
-  },
-  separator: {
-    borderBottomWidth: Units.Separator,
-    borderBottomColor: Colors.Separator,
   },
 } )
 
@@ -31,7 +26,8 @@ const Results = ( {
       keyboardShouldPersistTaps="always"
       data={results}
       keyExtractor={( { line: { id } } ) => id}
-      ItemSeparatorComponent={() => <View style={styles.separator} />}
+      ItemSeparatorComponent={ItemSeparator}
+      ListFooterComponent={ItemSeparator}
       renderItem={( {
         index,
         item: {
