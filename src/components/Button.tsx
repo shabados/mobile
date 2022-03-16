@@ -1,8 +1,8 @@
-import { Pressable, PressableProps, StyleProp, StyleSheet, ViewProps, ViewStyle } from 'react-native'
+import { Pressable, PressableProps, StyleSheet } from 'react-native'
 
 import Colors from '../themes/colors'
 import Units from '../themes/units'
-import {  px } from '../themes/utils'
+import { px } from '../themes/utils'
 import Typography, { TypographyProps } from './Typography'
 
 const styles = StyleSheet.create( {
