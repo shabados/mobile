@@ -1,6 +1,6 @@
 import { ComponentProps, ReactNode } from 'react'
 import { StyleSheet, View, ViewProps } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Edge, SafeAreaView } from 'react-native-safe-area-context'
 
 import Colors from '../themes/colors'
 
@@ -29,10 +29,10 @@ type SafeAreaViewContainerProps = {
 
 type ContainerProps = BaseContainerProps & ( ViewContainerProps | SafeAreaViewContainerProps )
 
-const getEdgeProps = ( { top, left, right, bottom }: SafeAreaViewContainerProps ) => Object
+const getEdges = ( { top, left, right, bottom }: SafeAreaViewContainerProps ) => Object
   .entries( { top, left, right, bottom } )
   .filter( ( [ , truthy ] ) => truthy )
-  .map( ( [ prop ] ) => prop )
+  .map( ( [ prop ] ) => prop ) as Edge[]
 
 const Container = ( props: ContainerProps ) => {
   const {
@@ -43,7 +43,7 @@ const Container = ( props: ContainerProps ) => {
   } = props
 
   const ViewComponent = safeArea ? SafeAreaView : View
-  const edgeProps = safeArea ? getEdgeProps( props ) : {}
+  const edgeProps = safeArea ? { edges: getEdges( props ) } : {}
 
   return (
     <ViewComponent style={[ styles.main, style ]} {...edgeProps} {...rest}>
