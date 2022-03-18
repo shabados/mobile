@@ -1,5 +1,6 @@
 import { StyleSheet, View } from 'react-native'
 
+import OS from '../helpers/os'
 import Colors from '../themes/colors'
 import Units from '../themes/units'
 
@@ -18,7 +19,7 @@ type ItemSeparatorProps = {
   full?: boolean,
 }
 
-const ItemSeparator = ( { full }: ItemSeparatorProps ) => (
+const ItemSeparator = ( { full = OS.android }: ItemSeparatorProps ) => (
   <View style={[ styles.root, full && styles.full ]} />
 )
 
