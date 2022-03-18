@@ -8,6 +8,6 @@ export const gradients = {
     colors: Appearance.getColorScheme() === 'light'
       ? [ 'rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)' ]
       : [ 'rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)' ],
-    locations: [ 0.0, 0.6 ],
+    locations: [ 0.0, 0.4 ],
   },
 }

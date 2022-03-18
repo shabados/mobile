@@ -8,13 +8,13 @@ import Container from '../../components/Container'
 import SearchBar from '../../components/SearchBar'
 import { gradients } from '../../themes/gradients'
 import Units from '../../themes/units'
-import { px, py } from '../../themes/utils'
+import { px } from '../../themes/utils'
 import { HomeTabScreenProps } from '../../types/navigation'
 
 const styles = StyleSheet.create( {
   background: {
     position: 'absolute',
-    top: -20,
+    top: -40,
     bottom: 0,
     left: 0,
     right: 0,
@@ -28,7 +28,6 @@ const styles = StyleSheet.create( {
   },
   container: {
     ...px( 10 ),
-    ...py( 10 ),
     flexDirection: 'row',
     alignItems: 'center',
   },
