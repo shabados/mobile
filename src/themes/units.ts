@@ -1,3 +1,5 @@
+import { StyleSheet } from 'react-native'
+
 enum Units {
   Footnote = 13,
   Base = 17,
@@ -10,7 +12,7 @@ enum Units {
   HorizontalLayoutMargin = 16,
   MinimumTouchDimension = 44,
   ThumbFingerRatio = 1.5,
-  Separator = 1,
+  Separator = StyleSheet.hairlineWidth,
 }
 
 export default Units
