@@ -1,3 +1,4 @@
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { Provider } from 'jotai'
 import { ElementType } from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -13,6 +14,7 @@ const contexts: [ElementType, { [k: string]: any }?][] = [
   [ Provider ],
   [ QueryClientProvider, { client: queryClient } ],
   [ SafeAreaProvider ],
+  [ BottomSheetModalProvider ],
 ]
 
 // Generate a context wrapper function
