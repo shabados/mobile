@@ -73,7 +73,7 @@ const SearchBar = ( {
 
     // Seems to cause a crash otherwise when autoFocus is true and inside a modal/new screen
     // It is possible that the keyboard is not always ready without some sort of delay
-    setTimeout( () => inputRef.current?.focus(), 30 )
+    setTimeout( () => inputRef.current?.focus(), 100 )
   }, [ autoFocus ] )
 
   return (
