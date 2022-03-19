@@ -26,15 +26,9 @@ type Variants = 'body' | 'headline' | 'button'
 
 export type TypographyProps = TextProps & {
   children: ReactNode,
-  /**
-   * The type of typography to render.
-   */
   variant?: Variants,
 }
 
-/**
- * Typography component with different variants.
- */
 const Typography = ( {
   style,
   variant = 'body',

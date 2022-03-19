@@ -10,6 +10,7 @@ type ColorKeys =
   | 'PrimaryText'
   | 'SecondaryText'
   | 'Dev'
+  | 'Active'
 
 type Theme = { [key in ColorKeys]: ColorValue }
 
@@ -23,6 +24,7 @@ const ios: Theme = {
   PrimaryText: PlatformColor( 'label' ),
   SecondaryText: PlatformColor( 'secondaryLabel' ),
   Dev: PlatformColor( 'systemRed' ),
+  Active: PlatformColor( 'systemGreen' ),
 }
 
 const android: Theme = {
@@ -35,6 +37,7 @@ const android: Theme = {
   PrimaryText: PlatformColor( '?android:attr/colorForeground' ),
   SecondaryText: '#808080',
   Dev: PlatformColor( '@android:color/holo_red_dark' ),
+  Active: PlatformColor( '@android:color/holo_green_light' ),
 }
 
 const Colors = Platform.select<Theme>( { android, ios } )!
