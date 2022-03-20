@@ -25,6 +25,9 @@ const styles = StyleSheet.create( {
     borderRadius: BULLET_SIZE,
     backgroundColor: Colors.Disabled,
   },
+  title: {
+    lineHeight: Units.MinimumTouchDimension,
+  },
 } )
 
 export type RadioGroupProps<Value> = {
@@ -50,7 +53,7 @@ const RadioGroup = <Value,>( {
       {options.map( ( [ name, value ] ) => (
         <View key={name}>
           <Pressable key={name} style={styles.item} onPress={handlePress( name, value )}>
-            <Typography>{name}</Typography>
+            <Typography style={styles.title}>{name}</Typography>
 
             <View style={[ styles.radio, currentValue === value && styles.active ]} testID="radio-bullet" />
           </Pressable>
