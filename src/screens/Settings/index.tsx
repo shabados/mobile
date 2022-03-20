@@ -1,12 +1,14 @@
 import { Atom } from 'jotai'
 import { invert } from 'lodash'
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { StyleSheet, Switch, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import Button from '../../components/Button'
 import Container from '../../components/Container'
 import ItemSeparator from '../../components/ItemSeparator'
+import ModalSheet from '../../components/ModalSheet'
+import RadioGroup from '../../components/RadioGroup'
 import Typography from '../../components/Typography'
 import { languages, registerTranslations, useTranslation } from '../../services/i18n'
 import { settings, useSetting } from '../../services/settings'
@@ -19,6 +21,7 @@ const strings = registerTranslations( {
   },
   language: {
     'en-US': 'App Language',
+    fr: "Langue de l'appli",
   },
 } )
 
@@ -52,12 +55,25 @@ const SelectOption = <T extends string | number | boolean,>( {
   setting,
   options,
 }: SelectOptionProps<T> ) => {
-  const [ value ] = useSetting( setting )
+  // ! Generic setting prop type causes setValue to resolve as never, hence the aggressive cast
+  const [ value, setValue ] = useSetting( setting ) as [T, ( value: T ) => void]
 
   const [ name ] = options.find( ( [ , optionValue ] ) => optionValue === value ) ?? []
 
+  const [ isModalOpen, setModalOpen ] = useState( false )
+  const onChange = ( value: T ) => {
+    setValue( value )
+    setModalOpen( false )
+  }
+
   return (
-    <Button>{name?.toString()}</Button>
+    <>
+      <Button onPress={() => setModalOpen( true )}>{name}</Button>
+
+      <ModalSheet open={isModalOpen} onClose={() => setModalOpen( false )}>
+        <RadioGroup initialValue={value} options={options} onChange={onChange} />
+      </ModalSheet>
+    </>
   )
 }
 
@@ -81,7 +97,7 @@ const SettingsScreen = () => {
   const { t } = useTranslation()
 
   return (
-    <Container style={styles.root}>
+    <Container style={styles.root} safeArea left right>
       <ScrollView>
         <Option
           title={t( strings.reader )}
