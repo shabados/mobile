@@ -26,10 +26,8 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     alignItems: 'center',
     ...px( Units.HorizontalLayoutMargin * 2 ),
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-    backgroundColor: Colors.ModalSheetTitleBar,
-    height: Units.MinimumTouchDimension,
+    borderTopRightRadius: Units.BorderRadius,
+    borderTopLeftRadius: Units.BorderRadius,
   },
 } )
 

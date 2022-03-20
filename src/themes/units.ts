@@ -13,6 +13,7 @@ enum Units {
   MinimumTouchDimension = 44,
   ThumbFingerRatio = 1.5,
   Separator = StyleSheet.hairlineWidth,
+  BorderRadius = 25,
 }
 
 export default Units
