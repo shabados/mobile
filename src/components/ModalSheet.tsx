@@ -11,6 +11,9 @@ import Container from './Container'
 import useLandscape from './use-landscape'
 
 const styles = StyleSheet.create( {
+  background: {
+    backgroundColor: 'transparent',
+  },
   closeButton: {
     marginLeft: 'auto',
   },
@@ -21,6 +24,7 @@ const styles = StyleSheet.create( {
   content: {
     overflow: 'visible',
     ...px( Units.HorizontalLayoutMargin * 2 ),
+    backgroundColor: Colors.ModalSheet,
   },
   header: {
     flexDirection: 'row',
@@ -28,6 +32,8 @@ const styles = StyleSheet.create( {
     ...px( Units.HorizontalLayoutMargin * 2 ),
     borderTopRightRadius: Units.BorderRadius,
     borderTopLeftRadius: Units.BorderRadius,
+    backgroundColor: Colors.ModalSheet,
+    height: 50,
   },
 } )
 
@@ -66,6 +72,7 @@ const ModalSheet = ( {
     <BottomSheetModal
       ref={sheetRef}
       style={landscapeStyle}
+      backgroundStyle={styles.background}
       snapPoints={snapPoints}
       backdropComponent={Backdrop}
       onDismiss={onClose}
