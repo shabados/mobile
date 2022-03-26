@@ -12,7 +12,7 @@ import useLandscape from './use-landscape'
 
 const styles = StyleSheet.create( {
   background: {
-    backgroundColor: 'transparent',
+    backgroundColor: Colors.ModalSheet,
   },
   closeButton: {
     marginLeft: 'auto',
@@ -24,7 +24,6 @@ const styles = StyleSheet.create( {
   content: {
     overflow: 'visible',
     ...px( Units.HorizontalLayoutMargin * 2 ),
-    backgroundColor: Colors.ModalSheet,
   },
   header: {
     flexDirection: 'row',
@@ -72,7 +71,6 @@ const ModalSheet = ( {
     <BottomSheetModal
       ref={sheetRef}
       style={landscapeStyle}
-      backgroundStyle={styles.background}
       snapPoints={snapPoints}
       backdropComponent={Backdrop}
       onDismiss={onClose}
@@ -87,8 +85,8 @@ const ModalSheet = ( {
         </View>
       )}
     >
-      <Container safeArea bottom>
-        <BottomSheetScrollView style={styles.content}>
+      <Container style={styles.background} safeArea bottom>
+        <BottomSheetScrollView style={[ styles.content, styles.background ]}>
           {children}
         </BottomSheetScrollView>
       </Container>
