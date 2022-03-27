@@ -13,7 +13,6 @@ const styles = StyleSheet.create( {
     backgroundColor: Colors.Active,
   },
   item: {
-    flex: 1,
     flexDirection: 'row',
     height: Units.MinimumTouchDimension * Units.ThumbFingerRatio,
     alignItems: 'center',
