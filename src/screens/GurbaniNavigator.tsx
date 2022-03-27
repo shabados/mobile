@@ -20,7 +20,6 @@ const styles = StyleSheet.create( {
     ...px( 10 ),
   },
   headerTitle: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -38,6 +37,7 @@ const styles = StyleSheet.create( {
 const getOptions = ( {
   navigation,
 }: GurbaniStackScreenProps<'Gurbani.View'> ): NativeStackNavigationOptions => ( {
+  headerTitleAlign: 'center',
   headerLeft: () => (
     <HeaderButtons HeaderButtonComponent={IconHeaderButton}>
       <Item
