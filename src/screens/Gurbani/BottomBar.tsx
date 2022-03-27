@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { Pressable, StyleSheet, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import Button from '../../components/Button'
@@ -31,6 +32,9 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  containerPadding: {
+    paddingBottom: Units.HorizontalLayoutMargin / 2,
+  },
   root: {
     flex: 0,
   },
@@ -45,6 +49,9 @@ const BottomBar = () => {
   const onSearchPress = () => navigation.navigate( 'Root.Search' )
   const onCollectionsPress = () => navigation.navigate( 'Root.Collections' )
 
+  const { bottom } = useSafeAreaInsets()
+  const hasBottomSafeArea = bottom > 0
+
   return (
     <Container style={styles.root} safeArea bottom>
       <LinearGradient
@@ -54,7 +61,7 @@ const BottomBar = () => {
         colors={gradients.TransparentToBackground.colors}
       />
 
-      <View style={styles.container}>
+      <View style={[ styles.container, !hasBottomSafeArea && styles.containerPadding ]}>
         <Pressable style={styles.searchBarContainer} onPress={onSearchPress}>
           <SearchBar editable={false} onTouchStart={onSearchPress} />
         </Pressable>
