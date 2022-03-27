@@ -8,7 +8,7 @@ import { RootStackScreenProps } from '../../types/navigation'
 
 const strings = registerTranslations( {
   cancelLabel: {
-    'en': 'Cancel',
+    en: 'Cancel',
   },
 } )
 

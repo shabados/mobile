@@ -10,7 +10,7 @@ import { my } from '../themes/utils'
 
 const strings = registerTranslations( {
   placeholder: {
-    'en': 'Search',
+    en: 'Search',
   },
 } )
 
