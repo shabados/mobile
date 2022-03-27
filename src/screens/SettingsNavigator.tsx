@@ -7,7 +7,7 @@ import SettingsScreen from './Settings'
 
 const strings = registerTranslations( {
   settingsTitle: {
-    'en-US': 'Settings',
+    'en': 'Settings',
   },
 } )
 

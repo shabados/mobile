@@ -1,5 +1,5 @@
 export const languages = {
-  'en-US': 'English (US)',
+  en: 'English (US)',
   'en-GB': 'English (UK)',
   pa: 'ਪੰਜਾਬੀ',
   fr: 'Français',
@@ -9,4 +9,4 @@ export const languages = {
 }
 
 export type Languages = keyof typeof languages
-export type LanguageTranslations = Partial<typeof languages> & { 'en-US': string }
+export type LanguageTranslations = Partial<typeof languages> & { 'en': string }

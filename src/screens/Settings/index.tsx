@@ -17,10 +17,10 @@ import { px } from '../../themes/utils'
 
 const strings = registerTranslations( {
   reader: {
-    'en-US': 'Reader',
+    en: 'Reader',
   },
   language: {
-    'en-US': 'App Language',
+    en: 'App Language',
     fr: "Langue de l'appli",
   },
 } )

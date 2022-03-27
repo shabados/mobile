@@ -12,13 +12,13 @@ const initialize = () => i18n
   .init( {
     resources: {},
     lng: findBestAvailableLanguage( Object.keys( languages ) )?.languageTag,
-    fallbackLng: 'en-US',
+    fallbackLng: 'en',
     compatibilityJSON: 'v3',
     interpolation: { escapeValue: false },
   } )
   .then( () => {
     setIsInitialized( true )
-    console.log( '[i18n] Loaded i18n' )
+    console.log( `[i18n] Loaded i18n with language lookup order: ${i18n.languages.toString()}` )
   } )
 // TODO @harjot1singh handle catch properly with sentry
   .catch( console.error )

@@ -12,7 +12,7 @@ import { FolderItem } from '../Collections/types'
 
 const strings = registerTranslations( {
   title: {
-    'en-US': 'Collections',
+    'en': 'Collections',
   },
 } )
 
