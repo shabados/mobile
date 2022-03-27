@@ -34,6 +34,7 @@
     "@react-navigation/material-top-tabs": "^6.1.1",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
+    "@sentry/react-native": "^3.3.3",
     "@splitsoftware/splitio-react-native": "^0.1.0",
     "env-var": "^7.1.1",
     "gurmukhi-utils": "^3.2.1",

@@ -6,6 +6,9 @@ const configuration = {
   split: {
     apiKey: get( 'SPLIT_API_KEY' ).required().asString(),
   },
+  sentry: {
+    dsn: get( 'SENTRY_DSN' ).required().asString(),
+  },
 }
 
 export default configuration

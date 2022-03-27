@@ -14,4 +14,4 @@ const App = () => (
   </Suspense>
 )
 
-export default () => withContexts( <App /> )
+export default withContexts( <App /> )
