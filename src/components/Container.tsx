@@ -29,7 +29,9 @@ type SafeAreaViewContainerProps = {
 
 type ContainerProps = BaseContainerProps & ( ViewContainerProps | SafeAreaViewContainerProps )
 
-const getEdges = ( { top, left, right, bottom }: SafeAreaViewContainerProps ) => Object
+type GetEdgesOptions = Partial<{ top: boolean, left: boolean, right: boolean, bottom: boolean }>
+
+const getEdges = ( { top, left, right, bottom }: GetEdgesOptions ) => Object
   .entries( { top, left, right, bottom } )
   .filter( ( [ , truthy ] ) => truthy )
   .map( ( [ prop ] ) => prop ) as Edge[]
@@ -39,11 +41,15 @@ const Container = ( props: ContainerProps ) => {
     children,
     style,
     safeArea,
+    top,
+    left,
+    right,
+    bottom,
     ...rest
-  } = props
+  } = props as SafeAreaViewContainerProps
 
   const ViewComponent = safeArea ? SafeAreaView : View
-  const edgeProps = safeArea ? { edges: getEdges( props ) } : {}
+  const edgeProps = safeArea ? { edges: getEdges( { top, left, right, bottom } ) } : {}
 
   return (
     <ViewComponent style={[ styles.main, style ]} {...edgeProps} {...rest}>
