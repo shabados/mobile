@@ -113,6 +113,8 @@ const SettingsScreen = () => {
             />
           )}
         />
+
+        <Button onPress={() => { throw new Error( 'Test!' ) }}>Trigger crash</Button>
       </ScrollView>
     </Container>
 
