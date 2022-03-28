@@ -2,7 +2,7 @@
 const reactNativePreset = require( 'react-native/jest-preset' )
 
 // List of modules that do not transpile their code
-const whitelistedModules = [ '@react-native', 'react-native', 'react-navigation-header-buttons' ]
+const whitelistedModules = [ '@react-native', 'react-native', 'react-navigation-header-buttons', '@sentry' ]
 
 module.exports = {
   ...reactNativePreset,

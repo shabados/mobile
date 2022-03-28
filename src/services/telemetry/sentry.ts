@@ -26,7 +26,9 @@ const sentryAdapterFactory = () => {
     ],
   } )
 
-  const registerNavigation = routingInstrumentation.registerNavigationContainer.bind( this )
+  const registerNavigation = ( navigationRef: any ) => (
+    routingInstrumentation.registerNavigationContainer( navigationRef )
+  )
 
   const transactions = new Map<string, ReturnType<typeof startSentryTransaction>>()
   const startTransaction = ( name: string ) => {
