@@ -23,4 +23,4 @@ const App = () => {
   )
 }
 
-export default withContexts( <App /> )
+export default () => withContexts( <App /> )
