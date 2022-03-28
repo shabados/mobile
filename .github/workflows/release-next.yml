@@ -133,10 +133,6 @@ jobs:
           token: ${{ secrets.GH_BOT_TOKEN }}
 
       - uses: getsentry/action-release@v1
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
         with:
           environment: next
           version: '@shabados/mobile@${{ needs.prepare.outputs.release-version }}'
