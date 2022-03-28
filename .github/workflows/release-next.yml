@@ -9,6 +9,9 @@ on:
 concurrency: release
 
 env:
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+  SENTRY_PROJECT: mobile
   MATCH_GIT_URL: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
   MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
   APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
@@ -119,6 +122,24 @@ jobs:
       - run: npm run build:${{ matrix.platform }} -- app_env:next is_release:true is_next_release:true
 
       - run: npm run release:${{ matrix.platform }} -- app_env:next is_next_release:true
+
+  publish-sentry:
+    runs-on: ubuntu-20.04
+    needs: [prepare, build-release]
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_BOT_TOKEN }}
+
+      - uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: next
+          version: '@shabados/mobile@${{ needs.prepare.outputs.release-version }}'
 
   publish-github:
     runs-on: ubuntu-20.04
