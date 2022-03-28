@@ -13,4 +13,4 @@ telemetry.initialize()
 void i18n.initialize()
 enableScreens()
 
-AppRegistry.registerComponent( 'App', telemetry.wrap( () => App ) )
+AppRegistry.registerComponent( 'App', () => telemetry.wrap( App ) )
