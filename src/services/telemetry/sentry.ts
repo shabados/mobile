@@ -7,7 +7,6 @@ import {
   wrap,
 } from '@sentry/react-native'
 
-import { name, version } from '../../../package.json'
 import configuration from '../configuration'
 
 const sentryAdapterFactory = () => {
@@ -16,7 +15,7 @@ const sentryAdapterFactory = () => {
   const initialize = () => init( {
     enabled: !configuration.environment.isLocal,
     dsn: configuration.sentry.dsn,
-    release: `${name}@${version}`,
+    release: configuration.sentry.releaseName,
     environment: configuration.environment.name,
     integrations: [
       new ReactNativeTracing( {

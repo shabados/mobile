@@ -1,3 +1,4 @@
+import { version } from '../../../package.json'
 import environment from './environment'
 import get from './get'
 
@@ -8,6 +9,7 @@ const configuration = {
   },
   sentry: {
     dsn: get( 'SENTRY_DSN' ).required().asString(),
+    releaseName: `mobile@${version}`,
   },
 }
 

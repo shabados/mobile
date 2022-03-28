@@ -135,7 +135,7 @@ jobs:
       - uses: getsentry/action-release@v1
         with:
           environment: next
-          version: '@shabados/mobile@${{ needs.prepare.outputs.release-version }}'
+          version: mobile@${{ needs.prepare.outputs.release-version }}
 
   publish-github:
     runs-on: ubuntu-20.04
