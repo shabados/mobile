@@ -8,21 +8,6 @@ on:
 
 concurrency: release
 
-env:
-  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-  SENTRY_PROJECT: mobile
-  MATCH_GIT_URL: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
-  MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
-  APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
-  APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-  APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
-  SUPPLY_JSON_KEY_DATA: ${{ secrets.PLAY_STORE_CREDENTIALS }}
-  UPLOAD_KEYSTORE_FILE: ${{ secrets.UPLOAD_KEYSTORE_FILE }}
-  UPLOAD_KEYSTORE_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_PASSWORD }}
-  UPLOAD_KEYSTORE_KEY_ALIAS: ${{ secrets.UPLOAD_KEYSTORE_KEY_ALIAS }}
-  UPLOAD_KEYSTORE_KEY_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_KEY_PASSWORD }}
-
 jobs:
   checks:
     runs-on: ubuntu-latest
@@ -78,18 +63,29 @@ jobs:
   build-release:
     needs: prepare
     runs-on: ${{ matrix.os }}
+    env:
+      MATCH_GIT_URL: https://${{ secrets.GH_BOT_TOKEN }}@github.com/shabados/ios-certificates.git
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+      APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_KEY }}
+      SUPPLY_JSON_KEY_DATA: ${{ secrets.PLAY_STORE_CREDENTIALS }}
+      UPLOAD_KEYSTORE_FILE: ${{ secrets.UPLOAD_KEYSTORE_FILE }}
+      UPLOAD_KEYSTORE_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_PASSWORD }}
+      UPLOAD_KEYSTORE_KEY_ALIAS: ${{ secrets.UPLOAD_KEYSTORE_KEY_ALIAS }}
+      UPLOAD_KEYSTORE_KEY_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_KEY_PASSWORD }}
+      SENTRY_RELEASE: ${{ matrix.platform }}-app@${{ needs.prepare.outputs.release-version }}
+      ENVFILE: ${{ matrix.envfile }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: macos-11
             platform: ios
-            env:
-              ENVFILE: config/.env.next.ios
+            envfile: config/.env.next.ios
           - os: ubuntu-latest
             platform: android
-            env:
-              ENVFILE: config/.env.next.android
+            envfile: config/.env.next.android
     steps:
       - name: Download workspace
         uses: actions/download-artifact@v2
@@ -129,6 +125,16 @@ jobs:
   publish-sentry:
     runs-on: ubuntu-20.04
     needs: [prepare, build-release]
+    env:
+      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+      SENTRY_PROJECT: ${{ matrix.env.SENTRY_PROJECT }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: ios
+          - platform: android
     steps:
       - uses: actions/checkout@v2
         with:
@@ -138,7 +144,7 @@ jobs:
       - uses: getsentry/action-release@v1
         with:
           environment: next
-          version: mobile@${{ needs.prepare.outputs.release-version }}
+          version: ${{ matrix.platform }}-app@${{ needs.prepare.outputs.release-version }}
 
   publish-github:
     runs-on: ubuntu-20.04
