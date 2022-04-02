@@ -11,8 +11,10 @@ Specific dotenv files can be loaded by supplying an `ENVFILE` environment variab
 There are currently 3 environments:
 
 - `.env.local`: _local_ development - modify this but do not include as part of PRs **unless** adding a new configuration option
-- `.env.next`: next environment (prereleases)
-- `.env.latest`: latest environment (production releases)
+- `.env.next.ios`: next iOS environment (prereleases)
+- `.env.next.android`: next Android environment (prereleases)
+- `.env.latest.ios`: latest iOS environment (production releases)
+- `.env.latest.android`: latest Android environment (production releases)
 
 ## Options
 
