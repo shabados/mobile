@@ -2,6 +2,7 @@ import * as stackTraceParser from 'stacktrace-parser'
 
 import initialize from '../src/services/i18n/initialize'
 import * as registerTranslations from '../src/services/i18n/register-translations'
+import { unmuteConsole } from '../test/utils/console'
 
 const getComponentFromStack = () => stackTraceParser
   .parse( new Error().stack! )
@@ -20,5 +21,6 @@ it( 'Extracting i18next translations', async () => {
 
   require( '../src/App' )
 
+  unmuteConsole( 'log' )
   console.log( allTranslations )
 } )
