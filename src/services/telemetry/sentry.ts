@@ -3,7 +3,7 @@ import {
   ReactNativeTracing,
   ReactNavigationInstrumentation,
   setContext,
-  startTransaction as startSentryTransaction,
+  startTransaction,
   wrap,
 } from '@sentry/react-native'
 
@@ -17,6 +17,8 @@ const sentryAdapterFactory = () => {
     dsn: configuration.sentry.dsn,
     release: configuration.sentry.releaseName,
     environment: configuration.environment.name,
+    enableAutoSessionTracking: true,
+    tracesSampleRate: 1,
     integrations: [
       new ReactNativeTracing( {
         tracingOrigins: [ 'api.gurbaninow.com' ],
@@ -25,26 +27,11 @@ const sentryAdapterFactory = () => {
     ],
   } )
 
-  const registerNavigation = ( navigationRef: any ) => (
+  const registerNavigation = ( navigationRef: any ) => {
     routingInstrumentation.registerNavigationContainer( navigationRef )
-  )
-
-  const transactions = new Map<string, ReturnType<typeof startSentryTransaction>>()
-  const startTransaction = ( name: string ) => {
-    const transaction = startSentryTransaction( { name } )
-
-    transactions.set( name, transaction )
-
-    return transaction
   }
 
-  const endTransaction = ( name: string ) => {
-    if ( !transactions.has( name ) ) return
-
-    transactions.get( name )?.finish()
-  }
-
-  return { initialize, wrap, registerNavigation, startTransaction, endTransaction, setContext }
+  return { initialize, wrap, registerNavigation, startTransaction, setContext }
 }
 
 export default sentryAdapterFactory()
