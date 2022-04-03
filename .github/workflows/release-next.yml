@@ -8,6 +8,10 @@ on:
 
 concurrency: release
 
+env:
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+
 jobs:
   checks:
     runs-on: ubuntu-latest
@@ -74,8 +78,8 @@ jobs:
       UPLOAD_KEYSTORE_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_PASSWORD }}
       UPLOAD_KEYSTORE_KEY_ALIAS: ${{ secrets.UPLOAD_KEYSTORE_KEY_ALIAS }}
       UPLOAD_KEYSTORE_KEY_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_KEY_PASSWORD }}
+      SENTRY_PROJECT: ${{ matrix.platform }}-app
       SENTRY_RELEASE: ${{ matrix.platform }}-app@${{ needs.prepare.outputs.release-version }}
-      ENVFILE: ${{ matrix.envfile }}
     strategy:
       fail-fast: false
       matrix:
@@ -126,9 +130,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs: [prepare, build-release]
     env:
-      SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
-      SENTRY_PROJECT: ${{ matrix.env.SENTRY_PROJECT }}
+      SENTRY_PROJECT: ${{ matrix.platform }}-app
     strategy:
       fail-fast: false
       matrix:
@@ -144,7 +146,7 @@ jobs:
       - uses: getsentry/action-release@v1
         with:
           environment: next
-          version: ${{ matrix.platform }}-app@${{ needs.prepare.outputs.release-version }}
+          version: ${{ env.SENTRY_PROJECT }}@${{ needs.prepare.outputs.release-version }}
 
   publish-github:
     runs-on: ubuntu-20.04
