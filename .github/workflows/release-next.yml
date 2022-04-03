@@ -79,16 +79,15 @@ jobs:
       UPLOAD_KEYSTORE_KEY_ALIAS: ${{ secrets.UPLOAD_KEYSTORE_KEY_ALIAS }}
       UPLOAD_KEYSTORE_KEY_PASSWORD: ${{ secrets.UPLOAD_KEYSTORE_KEY_PASSWORD }}
       SENTRY_PROJECT: ${{ matrix.platform }}-app
+      ENVFILE: config/.env.next.${{ matrix.platform }}
     strategy:
       fail-fast: false
       matrix:
         include:
           - os: macos-11
             platform: ios
-            envfile: config/.env.next.ios
           - os: ubuntu-latest
             platform: android
-            envfile: config/.env.next.android
     steps:
       - name: Download workspace
         uses: actions/download-artifact@v2
@@ -119,8 +118,7 @@ jobs:
 
       - name: Inject CI-dependent environment variables
         run: |
-          echo 'SENTRY_RELEASE=${{ matrix.platform }}-app@${{ needs.prepare.outputs.release-version }}' >> config/.env.next.${{ matrix.platform }}
-          cat config/.env.next.${{ matrix.platform }}
+          echo 'SENTRY_RELEASE=${{ matrix.platform }}-app@${{ needs.prepare.outputs.release-version }}' >> ${{ env.ENVFILE }}
 
       - run: npm ci
 
