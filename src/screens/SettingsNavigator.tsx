@@ -14,6 +14,7 @@ const strings = registerTranslations( {
     es: 'Configuración',
     el: 'Ρυθμίσεις',
     fr: 'Paramètres',
+    it: 'Impostazioni',
     fil: 'Mga Pagsasaayos',
   },
 } )

@@ -14,7 +14,7 @@ export const languages = {
   es: 'Español', // Spanish
   el: 'Ελληνικά', // Greek
   fr: 'Français', // French
-  // it: 'Italiano', // Italian
+  it: 'Italiano', // Italian
   // sw: 'Kiswahili', // Swahili
   fil: 'Wikang Filipino', // Filipino
   // jp: '日本語', // Japanese
