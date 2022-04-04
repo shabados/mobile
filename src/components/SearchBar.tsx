@@ -22,6 +22,7 @@ const strings = registerTranslations( {
     fil: 'Maghanap',
     jp: '検索',
     ko: '검색',
+    th: 'ค้นหา',
   },
 } )
 

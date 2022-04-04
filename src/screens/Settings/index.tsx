@@ -29,6 +29,7 @@ const strings = registerTranslations( {
     fil: 'Mambabasa',
     jp: '読む',
     ko: '독서',
+    th: 'การอ่าน',
   },
   language: {
     en: 'App Language',
@@ -43,6 +44,7 @@ const strings = registerTranslations( {
     fil: 'Wika ng App',
     jp: 'アプリの言語',
     ko: '앱의 언어',
+    th: 'ภาษาของแอป',
   },
 } )
 

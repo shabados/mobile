@@ -14,6 +14,7 @@ const commonStrings = registerTranslations( {
     fil: 'Tapos na',
     jp: '完了',
     ko: '완료',
+    th: 'เสร็จ',
   },
   cancel: {
     en: 'Cancel',
@@ -28,6 +29,7 @@ const commonStrings = registerTranslations( {
     fil: 'Ikansela',
     jp: 'キャンセル',
     ko: '취소',
+    th: 'ยกเลิก',
   },
 } )
 

@@ -19,7 +19,7 @@ export const languages = {
   fil: 'Wikang Filipino', // Filipino
   jp: '日本語', // Japanese
   ko: '', // Korean
-  // th: 'ภาษาไทย', // Thai
+  th: 'ภาษาไทย', // Thai
 }
 
 export type Languages = keyof typeof languages
