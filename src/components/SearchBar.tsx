@@ -19,6 +19,7 @@ const strings = registerTranslations( {
     fr: 'Rechercher',
     it: 'Cerca',
     fil: 'Maghanap',
+    jp: '検索',
   },
 } )
 
