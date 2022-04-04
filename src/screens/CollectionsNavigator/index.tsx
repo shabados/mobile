@@ -24,6 +24,7 @@ const strings = registerTranslations( {
     fil: 'Mga Koleksyon',
     jp: 'コレクション',
     ko: '컬렉션',
+    th: 'ที่คั่นหนังสือ',
   },
 } )
 
