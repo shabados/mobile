@@ -12,7 +12,7 @@ export const languages = {
   // ms: 'Bahasa Melayu', // Malaysian
   de: 'Deutsch', // German
   es: 'Español', // Spanish
-  // el: 'Ελληνικά', // Greek
+  el: 'Ελληνικά', // Greek
   fr: 'Français', // French
   // it: 'Italiano', // Italian
   // sw: 'Kiswahili', // Swahili
