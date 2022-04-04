@@ -13,6 +13,7 @@ const strings = registerTranslations( {
     en: 'Search',
     pa: 'ਖੋਜੋ',
     hi: 'सर्च करें ',
+    ms: 'Mencari',
     de: 'Suchen',
     es: 'Buscar',
     el: 'Αναζήτηση',

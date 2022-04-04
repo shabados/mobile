@@ -15,6 +15,7 @@ const strings = registerTranslations( {
     en: 'Collections',
     pa: 'ਸੰਕਲਨ',
     hi: 'संग्रहण',
+    ms: 'Koleksi',
     de: 'Sammlungen',
     es: 'Colecciones',
     el: 'Συλλογές',

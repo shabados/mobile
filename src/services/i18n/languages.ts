@@ -9,7 +9,7 @@ export const languages = {
   // fa: 'فارسی', // Persian / Dari
   hi: 'हिन्दी',
   // bn: 'বাংলা', // Bengali
-  // ms: 'Bahasa Melayu', // Malaysian
+  ms: 'Bahasa Melayu', // Malaysian
   de: 'Deutsch', // German
   es: 'Español', // Spanish
   el: 'Ελληνικά', // Greek

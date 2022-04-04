@@ -10,6 +10,7 @@ const strings = registerTranslations( {
     en: 'Settings',
     pa: 'ਸੈਟਿੰਗਾਂ',
     hi: 'सेटिंग',
+    ms: 'Tetapan',
     de: 'Einstellungen',
     es: 'Configuración',
     el: 'Ρυθμίσεις',
