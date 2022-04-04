@@ -18,10 +18,19 @@ import { px } from '../../themes/utils'
 const strings = registerTranslations( {
   reader: {
     en: 'Reader',
+    pa: 'ਪਾਠਕ',
+    hi: 'पाठक',
+    es: 'Modo Lector',
+    de: 'Lesemodus',
+    fr: 'Mode lecteur',
   },
   language: {
     en: 'App Language',
-    fr: "Langue de l'appli",
+    pa: 'ਐਪ ਦੀ ਭਾਸ਼ਾ',
+    hi: 'ऐप की भाषा',
+    es: 'Idioma de la aplicación',
+    de: 'Sprache der App',
+    fr: "Langue de l'application",
   },
 } )
 

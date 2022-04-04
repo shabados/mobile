@@ -2,17 +2,17 @@
 // country/locale codes according to 3166-2
 export const languages = {
   en: 'English (US)',
-  // 'en-GB': 'English (UK)',
-  // pa: 'ਪੰਜਾਬੀ',
+  'en-GB': 'English (UK)',
+  pa: 'ਪੰਜਾਬੀ',
   // 'pa-PK': 'پن٘جابی',
   // ar: 'العربية', // Arabic
   // fa: 'فارسی', // Persian / Dari
-  // hi: 'हिन्दी',
+  hi: 'हिन्दी',
   // ms: 'Bahasa Melayu', // Malaysian
-  // es: 'Español', // Spanish
+  es: 'Español', // Spanish
   // it: 'Italiano', // Italian
-  // de: 'Deutsch', // German
-  // fr: 'Français', // French
+  de: 'Deutsch', // German
+  fr: 'Français', // French
   // el: 'Ελληνικά', // Greek
   // jp: '日本語', // Japanese
   // th: 'ภาษาไทย', // Thai

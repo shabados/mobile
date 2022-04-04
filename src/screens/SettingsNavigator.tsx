@@ -8,6 +8,11 @@ import SettingsScreen from './Settings'
 const strings = registerTranslations( {
   settingsTitle: {
     en: 'Settings',
+    pa: 'ਸੈਟਿੰਗਾਂ',
+    hi: 'सेटिंग',
+    es: 'Configuración',
+    de: 'Einstellungen',
+    fr: 'Paramètres',
   },
 } )
 

@@ -11,6 +11,11 @@ import { my } from '../themes/utils'
 const strings = registerTranslations( {
   placeholder: {
     en: 'Search',
+    pa: 'ਖੋਜੋ',
+    hi: 'सर्च करें ',
+    es: 'Buscar',
+    de: 'Suchen',
+    fr: 'Rechercher',
   },
 } )
 
