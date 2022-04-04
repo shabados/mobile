@@ -8,14 +8,12 @@ export const languages = {
   // ar: 'العربية', // Arabic
   // fa: 'فارسی', // Persian / Dari
   hi: 'हिन्दी',
-  // bn: 'বাংলা', // Bengali
   ms: 'Bahasa Melayu', // Malaysian
   de: 'Deutsch', // German
   es: 'Español', // Spanish
   el: 'Ελληνικά', // Greek
   fr: 'Français', // French
   it: 'Italiano', // Italian
-  // sw: 'Kiswahili', // Swahili
   fil: 'Wikang Filipino', // Filipino
   jp: '日本語', // Japanese
   ko: '한국어', // Korean
