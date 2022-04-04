@@ -23,6 +23,7 @@ const strings = registerTranslations( {
     es: 'Modo Lector',
     de: 'Lesemodus',
     fr: 'Mode lecteur',
+    fil: 'Mambabasa',
   },
   language: {
     en: 'App Language',
@@ -31,6 +32,7 @@ const strings = registerTranslations( {
     es: 'Idioma de la aplicación',
     de: 'Sprache der App',
     fr: "Langue de l'application",
+    fil: 'Wika ng App',
   },
 } )
 

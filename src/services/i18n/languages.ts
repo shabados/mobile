@@ -8,16 +8,18 @@ export const languages = {
   // ar: 'العربية', // Arabic
   // fa: 'فارسی', // Persian / Dari
   hi: 'हिन्दी',
-  // ms: 'Bahasa Melayu', // Malaysian
-  es: 'Español', // Spanish
-  // it: 'Italiano', // Italian
-  de: 'Deutsch', // German
-  fr: 'Français', // French
-  // el: 'Ελληνικά', // Greek
-  // jp: '日本語', // Japanese
-  // th: 'ภาษาไทย', // Thai
-  // sw: 'Kiswahili', // Swahili
   // bn: 'বাংলা', // Bengali
+  // ms: 'Bahasa Melayu', // Malaysian
+  de: 'Deutsch', // German
+  es: 'Español', // Spanish
+  // el: 'Ελληνικά', // Greek
+  fr: 'Français', // French
+  // it: 'Italiano', // Italian
+  // sw: 'Kiswahili', // Swahili
+  fil: 'Wikang Filipino', // Filipino
+  // jp: '日本語', // Japanese
+  // ko: '', // Korean
+  // th: 'ภาษาไทย', // Thai
 }
 
 export type Languages = keyof typeof languages

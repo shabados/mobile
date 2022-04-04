@@ -18,6 +18,7 @@ const strings = registerTranslations( {
     es: 'Colecciones',
     de: 'Sammlungen',
     fr: 'Collections',
+    fil: 'Mga Koleksyon',
   },
 } )
 

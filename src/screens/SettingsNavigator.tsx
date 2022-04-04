@@ -13,6 +13,7 @@ const strings = registerTranslations( {
     es: 'Configuración',
     de: 'Einstellungen',
     fr: 'Paramètres',
+    fil: 'Mga Pagsasaayos',
   },
 } )
 
