@@ -22,6 +22,7 @@ const strings = registerTranslations( {
     it: 'Raccolte',
     fil: 'Mga Koleksyon',
     jp: 'コレクション',
+    ko: '컬렉션',
   },
 } )
 

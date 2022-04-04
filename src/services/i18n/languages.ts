@@ -18,7 +18,7 @@ export const languages = {
   // sw: 'Kiswahili', // Swahili
   fil: 'Wikang Filipino', // Filipino
   jp: '日本語', // Japanese
-  // ko: '', // Korean
+  ko: '', // Korean
   // th: 'ภาษาไทย', // Thai
 }
 

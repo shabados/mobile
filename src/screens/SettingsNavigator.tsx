@@ -17,6 +17,7 @@ const strings = registerTranslations( {
     it: 'Impostazioni',
     fil: 'Mga Pagsasaayos',
     jp: '設定',
+    ko: '설정',
   },
 } )
 
