@@ -13,7 +13,7 @@ import { FolderItem } from '../Collections/types'
 const strings = registerTranslations( {
   title: {
     en: 'Collections',
-    pa: 'ਸੰਕਲਨ',
+    pa: 'ਸੰਗ੍ਰਹਿ',
     hi: 'संग्रहण',
     ms: 'Koleksi',
     de: 'Sammlungen',
