@@ -8,6 +8,18 @@ import SettingsScreen from './Settings'
 const strings = registerTranslations( {
   settingsTitle: {
     en: 'Settings',
+    pa: 'ਸੈਟਿੰਗਾਂ',
+    hi: 'सेटिंग',
+    ms: 'Tetapan',
+    de: 'Einstellungen',
+    es: 'Configuración',
+    el: 'Ρυθμίσεις',
+    fr: 'Paramètres',
+    it: 'Impostazioni',
+    fil: 'Mga Pagsasaayos',
+    jp: '設定',
+    ko: '설정',
+    th: 'การตั้งค่า',
   },
 } )
 

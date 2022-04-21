@@ -13,6 +13,18 @@ import { FolderItem } from '../Collections/types'
 const strings = registerTranslations( {
   title: {
     en: 'Collections',
+    pa: 'ਸੰਗ੍ਰਹਿ',
+    hi: 'संग्रहण',
+    ms: 'Koleksi',
+    de: 'Sammlungen',
+    es: 'Colecciones',
+    el: 'Συλλογές',
+    fr: 'Collections',
+    it: 'Raccolte',
+    fil: 'Mga Koleksyon',
+    jp: 'コレクション',
+    ko: '컬렉션',
+    th: 'ที่คั่นหนังสือ',
   },
 } )
 
