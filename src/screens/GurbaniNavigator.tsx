@@ -1,10 +1,9 @@
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { Image, StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
-import logo from '../../assets/images/logo.png'
 import IconHeaderButton from '../components/IconHeaderButton'
-import Typography from '../components/Typography'
+import Logo from '../components/Logo'
 import isTablet from '../helpers/isTablet'
 import { ContentType } from '../types/data'
 import { GurbaniStackParams, GurbaniStackScreenProps } from '../types/navigation'
@@ -21,16 +20,6 @@ const styles = StyleSheet.create( {
   },
   left: {
     marginLeft: -16,
-  },
-  logoIcon: {
-    width: 28,
-    height: 28,
-    marginRight: 6.5,
-  },
-  logoText: {
-    fontSize: 20,
-    lineHeight: 24,
-    fontWeight: '300',
   },
   right: {
     marginRight: -16,
@@ -81,10 +70,7 @@ const getOptions = ( {
     </HeaderButtons>
   ),
   headerTitle: () => (
-    <View style={styles.headerTitle}>
-      <Image style={styles.logoIcon} source={logo} />
-      <Typography style={styles.logoText}>Shabad OS</Typography>
-    </View>
+    <Logo />
   ),
 } )
 
