@@ -5,7 +5,7 @@ const useLandscape = () => {
 
   const isLandscape = width > height
   const landscapeStyle: StyleProp<ViewStyle> = isLandscape
-    ? { marginLeft: height / 2, marginRight: height / 2 }
+    ? { marginLeft: width / 6, marginRight: width / 6 }
     : {}
 
   return { isLandscape, landscapeStyle }
