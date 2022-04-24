@@ -6,7 +6,7 @@ import Colors from '../themes/colors'
 
 const styles = StyleSheet.create( {
   native: {
-    margin: -16,
+    margin: 0,
   },
 } )
 

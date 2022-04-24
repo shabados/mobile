@@ -5,8 +5,6 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import logo from '../../assets/images/logo.png'
 import IconHeaderButton from '../components/IconHeaderButton'
 import Typography from '../components/Typography'
-import Colors from '../themes/colors'
-import { px } from '../themes/utils'
 import { ContentType } from '../types/data'
 import { GurbaniStackParams, GurbaniStackScreenProps } from '../types/navigation'
 import GurbaniScreen from './Gurbani'
@@ -18,6 +16,9 @@ const styles = StyleSheet.create( {
     flexDirection: 'row',
     alignItems: 'center',
   },
+  left: {
+    marginLeft: -16,
+  },
   logoIcon: {
     width: 28,
     height: 28,
@@ -27,6 +28,9 @@ const styles = StyleSheet.create( {
     fontSize: 20,
     lineHeight: 24,
     fontWeight: '300',
+  },
+  right: {
+    marginRight: -16,
   },
 } )
 
@@ -41,6 +45,7 @@ const getOptions = ( {
         iconName="menu"
         testID="navbar-menu"
         disabled
+        style={styles.left}
       />
     </HeaderButtons>
   ),
@@ -68,6 +73,7 @@ const getOptions = ( {
         iconName="options-outline"
         testID="navbar-settings"
         onPress={() => navigation.navigate( 'Home.Tab.Settings', { screen: 'Settings.View' } )}
+        style={styles.right}
       />
     </HeaderButtons>
   ),
