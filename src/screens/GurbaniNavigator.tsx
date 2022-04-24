@@ -1,13 +1,16 @@
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { Image, Platform, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
 import logo from '../../assets/images/logo.png'
 import IconHeaderButton from '../components/IconHeaderButton'
 import Typography from '../components/Typography'
+import isTablet from '../helpers/isTablet'
 import { ContentType } from '../types/data'
 import { GurbaniStackParams, GurbaniStackScreenProps } from '../types/navigation'
 import GurbaniScreen from './Gurbani'
+
+const xlarge = isTablet
 
 const { Navigator, Screen } = createNativeStackNavigator<GurbaniStackParams>()
 
@@ -51,7 +54,7 @@ const getOptions = ( {
   ),
   headerRight: () => (
     <HeaderButtons HeaderButtonComponent={IconHeaderButton}>
-      {Platform.OS === 'ios' && Platform.isPad
+      {xlarge
       && (
       <>
         <Item

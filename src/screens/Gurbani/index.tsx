@@ -1,7 +1,7 @@
-import { Platform } from 'react-native'
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
+import isTablet from '../../helpers/isTablet'
 import { getBookmark, getShabad } from '../../services/data'
 import { settings, useSetting } from '../../services/settings'
 import { ContentType, LineData } from '../../types/data'
@@ -9,6 +9,8 @@ import { GurbaniStackScreenProps } from '../../types/navigation'
 import BottomBar from './BottomBar'
 import DefaultLines from './DefaultLines'
 import ReaderLines from './ReaderLines'
+
+const xlarge = isTablet
 
 type Loaders = {
   [screen in ContentType]: ( id: string ) => Promise<{ id: string, lines: LineData[] }>
@@ -35,7 +37,7 @@ const GurbaniScreen = ( {
     <Container safeArea left right>
       {data && <Lines key={data.id} id={data.id} lines={data.lines} />}
 
-      {!( Platform.OS === 'ios' && Platform.isPad ) && <BottomBar />}
+      {!xlarge && <BottomBar />}
     </Container>
   )
 }
