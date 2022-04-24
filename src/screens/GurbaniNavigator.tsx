@@ -50,9 +50,26 @@ const getOptions = ( {
   ),
   headerRight: () => (
     <HeaderButtons HeaderButtonComponent={IconHeaderButton}>
+      {Platform.OS === 'ios' && Platform.isPad
+      && (
+      <>
+        <Item
+          title="search"
+          iconName="search-outline"
+          testID="navbar-settings"
+          onPress={() => navigation.navigate( 'Root.Search' )}
+        />
+        <Item
+          title="collections"
+          iconName="bookmark-outline"
+          testID="navbar-settings"
+          onPress={() => navigation.navigate( 'Root.Collections' )}
+        />
+      </>
+      )}
       <Item
         title="settings"
-        iconName="ios-options-outline"
+        iconName="options-outline"
         testID="navbar-settings"
         onPress={() => navigation.navigate( 'Home.Tab.Settings', { screen: 'Settings.View' } )}
       />
