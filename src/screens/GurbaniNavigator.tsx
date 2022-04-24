@@ -14,11 +14,6 @@ import GurbaniScreen from './Gurbani'
 const { Navigator, Screen } = createNativeStackNavigator<GurbaniStackParams>()
 
 const styles = StyleSheet.create( {
-  headerIcon: {
-    color: Colors.PrimaryText,
-    fontSize: 28,
-    ...px( 10 ),
-  },
   headerTitle: {
     flexDirection: 'row',
     alignItems: 'center',
