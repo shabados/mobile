@@ -21,10 +21,11 @@ const styles = StyleSheet.create( {
   logoIcon: {
     width: 28,
     height: 28,
-    marginRight: 10,
+    marginRight: 6.5,
   },
   logoText: {
     fontSize: 20,
+    lineHeight: 24,
     fontWeight: '300',
   },
 } )
