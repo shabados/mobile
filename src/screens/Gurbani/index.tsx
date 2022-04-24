@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
@@ -34,7 +35,7 @@ const GurbaniScreen = ( {
     <Container safeArea left right>
       {data && <Lines key={data.id} id={data.id} lines={data.lines} />}
 
-      <BottomBar />
+      {!( Platform.OS === 'ios' && Platform.isPad ) && <BottomBar />}
     </Container>
   )
 }
