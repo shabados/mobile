@@ -22,6 +22,7 @@ const styles = StyleSheet.create( {
 
 const Logo = () => {
   const { width } = useWindowDimensions()
+
   return (
     <View style={styles.headerTitle}>
       <Image style={styles.logoIcon} source={logo} />
