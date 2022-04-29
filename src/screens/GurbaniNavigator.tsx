@@ -67,9 +67,7 @@ const getOptions = ( {
       />
     </HeaderButtons>
   ),
-  headerTitle: () => (
-    <Logo />
-  ),
+  headerTitle: Logo,
 } )
 
 const GurbaniNavigator = () => (
