@@ -9,8 +9,6 @@ import { ContentType } from '../types/data'
 import { GurbaniStackParams, GurbaniStackScreenProps } from '../types/navigation'
 import GurbaniScreen from './Gurbani'
 
-const xlarge = isTablet
-
 const { Navigator, Screen } = createNativeStackNavigator<GurbaniStackParams>()
 
 const styles = StyleSheet.create( {
@@ -43,7 +41,7 @@ const getOptions = ( {
   ),
   headerRight: () => (
     <HeaderButtons HeaderButtonComponent={IconHeaderButton}>
-      {xlarge
+      {isTablet
       && (
       <>
         <Item

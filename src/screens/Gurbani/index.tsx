@@ -10,8 +10,6 @@ import BottomBar from './BottomBar'
 import DefaultLines from './DefaultLines'
 import ReaderLines from './ReaderLines'
 
-const xlarge = isTablet
-
 type Loaders = {
   [screen in ContentType]: ( id: string ) => Promise<{ id: string, lines: LineData[] }>
 }
@@ -37,7 +35,7 @@ const GurbaniScreen = ( {
     <Container safeArea left right>
       {data && <Lines key={data.id} id={data.id} lines={data.lines} />}
 
-      {!xlarge && <BottomBar />}
+      {!isTablet && <BottomBar />}
     </Container>
   )
 }
