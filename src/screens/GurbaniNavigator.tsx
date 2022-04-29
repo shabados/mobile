@@ -42,8 +42,7 @@ const getOptions = ( {
   ),
   headerRight: () => (
     <HeaderButtons HeaderButtonComponent={IconHeaderButton}>
-      {isTablet
-      && (
+      {isTablet && (
       <>
         <Item
           title="search"
