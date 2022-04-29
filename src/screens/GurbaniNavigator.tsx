@@ -5,6 +5,7 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import IconHeaderButton from '../components/IconHeaderButton'
 import Logo from '../components/Logo'
 import isTablet from '../helpers/isTablet'
+import Units from '../themes/units'
 import { ContentType } from '../types/data'
 import { GurbaniStackParams, GurbaniStackScreenProps } from '../types/navigation'
 import GurbaniScreen from './Gurbani'
@@ -17,10 +18,10 @@ const styles = StyleSheet.create( {
     alignItems: 'center',
   },
   left: {
-    marginLeft: -16,
+    marginLeft: Units.HorizontalLayoutMargin * -1,
   },
   right: {
-    marginRight: -16,
+    marginRight: Units.HorizontalLayoutMargin * -1,
   },
 } )
 
