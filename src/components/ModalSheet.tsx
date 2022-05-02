@@ -56,7 +56,7 @@ const ModalSheet = ( {
   children,
 }: ModalSheetProps ) => {
   const { isLandscape, landscapeStyle } = useLandscape()
-  const snapPoints = isLandscape ? [ '70%', '90%' ] : [ '40%', '70%' ]
+  const snapPoints = isLandscape ? [ '75%', '98%' ] : [ '40%', '75%' ]
 
   const sheetRef = useRef<BottomSheetModal>( null )
 

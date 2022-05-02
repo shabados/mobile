@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 
 import Container from '../../components/Container'
+import isTablet from '../../helpers/isTablet'
 import { getBookmark, getShabad } from '../../services/data'
 import { settings, useSetting } from '../../services/settings'
 import { ContentType, LineData } from '../../types/data'
@@ -34,7 +35,7 @@ const GurbaniScreen = ( {
     <Container safeArea left right>
       {data && <Lines key={data.id} id={data.id} lines={data.lines} />}
 
-      <BottomBar />
+      {!isTablet && <BottomBar />}
     </Container>
   )
 }

@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create( {
   native: {
-    margin: -16,
+    marginLeft: -8,
   },
 } )
 

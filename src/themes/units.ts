@@ -14,6 +14,7 @@ enum Units {
   ThumbFingerRatio = 1.5,
   Separator = StyleSheet.hairlineWidth,
   BorderRadius = 25,
+  ThinSplitViewWidth = 350,
 }
 
 export default Units

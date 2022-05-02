@@ -1,12 +1,11 @@
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { Image, StyleSheet, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
-import logo from '../../assets/images/logo.png'
 import IconHeaderButton from '../components/IconHeaderButton'
-import Typography from '../components/Typography'
-import Colors from '../themes/colors'
-import { px } from '../themes/utils'
+import Logo from '../components/Logo'
+import isTablet from '../helpers/isTablet'
+import Units from '../themes/units'
 import { ContentType } from '../types/data'
 import { GurbaniStackParams, GurbaniStackScreenProps } from '../types/navigation'
 import GurbaniScreen from './Gurbani'
@@ -14,23 +13,15 @@ import GurbaniScreen from './Gurbani'
 const { Navigator, Screen } = createNativeStackNavigator<GurbaniStackParams>()
 
 const styles = StyleSheet.create( {
-  headerIcon: {
-    color: Colors.PrimaryText,
-    fontSize: 28,
-    ...px( 10 ),
-  },
   headerTitle: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  logoIcon: {
-    width: 28,
-    height: 28,
-    marginRight: 10,
+  left: {
+    marginLeft: -Units.HorizontalLayoutMargin,
   },
-  logoText: {
-    fontSize: 20,
-    fontWeight: '300',
+  right: {
+    marginRight: -Units.HorizontalLayoutMargin,
   },
 } )
 
@@ -45,25 +36,38 @@ const getOptions = ( {
         iconName="menu"
         testID="navbar-menu"
         disabled
+        style={styles.left}
       />
     </HeaderButtons>
   ),
   headerRight: () => (
     <HeaderButtons HeaderButtonComponent={IconHeaderButton}>
+      {isTablet && (
+      <>
+        <Item
+          title="search"
+          iconName="search-outline"
+          testID="navbar-settings"
+          onPress={() => navigation.navigate( 'Root.Search' )}
+        />
+        <Item
+          title="collections"
+          iconName="bookmark-outline"
+          testID="navbar-settings"
+          onPress={() => navigation.navigate( 'Root.Collections' )}
+        />
+      </>
+      )}
       <Item
         title="settings"
-        iconName="ios-options-outline"
+        iconName="options-outline"
         testID="navbar-settings"
         onPress={() => navigation.navigate( 'Home.Tab.Settings', { screen: 'Settings.View' } )}
+        style={styles.right}
       />
     </HeaderButtons>
   ),
-  headerTitle: () => (
-    <View style={styles.headerTitle}>
-      <Image style={styles.logoIcon} source={logo} />
-      <Typography style={styles.logoText}>Shabad OS</Typography>
-    </View>
-  ),
+  headerTitle: Logo,
 } )
 
 const GurbaniNavigator = () => (

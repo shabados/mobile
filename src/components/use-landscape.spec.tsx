@@ -31,8 +31,8 @@ describe( 'useLandscape()', () => {
       const { result: { current } } = setup( true )
 
       expect( current.landscapeStyle ).toMatchObject( {
-        marginRight: SHORTER_EDGE / 2,
-        marginLeft: SHORTER_EDGE / 2,
+        marginRight: LONGER_EDGE / 6,
+        marginLeft: LONGER_EDGE / 6,
       } )
     } )
   } )
