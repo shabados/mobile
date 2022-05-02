@@ -1,6 +1,7 @@
 import { Image, StyleSheet, useWindowDimensions, View } from 'react-native'
 
 import logo from '../../assets/images/logo.png'
+import Units from '../themes/units'
 import Typography from './Typography'
 
 const styles = StyleSheet.create( {
@@ -26,7 +27,8 @@ const Logo = () => {
   return (
     <View style={styles.headerTitle}>
       <Image style={styles.logoIcon} source={logo} />
-      {width > 350 && <Typography style={styles.logoText}>Shabad OS</Typography>}
+      {width > Units.ThinSplitViewWidth
+      && <Typography style={styles.logoText}>Shabad OS</Typography>}
     </View>
   )
 }
