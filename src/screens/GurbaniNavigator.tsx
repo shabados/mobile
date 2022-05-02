@@ -18,10 +18,10 @@ const styles = StyleSheet.create( {
     alignItems: 'center',
   },
   left: {
-    marginLeft: Units.HorizontalLayoutMargin * -1,
+    marginLeft: -Units.HorizontalLayoutMargin,
   },
   right: {
-    marginRight: Units.HorizontalLayoutMargin * -1,
+    marginRight: -Units.HorizontalLayoutMargin,
   },
 } )
 
