@@ -1,10 +1,7 @@
 enum Fonts {
-  OpenGurbaniAkharBlack = 'OpenGurbaniAkhar-Black',
-  NotoSansRegular = 'NotoSans-Regular',
-  NotoSansLight = 'NotoSans-Light',
-  NotoSansGurmukhiRegular = 'NotoSansGurmukhiUI-Regular',
-  NotoSansGurmukhiBold = 'NotoSansGurmukhiUI-Bold',
-  MuktaMahee = 'MuktaMahee-Regular',
+  SantLipiRegular = 'SantLipi-Regular',
+  SantLipiMedium = 'SantLipi-Medium',
+  SantLipiSemiBold = 'SantLipi-SemiBold',
 }
 
 export default Fonts
