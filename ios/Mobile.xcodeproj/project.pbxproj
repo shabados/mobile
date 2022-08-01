@@ -12,6 +12,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		163F619C2B1D6BB9FFB87430 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FCFF9FD0FBA9CC5D1E2B3 /* ExpoModulesProvider.swift */; };
 		2E8002D538C44BD2A0AE3604 /* OpenGurbaniAkhar-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B409E7EF7B624198BCDB3691 /* OpenGurbaniAkhar-Black.otf */; };
 		32B80C1C53E04FB6B58026E3 /* NotoSansGurmukhiUI-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA70DA383E934E8197BDEC98 /* NotoSansGurmukhiUI-Bold.ttf */; };
 		34F5C7101BE4482A81834E72 /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BF451B806A4B65A0A61477 /* NotoSans-Bold.ttf */; };
@@ -27,6 +28,7 @@
 		BB47DC35FD204CB38E878A92 /* MuktaMahee-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 38268E5B0A9C4BCFAC8299FE /* MuktaMahee-Regular.ttf */; };
 		CDD8A57CBA66483799152BA9 /* MuktaMahee-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E064A20C1A644F59CECAF51 /* MuktaMahee-ExtraLight.ttf */; };
 		DE5882C202C9467C965A1D20 /* ShabadOsIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CA99B3623274A749DB794ED /* ShabadOsIcons.ttf */; };
+		E01FEA80AD9CE738A09AA51D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A4A9BBF71FBB8D3FED5FE /* ExpoModulesProvider.swift */; };
 		FDA38983951648E4A707D11A /* MuktaMahee-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E734D22ED4716BE2E0ED5 /* MuktaMahee-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
@@ -70,9 +72,11 @@
 		6983CAB6CDE745808544976C /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-Mobile-MobileTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mobile-MobileTests.debug.xcconfig"; path = "Target Support Files/Pods-Mobile-MobileTests/Pods-Mobile-MobileTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Mobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		850A4A9BBF71FBB8D3FED5FE /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Mobile/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		853AE48B70484D39865C4945 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		8A5806CEDF9043D2A7A1F5AE /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		8C366ECE3A144761A7340297 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		9B0FCFF9FD0FBA9CC5D1E2B3 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Mobile-MobileTests/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		A682E7F506914B70B059FE31 /* MuktaMahee-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "MuktaMahee-Medium.ttf"; path = "../assets/fonts/MuktaMahee-Medium.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-Mobile-MobileTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mobile-MobileTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B409E7EF7B624198BCDB3691 /* OpenGurbaniAkhar-Black.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenGurbaniAkhar-Black.otf"; path = "../assets/fonts/OpenGurbaniAkhar-Black.otf"; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
 				C1C4F978DCD84F18A13B3E12 /* Resources */,
+				872ADA9C1A6CEDD113C11CF6 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -180,6 +185,23 @@
 				00E356EE1AD99517003FC87E /* MobileTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		872ADA9C1A6CEDD113C11CF6 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				CA9107DC769742066CA0B61C /* Mobile */,
+				A55C6B8C0A949619C4A743BA /* MobileTests */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		A55C6B8C0A949619C4A743BA /* MobileTests */ = {
+			isa = PBXGroup;
+			children = (
+				9B0FCFF9FD0FBA9CC5D1E2B3 /* ExpoModulesProvider.swift */,
+			);
+			name = MobileTests;
 			sourceTree = "<group>";
 		};
 		C1C4F978DCD84F18A13B3E12 /* Resources */ = {
@@ -217,6 +239,14 @@
 				1A5E734D22ED4716BE2E0ED5 /* MuktaMahee-SemiBold.ttf */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		CA9107DC769742066CA0B61C /* Mobile */ = {
+			isa = PBXGroup;
+			children = (
+				850A4A9BBF71FBB8D3FED5FE /* ExpoModulesProvider.swift */,
+			);
+			name = Mobile;
 			sourceTree = "<group>";
 		};
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
@@ -514,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E356F31AD99517003FC87E /* MobileTests.m in Sources */,
+				163F619C2B1D6BB9FFB87430 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +554,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				E01FEA80AD9CE738A09AA51D /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +579,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = MobileTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,6 +590,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mobile.app/Mobile";
@@ -571,7 +604,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = MobileTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,6 +615,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mobile.app/Mobile";
@@ -611,6 +645,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shabados.app;
 				PRODUCT_NAME = "Shabad OS";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.shabados.app";
@@ -643,6 +678,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.shabados.app;
 				PRODUCT_NAME = "Shabad OS";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.shabados.app";

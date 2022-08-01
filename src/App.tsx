@@ -1,4 +1,5 @@
 import { DarkTheme, DefaultTheme, NavigationContainer, NavigationContainerRef, ParamListBase } from '@react-navigation/native'
+import { useKeepAwake } from 'expo-keep-awake'
 import { Suspense, useRef } from 'react'
 import { useColorScheme } from 'react-native'
 
@@ -8,6 +9,7 @@ import RootNavigator from './screens/RootNavigator'
 import telemetry from './services/telemetry'
 
 const App = () => {
+  useKeepAwake()
   const navigationRef = useRef<NavigationContainerRef<ParamListBase>>( null )
 
   return (
