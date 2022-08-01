@@ -60,7 +60,8 @@
     "react-native-tab-view": "^3.1.1",
     "react-native-vector-icons": "^9.1.0",
     "react-navigation-header-buttons": "^9.0.1",
-    "react-query": "^3.34.16"
+    "react-query": "^3.34.16",
+    "expo": "^45.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
