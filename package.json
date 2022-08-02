@@ -38,7 +38,7 @@
     "@sentry/react-native": "^3.3.3",
     "@splitsoftware/splitio-react-native": "^0.1.0",
     "env-var": "^7.1.1",
-    "gurmukhi-utils": "^3.2.1",
+    "gurmukhi-utils": "^3.2.2",
     "i18next": "^21.6.13",
     "jotai": "^1.6.0",
     "lodash": "^4.17.21",

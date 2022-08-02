@@ -1,14 +1,13 @@
 import { stripVishraams, toUnicode } from 'gurmukhi-utils'
 import { StyleSheet } from 'react-native'
 
-import OS from '../helpers/os'
 import Fonts from '../themes/fonts'
 import Units from '../themes/units'
 import Typography, { TypographyProps } from './Typography'
 
 const styles = StyleSheet.create( {
   root: {
-    ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
+    fontFamily: Fonts.SantLipiRegular,
   },
 } )
 

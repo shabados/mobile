@@ -16,11 +16,11 @@ import { px, py } from '../../themes/utils'
 
 const styles = StyleSheet.create( {
   gurbani: {
+    fontFamily: Fonts.SantLipiRegular,
     fontSize: Units.Base * Units.GurmukhiLatinRatio,
     lineHeight: Units.Base * Units.GurmukhiLineHeightMultiplier,
     ...( OS.android && {
       paddingBottom: 6,
-      fontFamily: Fonts.MuktaMahee,
     } ),
   },
   header: {
@@ -29,9 +29,9 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
   },
   headerGurmukhi: {
+    fontFamily: Fonts.SantLipiRegular,
     fontSize: Units.Footnote * Units.GurmukhiLatinRatio,
     lineHeight: Units.Footnote * Units.GurmukhiLineHeightMultiplier,
-    ...( OS.android && { fontFamily: Fonts.MuktaMahee } ),
   },
   root: {
     ...px( Units.HorizontalLayoutMargin ),

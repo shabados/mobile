@@ -36,15 +36,9 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>NotoSans-Bold.ttf</string>
-		<string>NotoSans-Light.ttf</string>
-		<string>NotoSans-Regular.ttf</string>
-		<string>NotoSansGurmukhiUI-Bold.ttf</string>
-		<string>NotoSansGurmukhiUI-Regular.ttf</string>
-		<string>OpenGurbaniAkhar-Black.otf</string>
 		<string>ShabadOsIcons.ttf</string>
 		<string>AntDesign.ttf</string>
 		<string>Entypo.ttf</string>
@@ -62,13 +56,9 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
-		<string>MuktaMahee-Bold.ttf</string>
-		<string>MuktaMahee-ExtraBold.ttf</string>
-		<string>MuktaMahee-ExtraLight.ttf</string>
-		<string>MuktaMahee-Light.ttf</string>
-		<string>MuktaMahee-Medium.ttf</string>
-		<string>MuktaMahee-Regular.ttf</string>
-		<string>MuktaMahee-SemiBold.ttf</string>
+		<string>SantLipi-Medium.ttf</string>
+		<string>SantLipi-Regular.ttf</string>
+		<string>SantLipi-SemiBold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
