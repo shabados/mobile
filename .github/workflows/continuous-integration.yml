@@ -61,6 +61,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pods-
 
+      - run: mkdir node_modules
+
       - run: npm ci
 
       - run: npm run build:${{ matrix.platform }}
