@@ -11,7 +11,7 @@ on:
 
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     strategy:
       fail-fast: false
       matrix:
@@ -36,10 +36,12 @@ jobs:
         include:
           - os: macos-11
             platform: ios
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             platform: android
     steps:
       - uses: actions/checkout@v2
+
+      - uses: Homebrew/actions/setup-homebrew@master
 
       - uses: actions/setup-node@v2
         with:
