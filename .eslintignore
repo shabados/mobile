@@ -5,3 +5,5 @@ docs/
 assets/
 ios/
 android/
+expo-env.d.ts
+.expo

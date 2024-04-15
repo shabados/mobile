@@ -1,30 +1,26 @@
-// Unpack preset to deal with https://github.com/callstack/react-native-testing-library/issues/379
-const reactNativePreset = require( 'react-native/jest-preset' )
+const expoPreset = require( 'jest-expo/jest-preset' )
 
-// List of modules that do not transpile their code
-const whitelistedModules = [ '@react-native', 'react-native', 'react-navigation-header-buttons', '@sentry' ]
+const whitelistedModules = [
+  '@?react-native',
+  '@?expo',
+  '@react-navigation',
+  'ky',
+]
 
-module.exports = {
-  ...reactNativePreset,
+const config = {
+  ...expoPreset,
   collectCoverage: true,
   coveragePathIgnorePatterns: [ '<rootDir>/(?!src)' ],
   watchPathIgnorePatterns: [ '<rootDir>/(?!src|test)' ],
   transformIgnorePatterns: [ `node_modules/(?!${whitelistedModules.join( '|' )})` ],
   setupFiles: [
-    '<rootDir>/test/save-promise.js',
-    ...reactNativePreset.setupFiles,
-    '<rootDir>/test/restore-promise.js',
-    'react-native-gesture-handler/jestSetup.js',
-    '<rootDir>/test/setup-jest.js',
+    ...expoPreset.setupFiles,
+    '<rootDir>/test/setup-jest.ts',
   ],
   setupFilesAfterEnv: [
-    '<rootDir>/test/after-env.js',
+    '<rootDir>/test/after-env.ts',
   ],
   resetMocks: true,
-  moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'json', 'node' ],
-  // https://github.com/react-navigation/react-navigation/issues/7950#issuecomment-615220412
-  moduleNameMapper: {
-    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
-    '\\.(css|less)$': 'identity-obj-proxy',
-  },
 }
+
+module.exports = config

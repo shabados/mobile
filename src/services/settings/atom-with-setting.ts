@@ -1,6 +1,6 @@
 import { atom } from 'jotai'
 
-import { atomWithMMKVStorage } from '../mmkv-storage'
+import { atomWithKvStorage } from '~/services/kv-storage'
 
 export type SettingSchema<Data> = {
   version: number,
@@ -17,7 +17,7 @@ const atomWithSetting = <Data extends string | object | number | boolean>(
   initialValue: Data,
   { version = 1 }: Partial<SettingMetadata> = {}
 ) => {
-  const baseAtom = atomWithMMKVStorage<SettingSchema<Data>>( `setting.${key}`, {
+  const baseAtom = atomWithKvStorage<SettingSchema<Data>>( `setting.${key}`, {
     version,
     updatedAt: null,
     value: initialValue,

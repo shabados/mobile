@@ -1,9 +1,10 @@
-import { fireEvent, render } from '@testing-library/react-native'
+import { fireEvent, render, screen } from '@testing-library/react-native'
 import { useAtom } from 'jotai'
 import { Text, View } from 'react-native'
 
-import Button from '../../components/Button'
-import i18n from '../i18n'
+import Button from '~/components/atoms/Button'
+import i18n from '~/services/i18n'
+
 import localeAtom from './locale'
 
 const setup = () => {
@@ -26,11 +27,11 @@ const setup = () => {
 describe( 'localeAtom', () => {
   it( 'should update i18n language when set', async () => {
     const changeLanguageSpy = jest.spyOn( i18n, 'changeLanguage' )
-    const { getByText, findByText } = setup()
+    setup()
 
-    fireEvent.press( getByText( 'Change' ) )
+    fireEvent.press( screen.getByText( 'Change' ) )
 
     expect( changeLanguageSpy ).toHaveBeenCalledWith( 'de' )
-    expect( await findByText( 'de' ) ).toBeTruthy()
+    expect( await screen.findByText( 'de' ) ).toBeTruthy()
   } )
 } )
