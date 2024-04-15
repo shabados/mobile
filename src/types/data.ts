@@ -1,10 +1,6 @@
 /* Shabad OS data definitions */
 
-export enum ContentType {
-  Shabad = 'shabad',
-  Bookmark = 'bookmark',
-  Ang = 'ang',
-}
+export type ContentType = 'shabad' | 'ang' | 'bani'
 
 export type TranslationData = {
   translationSourceId: number,
@@ -38,8 +34,7 @@ export type ShabadData = {
   lines: LineData[],
 }
 
-//! Bookmarks should be line ranges and line groups
-export type BookmarkData = {
+export type BaniData = {
   id: string,
   nameGurmukhi: string,
   writer: WriterPartial,
@@ -47,11 +42,46 @@ export type BookmarkData = {
   lines: LineData[],
 }
 
-export type CollectionData = {
+export type CollectionBani = {
   id: string,
   nameGurmukhi: string,
-  items?: CollectionData[],
+  type: 'bani',
 }
+
+export type CollectionShabad = {
+  id: string,
+  lineId: string,
+  type: 'shabad',
+}
+
+export type CollectionAng = {
+  id: string,
+  lineId: string,
+  type: 'ang',
+}
+
+type CollectionFolderCommon = {
+  type: 'folder',
+  items: CollectionItem[],
+}
+
+export type CollectionPresetFolder = {
+  id: string,
+  origin: 'preset',
+  nameGurmukhi: string,
+} & CollectionFolderCommon
+
+export type CollectionUserFolder = {
+  id: string,
+  origin: 'user',
+  name: string,
+} & CollectionFolderCommon
+
+export type CollectionFolder = CollectionPresetFolder | CollectionUserFolder
+
+export type CollectionItem = CollectionFolder | CollectionShabad | CollectionAng | CollectionBani
+
+export type CollectionItemType = CollectionItem['type']
 
 export type SearchData = {
   shabad: ShabadData,

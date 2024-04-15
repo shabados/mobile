@@ -1,11 +1,13 @@
 import { Platform } from 'react-native'
 
-import { version } from '../../../package.json'
-import get from './get'
+import { version } from '~/../package.json'
 
-const sentry = {
-  dsn: get( 'SENTRY_DSN' ).required().asString(),
+import env from './env'
+import ifEnabled from './if-enabled'
+
+const sentry = ifEnabled( {
+  ...env.sentry,
   releaseName: `${Platform.OS}-app@${version}`,
-}
+} )
 
 export default sentry

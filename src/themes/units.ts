@@ -1,20 +1,18 @@
 import { StyleSheet } from 'react-native'
 
-enum Units {
-  Footnote = 13,
-  Base = 17,
-  Title1 = 28,
-  Title2 = 22,
-  Title3 = 20,
-  GurmukhiLatinRatio = 1.143,
-  LineHeightMultiplier = 1.25,
-  GurmukhiLineHeightMultiplier = 1.75,
-  HorizontalLayoutMargin = 16,
-  MinimumTouchDimension = 44,
-  ThumbFingerRatio = 1.5,
-  Separator = StyleSheet.hairlineWidth,
-  BorderRadius = 25,
-  ThinSplitViewWidth = 350,
-}
-
-export default Units
+export const units = {
+  footnote: 13,
+  base: 17,
+  title1: 28,
+  title2: 22,
+  title3: 20,
+  gurmukhiLatinRatio: 1.143,
+  lineHeightMultiplier: 1.25,
+  gurmukhiLineHeightMultiplier: 1.75,
+  horizontalLayoutMargin: 16,
+  minimumTouchDimension: 44,
+  thumbFingerRatio: 1.5,
+  separator: StyleSheet.hairlineWidth,
+  borderRadius: 25,
+  thinSplitViewWidth: 350,
+} as const

@@ -1,7 +1,9 @@
+import { ColorValue, DimensionValue } from 'react-native'
+
 /**
  * Set Top and Bottom margin to given value.
  */
-export const my = ( value: number | string = 'auto' ) => ( {
+export const my = ( value: DimensionValue = 'auto' ) => ( {
   marginTop: value,
   marginBottom: value,
 } )
@@ -9,7 +11,7 @@ export const my = ( value: number | string = 'auto' ) => ( {
 /**
  * Set Left and Right margin to given value.
  */
-export const mx = ( value: number | string = 'auto' ) => ( {
+export const mx = ( value: DimensionValue = 'auto' ) => ( {
   marginLeft: value,
   marginRight: value,
 } )
@@ -17,7 +19,7 @@ export const mx = ( value: number | string = 'auto' ) => ( {
 /**
  * Set Left and Right padding to given value.
  */
-export const px = ( value: number | string = 'auto' ) => ( {
+export const px = ( value: DimensionValue = 'auto' ) => ( {
   paddingLeft: value,
   paddingRight: value,
 } )
@@ -25,7 +27,7 @@ export const px = ( value: number | string = 'auto' ) => ( {
 /**
  * Set Top and Bottom padding to given value.
  */
-export const py = ( value: number | string = 'auto' ) => ( {
+export const py = ( value: DimensionValue = 'auto' ) => ( {
   paddingTop: value,
   paddingBottom: value,
 } )
@@ -33,7 +35,7 @@ export const py = ( value: number | string = 'auto' ) => ( {
 /**
  * Only for development purposes
  */
-export const debugBorder = {
+export const debugBorder = ( borderColor: ColorValue = 'red' ) => ( {
   borderWidth: 2,
-  borderColor: 'red',
-}
+  borderColor,
+} )

@@ -1,0 +1,15 @@
+# https://github.com/actions/upload-artifact#maintaining-file-permissions-and-case-sensitive-files
+
+name: Download workspace
+description: Restores the contents of the workspace tarball, preserving file permissions
+
+runs:
+  using: composite
+  steps:
+    - name: Download workspace
+      uses: actions/download-artifact@v4
+      with:
+        name: release-workspace
+    - name: Extract tar workspace archive to preserve file permissions
+      run: tar -xvf workspace.tar
+      shell: bash

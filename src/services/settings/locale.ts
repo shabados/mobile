@@ -1,6 +1,7 @@
 import { atom } from 'jotai'
 
-import i18n, { Languages } from '../i18n'
+import i18n, { Languages } from '~/services/i18n'
+
 import atomWithSetting from './atom-with-setting'
 
 const settingAtom = atomWithSetting( 'locale', i18n.language as Languages )

@@ -1,19 +1,19 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "lib": ["es6"],
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react-native",
-    "noEmit": true,
-    "isolatedModules": true,
     "strict": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true
+    "paths": {
+      "~/test/*": ["./test/*"],
+      "~/assets/*": ["./assets/*"],
+      "~/*": ["./src/*"]
+    }
   },
-  "exclude": ["node_modules", "android", "ios", "coverage", "docs"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "app.config.js",
+    "src-old/types/assets.d.ts.do"
+  ]
 }

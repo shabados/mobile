@@ -1,0 +1,50 @@
+{
+  "cli": {
+    "version": ">= 7.8.2",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "example": {
+      "withoutCredentials": true,
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "example"
+      }
+    },
+    "local": {
+      "extends": "example",
+      "env": {
+        "APP_ENV": "local"
+      }
+    },
+    "next": {
+      "autoIncrement": true,
+      "env": {
+        "APP_ENV": "next"
+      }
+    },
+    "latest": {
+      "autoIncrement": true,
+      "env": {
+        "APP_ENV": "local"
+      }
+    }
+  },
+  "submit": {
+    "common": {
+      "android": {
+        "track": "internal"
+      },
+      "ios": {
+        "appleId": "john@turtle.com",
+        "appleTeamId": "VN2W54FQE6"
+      }
+    },
+    "next": {
+      "extends": "common"
+    },
+    "latest": {
+      "extends": "common"
+    }
+  }
+}

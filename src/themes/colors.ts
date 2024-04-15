@@ -40,6 +40,4 @@ const android: Theme = {
   Active: PlatformColor( '@android:color/holo_green_light' ),
 }
 
-const Colors = Platform.select<Theme>( { android, ios } )!
-
-export default Colors
+export const Colors = Platform.select<Theme>( { android, ios } )!
