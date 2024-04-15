@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker'
 
-faker.seed( 'Shabad OS' )
+faker.seed( 1699 )
 
-export * from './bookmark'
+export * from './banis'
 export * from './collection'
 export * from './line'
 export * from './search'

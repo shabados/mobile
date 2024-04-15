@@ -14,5 +14,18 @@
         "ignoreStyleProperties": true
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["config/**/*", "scripts/**/*"],
+      "rules": {
+        // Build-time config files are allowed to have devDependencies
+        "import/no-extraneous-dependencies": "off",
+        // Config files are allowed to use console.log
+        "no-console": "off",
+        // Scripts & config files are allowed to use require
+        "global-require": "off"
+      }
+    }
+  ]
 }

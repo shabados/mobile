@@ -1,10 +1,10 @@
 //* Currently set to the order of languages.json from database
-enum Languages {
-  English,
-  Punjabi,
-  Spanish,
-  Hindi,
-  Urdu,
-}
+export const languages = {
+  english: 0,
+  punjabi: 1,
+  spanish: 2,
+  hindi: 3,
+  urdu: 4,
+} as const
 
-export default Languages
+export type Languages = keyof typeof languages

@@ -1,17 +1,23 @@
 import i18n from 'i18next'
 import { chain, mapValues } from 'lodash'
 
-import { mutableCounter } from '../../helpers/mutable-value'
+import { mutableCounter } from '~/helpers/mutable-value'
+import { createLogger } from '~/services/logger'
+
 import { getIsInitialized } from './initialize'
-import { LanguageTranslations } from './languages'
+import { Languages } from './languages'
+
+const log = createLogger( 'i18n' )
 
 const { increment: nextNamespace } = mutableCounter()
+
+type LanguageTranslations = Partial<Record<Languages, string>> & { 'en': string }
 
 const registerTranslations = <
   Translations extends { [name in string]: LanguageTranslations },
 >( translations: Translations ) => {
   const namespace = nextNamespace().toString()
-  console.log( `[i18n] Adding resources to namespace ${namespace}: ${JSON.stringify( translations )}` )
+  log.info( `Adding resources to namespace "${namespace}"`, translations )
 
   // Group translations by language, with phrases as sub-keys for each language
   const translationsByLanguage = chain( translations )

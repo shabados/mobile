@@ -11,21 +11,15 @@ on:
 
 jobs:
   checks:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         command: ['lint', 'test -- --ci --forceExit', 'types']
     steps:
       - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          cache: npm
-
+      - uses: jdx/mise-action@v2
       - run: npm ci
-
       - run: npm run ${{ matrix.command }}
 
   build:
@@ -34,35 +28,20 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-11
+          - os: macos-latest
             platform: ios
-          - os: ubuntu-22.04
+          - os: ubuntu-latest
             platform: android
     steps:
       - uses: actions/checkout@v2
-
       - uses: Homebrew/actions/setup-homebrew@master
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16
-          cache: npm
-
-      - uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-
+      - uses: jdx/mise-action@v2
       - run: brew bundle
-
       - uses: actions/cache@v2
         with:
           path: ios/Pods
           key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pods-
-
-      - run: mkdir node_modules
-
       - run: npm ci
-
       - run: npm run build:${{ matrix.platform }}
