@@ -5,8 +5,8 @@ import sentry from './sentry'
 const { postHog, logger } = env
 
 const configuration = {
-  logger: ifEnabled( logger ),
   sentry,
+  logger: ifEnabled( logger ),
   postHog: ifEnabled( postHog ),
 }
 
