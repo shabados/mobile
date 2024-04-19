@@ -95,7 +95,7 @@ This project is under v3 of the [GPL](LICENSE.md). It is similar to the Golden R
 >
 > You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-[release-image]: https://img.shields.io/github/package-json/v/ShabadOS/mobile?style=for-the-badge
+[release-image]: https://img.shields.io/github/v/release/ShabadOS/mobile?style=for-the-badge&label=Release
 [release-url]: https://github.com/shabados/mobile/releases/latest
 [instagram-image]: https://img.shields.io/badge/Instagram-%40shabad__os-C13584.svg?logo=instagram&logoColor=white
 [instagram-url]: https://www.instagram.com/shabad_os/
