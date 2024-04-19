@@ -3,6 +3,10 @@ import { EnvironmentConfig } from './types'
 
 export default {
   runtime: {
+    logger: {
+      enabled: true,
+      level: 'info',
+    },
     postHog: {
       enabled: false,
     },

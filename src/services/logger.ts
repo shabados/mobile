@@ -1,6 +1,13 @@
 import { defLvlType, logger } from 'react-native-logs'
 
-const log = logger.createLogger<defLvlType>()
+import configuration from './configuration'
+
+const log = logger.createLogger<defLvlType>( {
+  enabled: configuration.logger.enabled,
+  ...( configuration.logger.enabled && {
+    severity: configuration.logger.level,
+  } ),
+} )
 
 export const createLogger = log.extend
 
