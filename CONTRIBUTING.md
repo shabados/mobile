@@ -31,7 +31,7 @@ In order to download necessary tools, clone the repository, and install dependen
 You'll need the following:
 
 - [Git](https://git-scm.com/)
-- [Node.JS](https://nodejs.org) (If you need to manage multiple Node.JS versions, [use a node version manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) to install)
+- [Mise](https://mise.jdx.dev/getting-started.html). Add mise shims to your path to ensure IDE commands work (option 2b).
 
 Get the source code of `mobile` repo:
 

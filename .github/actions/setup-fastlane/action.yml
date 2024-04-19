@@ -1,0 +1,12 @@
+name: Setup Fastlane
+description: Sets up Ruby + Fastlane
+
+runs:
+  using: composite
+  steps:
+    - uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+    - run: gem install fastlane
+      shell: bash

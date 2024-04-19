@@ -1,6 +1,6 @@
-import Languages from '../../helpers/languages'
-import { SearchData } from '../../types/data'
-import * as gurbaniNow from '../gurbaninow'
+import { languages } from '~/helpers/languages'
+import * as gurbaniNow from '~/services/gurbaninow'
+import { SearchData } from '~/types/data'
 
 export const search = async ( query: string, page = 0 ): Promise<SearchData[]> => {
   const { shabads } = await gurbaniNow.search( query, page )
@@ -23,7 +23,7 @@ export const search = async ( query: string, page = 0 ): Promise<SearchData[]> =
       translations: [
         //! Only english translation for now
         {
-          translationSourceId: Languages.English,
+          translationSourceId: languages.english,
           translation: translation.english.default,
         },
       ],

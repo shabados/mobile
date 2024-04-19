@@ -16,5 +16,6 @@
   },
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
-  }
+  },
+  "asciidoc.antora.enableAntoraSupport": false
 }

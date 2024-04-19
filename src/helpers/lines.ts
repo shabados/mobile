@@ -1,4 +1,4 @@
-import { LineData } from '../types/data'
+import { LineData } from '~/types/data'
 
 // !Hopefully, the API will return more metadata that will mean we don't need to parse like this
 const sectionEndRegex = /(]\d*]$|] rhwau ])/
