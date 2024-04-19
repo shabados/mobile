@@ -1,0 +1,22 @@
+on:
+  workflow_call:
+
+env:
+  FORCE_COLOR: true
+  APP_ENV: next
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        command: ['lint', 'test -- --ci --forceExit', 'types']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run ${{ matrix.command }}

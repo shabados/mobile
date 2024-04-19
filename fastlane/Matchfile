@@ -1,3 +1,0 @@
-app_identifier(
-  CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier),
-)

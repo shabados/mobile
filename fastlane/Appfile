@@ -1,6 +1,0 @@
-identifier = 'com.shabados.app'
-
-app_identifier(identifier)
-package_name(identifier)
-
-ENV['APPICON_IMAGE_FILE'] = './metadata/icon.png'

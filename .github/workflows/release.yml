@@ -1,0 +1,160 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+concurrency:
+  group: release
+  cancel-in-progress: true
+
+env:
+  EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+jobs:
+  checks:
+    uses: ./.github/workflows/checks.yml
+
+  prepare:
+    runs-on: ubuntu-latest
+    needs: checks
+    outputs:
+      release-version: ${{ steps.bump-version.outputs.next }}
+    steps:
+      - uses: shabados/actions/setup-git-identity@release/v3
+        with:
+          user: Shabad OS Bot
+          email: team@shabados.com
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_BOT_TOKEN }}
+      - uses: shabados/actions/bump-version@release/v3
+        id: bump-version
+      - uses: shabados/actions/generate-changelog@release/v3
+      - uses: ./.github/actions/upload-workspace
+
+  build:
+    needs: prepare
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [next, latest]
+        platform: [ios, android]
+        os: [macos-14, ubuntu-latest]
+        exclude:
+          - platform: android
+            os: macos-14
+          - platform: ios
+            os: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/download-workspace
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - uses: ./.github/actions/cache-pods
+        if: matrix.platform == 'ios'
+      - uses: actions/setup-java@v4
+        if: matrix.platform == 'android'
+        with:
+          distribution: temurin
+          java-version-file: .java-version
+          cache: gradle
+      - run: |
+          npm run build -- \
+            --non-interactive \
+            --platform ${{ matrix.platform }} \
+            --profile ${{ matrix.profile }}
+        shell: bash
+        env:
+          EAS_LOCAL_BUILD_SKIP_CLEANUP: '1'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.profile }}-${{ matrix.platform }}
+          path: |
+            **/*.aab
+            **/*.ipa
+
+  submit:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [next, latest]
+        platform: [ios, android]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.profile }}-${{ matrix.platform }}
+      - name: EAS Submit
+        run: |
+          build_path=$(find -name "*.ipa" -or -name "*.aab" -type f)
+          echo "Submitting $build_path to EAS"
+
+          npx eas-cli submit \
+            --non-interactive \
+            --path $build_path \
+            --platform ${{ matrix.platform }} \
+            --profile ${{ matrix.profile }}
+        env:
+          APP_ENV: ${{ matrix.profile }}
+
+  promote-external-testflight:
+    runs-on: ubuntu-latest
+    needs: submit
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [next, latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - uses: ./.github/actions/setup-fastlane
+      - name: Read bundle identifier
+        run: echo "PILOT_APP_IDENTIFIER=$(npm exec expo config -- --json  | jq -r .ios.bundleIdentifier)" >> $GITHUB_ENV
+        env:
+          APP_ENV: ${{ matrix.profile }}
+      - run: fastlane run pilot
+        env:
+          PILOT_PLATFORM: ios
+          PILOT_GROUPS: Beta Testers
+          PILOT_DISTRIBUTE_EXTERNAL: true
+          PILOT_DISTRIBUTE_ONLY: true
+          PILOT_NOTIFY_EXTERNAL_TESTERS: false
+          APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+
+  # In future, we can have a the job that publish
+  # a reviewed app to the App Store and Google Play Store
+  # and publish to GitHub releases to close off the version.
+  # For now, this should only be approved once a version has been
+  # published to the App Store + Play Store.
+  publish:
+    runs-on: ubuntu-latest
+    needs: [prepare, submit]
+    environment: latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+      - uses: shabados/actions/publish-github@release/v3
+        with:
+          github_token: ${{ secrets.GH_BOT_TOKEN }}
+          release_version: ${{ needs.prepare.outputs.release-version }}
+          asset_paths: |
+            **/*.aab
+            **/*.ipa

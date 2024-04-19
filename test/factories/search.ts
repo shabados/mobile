@@ -1,6 +1,7 @@
 import { Factory } from 'fishery'
 
-import { SearchData } from '../../src/types/data'
+import { SearchData } from '~/types/data'
+
 import { line } from './line'
 import { shabad } from './shabad'
 

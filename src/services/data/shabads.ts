@@ -1,6 +1,6 @@
-import Languages from '../../helpers/languages'
-import { ShabadData } from '../../types/data'
-import * as gurbaniNow from '../gurbaninow'
+import { languages } from '~/helpers/languages'
+import * as gurbaniNow from '~/services/gurbaninow'
+import { ShabadData } from '~/types/data'
 
 export const getShabad = async ( id: string ): Promise<ShabadData> => {
   const {
@@ -29,15 +29,15 @@ export const getShabad = async ( id: string ): Promise<ShabadData> => {
       //! translationSourceId is just set per language for now
       translations: [
         {
-          translationSourceId: Languages.English,
+          translationSourceId: languages.english,
           translation: translation.english.default,
         },
         {
-          translationSourceId: Languages.Punjabi,
+          translationSourceId: languages.punjabi,
           translation: translation.punjabi.default.akhar,
         },
         {
-          translationSourceId: Languages.Spanish,
+          translationSourceId: languages.spanish,
           translation: translation.spanish,
         },
       ].filter( ( { translation } ) => translation ),

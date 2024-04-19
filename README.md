@@ -2,23 +2,23 @@
 
 # Mobile
 
-Android and iOS app for searching, navigating, and presenting the Shabad OS database
-
 [![Release][release-image]][release-url]
-[![Next Release][next-image]][next-url]
+
+Android and iOS app for searching, navigating, and presenting the Shabad OS database
 
 **Table of Contents**
 
-- [Introduction](#introduction)
-  - [Features in Development](#features-in-development)
-  - [Figma/Mockup Screenshots](#figmamockup-screenshots)
-- [Community](#community)
-- [Contributing](#contributing)
-- [People](#people)
-- [Feedback](#feedback)
-- [Related Projects](#related-projects)
-- [Code of Conduct](#code-of-conduct)
-- [License](#license)
+- [Mobile](#mobile)
+  - [Introduction](#introduction)
+    - [Features in Development](#features-in-development)
+    - [Figma/Mockup Screenshots](#figmamockup-screenshots)
+  - [Community](#community)
+  - [Contributing](#contributing)
+  - [People](#people)
+  - [Feedback](#feedback)
+  - [Related Projects](#related-projects)
+  - [Code of Conduct](#code-of-conduct)
+  - [License](#license)
 
 ## Introduction
 
@@ -95,10 +95,8 @@ This project is under v3 of the [GPL](LICENSE.md). It is similar to the Golden R
 >
 > You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-[release-image]: https://img.shields.io/github/workflow/status/shabados/mobile/Continuous%20Integration/master.svg?label=release
-[release-url]: https://github.com/shabados/mobile/actions?query=workflow%3A%22Continuous+Integration%22+branch%3Amaster
-[next-image]: https://img.shields.io/github/workflow/status/shabados/mobile/Continuous%20Integration/dev.svg?label=next%20release
-[next-url]: https://github.com/shabados/mobile/actions?query=workflow%3A%22Continuous+Integration%22+branch%3Adev
+[release-image]: https://img.shields.io/github/package-json/v/ShabadOS/mobile?style=for-the-badge
+[release-url]: https://github.com/shabados/mobile/releases/latest
 [instagram-image]: https://img.shields.io/badge/Instagram-%40shabad__os-C13584.svg?logo=instagram&logoColor=white
 [instagram-url]: https://www.instagram.com/shabad_os/
 [twitter-image]: https://img.shields.io/badge/Twitter-%40shabad__os-1DA1F2.svg?logo=twitter&logoColor=white

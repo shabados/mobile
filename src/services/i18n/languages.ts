@@ -1,3 +1,5 @@
+import { getLocales } from 'expo-localization'
+
 // language codes according to ISO 639‑1
 // country/locale codes according to 3166-2
 export const languages = {
@@ -21,4 +23,18 @@ export const languages = {
 }
 
 export type Languages = keyof typeof languages
-export type LanguageTranslations = Partial<typeof languages> & { 'en': string }
+
+export const findBestLanguage = ( languageTags = Object.keys( languages ) ) => {
+  const lowerLanguageTags = languageTags.map( ( tag ) => tag.toLowerCase() )
+
+  return getLocales()
+    .flatMap( ( { languageTag, languageCode, textDirection } ) => [ languageTag, languageCode ]
+      .flatMap( ( component ) => {
+        const tagIndex = lowerLanguageTags.indexOf( component!.toLowerCase() )
+        const languageTag = languageTags[ tagIndex ]
+
+        return ( languageTag && tagIndex !== -1 )
+          ? [ { languageTag, isRTL: textDirection === 'rtl' } ]
+          : []
+      } ) )[ 0 ]
+}

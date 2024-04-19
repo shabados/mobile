@@ -1,0 +1,54 @@
+{
+  "cli": {
+    "version": ">= 7.8.2",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "example": {
+      "withoutCredentials": true,
+      "distribution": "internal",
+      "env": {
+        "APP_ENV": "example"
+      }
+    },
+    "local": {
+      "extends": "example",
+      "env": {
+        "APP_ENV": "local"
+      }
+    },
+    "next": {
+      "autoIncrement": true,
+      "env": {
+        "APP_ENV": "next"
+      }
+    },
+    "latest": {
+      "autoIncrement": true,
+      "env": {
+        "APP_ENV": "latest"
+      }
+    }
+  },
+  "submit": {
+    "next": {
+      "android": {
+        "changesNotSentForReview": true,
+        "track": "internal",
+        "releaseStatus": "draft"
+      },
+      "ios": {
+        "ascAppId": "6497795055"
+      }
+    },
+    "latest": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "draft"
+      },
+      "ios": {
+        "ascAppId": "1510358282"
+      }
+    }
+  }
+}

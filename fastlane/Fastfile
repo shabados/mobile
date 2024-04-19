@@ -1,3 +1,0 @@
-import './utils.rb'
-import './Fastfile.ios'
-import './Fastfile.android'

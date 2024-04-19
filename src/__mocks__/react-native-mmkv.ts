@@ -1,7 +1,7 @@
 export class MMKV {
-  store = {} as { [key: string] : any }
+  store = {} as Record<string, unknown>
 
-  set( key: string, value: any ) {
+  set( key: string, value: unknown ) {
     this.store = ( { ...this.store, [ key ]: value } )
   }
 

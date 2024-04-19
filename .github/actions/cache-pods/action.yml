@@ -1,0 +1,18 @@
+name: Cache cocoapods
+description: Handle cocoapods caching
+
+inputs:
+  path:
+    description: Path to the ios project
+    default: ios
+
+runs:
+  using: composite
+  steps:
+    - name: Cache Cocapoads
+      uses: actions/cache@v4
+      with:
+        path: ${{ inputs.path }}/Pods
+        key: ${{ runner.os }}-pods-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-pods-

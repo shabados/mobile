@@ -1,13 +1,11 @@
-import environment from './environment'
-import get from './get'
+import env from './env'
 import sentry from './sentry'
 
+const { postHog } = env
+
 const configuration = {
-  environment,
   sentry,
-  split: {
-    apiKey: get( 'SPLIT_API_KEY' ).required().asString(),
-  },
+  postHog,
 }
 
 export default configuration
