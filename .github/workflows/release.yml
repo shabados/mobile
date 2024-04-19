@@ -137,6 +137,7 @@ jobs:
           PILOT_DISTRIBUTE_EXTERNAL: true
           PILOT_DISTRIBUTE_ONLY: true
           PILOT_NOTIFY_EXTERNAL_TESTERS: false
+          PILOT_REJECT_PREVIOUS_BUILD: true
           APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
 
   # In future, we can have a the job that publish
