@@ -7,6 +7,13 @@ const log = logger.createLogger<defLvlType>( {
   ...( configuration.logger.enabled && {
     severity: configuration.logger.level,
   } ),
+  transportOptions: {
+    colors: {
+      info: 'blueBright',
+      warn: 'yellowBright',
+      error: 'redBright',
+    },
+  },
 } )
 
 export const createLogger = log.extend
