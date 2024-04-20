@@ -34,15 +34,15 @@ export default {
     package: build.bundleId,
   },
   plugins: [
+    [ 'app-icon-badge', {
+      enabled: !!build.banner,
+      badges: [ { text: build.banner, type: 'banner' } ],
+    } ],
     'expo-router',
     'expo-localization',
     [ 'expo-screen-orientation', { initialOrientation: 'DEFAULT' } ],
     [ 'expo-dev-launcher' ],
     [ 'expo-font', { fonts } ],
-    [ 'app-icon-badge', {
-      enabled: !!build.banner,
-      badges: [ { text: build.banner, type: 'banner' } ],
-    } ],
   ],
   experiments: {
     typedRoutes: true,
