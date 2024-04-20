@@ -14,7 +14,6 @@ const styles = StyleSheet.create( {
   icon: {
     fontSize: 28,
     color: Colors.PrimaryText,
-    backgroundColor: Colors.MainView,
   },
   left: {
     marginLeft: units.horizontalLayoutMargin / 16,
