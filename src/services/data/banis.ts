@@ -1,5 +1,3 @@
-import { useQuery } from '@tanstack/react-query'
-
 import { languages } from '~/helpers/languages'
 import * as gurbaniNow from '~/services/gurbaninow'
 import { BaniData } from '~/types/data'
