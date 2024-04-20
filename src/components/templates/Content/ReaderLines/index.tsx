@@ -1,5 +1,5 @@
 import { FlashList } from '@shopify/flash-list'
-import { useMemo } from 'react'
+import { ComponentType, useMemo } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { getLineSections } from '~/helpers/lines'
@@ -19,14 +19,16 @@ const renderLineSection = ( { item }: RenderItem ) => <Section lines={item} />
 
 export type ReaderLinesProps = {
   lines: LineData[],
+  Header?: ComponentType,
 }
 
-const ReaderLines = ( { lines }: ReaderLinesProps ) => {
+const ReaderLines = ( { lines, Header }: ReaderLinesProps ) => {
   const groupedLines = useMemo( () => getLineSections( lines ), [ lines ] )
 
   return (
     <View style={styles.root}>
       <FlashList
+        ListHeaderComponent={Header}
         data={groupedLines}
         renderItem={renderLineSection}
         estimatedItemSize={200}

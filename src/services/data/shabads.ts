@@ -1,3 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
+
 import { languages } from '~/helpers/languages'
 import * as gurbaniNow from '~/services/gurbaninow'
 import { ShabadData } from '~/types/data'
@@ -44,3 +46,8 @@ export const getShabad = async ( id: string ): Promise<ShabadData> => {
     } ) ),
   }
 }
+
+export const shabadQuery = ( id: string ) => ( {
+  queryKey: [ 'shabad', id ],
+  queryFn: () => getShabad( id ),
+} )

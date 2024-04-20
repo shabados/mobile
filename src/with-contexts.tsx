@@ -1,7 +1,7 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
 import { ThemeProvider } from '@react-navigation/native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { Provider } from 'jotai'
+import { createStore, Provider } from 'jotai'
 import { PostHogProvider, PostHogProviderProps } from 'posthog-react-native'
 import { ElementType } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
@@ -12,6 +12,7 @@ import configuration from '~/services/configuration'
 import { reactNavigationTheme } from './themes'
 
 export const queryClient = new QueryClient()
+export const atomStore = createStore()
 
 const getPostHogProviderProps = () => ( configuration.postHog.enabled
   ? { apiKey: configuration.postHog.apiKey }
@@ -22,7 +23,7 @@ const getPostHogProviderProps = () => ( configuration.postHog.enabled
 
 const withContexts = ( Component: ElementType ) => {
   const WithContexts = () => (
-    <Provider>
+    <Provider store={atomStore}>
       <SafeAreaProvider>
         <ThemeProvider value={reactNavigationTheme}>
           <GestureHandlerRootView style={{ flex: 1 }}>

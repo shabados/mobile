@@ -1,46 +1,27 @@
-import { useSuspenseQuery } from '@tanstack/react-query'
+import { ComponentType } from 'react'
 
-import Container from '~/components/atoms/Container'
-import { getBani, getShabad } from '~/services/data'
-import { settings, useSetting } from '~/services/settings'
-import { ContentType, LineData } from '~/types/data'
+import Empty from '~/components/atoms/Empty'
+import { ContentType } from '~/types/data'
 
-import DefaultLines from './DefaultLines'
-import ReaderLines from './ReaderLines'
+import Bani from './Bani'
+import Shabad from './Shabad'
 
-type Loaders = {
-  [screen in ContentType]: ( id: string ) => Promise<{ id: string, lines: LineData[] }>
-}
-
-// ? Loaders return a common interface. Is there a better way to deal with specifics of each type?
-const loaders: Loaders = {
-  shabad: ( id: string ) => getShabad( id ),
-  bani: ( id: string ) => getBani( id ),
-  ang: () => Promise.resolve( { id: '', lines: [] } ),
-}
+// Maybe these should be moved into their own standalone templates entirely
+const templates = {
+  ang: Empty,
+  bani: Bani,
+  shabad: Shabad,
+} satisfies Record<ContentType, ComponentType<{ id: string }>>
 
 type ContentTemplateProps = {
   id: string,
   type: ContentType,
 }
 
-const ContentTemplate = ( {
-  id,
-  type,
-}: ContentTemplateProps ) => {
-  const { data } = useSuspenseQuery( {
-    queryKey: [ 'content', type, id ],
-    queryFn: () => loaders[ type ]( id ),
-  } )
+const ContentTemplate = ( { id, type }: ContentTemplateProps ) => {
+  const Template = templates[ type ]
 
-  const [ isReaderMode ] = useSetting( settings.readerMode )
-  const Lines = isReaderMode ? ReaderLines : DefaultLines
-
-  return (
-    <Container>
-      <Lines key={data.id} lines={data.lines} />
-    </Container>
-  )
+  return <Template id={id} />
 }
 
 export default ContentTemplate

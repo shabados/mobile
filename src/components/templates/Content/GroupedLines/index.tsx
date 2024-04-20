@@ -1,4 +1,5 @@
 import { FlashList } from '@shopify/flash-list'
+import { ComponentType } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { units } from '~/themes'
@@ -30,14 +31,16 @@ const renderLine = ( { item: { gurmukhi, translations } }: RenderItem ) => (
 )
 
 export type NormalLinesProps = {
+  Header?: ComponentType,
   lines: LineData[],
 }
 
-const NormalLines = ( { lines }: NormalLinesProps ) => (
+const NormalLines = ( { lines, Header }: NormalLinesProps ) => (
   <View style={styles.root}>
     <FlashList
       contentContainerStyle={styles.container}
       keyExtractor={( { id } ) => id}
+      ListHeaderComponent={Header}
       data={lines}
       renderItem={renderLine}
       estimatedItemSize={120}
