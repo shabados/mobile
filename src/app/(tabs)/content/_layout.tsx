@@ -7,10 +7,6 @@ import Logo from '~/components/atoms/Logo'
 import { Colors, units } from '~/themes'
 
 const styles = StyleSheet.create( {
-  headerTitle: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   icon: {
     fontSize: 28,
     color: Colors.PrimaryText,
