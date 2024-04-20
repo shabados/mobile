@@ -1,7 +1,7 @@
 import { nativeApplicationVersion, nativeBuildVersion } from 'expo-application'
 import { Atom } from 'jotai'
 import { invert } from 'lodash'
-import { ReactNode, useState } from 'react'
+import { Children, ReactNode, useState } from 'react'
 import { ScrollView, StyleSheet, Switch, View } from 'react-native'
 
 import Button from '~/components/atoms/Button'
@@ -114,10 +114,26 @@ const Option = ( { title, component }: OptionProps ) => (
         {component}
       </View>
     </View>
-
-    <ItemSeparator full />
   </View>
 )
+
+type SeparatedProps = {
+  children: ReactNode,
+}
+
+const Separated = ( { children }: SeparatedProps ) => {
+  const components = Children.toArray( children )
+
+  return (
+    <>
+      {Children.toArray( children ).flatMap( ( component, index ) => [
+        component,
+        // eslint-disable-next-line react/no-array-index-key
+        index < components.length - 1 && <ItemSeparator key={index} />,
+      ] )}
+    </>
+  )
+}
 
 const SettingsTemplate = () => {
   const { t } = useTranslation()
@@ -125,20 +141,22 @@ const SettingsTemplate = () => {
   return (
     <Container style={styles.root} safeArea left right>
       <ScrollView>
-        <Option
-          title={t( strings.reader )}
-          component={<ToggleOption setting={settings.readerMode} />}
-        />
+        <Separated>
+          <Option
+            title={t( strings.reader )}
+            component={<ToggleOption setting={settings.readerMode} />}
+          />
 
-        <Option
-          title={t( strings.language )}
-          component={(
-            <SelectOption
-              setting={settings.locale}
-              options={Object.entries( invert( languages ) )}
-            />
-          )}
-        />
+          <Option
+            title={t( strings.language )}
+            component={(
+              <SelectOption
+                setting={settings.locale}
+                options={Object.entries( invert( languages ) )}
+              />
+            )}
+          />
+        </Separated>
 
         <Button onPress={() => { throw new Error( 'Test!' ) }}>Trigger crash</Button>
 
