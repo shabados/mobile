@@ -1,14 +1,15 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native'
+import { ThemeProvider } from '@react-navigation/native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Provider } from 'jotai'
 import { PostHogProvider, PostHogProviderProps } from 'posthog-react-native'
 import { ElementType } from 'react'
-import { useColorScheme } from 'react-native'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import configuration from '~/services/configuration'
+
+import { reactNavigationTheme } from './themes'
 
 export const queryClient = new QueryClient()
 
@@ -23,7 +24,7 @@ const withContexts = ( Component: ElementType ) => {
   const WithContexts = () => (
     <Provider>
       <SafeAreaProvider>
-        <ThemeProvider value={useColorScheme() === 'dark' ? DarkTheme : DefaultTheme}>
+        <ThemeProvider value={reactNavigationTheme}>
           <GestureHandlerRootView style={{ flex: 1 }}>
             <BottomSheetModalProvider>
               <QueryClientProvider client={queryClient}>
