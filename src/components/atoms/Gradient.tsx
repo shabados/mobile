@@ -20,11 +20,14 @@ type GradientProps = Merge<LinearGradientProps, {
   colors: GradientColors,
 }>
 
-const Gradient = ( { colors }: GradientProps ) => {
+const Gradient = ( { colors, ...props }: GradientProps ) => {
   const scheme = useColorScheme() ?? 'light'
 
   return (
-    <LinearGradient colors={gradientColors[ colors ][ scheme ]} />
+    <LinearGradient
+      colors={gradientColors[ colors ][ scheme ]}
+      {...props}
+    />
   )
 }
 
