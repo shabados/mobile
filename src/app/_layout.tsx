@@ -12,6 +12,7 @@ const tabScreenOptions = {
   // Not really sure why, but rendering a Container with a top safe area seems to fix it
   // Note: this adds a negligible amount of extra space above the header
   header: () => <Container safeArea top style={{ backgroundColor: Colors.MainView }} />,
+  animation: 'fade',
 } satisfies ComponentProps<typeof Stack>['screenOptions']
 
 const RootLayout = () => (
