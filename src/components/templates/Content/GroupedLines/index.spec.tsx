@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react-native'
 import { toUnicode } from 'gurmukhi-utils'
 
 import * as factories from '~/test/factories'
-import nextTick from '~/test/utils/next-tick'
 
 import GroupedLines from '.'
 

@@ -1,5 +1,5 @@
 import { FlashList } from '@shopify/flash-list'
-import { ComponentType, useEffect, useRef } from 'react'
+import { ComponentType } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { units } from '~/themes'
