@@ -7,7 +7,7 @@ import storage from './mmkv'
 const log = createLogger( 'kv-storage' )
 
 //! Add some reactiveness here with useMMKV hook or addOnCHangeListener similar
-const atomWithKvStorage = <Data extends object>(
+const atomWithKvStorage = <Data extends object | undefined>(
   key: string,
   initialValue: Data,
 ) => {
@@ -17,15 +17,17 @@ const atomWithKvStorage = <Data extends object>(
   const baseAtom = atom( previousData )
 
   const storageAtom = atom(
-    ( get ) => get( baseAtom ),
+    ( get ) => get( baseAtom ) ?? initialValue,
     ( _, set, value: Data ) => {
       set( baseAtom, value )
-      storage.set( key, value )
+
+      if ( value === undefined ) storage.delete( key )
+      else storage.set( key, value )
     }
   )
 
   storageAtom.onMount = ( set ) => {
-    if ( storage.contains( key ) ) return
+    if ( storage.contains( key ) || !initialValue ) return
 
     log.info( `Initializing key "${key}"`, { initialValue } )
     set( initialValue )

@@ -7,7 +7,7 @@ import mmkv from './mmkv'
 
 const defaultValue = { value1: 'settings value', darkMode: true }
 
-const setup = ( atom: Atom< object | null> ) => {
+const setup = ( atom: Atom<unknown> ) => {
   const Component = () => {
     const [ value ] = useAtom( atom )
 
@@ -19,21 +19,34 @@ const setup = ( atom: Atom< object | null> ) => {
 
 describe( 'atomWithMMKVStorage(key, initialValue)', () => {
   describe( 'given the key does not exist yet', () => {
-    it( 'should save the initial value into MMKV storage', () => {
-      const key = 'key-name-1'
-      const atom = atomWithKvStorage( key, defaultValue )
+    describe( 'given an initial value', () => {
+      it( 'should save the initial value into MMKV storage', () => {
+        const key = 'key-name-1'
+        const atom = atomWithKvStorage( key, defaultValue )
 
-      setup( atom )
+        setup( atom )
 
-      expect( mmkv.getString( key ) ).toEqual( JSON.stringify( defaultValue ) )
+        expect( mmkv.getString( key ) ).toEqual( JSON.stringify( defaultValue ) )
+      } )
+
+      it( 'should set the atom value to initial value', () => {
+        const atom = atomWithKvStorage( 'another-key', defaultValue )
+
+        setup( atom )
+
+        expect( screen.queryByText( JSON.stringify( defaultValue ) ) ).toBeTruthy()
+      } )
     } )
 
-    it( 'should set the atom value to initial value', () => {
-      const atom = atomWithKvStorage( 'another-key', defaultValue )
+    describe( 'given no initial value', () => {
+      it( 'should not save anything to MMKV storage', () => {
+        const key = 'key-name-2'
+        const atom = atomWithKvStorage( key, undefined )
 
-      setup( atom )
+        setup( atom )
 
-      expect( screen.queryByText( JSON.stringify( defaultValue ) ) ).toBeTruthy()
+        expect( mmkv.getString( key ) ).toBeUndefined()
+      } )
     } )
   } )
 

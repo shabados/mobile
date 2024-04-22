@@ -24,7 +24,7 @@ const atomWithSetting = <Data extends string | object | number | boolean>(
   } )
 
   return atom(
-    ( get ) => get( baseAtom )?.value,
+    ( get ) => get( baseAtom ).value,
     ( _, set, value: Data ) => set( baseAtom, { version, updatedAt: new Date().toJSON(), value } )
   )
 }
