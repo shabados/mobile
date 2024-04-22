@@ -17,7 +17,7 @@ const registerTranslations = <
   Translations extends { [name in string]: LanguageTranslations },
 >( translations: Translations ) => {
   const namespace = nextNamespace().toString()
-  log.info( `Adding resources to namespace "${namespace}"`, translations )
+  log.debug( `Adding resources to namespace "${namespace}"`, translations )
 
   // Group translations by language, with phrases as sub-keys for each language
   const translationsByLanguage = chain( translations )
