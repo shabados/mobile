@@ -11,8 +11,19 @@ const atomWithKvStorage = <Data extends object | undefined>(
   key: string,
   initialValue: Data,
 ) => {
-  const previousData = storage.getJSON<Data>( key )
-  log.info( `Loaded data for key "${key}"`, { previousData } )
+  const previousData = ( () => {
+    log.info( `Loading data for key "${key}"` )
+
+    try {
+      const data = storage.getJSON<Data>( key )
+
+      log.info( `Loaded data for key "${key}"`, { data } )
+      return data
+    } catch {
+      log.error( `Failed to load data for key "${key}"` )
+      return undefined
+    }
+  } )()
 
   const baseAtom = atom( previousData )
 
@@ -27,7 +38,7 @@ const atomWithKvStorage = <Data extends object | undefined>(
   )
 
   storageAtom.onMount = ( set ) => {
-    if ( storage.contains( key ) || !initialValue ) return
+    if ( !!previousData || !initialValue ) return
 
     log.info( `Initializing key "${key}"`, { initialValue } )
     set( initialValue )
