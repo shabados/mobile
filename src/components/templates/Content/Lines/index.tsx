@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from 'expo-router'
+import { useLocalSearchParams, useRouter } from 'expo-router'
 import { ComponentType } from 'react'
 
 import { settings, useSetting } from '~/services/settings'
@@ -15,10 +15,19 @@ type LinesProps = {
 const Lines = ( { lines, Header }: LinesProps ) => {
   const { lineId } = useLocalSearchParams<{ lineId?: string }>()
   const [ isReaderMode ] = useSetting( settings.readerMode )
+  const router = useRouter()
 
-  return isReaderMode
-    ? <ReaderLines lines={lines} Header={Header} initialLineId={lineId} />
-    : <GroupedLines lines={lines} Header={Header} initialLineId={lineId} />
+  // For now, props are the same. We should re-architect this area...
+  const Comp = isReaderMode ? ReaderLines : GroupedLines
+
+  return (
+    <Comp
+      lines={lines}
+      Header={Header}
+      initialLineId={lineId}
+      onLineChange={( line ) => router.setParams( { lineId: line.id } )}
+    />
+  )
 }
 
 export default Lines

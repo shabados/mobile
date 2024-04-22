@@ -1,5 +1,5 @@
 import { FlashList } from '@shopify/flash-list'
-import { ComponentType } from 'react'
+import { ComponentType, useEffect, useRef } from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { units } from '~/themes'
@@ -34,20 +34,36 @@ export type NormalLinesProps = {
   Header?: ComponentType,
   lines: LineData[],
   initialLineId?: string,
+  onLineChange?: ( line: LineData ) => void,
 }
 
-const NormalLines = ( { lines, initialLineId, Header }: NormalLinesProps ) => (
-  <View style={styles.root}>
-    <FlashList
-      initialScrollIndex={lines.findIndex( ( { id } ) => id === initialLineId )}
-      contentContainerStyle={styles.container}
-      keyExtractor={( { id } ) => id}
-      ListHeaderComponent={Header}
-      data={lines}
-      renderItem={renderLine}
-      estimatedItemSize={120}
-    />
-  </View>
-)
+const NormalLines = ( { lines, initialLineId, Header, onLineChange }: NormalLinesProps ) => {
+  const initialIndex = lines.findIndex( ( { id } ) => id === initialLineId )
+
+  return (
+    <View style={styles.root}>
+      <FlashList
+        initialScrollIndex={initialIndex}
+        viewabilityConfigCallbackPairs={[ {
+          viewabilityConfig: {
+            itemVisiblePercentThreshold: 70,
+            waitForInteraction: true,
+          },
+          onViewableItemsChanged: ( { viewableItems: [ item ] } ) => {
+            if ( !item ) return
+
+            onLineChange?.( item.item as LineData )
+          },
+        } ]}
+        contentContainerStyle={styles.container}
+        keyExtractor={( { id } ) => id}
+        ListHeaderComponent={Header}
+        data={lines}
+        renderItem={renderLine}
+        estimatedItemSize={120}
+      />
+    </View>
+  )
+}
 
 export default NormalLines

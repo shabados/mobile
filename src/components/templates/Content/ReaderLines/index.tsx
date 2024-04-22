@@ -21,9 +21,10 @@ export type ReaderLinesProps = {
   lines: LineData[],
   Header?: ComponentType,
   initialLineId?: string,
+  onLineChange?: ( line: LineData ) => void,
 }
 
-const ReaderLines = ( { lines, Header, initialLineId }: ReaderLinesProps ) => {
+const ReaderLines = ( { lines, Header, initialLineId, onLineChange }: ReaderLinesProps ) => {
   const groupedLines = useMemo( () => getLineSections( lines ), [ lines ] )
   const initialSectionIndex = groupedLines.findIndex(
     ( lines ) => lines.some( ( { id } ) => id === initialLineId )
@@ -33,10 +34,24 @@ const ReaderLines = ( { lines, Header, initialLineId }: ReaderLinesProps ) => {
     <View style={styles.root}>
       <FlashList
         initialScrollIndex={initialSectionIndex}
+        viewabilityConfigCallbackPairs={[ {
+          viewabilityConfig: {
+            itemVisiblePercentThreshold: 70,
+            waitForInteraction: true,
+          },
+          onViewableItemsChanged: ( {
+            viewableItems: [ item ],
+          } ) => {
+            if ( !item ) return
+
+            const [ line ] = item.item as LineData[]
+            onLineChange?.( line )
+          },
+        } ]}
         ListHeaderComponent={Header}
         data={groupedLines}
         renderItem={renderLineSection}
-        estimatedItemSize={200}
+        estimatedItemSize={250}
       />
     </View>
   )
