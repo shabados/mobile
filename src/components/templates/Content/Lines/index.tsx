@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from 'expo-router'
 import { ComponentType } from 'react'
 
 import { settings, useSetting } from '~/services/settings'
@@ -12,11 +13,12 @@ type LinesProps = {
 }
 
 const Lines = ( { lines, Header }: LinesProps ) => {
+  const { lineId } = useLocalSearchParams<{ lineId?: string }>()
   const [ isReaderMode ] = useSetting( settings.readerMode )
 
   return isReaderMode
-    ? <ReaderLines lines={lines} Header={Header} />
-    : <GroupedLines lines={lines} Header={Header} />
+    ? <ReaderLines lines={lines} Header={Header} initialLineId={lineId} />
+    : <GroupedLines lines={lines} Header={Header} initialLineId={lineId} />
 }
 
 export default Lines

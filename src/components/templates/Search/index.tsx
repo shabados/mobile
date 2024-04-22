@@ -29,8 +29,8 @@ const SearchTemplate = () => {
     } )
   }, [ navigation ] )
 
-  const openShabad: ResultsProps['onPress'] = ( { shabad: { id } } ) => router.navigate(
-    `/content/shabad/${id}`,
+  const openShabad: ResultsProps['onPress'] = ( { shabad: { id }, line } ) => router.navigate(
+    `/content/shabad/${id}?lineId=${line.id}`,
   )
 
   return (

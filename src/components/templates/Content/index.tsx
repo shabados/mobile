@@ -1,6 +1,7 @@
-import { ComponentType } from 'react'
+import { ComponentType, useEffect } from 'react'
 
 import Empty from '~/components/atoms/Empty'
+import { useLastViewed } from '~/services/history/last-viewed'
 import { ContentType } from '~/types/data'
 
 import Bani from './Bani'
@@ -16,9 +17,13 @@ const templates = {
 type ContentTemplateProps = {
   id: string,
   type: ContentType,
+  lineId?: string,
 }
 
-const ContentTemplate = ( { id, type }: ContentTemplateProps ) => {
+const ContentTemplate = ( { id, type, lineId }: ContentTemplateProps ) => {
+  const [ , setLastViewed ] = useLastViewed()
+  useEffect( () => { setLastViewed( { type, id, lineId } ) }, [ setLastViewed, id, type, lineId ] )
+
   const Template = templates[ type ]
 
   return <Template id={id} />
