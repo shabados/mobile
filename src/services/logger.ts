@@ -30,6 +30,9 @@ const log = logger.createLogger<defLvlType>( {
   ...( configuration.logger.enabled && {
     severity: configuration.logger.level,
   } ),
+  stringifyFunc: ( data: string | object ) => ( typeof data === 'object'
+    ? `\n${JSON.stringify( data, null, 2 )}`
+    : data ),
   transportOptions: {
     colors: {
       info: 'blueBright',
