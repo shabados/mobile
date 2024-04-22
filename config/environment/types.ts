@@ -11,6 +11,7 @@ export type RuntimeConfig = {
   }>,
   postHog: WithEnabled<{
     apiKey: string,
+    host: string,
   }>,
 }
 

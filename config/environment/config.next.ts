@@ -16,7 +16,8 @@ export default {
     },
     postHog: {
       enabled: true,
-      apiKey: 'phc_Qa9ByXS3TlzH6PBYyLbD9YRVsyt2tEAzz4JOvOQd0jp',
+      apiKey: 'phc_AV3CQWQD5SI9JnTyqjVShvFqxfjTYIFE2nPgtYE5vbm',
+      host: 'https://eu.i.posthog.com',
     },
   },
   build: {

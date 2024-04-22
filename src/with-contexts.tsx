@@ -15,7 +15,7 @@ export const queryClient = new QueryClient()
 export const atomStore = createStore()
 
 const getPostHogProviderProps = () => ( configuration.postHog.enabled
-  ? { apiKey: configuration.postHog.apiKey }
+  ? { apiKey: configuration.postHog.apiKey, options: { host: configuration.postHog.host } }
   // https://github.com/PostHog/posthog-js-lite/issues/101
   // Messes with root navigation container in tests if autocapture.captureScreens is true
   : { apiKey: 'dummy', options: { disabled: true }, autocapture: { captureScreens: false } }
