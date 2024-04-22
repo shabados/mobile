@@ -20,14 +20,19 @@ const renderLineSection = ( { item }: RenderItem ) => <Section lines={item} />
 export type ReaderLinesProps = {
   lines: LineData[],
   Header?: ComponentType,
+  initialLineId?: string,
 }
 
-const ReaderLines = ( { lines, Header }: ReaderLinesProps ) => {
+const ReaderLines = ( { lines, Header, initialLineId }: ReaderLinesProps ) => {
   const groupedLines = useMemo( () => getLineSections( lines ), [ lines ] )
+  const initialSectionIndex = groupedLines.findIndex(
+    ( lines ) => lines.some( ( { id } ) => id === initialLineId )
+  )
 
   return (
     <View style={styles.root}>
       <FlashList
+        initialScrollIndex={initialSectionIndex}
         ListHeaderComponent={Header}
         data={groupedLines}
         renderItem={renderLineSection}

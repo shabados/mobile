@@ -33,11 +33,13 @@ const renderLine = ( { item: { gurmukhi, translations } }: RenderItem ) => (
 export type NormalLinesProps = {
   Header?: ComponentType,
   lines: LineData[],
+  initialLineId?: string,
 }
 
-const NormalLines = ( { lines, Header }: NormalLinesProps ) => (
+const NormalLines = ( { lines, initialLineId, Header }: NormalLinesProps ) => (
   <View style={styles.root}>
     <FlashList
+      initialScrollIndex={lines.findIndex( ( { id } ) => id === initialLineId )}
       contentContainerStyle={styles.container}
       keyExtractor={( { id } ) => id}
       ListHeaderComponent={Header}
