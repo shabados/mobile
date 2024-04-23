@@ -18,7 +18,7 @@ const styles = StyleSheet.create( {
   },
   title: {
     color: Colors.PrimaryText,
-    fontFamily: fonts.SantLipiRegular,
+    fontFamily: fonts.SantLipiMedium,
     fontSize: units.base * units.gurmukhiLatinRatio,
     lineHeight: units.base * units.gurmukhiLineHeightMultiplier,
   },

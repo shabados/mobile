@@ -6,18 +6,12 @@ import TranslationLine from '~/components/molecules/TranslationLine'
 import TransliterationLine from '~/components/molecules/TransliterationLine'
 import { languages } from '~/helpers/languages'
 import { TransliterableLanguages } from '~/helpers/transliterators'
-import { px, units } from '~/themes'
+import { px } from '~/themes'
 import { TranslationData } from '~/types/data'
 
 const styles = StyleSheet.create( {
-  largeFont: {
-    fontSize: units.base * units.gurmukhiLatinRatio * 1.2,
-  },
   root: {
     ...px( 20 ),
-  },
-  smallFont: {
-    fontSize: ( units.base * units.gurmukhiLatinRatio ) / 1.2,
   },
 } )
 

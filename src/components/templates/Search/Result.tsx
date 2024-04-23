@@ -13,7 +13,7 @@ import { Colors, fonts, px, py, units } from '~/themes'
 
 const styles = StyleSheet.create( {
   gurbani: {
-    fontFamily: fonts.SantLipiRegular,
+    fontFamily: fonts.SantLipiMedium,
     fontSize: units.base * units.gurmukhiLatinRatio,
     lineHeight: units.base * units.gurmukhiLineHeightMultiplier,
     ...Platform.select( {
@@ -26,7 +26,7 @@ const styles = StyleSheet.create( {
     justifyContent: 'space-between',
   },
   headerGurmukhi: {
-    fontFamily: fonts.SantLipiRegular,
+    fontFamily: fonts.SantLipiMedium,
     fontSize: units.footnote * units.gurmukhiLatinRatio,
     lineHeight: units.footnote * units.gurmukhiLineHeightMultiplier,
   },

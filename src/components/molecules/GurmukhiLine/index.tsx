@@ -6,13 +6,13 @@ import { fonts, units } from '~/themes'
 
 const styles = StyleSheet.create( {
   root: {
-    fontFamily: fonts.SantLipiRegular,
+    fontFamily: fonts.SantLipiMedium,
   },
 } )
 
 const getFontSizeStyle = ( size = 1 ) => ( {
   fontSize: units.base * units.gurmukhiLatinRatio * size,
-  lineHeight: units.base * units.gurmukhiLineHeightMultiplier * size,
+  lineHeight: units.base * units.gurmukhiLineHeightMultiplier * size + 2,
 } )
 
 export type GurmukhiLineProps = {
