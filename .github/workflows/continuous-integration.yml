@@ -33,6 +33,6 @@ jobs:
         if: matrix.platform == 'android'
         with:
           distribution: temurin
-          java-version-file: .java-version
+          java-version-file: .tool-versions
       - run: bunx expo prebuild --platform ${{ matrix.platform }}
       - run: bunx react-native build-${{ matrix.platform }}
