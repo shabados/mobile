@@ -9,7 +9,7 @@
     "ios": "expo run:ios",
     "build": "bunx eas-cli build --local",
     "prepare": "husky",
-    "test": "jest --watch",
+    "test": "jest",
     "generate-types": "expo customize tsconfig.json",
     "pretypes": "bun run generate-types",
     "types": "tsc --noEmit",
