@@ -23,11 +23,10 @@ jobs:
             platform: android
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version-file: .node-version
-          cache: npm
-      - run: npm ci
+          bun-version-file: .tool-versions
+      - run: bun i
       - uses: ./.github/actions/cache-pods
         if: matrix.platform == 'ios'
       - uses: actions/setup-java@v4
@@ -35,5 +34,5 @@ jobs:
         with:
           distribution: temurin
           java-version-file: .java-version
-      - run: npm exec expo -- prebuild --platform ${{ matrix.platform }}
-      - run: npx react-native build-${{ matrix.platform }}
+      - run: bunx expo prebuild --platform ${{ matrix.platform }}
+      - run: bunx react-native build-${{ matrix.platform }}

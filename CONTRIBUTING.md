@@ -54,7 +54,7 @@ Then according to your platform and target OS, follow the [React Native CLI Quic
 
 ### Build
 
-Run `npm i` in the root directory. This will also install any macOS Cocoapods.
+Run `bun i` in the root directory. This will also install any macOS Cocoapods.
 
 **NOTE**: For macOS a possible `xcrun` error `SDK "iphoneos" cannot be located` or `unable to lookup item 'Path' in SDK 'iphoneos'` might be fixed with [this github comment's solution](https://github.com/facebook/react-native/issues/18408#issuecomment-386696744).
 
@@ -63,7 +63,7 @@ Run `npm i` in the root directory. This will also install any macOS Cocoapods.
 Usage:
 
 ```shell
-npm run <command>
+bun run <command>
 ```
 
 The commands are:
