@@ -8,7 +8,7 @@ When an environment is not specified, `local` is default.
 
 You should copy `config.example.ts` to `config.local.ts` and modify the values to your needs. This file is gitignored, so do as you wish.
 
-Changing an environment value will require a restart of the dev server and rebuild of the app as these values are passed through Expo at build time. Close any running dev instances and run `npm run dev` again for each running simulator.
+Changing an environment value will require a restart of the dev server and rebuild of the app as these values are passed through Expo at build time. Close any running dev instances and run `bun run dev` again for each running simulator.
 
 ## Platform specific values
 

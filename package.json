@@ -7,17 +7,17 @@
     "diagnose": "react-native doctor",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "build": "npx eas-cli build --local",
+    "build": "bunx eas-cli build --local",
     "prepare": "husky",
-    "test": "jest",
+    "test": "jest --watch",
     "generate-types": "expo customize tsconfig.json",
-    "pretypes": "npm run generate-types",
+    "pretypes": "bun run generate-types",
     "types": "tsc --noEmit",
-    "prelint": "npm run generate-types",
+    "prelint": "bun run generate-types",
     "lint": "eslint .",
     "commitlint": "commitlint --edit",
-    "script": "npm run test -- --config scripts/jest.config.js",
-    "script:extract-translations": "npm run script -- extract-translations"
+    "script": "bun run test -- --config scripts/jest.config.js",
+    "script:extract-translations": "bun run script -- extract-translations"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",

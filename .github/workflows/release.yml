@@ -52,21 +52,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/download-workspace
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version-file: .node-version
-          cache: npm
-      - run: npm ci
+          bun-version-file: .tool-versions
+      - run: bun i
       - uses: ./.github/actions/cache-pods
         if: matrix.platform == 'ios'
       - uses: actions/setup-java@v4
         if: matrix.platform == 'android'
         with:
           distribution: temurin
-          java-version-file: .java-version
+          java-version-file: .tool-versions
           cache: gradle
       - run: |
-          npm run build -- \
+          bun run build -- \
             --non-interactive \
             --platform ${{ matrix.platform }} \
             --profile ${{ matrix.profile }}
@@ -90,11 +89,10 @@ jobs:
         platform: [ios, android]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version-file: .node-version
-          cache: npm
-      - run: npm ci
+          bun-version-file: .tool-versions
+      - run: bun i
       - uses: actions/download-artifact@v4
         with:
           name: ${{ matrix.profile }}-${{ matrix.platform }}
@@ -103,7 +101,7 @@ jobs:
           build_path=$(find -name "*.ipa" -or -name "*.aab" -type f)
           echo "Submitting $build_path to EAS"
 
-          npx eas-cli submit \
+          bunx eas-cli submit \
             --non-interactive \
             --path $build_path \
             --platform ${{ matrix.platform }} \
@@ -120,14 +118,13 @@ jobs:
         profile: [next, latest]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version-file: .node-version
-          cache: npm
-      - run: npm ci
+          bun-version-file: .tool-versions
+      - run: bun i
       - uses: ./.github/actions/setup-fastlane
       - name: Read bundle identifier
-        run: echo "PILOT_APP_IDENTIFIER=$(npm exec expo config -- --json  | jq -r .ios.bundleIdentifier)" >> $GITHUB_ENV
+        run: echo "PILOT_APP_IDENTIFIER=$(bunx expo config -- --json  | jq -r .ios.bundleIdentifier)" >> $GITHUB_ENV
         env:
           APP_ENV: ${{ matrix.profile }}
       - run: fastlane run pilot

@@ -6,7 +6,7 @@ runs:
   steps:
     - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.3'
+        # Reads from .tool-versions when ruby-version is not set
         bundler-cache: true
     - run: gem install fastlane
       shell: bash
