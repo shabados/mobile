@@ -50,7 +50,4 @@ jest.mock( 'expo-asset' )
 
 jest.mock( 'react-native-safe-area-context', () => mockSafeAreaContext )
 
-jest.mock( '@gorhom/bottom-sheet', () => ( {
-  __esModule: true,
-  ...require( '@gorhom/bottom-sheet/mock' ),
-} ) )
+jest.mock( '@gorhom/bottom-sheet', () => require( '@gorhom/bottom-sheet/mock' ) )

@@ -5,6 +5,7 @@ const whitelistedModules = [
   '@?expo',
   '@react-navigation',
   'ky',
+  '@gorhom/bottom-sheet',
 ]
 
 const config = {
@@ -21,7 +22,7 @@ const config = {
   setupFilesAfterEnv: [
     '<rootDir>/test/setup-after-env.ts',
   ],
-  resetMocks: true,
+  clearMocks: true,
 }
 
 module.exports = config
