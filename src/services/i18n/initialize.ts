@@ -16,7 +16,7 @@ const initialize = () => i18n
     resources: {},
     lng: findBestLanguage()?.languageTag,
     fallbackLng: 'en',
-    compatibilityJSON: 'v3',
+    compatibilityJSON: 'v4',
     interpolation: { escapeValue: false },
   } )
   .then( () => {

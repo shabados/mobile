@@ -44,7 +44,7 @@ const BottomBar = () => {
   const router = useRouter()
 
   const onSearchPress = () => router.navigate( '/search' )
-  const onCollectionsPress = () => router.navigate( '/collections' )
+  const onCollectionsPress = () => router.navigate( '/collections/' )
 
   const { bottom } = useSafeAreaInsets()
   const hasBottomSafeArea = bottom > 0

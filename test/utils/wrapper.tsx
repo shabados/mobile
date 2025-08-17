@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import { Fragment, ReactNode } from 'react'
 
-import withContexts from '~/with-contexts'
+import Providers from '~/providers'
 
 export type WrapperProps = { children: ReactNode }
 
@@ -11,12 +11,13 @@ type WrapperOptions = {
 
 export const wrapperOptions = ( { navigationContainer = false }: Partial<WrapperOptions> = {} ) => {
   const wrapper = ( { children }: WrapperProps ) => {
-    const Contexts = withContexts( () => children )
     const Container = navigationContainer ? NavigationContainer : Fragment
 
     return (
       <Container>
-        <Contexts />
+        <Providers>
+          {children}
+        </Providers>
       </Container>
     )
   }

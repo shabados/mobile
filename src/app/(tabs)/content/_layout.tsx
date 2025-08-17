@@ -54,7 +54,7 @@ const ContentLayout = () => {
                     title="collections"
                     name="bookmark-outline"
                     testID="navbar-settings"
-                    onPress={() => router.navigate( '/collections' )}
+                    onPress={() => router.navigate( '/collections/' )}
                     style={styles.icon}
                   />
                 </>

@@ -1,6 +1,6 @@
 import { nativeApplicationVersion, nativeBuildVersion } from 'expo-application'
 import { Atom } from 'jotai'
-import { invert } from 'lodash'
+import { invert } from 'radashi'
 import { Children, ReactNode, useState } from 'react'
 import { ScrollView, StyleSheet, Switch, View } from 'react-native'
 

@@ -1,6 +1,6 @@
 import Icon from '@expo/vector-icons/Ionicons'
 import { useEffect, useRef, useState } from 'react'
-import { Platform, Pressable, StyleSheet, TextInput, TextInputProps, View } from 'react-native'
+import { Platform, Pressable, StyleProp, StyleSheet, TextInput, TextInputProps, View, ViewStyle } from 'react-native'
 
 import { registerTranslations, useTranslation } from '~/services/i18n'
 import { Colors, my, units } from '~/themes'
@@ -56,7 +56,9 @@ const styles = StyleSheet.create( {
   },
 } )
 
-export type SearchBarProps = TextInputProps
+export type SearchBarProps = TextInputProps & {
+  style?: StyleProp<ViewStyle>,
+}
 
 const SearchBar = ( {
   onChangeText = () => {},

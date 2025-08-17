@@ -33,7 +33,7 @@ const CollectionsTemplate = ( { path = [] }: CollectionsTemplateProps ) => {
 
   const onItemPress = ( item: CollectionItem ) => () => match( item )
     .with( { type: 'folder' }, ( folder ) => router.push( `/collections/${[ ...path, folder.id ].join( '/' )}` ) )
-    .otherwise( () => router.navigate( `/content/${item.type}/${item.id}` ) )
+    .otherwise( () => router.dismissTo( `/content/${item.type}/${item.id}` ) )
 
   return (
     <Container safeArea left right>

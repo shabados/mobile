@@ -3,7 +3,6 @@ import { ThemeProvider } from '@react-navigation/native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createStore, Provider } from 'jotai'
 import { PostHogProvider, PostHogProviderProps } from 'posthog-react-native'
-import { ElementType } from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
@@ -21,26 +20,22 @@ const getPostHogProviderProps = () => ( configuration.postHog.enabled
   : { apiKey: 'dummy', options: { disabled: true }, autocapture: { captureScreens: false } }
   ) satisfies Partial<PostHogProviderProps>
 
-const withContexts = ( Component: ElementType ) => {
-  const WithContexts = () => (
-    <Provider store={atomStore}>
-      <SafeAreaProvider>
-        <ThemeProvider value={reactNavigationTheme}>
-          <GestureHandlerRootView style={{ flex: 1 }}>
-            <BottomSheetModalProvider>
-              <QueryClientProvider client={queryClient}>
-                <PostHogProvider autocapture {...getPostHogProviderProps()}>
-                  <Component />
-                </PostHogProvider>
-              </QueryClientProvider>
-            </BottomSheetModalProvider>
-          </GestureHandlerRootView>
-        </ThemeProvider>
-      </SafeAreaProvider>
-    </Provider>
-  )
+const Providers = ( { children }: { children: React.ReactNode } ) => (
+  <Provider store={atomStore}>
+    <SafeAreaProvider>
+      <ThemeProvider value={reactNavigationTheme}>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <BottomSheetModalProvider>
+            <QueryClientProvider client={queryClient}>
+              <PostHogProvider autocapture {...getPostHogProviderProps()}>
+                {children}
+              </PostHogProvider>
+            </QueryClientProvider>
+          </BottomSheetModalProvider>
+        </GestureHandlerRootView>
+      </ThemeProvider>
+    </SafeAreaProvider>
+  </Provider>
+)
 
-  return WithContexts
-}
-
-export default withContexts
+export default Providers

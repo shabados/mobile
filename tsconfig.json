@@ -13,7 +13,7 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "app.config.js",
+    "app.config.ts",
     "src-old/types/assets.d.ts.do"
   ]
 }

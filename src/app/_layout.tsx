@@ -3,8 +3,8 @@ import { ComponentProps } from 'react'
 
 import Container from '~/components/atoms/Container'
 import Empty from '~/components/atoms/Empty'
+import Providers from '~/providers'
 import { Colors } from '~/themes'
-import withContexts from '~/with-contexts'
 
 const tabScreenOptions = {
   headerShown: true,
@@ -16,12 +16,14 @@ const tabScreenOptions = {
 } satisfies ComponentProps<typeof Stack>['screenOptions']
 
 const RootLayout = () => (
-  <Stack screenOptions={{ presentation: 'modal', headerShown: false }}>
-    <Stack.Screen name="(tabs)" options={tabScreenOptions} />
-    <Stack.Screen name="collections" />
+  <Providers>
+    <Stack screenOptions={{ presentation: 'modal', headerShown: false }}>
+      <Stack.Screen name="(tabs)" options={tabScreenOptions} />
+      <Stack.Screen name="collections" />
 
-    <Stack.Screen name="search" options={{ headerShown: true, header: Empty }} />
-  </Stack>
+      <Stack.Screen name="search" options={{ headerShown: true, header: Empty }} />
+    </Stack>
+  </Providers>
 )
 
-export default withContexts( RootLayout )
+export default RootLayout
