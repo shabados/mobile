@@ -34,5 +34,10 @@ jobs:
         with:
           distribution: temurin
           java-version-file: .tool-versions
-      - run: bunx expo prebuild --platform ${{ matrix.platform }}
-      - run: bunx react-native build-${{ matrix.platform }}
+      - run: |
+          bun run build -- \
+            --non-interactive \
+            --platform ${{ matrix.platform }}
+        shell: bash
+        env:
+          EAS_LOCAL_BUILD_SKIP_CLEANUP: '1'
