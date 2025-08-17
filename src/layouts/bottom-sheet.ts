@@ -6,8 +6,9 @@ import {
   createBottomSheetNavigator,
 } from '@th3rdwave/react-navigation-bottom-sheet'
 import { withLayoutContext } from 'expo-router'
+import { ComponentType } from 'react'
 
-const { Navigator } = createBottomSheetNavigator()
+const { Navigator } = createBottomSheetNavigator() as { Navigator: ComponentType }
 
 const BottomSheet = withLayoutContext<
   BottomSheetNavigationOptions,
