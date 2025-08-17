@@ -1,6 +1,6 @@
 import { Stack } from 'expo-router'
 
-import BackButton from '~/components/atoms/BackButton'
+import BackButton from '~/components/atoms/back-button'
 import { registerTranslations, useTranslation } from '~/services/i18n'
 
 const strings = registerTranslations( {

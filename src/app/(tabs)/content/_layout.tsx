@@ -3,7 +3,7 @@ import { DeviceType, deviceType } from 'expo-device'
 import { Stack, useRouter } from 'expo-router'
 import { StyleSheet, View } from 'react-native'
 
-import Logo from '~/components/atoms/Logo'
+import Logo from '~/components/atoms/logo'
 import { Colors, units } from '~/themes'
 
 const styles = StyleSheet.create( {

@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native'
 import { useAtom } from 'jotai'
 import { Text, View } from 'react-native'
 
-import Button from '~/components/atoms/Button'
+import Button from '~/components/atoms/button'
 import i18n from '~/services/i18n'
 
 import localeAtom from './locale'

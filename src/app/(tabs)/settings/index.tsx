@@ -1,3 +1,3 @@
-import SettingsTemplate from '~/components/templates/Settings'
+import SettingsTemplate from '~/components/templates/settings'
 
 export default () => <SettingsTemplate />

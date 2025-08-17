@@ -1,6 +1,6 @@
 import { Stack, useNavigation } from 'expo-router'
 
-import Typography from '~/components/atoms/Typography'
+import Typography from '~/components/atoms/typography'
 import { commonStrings, useTranslation } from '~/services/i18n'
 
 const CollectionsLayout = () => {

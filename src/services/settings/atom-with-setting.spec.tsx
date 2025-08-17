@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react-native'
 import { Atom, useAtom } from 'jotai'
 import { Text, View } from 'react-native'
 
-import Button from '~/components/atoms/Button'
+import Button from '~/components/atoms/button'
 import mmkv from '~/services/kv-storage/mmkv'
 
 import atomWithSetting, { SettingSchema } from './atom-with-setting'

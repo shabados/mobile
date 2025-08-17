@@ -1,8 +1,8 @@
 import { Stack } from 'expo-router'
 import { ComponentProps } from 'react'
 
-import Container from '~/components/atoms/Container'
-import Empty from '~/components/atoms/Empty'
+import Container from '~/components/atoms/container'
+import Empty from '~/components/atoms/empty'
 import Providers from '~/providers'
 import { Colors } from '~/themes'
 

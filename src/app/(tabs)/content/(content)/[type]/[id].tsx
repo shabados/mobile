@@ -1,8 +1,8 @@
 import { SearchParams, useLocalSearchParams } from 'expo-router'
 import { Suspense } from 'react'
 
-import ContentTemplate from '~/components/templates/Content'
-import DefaultFallback from '~/components/templates/DefaultFallback'
+import ContentTemplate from '~/components/templates/content'
+import DefaultFallback from '~/components/templates/default-fallback'
 import { useSaveContentPath } from '~/services/history/last-content-path'
 import { ContentType } from '~/types/data'
 

@@ -3,7 +3,7 @@ import { toUnicode } from 'gurmukhi-utils'
 import { t } from 'i18next'
 import { match } from 'ts-pattern'
 
-import CollectionsTemplate from '~/components/templates/Collections'
+import CollectionsTemplate from '~/components/templates/collections'
 import { useCollection } from '~/services/data/collections'
 import { registerTranslations } from '~/services/i18n'
 import { CollectionFolder } from '~/types/data'
