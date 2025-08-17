@@ -18,7 +18,6 @@ export default {
   owner: 'shabados',
   slug: 'mobile',
   version,
-  orientation: 'portrait',
   icon: './assets/images/logo.png',
   userInterfaceStyle: 'automatic',
   splash: {
