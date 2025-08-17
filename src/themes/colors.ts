@@ -1,4 +1,4 @@
-import { Theme as ReactNavigationTheme } from '@react-navigation/native'
+import { DefaultTheme, Theme as ReactNavigationTheme } from '@react-navigation/native'
 import { ColorValue, Platform, PlatformColor } from 'react-native'
 
 type ColorKeys =
@@ -59,4 +59,5 @@ export const reactNavigationTheme = {
     primary: Colors.Link as string,
     notification: Colors.InputBox as string,
   },
+  fonts: DefaultTheme.fonts,
 } satisfies ReactNavigationTheme

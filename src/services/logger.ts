@@ -1,4 +1,4 @@
-import { defLvlType, logger } from 'react-native-logs'
+import { consoleTransport, logger } from 'react-native-logs'
 
 import { hash } from '~/helpers/string'
 
@@ -21,15 +21,16 @@ const availableColors = [
   'cyan',
   'white',
   'grey',
-]
+] as const
 
-const extensionColors = {} as Record<string, string>
+const extensionColors: Record<string, ( typeof availableColors )[number]> = {}
 
-const log = logger.createLogger<defLvlType>( {
+const log = logger.createLogger( {
   enabled: configuration.logger.enabled,
   ...( configuration.logger.enabled && {
     severity: configuration.logger.level,
   } ),
+  transport: [ consoleTransport ],
   stringifyFunc: ( data: string | object ) => ( typeof data === 'object'
     ? `\n${JSON.stringify( data, null, 2 )}`
     : data ),

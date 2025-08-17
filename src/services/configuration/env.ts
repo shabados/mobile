@@ -1,5 +1,5 @@
 import Constants from 'expo-constants'
-import { mapValues } from 'lodash'
+import { mapValues } from 'radashi'
 import { Platform } from 'react-native'
 
 import type { Selectable } from '~/../config/environment/selectable'

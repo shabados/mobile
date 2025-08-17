@@ -29,7 +29,7 @@ const SearchTemplate = () => {
     } )
   }, [ navigation ] )
 
-  const openShabad: ResultsProps['onPress'] = ( { shabad: { id }, line } ) => router.navigate(
+  const openShabad: ResultsProps['onPress'] = ( { shabad: { id }, line } ) => router.dismissTo(
     `/content/shabad/${id}?lineId=${line.id}`,
   )
 

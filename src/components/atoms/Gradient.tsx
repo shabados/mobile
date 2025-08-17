@@ -12,7 +12,7 @@ export const gradientColors = {
     light: [ 'rgba(255, 255, 255, 0)', 'rgba(255, 255, 255, 1)' ],
     dark: [ 'rgba(0, 0, 0, 0)', 'rgba(0, 0, 0, 1)' ],
   },
-} satisfies Record<string, GradientColor>
+} as const satisfies Record<string, GradientColor>
 
 type GradientColors = keyof typeof gradientColors
 

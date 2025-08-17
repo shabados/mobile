@@ -35,6 +35,10 @@ jest.spyOn( expoLocalization, 'getLocales' ).mockReturnValue( [ {
   regionCode: 'US',
   temperatureUnit: 'fahrenheit',
   textDirection: 'ltr',
+  languageCurrencyCode: 'en-US',
+  languageScriptCode: 'Latn',
+  languageRegionCode: 'US',
+  languageCurrencySymbol: '$',
 } ] )
 
 Constants.expoConfig!.extra = getEnvironmentConfig()
