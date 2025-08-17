@@ -1,4 +1,4 @@
-import Empty from '~/components/atoms/Empty'
+import Empty from '~/components/atoms/empty'
 import TopTabs from '~/layouts/top-tabs'
 
 const TabsLayout = () => <TopTabs tabBar={Empty} />
