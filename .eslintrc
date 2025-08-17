@@ -13,7 +13,9 @@
       {
         "ignoreStyleProperties": true
       }
-    ]
+    ],
+    // Currently broken
+    "@typescript-eslint/indent": "off"
   },
   "overrides": [
     {

@@ -1,4 +1,4 @@
-import { SearchParams, useLocalSearchParams } from 'expo-router'
+import { useLocalSearchParams } from 'expo-router'
 import { Suspense } from 'react'
 
 import ContentTemplate from '~/components/templates/content'
@@ -10,10 +10,7 @@ export default () => {
   const {
     id,
     type,
-  } = useLocalSearchParams<
-    SearchParams<'/(tabs)/content/(content)/[type]/[id]'>
-    & Partial<{ lineId: string }>
-  >()
+  } = useLocalSearchParams<'/(tabs)/content/(content)/[type]/[id]', Partial<{ lineId: string }>>()
 
   useSaveContentPath()
 
