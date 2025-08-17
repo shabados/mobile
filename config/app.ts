@@ -31,6 +31,7 @@ export default {
   },
   android: {
     package: build.bundleId,
+    edgeToEdgeEnabled: true,
   },
   plugins: [
     [ 'app-icon-badge', {
