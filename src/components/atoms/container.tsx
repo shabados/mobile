@@ -1,6 +1,6 @@
 import { ComponentProps, ReactNode } from 'react'
 import { StyleSheet, View, ViewProps } from 'react-native'
-import { Edge, SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import { Colors } from '~/themes'
 
@@ -29,13 +29,6 @@ type SafeAreaViewContainerProps = {
 
 type ContainerProps = BaseContainerProps & ( ViewContainerProps | SafeAreaViewContainerProps )
 
-type GetEdgesOptions = Partial<{ top: boolean, left: boolean, right: boolean, bottom: boolean }>
-
-const getEdges = ( { top, left, right, bottom }: GetEdgesOptions ) => Object
-  .entries( { top, left, right, bottom } )
-  .filter( ( [ , truthy ] ) => truthy )
-  .map( ( [ prop ] ) => prop ) as Edge[]
-
 const Container = ( props: ContainerProps ) => {
   const {
     children,
@@ -48,13 +41,19 @@ const Container = ( props: ContainerProps ) => {
     ...rest
   } = props as SafeAreaViewContainerProps
 
-  const ViewComponent = safeArea ? SafeAreaView : View
-  const edgeProps = safeArea ? { edges: getEdges( { top, left, right, bottom } ) } : {}
+  const insets = useSafeAreaInsets()
+
+  const safeAreaStyle = safeArea ? {
+    ...( top && { paddingTop: insets.top } ),
+    ...( left && { paddingLeft: insets.left } ),
+    ...( right && { paddingRight: insets.right } ),
+    ...( bottom && { paddingBottom: insets.bottom } ),
+  } : {}
 
   return (
-    <ViewComponent style={[ styles.main, style ]} {...edgeProps} {...rest}>
+    <View style={[ styles.main, style, safeAreaStyle ]} {...rest}>
       {children}
-    </ViewComponent>
+    </View>
   )
 }
 
