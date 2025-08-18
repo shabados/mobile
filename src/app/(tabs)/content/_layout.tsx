@@ -12,11 +12,11 @@ const styles = StyleSheet.create( {
     color: Colors.PrimaryText,
   },
   left: {
-    marginLeft: units.horizontalLayoutMargin / 16,
+    marginLeft: units.horizontalLayoutMargin,
   },
   right: {
     flexDirection: 'row',
-    marginRight: units.horizontalLayoutMargin / 16,
+    marginRight: units.horizontalLayoutMargin,
   },
 } )
 
@@ -29,15 +29,6 @@ const ContentLayout = () => {
         name="(content)"
         options={{
           headerTitleAlign: 'center',
-          headerLeft: () => (
-            <Icon
-              title="menu"
-              name="menu"
-              testID="navbar-menu"
-              disabled
-              style={[ styles.icon, styles.left ]}
-            />
-          ),
           headerRight: () => (
             <View style={styles.right}>
               {deviceType === DeviceType.TABLET && (

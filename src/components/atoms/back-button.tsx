@@ -3,9 +3,7 @@ import { useRouter } from 'expo-router'
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create( {
-  root: {
-    marginLeft: -8,
-  },
+  root: {},
 } )
 
 export type BackButtonProps = HeaderBackButtonProps
