@@ -35,7 +35,7 @@ jobs:
       - uses: shabados/actions/generate-changelog@release/v3
       - uses: ./.github/actions/upload-workspace
 
-  build-and-submit:
+  build:
     needs: prepare
     runs-on: ${{ matrix.os }}
     strategy:
@@ -50,7 +50,7 @@ jobs:
           - platform: ios
             os: ubuntu-latest
     env:
-      API_KEY_PATH: /tmp/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8
+      EXPO_ASC_KEY_PATH: /tmp/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/download-workspace
@@ -69,27 +69,55 @@ jobs:
       - name: Create App Store Connect API Key
         if: matrix.platform == 'ios'
         run: |
-          echo $API_KEY | base64 -d > ${{ env.API_KEY_PATH }}
+          echo $API_KEY | base64 -d > ${{ env.EXPO_ASC_KEY_PATH }}
         shell: bash
         env:
           API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
       - run: |
           bun run build -- \
             --non-interactive \
-            --auto-submit \
             --platform ${{ matrix.platform }} \
             --profile ${{ matrix.profile }}
         shell: bash
         env:
-          EAS_LOCAL_BUILD_SKIP_CLEANUP: '1'
           EXPO_APPLE_TEAM_TYPE: COMPANY_OR_ORGANIZATION
           EXPO_APPLE_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
           EXPO_ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
-          EXPO_ASC_KEY_PATH: ${{ env.API_KEY_PATH }}
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EAS_LOCAL_BUILD_SKIP_CLEANUP: '1'
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.profile }}-${{ matrix.platform }}
           path: |
             **/*.aab
             **/*.ipa
+
+  submit:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        profile: [next, latest]
+        platform: [ios, android]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: .tool-versions
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.profile }}-${{ matrix.platform }}
+      - name: EAS Submit
+        run: |
+          build_path=$(find -name "*.ipa" -or -name "*.aab" -type f)
+          echo "Submitting $build_path to EAS"
+
+          bunx eas-cli submit \
+            --non-interactive \
+            --path $build_path \
+            --platform ${{ matrix.platform }} \
+            --profile ${{ matrix.profile }}
+        env:
+          APP_ENV: ${{ matrix.profile }}
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
