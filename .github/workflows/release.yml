@@ -43,10 +43,10 @@ jobs:
       matrix:
         profile: [next, latest]
         platform: [ios, android]
-        os: [macos-14, ubuntu-latest]
+        os: [macos-15, ubuntu-latest]
         exclude:
           - platform: android
-            os: macos-14
+            os: macos-15
           - platform: ios
             os: ubuntu-latest
     env:
