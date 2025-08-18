@@ -139,7 +139,7 @@ const SettingsTemplate = () => {
   const { t } = useTranslation()
 
   return (
-    <Container style={styles.root} safeArea left right>
+    <Container style={styles.root}>
       <ScrollView>
         <Separated>
           <Option
