@@ -21,3 +21,9 @@ Logs are also uploaded in GitHub Actions.
 The certificate used must be of type `Apple Distribution`. For some reason, `eas` generates a certificate of type `iOS Distribution`, which would be fine, except that when you try to build the app, it fails with the above error.
 
 To fix this, you need to manually create a new certificate of type `Apple Distribution` and use that to sign the app.
+
+### Invalid Provisioning Profile / Distribution Certificate
+
+This can present with a few different error messages. We allow eas to manage our certificate + provisioning profile, but it will need regeneration once expired.
+
+Run `bunx eas-cli credentials` to manage credentials. It's not particularly easy to integrate this into CI at the moment.
