@@ -83,6 +83,7 @@ jobs:
           EXPO_APPLE_TEAM_TYPE: COMPANY_OR_ORGANIZATION
           EXPO_APPLE_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
           EXPO_ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          EXPO_ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           EAS_LOCAL_BUILD_SKIP_CLEANUP: '1'
       - uses: actions/upload-artifact@v4
