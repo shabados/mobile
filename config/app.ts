@@ -28,6 +28,9 @@ export default {
   ios: {
     supportsTablet: true,
     bundleIdentifier: build.bundleId,
+    config: {
+      usesNonExemptEncryption: false,
+    },
   },
   android: {
     package: build.bundleId,
