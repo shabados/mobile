@@ -10,7 +10,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+  APP_STORE_CONNECT_API_KEY_PATH: /tmp/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_ID }}.p8
 
 jobs:
   checks:
@@ -69,7 +69,7 @@ jobs:
       - name: Create App Store Connect API Key
         if: matrix.platform == 'ios'
         run: |
-          echo $API_KEY | base64 -d > ${{ env.EXPO_ASC_API_KEY_PATH }}
+          echo $API_KEY | base64 -d > ${{ env.APP_STORE_CONNECT_API_KEY_PATH }}
         shell: bash
         env:
           API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
@@ -80,11 +80,12 @@ jobs:
             --profile ${{ matrix.profile }}
         shell: bash
         env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
           EXPO_APPLE_TEAM_TYPE: COMPANY_OR_ORGANIZATION
           EXPO_APPLE_TEAM_ID: ${{ secrets.APP_STORE_CONNECT_TEAM_ID }}
           EXPO_ASC_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
           EXPO_ASC_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+          EXPO_ASC_API_KEY_PATH: ${{ env.APP_STORE_CONNECT_API_KEY_PATH }}
           EAS_LOCAL_BUILD_SKIP_CLEANUP: '1'
       - uses: actions/upload-artifact@v4
         with:
