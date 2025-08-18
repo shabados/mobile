@@ -1,7 +1,8 @@
 name: Continuous Integration
 
 on:
-  pull_request:
+  push:
+    branches-ignore: [main]
 
 env:
   FORCE_COLOR: true
@@ -38,6 +39,7 @@ jobs:
           bun run build -- \
             --non-interactive \
             --platform ${{ matrix.platform }}
+            --profile example
         shell: bash
         env:
           EAS_LOCAL_BUILD_SKIP_CLEANUP: '1'
