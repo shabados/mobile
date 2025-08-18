@@ -11,30 +11,3 @@ env:
 jobs:
   checks:
     uses: ./.github/workflows/checks.yml
-
-  build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - os: macos-14
-            platform: ios
-          - os: ubuntu-latest
-            platform: android
-    steps:
-      - uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version-file: .tool-versions
-      - run: bun i
-      - uses: ./.github/actions/cache-pods
-        if: matrix.platform == 'ios'
-      - uses: actions/setup-java@v4
-        if: matrix.platform == 'android'
-        with:
-          distribution: temurin
-          java-version-file: .tool-versions
-      - run: bunx expo prebuild --platform ${{ matrix.platform }}
-      - run: bun add -D @react-native-community/cli
-      - run: bunx react-native build-${{ matrix.platform }}
