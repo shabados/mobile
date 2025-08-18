@@ -115,6 +115,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: ${{ matrix.profile }}-${{ matrix.platform }}
+      - run: bun i
       - name: EAS Submit
         run: |
           build_path=$(find -name "*.ipa" -or -name "*.aab" -type f)
