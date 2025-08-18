@@ -58,16 +58,21 @@ jobs:
         with:
           bun-version-file: .tool-versions
       - run: bun i
-      - uses: ./.github/actions/cache-pods
-        if: matrix.platform == 'ios'
-      - uses: actions/setup-java@v4
-        if: matrix.platform == 'android'
+      - if: matrix.platform == 'ios'
+        uses: ./.github/actions/cache-pods
+      - if: matrix.platform == 'ios'
+        # Fixes https://github.com/actions/runner-images/issues/12758#issuecomment-3187115656
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+      - if: matrix.platform == 'android'
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version-file: .tool-versions
           cache: gradle
-      - name: Create App Store Connect API Key
-        if: matrix.platform == 'ios'
+      - if: matrix.platform == 'ios'
+        name: Create App Store Connect API Key
         run: |
           echo $API_KEY | base64 -d > ${{ env.APP_STORE_CONNECT_API_KEY_PATH }}
         shell: bash
