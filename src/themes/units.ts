@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
 
+//! Deprecate this - better to embed these values into functions/components
 export const units = {
   footnote: 13,
   base: 17,

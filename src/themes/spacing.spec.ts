@@ -1,4 +1,4 @@
-import { mx, my, px, py } from './utils'
+import { mx, my, px, py } from './spacing'
 
 describe( 'Styling Utilities', () => {
   describe( 'py()', () => {
