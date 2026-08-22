@@ -1,4 +1,9 @@
-<img src="https://raw.githubusercontent.com/shabados/presenter/dev/resources/icon.png" width="128" alt="Shabad OS">
+# Development has moved to [shabados/shabados](https://github.com/shabados/shabados)
+
+This repo has been archived in favor of the above monorepo.
+
+<details>
+<summary>Archived README</summary>
 
 # Mobile
 
@@ -8,6 +13,7 @@ Android and iOS app for searching, navigating, and presenting the Shabad OS data
 
 **Table of Contents**
 
+- [Development has moved to shabados/shabados](#development-has-moved-to-shabadosshabados)
 - [Mobile](#mobile)
   - [Introduction](#introduction)
     - [Features in Development](#features-in-development)
@@ -107,3 +113,5 @@ This project is under v3 of the [GPL](LICENSE.md). It is similar to the Golden R
 [contributor-url]: https://github.com/shabados/mobile/graphs/contributors
 [upvote-tracker-url]: https://github.com/shabados/mobile/issues?q=is%3Aopen+is%3Aissue+label%3A%22Type%3A+Feature%2FEnhancement%22+sort%3Areactions-%2B1-desc
 [contributor-covenant-url]: https://www.contributor-covenant.org/version/2/0/code_of_conduct/
+
+</details>
